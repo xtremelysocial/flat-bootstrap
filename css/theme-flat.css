@@ -1,0 +1,637 @@
+/**
+ * Theme: Flat Bootstrap
+ * 
+ * The stylesheet for our flat ui
+ *
+ * Contains our custom fonts, color palette, sections with padding, etc.
+ *
+ * @package bootstrap-flat
+ */
+ 
+/* 
+ * OVERALL STYLES
+ */
+
+/* Google fonts */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);
+ 
+body {
+	font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+a {
+    color: #16a085;
+    word-wrap: break-word;
+
+    -webkit-transition: color .1s ease-in, background .1s ease-in;
+    -moz-transition: color .1s ease-in, background .1s ease-in;
+    -ms-transition: color .1s ease-in, background .1s ease-in;
+    -o-transition: color .1s ease-in, background .1s ease-in;
+    transition: color .1s ease-in, background .1s ease-in;
+}
+
+a:hover,
+a:focus {
+    color: #19B798;
+    text-decoration: none;
+    outline: 0;
+}
+a:before,
+a:after,
+a:hover i:before,
+a:focus i:before {
+    -webkit-transition: color .1s ease-in, background .1s ease-in;
+    -moz-transition: color .1s ease-in, background .1s ease-in;
+    -ms-transition: color .1s ease-in, background .1s ease-in;
+    -o-transition: color .1s ease-in, background .1s ease-in;
+    transition: color .1s ease-in, background .1s ease-in;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	font-family: "Raleway", Arial, "Helvetica Neue", sans-serif;
+}
+h1, 
+h2, 
+h3 {
+    font-weight: 300;
+}
+
+p {
+    line-height: 28px;
+}
+
+blockquote {
+	border-color: #16a085;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.navbar-default 
+.navbar-brand {
+    color: #16a085;
+}
+.navbar-default 
+.navbar-brand:hover, 
+.navbar-default 
+.navbar-brand:focus {
+    color: #19b798;
+}
+
+#page {
+	background-color: #f2f2f2;
+}
+
+/* Tone down field labels in the comments section and wherever else */
+label {
+	font-weight: 300;
+}
+
+/* 
+ * FULL-WIDTH SECTIONS
+ */
+.section {
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+/* Bootstrap grids (rows) need this if not in a container */
+.section.fullwidth {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.section.nopadding {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.section.nopadding-top {
+	padding-top: 0;
+}
+.section.nopadding-bottom {
+	padding-bottom: 0;
+}
+.section.padding-top {
+	padding-top: 35px;
+}
+.section.padding-bottom {
+	padding-bottom: 35px;
+}
+.section.border-bottom {
+	border-bottom: #bdc3c7 solid 1px;
+}
+.section.border-bottom-thick {
+	border-bottom: #bdc3c7 solid 5px;
+}
+
+/* 
+ * COLORED BACKGROUNDS FOR SECTIONS
+ */
+
+.white, 
+.bg-white {
+	background-color: #fff;
+}
+.color-white {
+	color: #fff;
+}
+
+.offwhite, 
+.bg-offwhite {
+	background-color: #f2f2f2;
+}
+.color-offwhite {
+	color: #f2f2f2;
+}
+
+.lightgray, 
+.bg-lightgray {
+	background-color: #ebebeb;
+}
+.color-lightgray {
+	color: #ebebeb;
+}
+
+.gray, 
+.bg-gray {
+	background-color: #e7e7e7;
+}
+.color-gray {
+	color: #e7e7e7;
+}
+
+.darkgray, 
+.bg-darkgray {
+	background-color: #e0e0e0;
+}
+.color-darkgray {
+	color: #e0e0e0;
+}
+
+.lightgreen, 
+.bg-lightgreen {
+    background-color: #1abc9c;
+	color: #fff;
+}
+.color-lightgreen {
+    color: #1abc9c;
+}
+.lightgreen h1, 
+.lightgreen h2, 
+.lightgreen h3, 
+.lightgreen h4, 
+.lightgreen h5, 
+.lightgreen h6, 
+.bg-lightgreen h1, 
+.bg-lightgreen h2, 
+.bg-lightgreen h3, 
+.bg-lightgreen h4,
+.bg-lightgreen h5, 
+.bg-lightgreen h6 {
+	color: #fff;
+}
+
+.darkgreen, 
+.bg-darkgreen {
+    background-color: #16a085;
+	color: #fff;
+}
+.color-darkgreen {
+    color: #16a085;
+}
+.darkgreen h1, 
+.darkgreen h2, 
+.darkgreen h3, 
+.darkgreen h4, 
+.darkgreen h5, 
+.darkgreen h6, 
+.bg-darkgreen h1, 
+.bg-darkgreen h2, 
+.bg-darkgreen h3, 
+.bg-darkgreen h4, 
+.bg-darkgreen h5, 
+.bg-darkgreen h6 {
+	color: #fff;
+}
+
+.yellow, 
+.bg-yellow {
+    background: #f1c40f;
+    color: #fff;
+}
+.yellow h1, 
+.yellow h2, 
+.yellow h3, 
+.yellow h4, 
+.yellow h5, 
+.yellow h6, 
+.bg-yellow h1, 
+.bg-yellow h2, 
+.bg-yellow h3, 
+.bg-yellow h4, 
+.bg-yellow h5, 
+.bg-yellow h6 {
+	color: #fff;
+}
+.yellow p, .bg-yellow p {
+    font-weight: 500
+}
+
+.blue, 
+.bg-blue {
+	background-color: #3498db;
+	color: #fff;
+}
+.color-blue {
+	color: #3498db;
+}
+.blue h1, 
+.blue h2, 
+.blue h3, 
+.blue h4, 
+.blue h5, 
+.blue h6, 
+.bg-blue h1, 
+.bg-blue h2, 
+.bg-blue h3, 
+.bg-blue h4, 
+.bg-blue h5, 
+.bg-blue h6 {
+	color: #fff;
+}
+
+.darkblue,
+.bg-darkblue {
+	background-color: #2980b9;
+	color: #fff;
+}
+.color-darkblue {
+	color: #2980b9;
+}
+.darkblue h1, 
+.darkblue h2, 
+.darkblue h3, 
+.darkblue h4, 
+.darkblue h5, 
+.darkblue h6, 
+.bg-darkblue h1, 
+.bg-darkblue h2, 
+.bg-darkblue h3, 
+.bg-darkblue h4, 
+.bg-darkblue h5, 
+.bg-darkblue h6 {
+	color: #fff;
+}
+
+.midnightblue, 
+.bg-midnightblue {
+	background-color: #34495e;
+	color: #fff;
+}
+.color-midnightblue {
+	color: #34495e;
+}
+.midnightblue h1, 
+.midnightblue h2, 
+.midnightblue h3, 
+.midnightblue h4, 
+.midnightblue h5, 
+.midnightblue h6, 
+.bg-midnightblue h1, 
+.bg-midnightblue h2, 
+.bg-midnightblue h3, 
+.bg-midnightblue h4, 
+.bg-midnightblue h5, 
+.bg-midnightblue h6 {
+	color: #fff;
+}
+
+.red, .bg-red {
+	background-color: #ff7878;
+	color: #fff;
+}
+.color-red {
+	color: #ff7878;
+}
+.red h1, 
+.red h2, 
+.red h3, 
+.red h4, 
+.red h5, 
+.red h6, 
+.bg-red h1, 
+.bg-red h2, 
+.bg-red h3, 
+.bg-red h4, 
+.bg-red h5, 
+.bg-red h6 {
+	color: #fff;
+}
+
+.almostblack, 
+.bg-almostblack {
+	background-color: #2f2f2f;
+	color: #fff;
+}
+.color-almostblack {
+	color: #2f2f2f;
+}
+.almostblack h1, 
+.almostblack h2, 
+.almostblack h3, 
+.almostblack h4, 
+.almostblack h5, 
+.almostblack h6, 
+.bg-almostblack h1, 
+.bg-almostblack h2, 
+.bg-almostblack h3, 
+.bg-almostblack h4, 
+.bg-almostblack h5, 
+.bg-almostblack h6 {
+	color: #fff;
+}
+
+.notquiteblack, 
+.bg-notquiteblack {
+	background-color: #222;
+	color: #fff;
+}
+.color-notquiteblack {
+	color: #222;
+}
+.notquiteblack h1, 
+.notquiteblack h2, 
+.notquiteblack h3, 
+.notquiteblack h4, 
+.notquiteblack h5, 
+.notquiteblack h6, 
+.bg-notquiteblack h1, 
+.bg-notquiteblack h2, 
+.bg-notquiteblack h3, 
+.bg-notquiteblack h4, 
+.bg-notquiteblack h5, 
+.bg-notquiteblack h6 {
+	color: #fff;
+}
+
+.black, 
+.bg-black {
+	background-color: #000;
+	color: #fff;
+}
+.color-black {
+	color: #000;
+}
+.black h1, 
+.black h2, 
+.black h3, 
+.black h4, 
+.black h5, 
+.black h6, 
+.bg-black h1, 
+.bg-black h2, 
+.bg-black h3, 
+.bg-black h4, 
+.bg-black h5, 
+.bg-black h6 {
+	color: #fff;
+}
+
+/* Set the icons to white for all dark-colored sections */
+.lightgreen i, 
+.bg-lightgreen i, 
+.darkgreen i, 
+.bg-darkgreen i, 
+.blue i, 
+.bg-blue i, 
+.midnightblue i, 
+.bg-midnightblue i, 
+.yellow i, 
+.bg-yellow i,
+.red i, 
+.bg-red i, 
+.almostblack i, 
+.bg-almostblack i, 
+.black i, 
+.bg-black i {
+	color: #fff;
+}
+
+/* Set the link color to white and underlined for certain background colors */
+.lightgreen a:not(.btn), 
+.bg-lightgreen a:not(.btn), 
+.darkgreen a:not(.btn), 
+.bg-darkgreen a:not(.btn), 
+.yellow a:not(.btn), 
+.bg-yellow a:not(.btn), 
+.blue a:not(.btn), 
+.bg-blue a:not(.btn), 
+.darkblue a:not(.btn), 
+.bg-darkblue a:not(.btn), 
+.red a:not(.btn), 
+.bg-red a:not(.btn) {
+	color: #fff;
+	text-decoration: underline;
+}
+.lightgreen a:hover:not(.btn), 
+.bg-lightgreen a:hover:not(.btn), 
+.darkgreen a:hover:not(.btn), 
+.bg-darkgreen a:hover:not(.btn), 
+.yellow a:hover:not(.btn), 
+.bg-yellow a:hover:not(.btn), 
+.blue a:hover:not(.btn), 
+.bg-blue a:hover:not(.btn), 
+.darkblue a:hover:not(.btn), 
+.bg-darkblue a:hover:not(.btn), 
+.red a:hover:not(.btn), 
+.bg-red a:hover:not(.btn) {
+	color: #7b7b7b;
+}
+
+.form-control {
+	color: #555;
+}
+
+/* Set input field focus color to green */
+.form-control:focus,
+textarea#comment:focus {
+    border-color: #1abc9c;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(109, 233, 102, 0.6);
+   /*-webkit-appearance: none !important;*/
+   outline: 0;
+}
+
+/* Force search field to not be rounded on iOS devices */
+input.search-field {
+	-webkit-appearance: none !important;
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+/* 
+ * SET INPUT BUTTONS TO LOOK LIKE BTN-PRIMARY (GREEN)
+ */
+button,
+html input[type="button"],
+input[type="submit"] {
+    color: #fff;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    background-image: none;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 6px 12px;
+    border: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    outline: 0;
+}
+button:hover, 
+button:focus,
+html input[type="button"]:hover, 
+html input[type="button"]:focus,
+input[type="submit"]:hover, 
+input[type="submit"]:focus {
+    color: #fff;
+    background-color: #16a085;
+    border-color: #16a085;
+    outline: 0;
+}
+
+/* Bootstrap uses "active" style on the <li>, but WordPress paginate_links() uses 
+ * "current" in a <span> tag on the link. Also set the hover to match the primary button
+ * color. 
+ */
+.pagination>li>a, 
+.pagination>li>span, 
+span.page-numbers.current {
+	color: #16a085;
+}
+.pagination>li>a:hover, 
+.pagination>li>span:hover, 
+.pagination>li>a:focus,
+.pagination>li>span:focus, 
+span.page-numbers.current {
+	z-index: 2;
+	color: #fff;
+    background-color: #16a085;
+    border-color: #16a085;
+}
+
+/* Get rid of gradient on carousel left and right */
+.carousel-control.left, .carousel-control.right {
+	background-image: none;
+	background-repeat: none;
+}
+.carousel-caption,
+.carousel-caption h4,
+.carousel-caption p {
+	font-weight: bold;
+}
+.carousel-caption {
+	text-shadow: none;
+	background-color: #16a085;
+	color: #fff;
+	opacity: .75;
+	font-weight: bold;
+}
+.carousel-caption a {
+	color: #fff;
+	text-decoration: underline;
+}
+.carousel-caption a:hover,
+.carousel-caption a:focus {
+    color: #bdc3c7; /*silver*/
+}
+
+.sticky .entry-title:after {
+	background-color: #1abc9c;
+	color: #fff;
+}
+
+.bypostauthor {
+}
+
+/* Push the carousel indicators down below the image or content */
+.carousel-indicators {
+	bottom: -35px;
+}
+
+/* Make user profile pics (avatars) circles */
+.avatar {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+img.avatar.thumbnail {
+	border: none;
+	padding: 0;
+}
+
+/* 
+ * NEW STUFF ADDED, SUCH AS ADDITIONAL BUTTONS
+ */
+
+/* New button that is inverted (hollow) so works on any dark background */
+a.btn.btn-hollow {
+	color: #fff;
+  	border: 2px solid #fff;
+    background-color: transparent;
+}
+.btn-hollow:hover, a.btn.btn-hollow:hover {
+    color: #2f2f2f;
+    background-color: #fff
+}
+.white a.btn.btn-hollow, 
+.bg-white a.btn.btn-hollow, 
+.offwhite a.btn.btn-hollow, 
+.bg-offwhite a.btn.btn-hollow, 
+.lightgray a.btn.btn-hollow, 
+.bg-lightgray a.btn.btn-hollow, 
+.gray a.btn.btn-hollow, 
+.bg-gray a.btn.btn-hollow, 
+.darkgray a.btn.btn-hollow,
+.bg-darkgray a.btn.btn-hollow {
+	color: #1abc9c;
+	border: 2px solid #1abc9c;
+    background-color: transparent;
+}
+.btn-hollow:hover, 
+a.btn.btn-hollow:hover {
+    color: #2f2f2f;
+    background-color: #fff;
+}
+
+/* New button that is partially transparent to let background color show through */
+.btn-transparent {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: inherit;
+}
+
+.btn-transparent:hover, 
+.btn-transparent:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}

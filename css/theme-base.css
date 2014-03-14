@@ -1,0 +1,733 @@
+/**
+ * Theme: Flat Bootstrap
+ * 
+ * The stylesheet for basic WordPress styles
+ *
+ * Contains padding, margins, list styles, etc.
+ *
+ * @package bootstrap-flat
+ */
+ 
+/** 
+ * SET SOME REASONABLE DEFAULT WORDPRESS STYLES. MOST OF THESE ARE REQUIRED BY ALL
+ * WORDPRESS THEMES
+ */
+
+/* Text meant only for screen readers. Required only for WordPress as Bootstrap uses
+ * .sr-only and we apply that in this theme.
+ */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+p.screen-reader-text {
+	margin-bottom: 0;
+}
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	height: auto;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	text-decoration: none;
+	text-transform: none;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+/* Style tables like TwentyEleven theme with lines between entries */
+.entry-content table,
+.comment-content table {
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 1.625em;
+	width: 100%;
+}
+.entry-content th,
+.comment-content th {
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	line-height: 2.6em;
+	text-transform: uppercase;
+}
+.entry-content td,
+.comment-content td {
+	border-top: 1px solid #ddd;
+	padding: 6px 10px 6px 0;
+}
+
+/* Clearing floats */
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.entry-meta:before,
+.entry-meta:after,
+.pager:before,
+.pager:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+	content: '';
+	display: table;
+}
+
+.clear:after,
+.entry-content:after,
+.entry-meta:before,
+.entry-meta:after,
+.pager:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+	clear: both;
+}
+
+/* Required WordPress Alignment */
+.alignleft, .align-left {
+	display: inline;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.alignright, .align-right {
+	display: inline;
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+.aligncenter, .align-center {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.nocenter {
+	text-align: left;
+}
+
+/* Normal WordPress captions */
+.wp-caption {
+	max-width: 100%;
+}
+.wp-caption-text,
+.gallery-caption {
+	text-shadow: none;
+	font-size: 16px;
+}
+
+/* Center the thumbnails since WordPress centers the caption text */
+.gallery-icon img {
+	margin: auto;
+}
+
+/* Mark "sticky" (featured) posts as "Featured" */
+.sticky .entry-title:after {
+	content: "Featured";
+	display: inine-block;
+	font-size: 20px;
+	margin-left: 15px;
+	padding: 10px;
+	vertical-align: middle;
+}
+
+.bypostauthor {
+}
+
+/* Come on now, of course we need a margin before their name and comment */
+.avatar {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+/* Limit the page for really wide screens, such as an iMac */
+#page {
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+.custom-header-image {
+	padding-top: 30px;
+}
+
+.site-title {
+	margin-top: 25px;
+}
+.site-description {
+	margin-top: 10px;
+	margin-bottom: 25px;
+	font-size: 24px;
+}
+
+.site-title a, .site-title a:hover, .site-title a:active {
+	text-decoration: none;
+}
+.custom-header-text-color a:hover,
+.custom-header-text-color a:focus {
+	opacity: 0.75;
+}
+ .custom-header-image h1 {
+	font-weight: 700;
+}
+.custom-header-image h2 {
+	font-size: 24px;
+}
+
+a.scroll-down, a.scroll-down:hover span, a.scroll-down:focus span, .carousel-control:hover, .carousel-control:focus {
+	color: #fff;
+	font-size: 20px;
+}
+
+.content-header {
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+header.content-header {
+	min-height: 170px;
+}
+.content-header i {
+    font-size: 35px;
+    text-align: center;
+}
+
+/* For standard WordPress slideshow, get rid of black background. We want to leave 
+ * whatever color background we have 
+ */
+.slideshow-window {
+	background-color: transparent !important; 
+	border: none !important;
+}
+
+.content-area {
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+.content-area-wide .comments-area {
+	padding-bottom: 35px;
+}
+
+.page .entry-content {
+	padding-top: 0;
+}
+
+.entry-summary {
+	margin-bottom: 25px;
+}
+
+article.post {
+	margin-bottom: 25px;
+}
+
+/* Let's get some whitespace before the footer nav and credits */
+.sidebar-footer {
+	padding-top: 35px;
+}
+.sidebar-footer h1, 
+.sidebar-footer h2, 
+.sidebar-footer h3, 
+.sidebar-footer h4, 
+.sidebar-footer h5, 
+.sidebar-footer h6 {
+	margin-top: 0;
+	padding-bottom: 15px;
+}
+.sidebar-footer aside.widget {
+	margin-bottom: 35px;
+}
+
+footer.entry-meta, 
+div.entry-meta, 
+.edit-link {
+	font-size: 16px;
+}
+.edit-link a {
+	color: #7f8c8d;
+}
+.edit-link a:hover, 
+.edit-link a:focus {
+	color: #3bc492;
+}
+
+.after-footer {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+/* Let's put dividers between footer menu items */
+#footer-navigation ul.dividers > li:nth-child(n+2):before {
+  content: "";
+  display: inline-block;
+  height: 10px;
+  margin-right: 10px;
+  border-left: 1px solid #dddddd;
+}
+
+/* Since footer nav has screen reader text, need to pad site credits to line them up */
+#site-credits {
+	padding-top: 10px;
+}
+
+/* For sidebar, add some whitespace */
+#secondary {
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+#secondary aside.widget {
+	margin-bottom: 10px; /* Heading will add 25px */
+}
+
+/* Center the text after the footer for smartphones */
+@media (max-width: 640px) {
+	.footer-nav-menu, .site-credits {
+		text-align: center;
+		float: none !important;
+	}
+	.site-credits {
+		padding-bottom: 15px;
+	}
+}
+
+/* Globally hidden elements when Infinite Scroll is supported and in use.
+ * Older / Newer Posts Navigation (always hidden)
+ * Theme Footer (when set to scrolling) 
+ */
+.infinite-scroll .paging-navigation, 
+.infinite-scroll.neverending .site-footer { 
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that
+ * were hidden before (via .neverending) 
+ */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/* Make sure no content breaks the layout */
+img, embed, iframe, media, swf, pre, code, container, select, .videopress-placeholder {
+	display: block;
+	max-width:100%;
+	/*height: auto;*/ /* this messes up embedded videos */
+	overflow:hidden;
+	white-space: pre;           /* CSS 2.0 */
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
+}
+img, .videopress-placeholder {
+	height: auto;
+}
+
+/* Get rid of bullets on comment <ul> and set some padding and indenting */
+.comment-list,
+.comment-list .children {
+	list-style-type: none;
+	padding: 0;
+}
+
+.comment-list .children {
+	margin-left: 25px;
+}
+
+.reply {
+	margin-bottom: 25px;
+}
+
+/* Get rid of the word "says" from comments */
+.says {
+	display: none;
+}
+
+li.pingback {
+	margin-bottom: 15px;
+}
+
+.cat-links, .tags-links {
+	margin-right: 10px;
+}
+
+.posted-on {
+	margin-right: 5px;
+}
+.by-line, .comments-link {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Get rid of bullets on sidebar lists and in our footer columns */
+#secondary ul, 
+footer#colophon.site-footer ul {
+	list-style: none;
+	padding-left: 0;
+}
+#secondary ul ul, 
+footer#colophon.site-footer ul ul {
+	list-style: none;
+	padding-left: 25px;
+}
+
+#secondary ul li, 
+footer#colophon.site-footer ul li {
+	margin-top: 10px;
+}
+
+/* Style comments */
+.comment-list .children {
+	margin-left: 5%;
+}
+.comment-form, 
+.comment-textarea, 
+textarea {
+	max-width: 100%;
+	border-color: #ccc;
+}
+
+/* Styles for default WordPress comments */
+textarea#comment {
+	max-width: 743px; /*largest width of content area w/sidebar*/
+	width: 100%;
+	max-height: 70px;
+}
+textarea#comment:active,
+textarea#comment:focus {
+	max-height: 140px;
+}
+
+/* Hide the label "Comment" above the comment box as its pretty obvious already */
+.comment-form-comment label {
+	display: none;
+}
+p.comment-subscription-form {
+	margin-bottom: 10px;
+}
+
+/* Style the WordPress calendar widget because Bootstrap doesn't even add a 'table'
+ * class to tables
+ */
+#calendar_wrap {
+	font-size: 14px;
+	max-width: 300px;
+}
+.widget_calendar #wp-calendar {
+	color: #555;
+	width: 95%;
+	text-align: center;
+}
+.widget_calendar #wp-calendar caption,
+.widget_calendar #wp-calendar td,
+.widget_calendar #wp-calendar th {
+	text-align: center;
+}
+.widget_calendar #wp-calendar caption {
+	font-weight: 500;
+	padding: 5px 0 5px 0;
+	text-transform: uppercase;
+}
+.widget_calendar #wp-calendar th {
+	background: #f4f4f4;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	font-weight: bold;
+}
+.widget_calendar #wp-calendar tfoot td {
+	background: #f4f4f4;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+/* Get rid of the smiley face when using Jetpack stats */
+img.wp-smiley {
+     display: inline-block;
+}
+
+/**
+ * SET SOME BOOTSTRAP STYLES AS A BASE FOR ALL THEMES
+ */
+
+/* When full-width pages are changed back to sidebar, fix the layout */
+.content-area .entry-content .container {
+	max-width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+.content-area .entry-content .container .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+ 
+.lead {
+	font-size: 22px;
+}
+
+/* Remove margin at bottom of navbar because content header already has padding */
+.navbar {
+	margin-bottom: 0;
+}
+
+/* Bolder text for site name in navbar */
+.navbar-brand {
+	font-weight: 500;
+	height: 50px; /* Fixes layout if nav bar wraps before collapsing for mobile */
+}
+
+/* Line up the navbar with the header and page content (it's in a container, but not a row) */
+div.navbar-collapse.collapse {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+/* Set a hover effect for the custom header image (logo) */
+/*.navbar-inverse .navbar-brand:hover, 
+.navbar-inverse .navbar-brand:focus, 
+.navbar-default .navbar-brand:hover, 
+.navbar-default .navbar-brand:focus {
+	opacity: 0.75; 
+}*/
+
+header.site-header.page-header {
+	border-bottom: 0;
+}
+
+.carousel-inner img {
+	margin-left: auto;
+	margin-right: auto;
+}
+.carousel-caption {
+	max-width: 100%;
+	text-shadow: none;
+}
+
+/* Bootstrap uses "active" style on the <li>, but WordPress paginate_links() uses 
+ * "current" in a <span> tag on the link. Also set the hover to match the primary 
+ * button color. 
+ */
+.pagination>li>a:hover, 
+.pagination>li>span:hover, 
+.pagination>li>a:focus,
+.pagination>li>span:focus, 
+span.page-numbers.current {
+  background-color: #16a085; /*darkgreen*/
+  border-color: #16a085;
+}
+
+/* Format WordPress contact form with Bootstrap's form-control tag */
+form.contact-form input[type='text'], 
+form.contact-form input[type='email'], 
+form.contact-form textarea {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.428571429;
+    color: #a1a1a1;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+form.contact-form input[type='text']:focus, 
+form.contact-form input[type='email']:focus, 
+form.contact-form textarea:focus {
+    color: #555;
+}
+
+.jumbotron {
+	margin-bottom: 0;
+}
+.nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:hover, 
+.nav-tabs>li.active>a:focus {
+	color: inherit;
+}
+
+/* Style <code> tag like <pre> tag so its white instead of red */
+code {
+    /*font-weight: 300;
+    font-size: 15px;
+    line-height: 1.428571429;*/
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #2f2f2f;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/**
+ * ADD NEW STYLES TO HANDLE THEME FEATURES
+ */
+.section-image, .cover-image {
+  	display: table;
+	background-repeat: no-repeat;
+	text-align:center;
+	background-attachment: scroll;
+	background-position: top center;
+	width: 100%;
+  	position: relative;
+  	vertical-align: top;
+	
+	-webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.section-image-overlay, .cover-image-overlay {
+  	display: table-cell;
+  	vertical-align: middle;
+	overflow: hidden;
+	padding: 50px;
+	padding: 5%;
+	z-index: 2;	
+}
+.cover-image, .cover-image-overlay {
+  height: 100%; /* For at least Firefox */
+  min-height: 480px;
+}
+.section-image, .section-image-overlay {
+	min-height: 340px;
+}
+.section-image h1, 
+.cover-image h1 {
+	font-size: 42px;
+	color: #fff;
+	line-height: 1.1;
+}
+.section-image h2, 
+.cover-image h2 {
+	font-size: 30px;
+	color: #fff;
+	line-height: 1.1;
+}
+.section-image h3, 
+.section-image h4, 
+.section-image p, 
+.cover-image h2, 
+.cover-image h3, 
+.cover-image h4, 
+.cover-image p {
+	color: #fff;
+}
+
+.cover-image .spacer {
+    margin-top: 100px
+}
+
+.section-featured h1 {
+	font-size: 42px;
+	line-height: 1.1;
+}
+.section-featured h2 {
+	font-size: 30px;
+	line-height: 1.1;
+}
+.section-featured {
+	padding-top: 60px;
+	border-bottom: #bdc3c7 solid 5px;
+}
+
+/* For larger screens, increase font size and spacing */
+@media (min-width: 768px) {
+	.cover-image h1,
+	.section-image h1,
+	.section-featured h1,
+	.wp-caption-text-fullwidth h1 {
+		font-size: 70px;
+		letter-spacing: 3px;
+	}
+	.cover-image h2,
+	.section-image h2,
+	.section-featured h2,
+	.wp-caption-text-fullwidth h2 {
+		font-size: 42px;
+		letter-spacing: 2px;
+	}
+	.cover-image .spacer {
+		margin-top: 200px;
+	}
+	.cover-image, .cover-image-overlay {
+		min-height: 700px;
+	}
+	.section-image, .section-image-overlay {
+		min-height: 400px;
+	}
+}
+
+/* use <span> tags for glpyicons because WordPress visual editor strips empty <i> tags.
+ * to make them large as in using for icons, add "icon-lg" class. 
+ */
+span.icon-lg,
+i.icon-lg {
+    font-size: 35px;
+	padding: 20px;
+}
+
+/* 
+ * PADDING AND OTHER UTILITIES
+ */
+ .padding {
+ 	padding: 25px;
+ }
+.padding-top {
+	padding-top: 25px; /* Match Hx tag top margins */
+}
+.padding-bottom {
+	padding-bottom: 25px;
+}
+.padding-top-bottom {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.padding-right {
+	padding-right: 35px; /* Match grid gutters */
+}
+.padding-left {
+	padding-left: 35px; /* Match grid gutters */
+}
+.padding-left-right {
+	padding-left: 35px; /* Match grid gutters */
+	padding-right: 35px; /* Match grid gutters */
+}
+.nopadding-nomargin {
+    margin: 0;
+    padding: 0;
+}
+.centered {
+    text-align: center;
+}

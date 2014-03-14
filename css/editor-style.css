@@ -1,0 +1,17 @@
+/**
+ * Theme: Flat Bootstrap
+ * 
+ * The stylesheet for the WordPress visual post / page editor
+ *
+ * For now, simply loads our theme's stylesheets
+ *
+ * @package bootstrap-flat
+ */
+ 
+/**
+ * PULL IN OUR THEME STYLESHEETS SO VISUAL EDITOR AND PREVIEWS LOOK RIGHT
+ */
+@import url( '../bootstrap/css/bootstrap.min.css' );
+@import url( 'theme-base.css' );
+@import url( 'theme-flat.css' );
+@import url( '../style.css' );
