@@ -109,7 +109,7 @@ if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
  function xsbf_admin_header_style() {
 	$header_image = get_header_image();
 ?>
-	<style type="text/css" id="twentythirteen-admin-header-css">
+	<style type="text/css" id="xsbf-admin-header-css">
 	.appearance_page_custom-header #headimg {
 		border: none;
 		-webkit-box-sizing: border-box;
@@ -193,8 +193,6 @@ endif; // ! function_exists
  * Output markup to be displayed on the Appearance > Header admin panel.
  *
  * This callback overrides the default markup displayed there.
- *
- * @since Twenty Thirteen 1.0
  *
  * @return void
  */
