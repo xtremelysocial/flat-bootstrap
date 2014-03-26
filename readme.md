@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.6.0
 Tested up to: 3.8.1
-Stable tag: 1.0.1
+Stable tag: 1.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -19,9 +19,9 @@ It is based on the standard WordPress starter theme (_S) and the Twitter Bootstr
 
 Features include a mobile navigation bar, multiple columns (grid), buttons, icons, labels, badges, tabbed content areas, collapsible content areas, progress bars, alert boxes, carousels (sliders) and much, much more. This is a theme for both users and theme developers with lots of features but without the bloat. 
 
-Users can download the Flat Bootstrap Child Theme to easily customize the theme. Theme developers can download the Flat Bootstrap Developer Theme that is also a child theme, but strips everything back to basic Bootstrap.
+This theme includes a child theme to be able to easily customize the theme. The Flat Bootstrap Child theme is for users and developers and comes with a style.css and functions.php file. Just copy the flat-bootstrap-child directory into your /themes directory and make your changes there.
 
-For a live demo go to [http://xtremelysocial.com/wordpress/flat/].
+For more information on the Flat Bootstrap theme go to [http://xtremelysocial.com/wordpress/flat/].
 
 
 == LICENSE ==
@@ -68,6 +68,7 @@ The theme is translation ready, but I don't speak enough Spanish or any other la
 2. Unzip the folder into the `/wp-content/themes/` directory
 3. Activate the theme through the 'Appearance' menu in WordPress
 4. Read the "How to use the theme" and "Frequently Asked Questions" sections below and check out our website for information and examples on how best to use the theme.
+5. If you want to customize the theme, check out the readme.md file in the flat-bootstrap-child folder.
 
 
 == SCREENSHOTS ==
@@ -248,6 +249,12 @@ While you’re in there, you can update the Large image size as well. Of course 
 
 Note that these settings only change the sizes of *new* images that you upload. So you can use the Regenerate Thumbnails plugin to resize all of your existing images.
 
+= How to Customize this Theme =
+
+We have provided a "child theme" for you to be able to easily customize the theme, but still be able to upgrade the Flat Bootstrap theme as new versions are released. Within this theme there is a directory called flat-bootstrap-child. COPY this directory up one level to your main /themes directory and it will appear as a theme in admin Appearance -> Themes. You can then activate this child theme and make any changes to it that you would like.
+
+For more information, see the readme.md file in the flat-bootstrap-child directory and the Child Theme page on WordPress.org [http://codex.wordpress.org/Child_Themes].
+
 
 == FREQUENTLY ASKED QUESTIONS ==
 
@@ -298,6 +305,12 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.1 =
+* Added a child theme for easy customization (see the flat-bootstrap-child directory)
+* Updated TGM-Plugin-Activation to the latest version. This is what handles recommending plugins that work well with this theme.
+* Removed a reference to the TwentyThirteen theme in the CSS for the customer header feature
+* Renamed readme.txt to readme.md to reflect the use of markdown in this file. Updated this file to explain the child theme provided.
 
 = 1.0.1 =
 * Changes required for approval to the WordPress Theme Directory. Yay!
