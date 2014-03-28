@@ -4,7 +4,7 @@
  * 
  * The template used for displaying single post footer meta (categories, tags, etc.)
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 
@@ -23,7 +23,7 @@
 
 		<?php the_tags( '<span class="tags-links"><span class="glyphicon glyphicon-tags"></span> &nbsp;', ', ', '</span>' ); ?> 
 
-		<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'bootstrap-flat' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<span class="edit-link">', '</span>' ); ?>
 		
 	</footer><!-- .entry-meta -->
 

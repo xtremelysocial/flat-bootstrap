@@ -4,7 +4,7 @@
  * 
  * The template for displaying Search Results pages.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>

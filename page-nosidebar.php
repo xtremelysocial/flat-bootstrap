@@ -8,7 +8,7 @@
  *
  * This is the template that displays full width pages with no sidebar.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>

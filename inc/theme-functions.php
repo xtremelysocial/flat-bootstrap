@@ -7,7 +7,7 @@
  * Includes functions to handle full-width pages, images with captions, variable column
  * footer, etc.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /*

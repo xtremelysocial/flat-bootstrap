@@ -4,7 +4,7 @@
  * 
  * The template used for displaying single post header meta (posted on, by, etc.)
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 
@@ -32,7 +32,7 @@
 		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
 			 &nbsp;|&nbsp;<span class="comments-link">
 			 <span class="glyphicon glyphicon-comment"></span>&nbsp;
-			 <?php comments_popup_link( __( 'Leave a comment', 'bootstrap-flat' ), __( '1 Comment</span>', 'bootstrap-flat' ), __( '% Comments', 'bootstrap-flat' ) ); ?>
+			 <?php comments_popup_link( __( 'Leave a comment', 'flat-bootstrap' ), __( '1 Comment</span>', 'flat-bootstrap' ), __( '% Comments', 'flat-bootstrap' ) ); ?>
 			 </span>
 		<?php endif; ?>
 		

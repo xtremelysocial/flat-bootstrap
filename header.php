@@ -6,7 +6,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -55,8 +55,8 @@
 		<?php // Display the primary nav bar ?>	
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 
-			<h1 class="menu-toggle sr-only screen-reader-text"><?php _e( 'Primary Menu', 'bootstrap-flat' ); ?></h1>
-			<div class="skip-link"><a class="screen-reader-text sr-only" href="#content"><?php _e( 'Skip to content', 'bootstrap-flat' ); ?></a></div>
+			<h1 class="menu-toggle sr-only screen-reader-text"><?php _e( 'Primary Menu', 'flat-bootstrap' ); ?></h1>
+			<div class="skip-link"><a class="screen-reader-text sr-only" href="#content"><?php _e( 'Skip to content', 'flat-bootstrap' ); ?></a></div>
 
 		<?php
 		// Collapsed navbar menu toggle

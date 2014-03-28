@@ -4,7 +4,7 @@
  * 
  * Override the WordPress nav-menu function to add bootstrap classes
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /**

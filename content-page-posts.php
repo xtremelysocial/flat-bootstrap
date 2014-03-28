@@ -4,7 +4,7 @@
  * 
  * The template used for displaying page content for pages with posts at the end
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

@@ -4,7 +4,7 @@
  * 
  * The template used for displaying a single article (blog post) as full-width
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 

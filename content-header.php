@@ -6,7 +6,7 @@
  * This template pulls a featured post, the title, and custom field description and
  * displays it full-width just below the header.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 

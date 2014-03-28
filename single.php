@@ -4,7 +4,7 @@
  * 
  * The Template for displaying all single posts.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>

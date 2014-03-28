@@ -4,7 +4,7 @@
  * 
  * Theme Functions, includes, etc.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /**
@@ -70,8 +70,8 @@ function xsbf_setup() {
 
 	// This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
 	register_nav_menus( array(
-		'primary' 	=> __( 'Header Menu', 'bootstrap-flat' ),
-		'footer' 	=> __( 'Footer Menu', 'bootstrap-flat' ),
+		'primary' 	=> __( 'Header Menu', 'flat-bootstrap' ),
+		'footer' 	=> __( 'Footer Menu', 'flat-bootstrap' ),
 	) );
 
 	// This feature outputs HTML5 markup for the comment forms, search forms and 
@@ -98,7 +98,7 @@ function xsbf_setup() {
 
 	// Make theme available for translation. Translations can be filed in the /languages/
 	// directory. If you want to translate this theme, please contact me!
-	load_theme_textdomain( 'bootstrap-flat', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'flat-bootstrap', get_template_directory() . '/languages' );
 
 } // end function
 add_action( 'after_setup_theme', 'xsbf_setup' );
@@ -112,9 +112,9 @@ function xsbf_widgets_init() {
 
 	// Put sidebar first as this is standard in almost all WordPress themes
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'bootstrap-flat' ),
+		'name'          => __( 'Sidebar', 'flat-bootstrap' ),
 		'id'            => 'sidebar-1',
-		'description' 	=> __( 'Main sidebar (right or left)', 'bootstrap-flat' ),
+		'description' 	=> __( 'Main sidebar (right or left)', 'flat-bootstrap' ),
 		'before_widget' => '<aside id="%1$s" class="widget clearfix %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -123,9 +123,9 @@ function xsbf_widgets_init() {
 
 	// Put footer next as most themes put them here. Default # columns is 3.
 	register_sidebar( array(
-		'name' 			=> __( 'Footer', 'bootstrap-flat' ),
+		'name' 			=> __( 'Footer', 'flat-bootstrap' ),
 		'id' 			=> 'sidebar-2',
-		'description' 	=> __( 'Optional site footer widgets. Add 1-4 widgets here to display in columns.', 'bootstrap-flat' ),
+		'description' 	=> __( 'Optional site footer widgets. Add 1-4 widgets here to display in columns.', 'flat-bootstrap' ),
 		'before_widget' => '<aside id="%1$s" class="widget col-sm-4 clearfix %2$s">',
 		'after_widget' 	=> "</aside>",
 		'before_title' 	=> '<h2 class="widget-title">',
@@ -134,9 +134,9 @@ function xsbf_widgets_init() {
 
 	// Page Top (After Header) Widget Area. Single column.
 	register_sidebar( array(
-		'name' 			=> __( 'Page Top', 'bootstrap-flat' ),
+		'name' 			=> __( 'Page Top', 'flat-bootstrap' ),
 		'id' 			=> 'sidebar-3',
-		'description' 	=> __( 'Optional section after the header. This is a single column area that spans the full width of the page.', 'bootstrap-flat' ),
+		'description' 	=> __( 'Optional section after the header. This is a single column area that spans the full width of the page.', 'flat-bootstrap' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix"><div class="container">',
 		'before_title' 	=> '<h2 class="widget-title">',
 		'after_title' 	=> '</h2>',
@@ -145,9 +145,9 @@ function xsbf_widgets_init() {
 
 	// Page Bottom (Before Footer) Widget Area. Single Column.
 	register_sidebar( array(
-		'name' 			=> __( 'Page Bottom', 'bootstrap-flat' ),
+		'name' 			=> __( 'Page Bottom', 'flat-bootstrap' ),
 		'id' 			=> 'sidebar-4',
-		'description' 	=> __( 'Optional section before the footer. This is a single column area that spans the full width of the page.', 'bootstrap-flat' ),
+		'description' 	=> __( 'Optional section before the footer. This is a single column area that spans the full width of the page.', 'flat-bootstrap' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix"><div class="container">',
 		'before_title' 	=> '<h2 class="widget-title">',
 		'after_title' 	=> '</h2>',

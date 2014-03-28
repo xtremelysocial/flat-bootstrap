@@ -5,7 +5,7 @@
  * The default template used for displaying page and article content. Note that certain
  * pages, index, articles may use a different template.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 
@@ -34,7 +34,7 @@
 	<?php else : ?>
 		<div class="entry-content">
 		
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bootstrap-flat' ) ); ?>
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'flat-bootstrap' ) ); ?>
 
 			<?php // For posts, show the categories and tags ?>
 			<?php if ( 'post' == get_post_type() ) : ?>

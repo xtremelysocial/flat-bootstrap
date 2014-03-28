@@ -9,7 +9,7 @@
  * This is the template that displays a site index with search, pages, categories,
  * tags, etc. It has a sidebar.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>

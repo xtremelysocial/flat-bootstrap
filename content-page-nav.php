@@ -4,7 +4,7 @@
  * 
  * The template used for displaying next / previous page links
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 
@@ -13,8 +13,8 @@
 		'next_or_number'   	=> 'next',
 		'before' 			=> '<li>',
 		'after'  			=> '</li>',
-		'nextpagelink'     	=> __( 'Next page &rarr;', 'bootstrap-flat' ),
-		'previouspagelink' 	=> __( '&larr; Previous page', 'bootstrap-flat' ),
+		'nextpagelink'     	=> __( 'Next page &rarr;', 'flat-bootstrap' ),
+		'previouspagelink' 	=> __( '&larr; Previous page', 'flat-bootstrap' ),
 		'echo'				=> false
 	) );
 	if ( $link_pages ) echo '<ul class="pager">' . $link_pages . '</ul>';

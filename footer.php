@@ -6,7 +6,7 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 	</div><!-- #content -->
@@ -57,7 +57,7 @@
 
 	<?php // Check for site credits (can be overriden in a child theme
 	$theme = wp_get_theme();
-	$site_credits = sprintf( __( '&copy; %1$s %2$s. Theme by %3$s.', 'bootstrap-flat' ), 
+	$site_credits = sprintf( __( '&copy; %1$s %2$s. Theme by %3$s.', 'flat-bootstrap' ), 
 		date ( 'Y' ),
 		'<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a>',
 		'<a href="' . $theme->get( 'ThemeURI' ) . '" rel="profile" target="_blank">' . $theme->get( 'Author' ) . '</a>'
@@ -74,7 +74,7 @@
 		if ( $nav_menu ) : ?>
 			<div class="footer-nav-menu pull-left">
 			<nav id="footer-navigation" class="secondary-navigation" role="navigation">
-				<h1 class="menu-toggle sr-only"><?php _e( 'Footer Menu', 'bootstrap-flat' ); ?></h1>
+				<h1 class="menu-toggle sr-only"><?php _e( 'Footer Menu', 'flat-bootstrap' ); ?></h1>
 				<?php echo $nav_menu; ?>
 			</nav>
 			</div><!-- .footer-nav-menu -->

@@ -14,7 +14,7 @@
 	<?php endif; // End header image check. ?>
 
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /**
@@ -24,7 +24,7 @@
  * @uses xsbf_admin_header_style()
  * @uses xsbf_admin_header_image()
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 if ( ! function_exists( 'xsbf_custom_header_setup' ) ) :
 function xsbf_custom_header_setup() {

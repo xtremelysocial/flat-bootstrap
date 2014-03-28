@@ -3,7 +3,7 @@
  * 
  * Javascript for touch-enabled carousels and smooth scrolling internal links.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
  
 ( function( $ ) {

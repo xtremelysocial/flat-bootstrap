@@ -4,7 +4,7 @@
  * 
  * The template for displaying 404 pages (Not Found).
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>
@@ -13,8 +13,8 @@ get_header(); ?>
 <header class="content-header">
 	<div class="container">
 		<section class="error-404 not-found">
-			<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'bootstrap-flat' ); ?></h1>
-			<h3 class="page-description"><?php _e( 'Or as techies would say, its a "404 Error"', 'bootstrap-flat' ); ?></h3>
+			<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'flat-bootstrap' ); ?></h1>
+			<h3 class="page-description"><?php _e( 'Or as techies would say, its a "404 Error"', 'flat-bootstrap' ); ?></h3>
 		</section><!-- .error-404 -->
 	</div><!-- .container -->
 </header>
@@ -26,7 +26,7 @@ get_header(); ?>
 	<div id="primary" class="content-area col-md-8">
 		<main id="main" class="site-main" role="main">
 
-			<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'bootstrap-flat' ); ?></p>
+			<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'flat-bootstrap' ); ?></p>
 
 			<?php get_template_part( 'content', 'siteindex' ); ?>
 				

@@ -6,7 +6,7 @@
  *
  * Functions for comments, multi-category blog, excerpts, etc.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /*
@@ -64,8 +64,8 @@ function xsbf_comment( $comment, $args, $depth ) {
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
-			<?php _e( 'Pingback:', 'bootstrap-flat' ); ?> <?php comment_author_link(); ?> 
-			<?php edit_comment_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'bootstrap-flat' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php _e( 'Pingback:', 'flat-bootstrap' ); ?> <?php comment_author_link(); ?> 
+			<?php edit_comment_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
 	<?php else : ?>
@@ -75,20 +75,20 @@ function xsbf_comment( $comment, $args, $depth ) {
 			<footer class="comment-meta">
 				<div class="comment-author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-					<?php printf( __( '%s <span class="says">says:</span>', 'bootstrap-flat' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php printf( __( '%s <span class="says">says:</span>', 'flat-bootstrap' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 				</div><!-- .comment-author -->
 
 				<div class="comment-metadata">
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
-							<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'bootstrap-flat' ), get_comment_date(), get_comment_time() ); ?>
+							<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'flat-bootstrap' ), get_comment_date(), get_comment_time() ); ?>
 						</time>
 					</a>
-					<?php edit_comment_link( __( 'Edit', 'bootstrap-flat' ), '<span class="edit-link"><span class="glyphicon glyphicon-edit"></span> ', '</span>' ); ?>
+					<?php edit_comment_link( __( 'Edit', 'flat-bootstrap' ), '<span class="edit-link"><span class="glyphicon glyphicon-edit"></span> ', '</span>' ); ?>
 				</div><!-- .comment-metadata -->
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'bootstrap-flat' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'flat-bootstrap' ); ?></p>
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 

@@ -5,7 +5,7 @@
  * Jetpack Compatibility File
  * See: http://jetpack.me/
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /**
