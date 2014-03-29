@@ -6,7 +6,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /**
@@ -94,7 +94,7 @@ function xsbf_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( __( 'Page %s', 'bootstrap-flat' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'flat-bootstrap' ), max( $paged, $page ) );
 
 	return $title;
 }

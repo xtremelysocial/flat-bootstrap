@@ -11,7 +11,7 @@
  * You should set a <div class="container"> before your content to keep it in line 
  * with the rest of the site content.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>

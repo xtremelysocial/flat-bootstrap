@@ -6,37 +6,21 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 	</div><!-- #content -->
 
-	<?php // Page bottom (before footer) widget area
-		$sidebar_pagebottom = get_dynamic_sidebar( 'Page Bottom' );
-		if ( $sidebar_pagebottom ) :
-		?>
-			<div id="sidebar-pagebottom" class="sidebar-pagebottom">
-				<?php echo $sidebar_pagebottom; ?>
-			</div><!-- .sidebar-pagebottom -->
-		<?php endif; ?>
-	<?php //endif;?>
-
-		
-	<?php // Footer widget area (1 to 4 columns supported)
+	<?php // Page bottom (before footer) widget area 
+	get_sidebar( 'pagebottom' ); 
 	?>
+
+	<?php // Start the footer area ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
-	<?php $sidebar_footer = get_dynamic_sidebar( 'Footer' );
-		if ( $sidebar_footer ) :
-		?>
-			<div class="sidebar-footer clearfix">
-			<div class="container">
-				<div class="row">
-				<?php echo apply_filters( 'xsbf_footer', $sidebar_footer ); ?>
-				</div><!-- .row -->
-			</div><!-- .container -->
-			</div><!-- .sidebar-footer -->
-		<?php endif; ?>
-	<?php //endif;?>
+		
+	<?php // Footer "sidebar" widget area (1 to 4 columns supported)
+	get_sidebar( 'footer' );
+	?>
 
 	<?php // Check for footer navbar (optional)
 	$nav_menu = null; 
@@ -57,7 +41,7 @@
 
 	<?php // Check for site credits (can be overriden in a child theme
 	$theme = wp_get_theme();
-	$site_credits = sprintf( __( '&copy; %1$s %2$s. Theme by %3$s.', 'bootstrap-flat' ), 
+	$site_credits = sprintf( __( '&copy; %1$s %2$s. Theme by %3$s.', 'flat-bootstrap' ), 
 		date ( 'Y' ),
 		'<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a>',
 		'<a href="' . $theme->get( 'ThemeURI' ) . '" rel="profile" target="_blank">' . $theme->get( 'Author' ) . '</a>'
@@ -74,7 +58,7 @@
 		if ( $nav_menu ) : ?>
 			<div class="footer-nav-menu pull-left">
 			<nav id="footer-navigation" class="secondary-navigation" role="navigation">
-				<h1 class="menu-toggle sr-only"><?php _e( 'Footer Menu', 'bootstrap-flat' ); ?></h1>
+				<h1 class="menu-toggle sr-only"><?php _e( 'Footer Menu', 'flat-bootstrap' ); ?></h1>
 				<?php echo $nav_menu; ?>
 			</nav>
 			</div><!-- .footer-nav-menu -->

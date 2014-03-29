@@ -9,7 +9,7 @@
  *
  * This is the template that displays pages with no sidebar and no content header.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>

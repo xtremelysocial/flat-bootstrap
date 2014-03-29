@@ -4,7 +4,7 @@
  * 
  * The template for displaying image attachments.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 get_header(); ?>
@@ -22,7 +22,7 @@ get_header(); ?>
 					<div class="entry-meta">
 						<?php
 							$metadata = wp_get_attachment_metadata();
-							printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s">%2$s</time></span> at <a href="%3$s">%4$s &times; %5$s</a> in <a href="%6$s" rel="gallery">%7$s</a>', 'bootstrap-flat' ),
+							printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s">%2$s</time></span> at <a href="%3$s">%4$s &times; %5$s</a> in <a href="%6$s" rel="gallery">%7$s</a>', 'flat-bootstrap' ),
 								esc_attr( get_the_date( 'c' ) ),
 								esc_html( get_the_date() ),
 								esc_url( wp_get_attachment_url() ),
@@ -37,8 +37,8 @@ get_header(); ?>
 
 					<nav role="navigation" id="image-navigation" class="image-navigation">
 						<ul class="pager nocenter">
-						<li class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav">&larr;</span> Previous', 'bootstrap-flat' ) ); ?></li>
-						<li class="nav-next"><?php next_image_link( false, __( 'Next <span class="meta-nav">&rarr;</span>', 'bootstrap-flat' ) ); ?></li>
+						<li class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav">&larr;</span> Previous', 'flat-bootstrap' ) ); ?></li>
+						<li class="nav-next"><?php next_image_link( false, __( 'Next <span class="meta-nav">&rarr;</span>', 'flat-bootstrap' ) ); ?></li>
 						</ul>
 					</nav><!-- #image-navigation -->
 				</header><!-- .entry-header -->
@@ -63,7 +63,7 @@ get_header(); ?>
 
 					<?php get_template_part( 'content', 'page-nav' ); ?>
 
-					<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'bootstrap-flat' ), '<br /><footer class="entry-meta"><div class="edit-link">', '</div></footer>' ); ?>
+					<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<br /><footer class="entry-meta"><div class="edit-link">', '</div></footer>' ); ?>
 				</div><!-- .entry-content -->
 
 			</article><!-- #post-## -->

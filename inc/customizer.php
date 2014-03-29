@@ -4,7 +4,7 @@
  * 
  * Theme Customizer
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /**

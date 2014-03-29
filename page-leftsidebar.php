@@ -8,7 +8,7 @@
  *
  * This is the template that displays pages with the sidebar on the left.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 get_header(); ?>
 

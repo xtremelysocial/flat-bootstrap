@@ -7,7 +7,7 @@
  * Includes functions to handle full-width pages, images with captions, variable column
  * footer, etc.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /*
@@ -254,7 +254,8 @@ function xsbf_single_template( $single_template ) {
 
 	$fullwidth = get_post_meta( get_the_ID(), '_fullwidth', $single = true );
 	if ( $fullwidth ) {
-    	$single_template = dirname( __FILE__ ) . '/single-fullwidth.php';
+    	//$single_template = dirname( __FILE__ ) . '/single-fullwidth.php';
+    	$single_template = get_stylesheet_directory() . '/single-fullwidth.php';
     }
 	
     return $single_template;

@@ -8,7 +8,7 @@
  * The actual display of comments is handled by a callback to xsbf_comment() which
  * is located in the inc/template-tags.php file.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 
 /*
@@ -27,17 +27,17 @@ if ( post_password_required() )
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'bootstrap-flat' ),
+				printf( _nx( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'flat-bootstrap' ),
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 			?>
 		</h2>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
-			<h1 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'bootstrap-flat' ); ?></h1>
+			<h1 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'flat-bootstrap' ); ?></h1>
 			<ul class="pager">
-			<li class="previous"><?php next_comments_link( __( '&larr; Newer Comments', 'bootstrap-flat' ) ); ?>
-			<li class="next"><?php previous_comments_link( __( 'Older Comments &rarr;', 'bootstrap-flat' ) ); ?>
+			<li class="previous"><?php next_comments_link( __( '&larr; Newer Comments', 'flat-bootstrap' ) ); ?>
+			<li class="next"><?php previous_comments_link( __( 'Older Comments &rarr;', 'flat-bootstrap' ) ); ?>
 			</ul>
 		</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>
@@ -58,10 +58,10 @@ if ( post_password_required() )
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-			<h1 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'bootstrap-flat' ); ?></h1>
+			<h1 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'flat-bootstrap' ); ?></h1>
 			<ul class="pager">
-			<li class="previous"><?php next_comments_link( __( '&larr; Newer Comments', 'bootstrap-flat' ) ); ?>
-			<li class="next"><?php previous_comments_link( __( 'Older Comments &rarr;', 'bootstrap-flat' ) ); ?>
+			<li class="previous"><?php next_comments_link( __( '&larr; Newer Comments', 'flat-bootstrap' ) ); ?>
+			<li class="next"><?php previous_comments_link( __( 'Older Comments &rarr;', 'flat-bootstrap' ) ); ?>
 			</ul>
 		</nav><!-- #comment-nav-below -->
 		<?php endif; // check for comment navigation ?>
@@ -72,7 +72,7 @@ if ( post_password_required() )
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'bootstrap-flat' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'flat-bootstrap' ); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form( array ('comment_notes_after' => '' ) ); ?>

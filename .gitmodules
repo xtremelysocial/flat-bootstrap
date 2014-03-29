@@ -1,0 +1,3 @@
+[submodule "flat-bootstrap-child"]
+	path = flat-bootstrap-child
+	url = https://github.com/xtremelysocial/flat-bootstrap-child

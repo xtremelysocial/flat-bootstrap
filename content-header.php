@@ -6,7 +6,7 @@
  * This template pulls a featured post, the title, and custom field description and
  * displays it full-width just below the header.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 
@@ -81,7 +81,7 @@
 		elseif ( is_author() ) :
 			// Queue the first post, that way we know what author we're dealing with
 			the_post();
-			printf( __( 'Author: %s', 'xsbf' ), '<span class="vcard">' . get_the_author() . '</span>' );
+			printf( __( 'Author: %s', 'flat-bootstrap' ), '<span class="vcard">' . get_the_author() . '</span>' );
 			/* Since we called the_post() above, we need to
 			 * rewind the loop back to the beginning that way
 			 * we can run the loop properly, in full.
@@ -89,49 +89,55 @@
 			rewind_posts();
 
 		elseif ( is_search() ) :
-			printf( __( 'Search Results for: %s', 'xsbf' ), '<span>' . get_search_query() . '</span>' );
+			printf( __( 'Search Results for: %s', 'flat-bootstrap' ), '<span>' . get_search_query() . '</span>' );
 
 		elseif ( is_day() ) :
-			printf( __( 'Day: %s', 'xsbf' ), '<span>' . get_the_date() . '</span>' );
+			printf( __( 'Day: %s', 'flat-bootstrap' ), '<span>' . get_the_date() . '</span>' );
 
 		elseif ( is_month() ) :
-			printf( __( 'Month: %s', 'xsbf' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+			printf( __( 'Month: %s', 'flat-bootstrap' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
 
 		elseif ( is_year() ) :
-			printf( __( 'Year: %s', 'xsbf' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+			printf( __( 'Year: %s', 'flat-bootstrap' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 		/*
 		elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
-			_e( 'Asides', 'xsbf' );
+			_e( 'Asides', 'flat-bootstrap' );
 
 		elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
-			_e( 'Images', 'xsbf');
+			_e( 'Images', 'flat-bootstrap');
 
 		elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
-			_e( 'Videos', 'xsbf' );
+			_e( 'Videos', 'flat-bootstrap' );
 
 		elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
-			_e( 'Quotes', 'xsbf' );
+			_e( 'Quotes', 'flat-bootstrap' );
 
 		elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
-			_e( 'Links', 'xsbf' );
+			_e( 'Links', 'flat-bootstrap' );
 
 		else :
-			_e( 'Archives', 'xsbf' );
+			_e( 'Archives', 'flat-bootstrap' );
 		*/
 		elseif ( is_home() ) : //ONLY if home page is static and we are on the blog page
-			_e( 'Blog', 'xsbf' );
+			$home_page = get_option ( 'page_for_posts' );
+			if ( $home_page ) $post = get_post( $home_page );
+			if ( $post ) {
+				echo $post->post_title;
+			} else {
+				_e( 'Blog', 'flat-bootstrap' );
+			}
 		/*
 		else :
-			_e( 'Oops, we need to update content-header to catch this page type', 'xsbf' );
+			_e( 'Oops, we need to update content-header to catch this page type', 'flat-bootstrap' );
 		*/
 		endif;
 		?>
 		</h1>
 		
 		<?php
-		// If home page, display the title and subtitle
+		// If home page, display the subtitle if there is one
 		if ( is_home() ) {
-			$home_page = get_option ( 'page_for_posts' );
+			//$home_page = get_option ( 'page_for_posts' );
 			$subtitle = get_post_meta( $home_page, '_subtitle', $single = true );
 			if ( $subtitle ) printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $subtitle );
 

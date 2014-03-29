@@ -5,7 +5,7 @@
  * The default template used for displaying page and article content. Note that certain
  * pages, index, articles may use a different template.
  *
- * @package bootstrap-flat
+ * @package flat-bootstrap
  */
 ?>
 
@@ -20,7 +20,9 @@
 	<?php if ( !is_single() ) : ?>
 		<?php if ( has_post_thumbnail() AND !is_search() ) : ?>
 			<div class="post-thumbnail">
+				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 				<?php the_post_thumbnail( 'post-thumbnail', $attr = array( 'class'=>'thumbnail img-responsive' ) ); ?>
+				</a>
 			</div><!-- .post-thumnail -->
 		<?php endif; ?>
 
@@ -34,7 +36,7 @@
 	<?php else : ?>
 		<div class="entry-content">
 		
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bootstrap-flat' ) ); ?>
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'flat-bootstrap' ) ); ?>
 
 			<?php // For posts, show the categories and tags ?>
 			<?php if ( 'post' == get_post_type() ) : ?>
