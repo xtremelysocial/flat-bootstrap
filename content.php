@@ -20,7 +20,9 @@
 	<?php if ( !is_single() ) : ?>
 		<?php if ( has_post_thumbnail() AND !is_search() ) : ?>
 			<div class="post-thumbnail">
+				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 				<?php the_post_thumbnail( 'post-thumbnail', $attr = array( 'class'=>'thumbnail img-responsive' ) ); ?>
+				</a>
 			</div><!-- .post-thumnail -->
 		<?php endif; ?>
 

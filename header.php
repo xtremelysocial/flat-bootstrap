@@ -72,13 +72,11 @@
 
 		// Site title (Bootstrap "brand") in navbar. Hidden by default. Customizer will
 		// display it if user turns of the main site title and tagline.
-		//if ( ! display_header_text() ) {
-			$navbar .= '<a class="navbar-brand" href="'
-				.esc_url( home_url( '/' ) )
-				.'" rel="home">'
-				.get_bloginfo( 'name' )
-				.'</a>';
-		//}
+		$navbar .= '<a class="navbar-brand" href="'
+			.esc_url( home_url( '/' ) )
+			.'" rel="home">'
+			.get_bloginfo( 'name' )
+			.'</a>';
 		
         $navbar .= '</div><!-- navbar-header -->';
 
@@ -101,15 +99,9 @@
 
 	</header><!-- #masthead -->
 
-	<?php // Display the page top (after header) widget area
-		$sidebar_pagetop = get_dynamic_sidebar( 'Page Top' );
-		if ( $sidebar_pagetop ) :
-		?>
-			<div id="sidebar-pagetop" class="sidebar-pagetop">
-				<?php echo $sidebar_pagetop; ?>
-			</div><!-- .sidebar-pagetop -->
-		<?php endif; ?>
-	<?php //endif;?>
+	<?php // Page bottom (before footer) widget area 
+	get_sidebar( 'pagetop' ); 
+	?>
 
 	<?php // Set up the content area (but don't put it in a container) ?>	
 	<div id="content" class="site-content">

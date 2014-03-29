@@ -308,9 +308,14 @@ For more information on SemVer, please visit [http://semver.org/].
 
 = 1.1 =
 * Added a child theme for easy customization (see the flat-bootstrap-child directory)
-* Updated TGM-Plugin-Activation to the latest version. This is what handles recommending plugins that work well with this theme.
-* Removed a reference to the TwentyThirteen theme in the CSS for the customer header feature
 * Renamed readme.txt to readme.md to reflect the use of markdown in this file. Updated this file to explain the child theme provided.
+* Fixed nasty bug preventing full-width stories (posts) from displaying properly
+* Simplified the header and footer by moving sidebar logic to sidebar-footer.php, sidebar-pagetop.php, and sidebar-pagebottom.php
+* Changed default nav bar to show the first 4 pages on the site so it looks better until the user adds an actual menu
+* Added Regenerate Thumbnails to the recommended plugins to optimize images for the theme
+* Changed text domain to "flat-bootstrap" to match the theme name
+* Removed a reference to the TwentyThirteen theme in the CSS for the customer header feature
+* Updated TGM-Plugin-Activation to the latest version
 
 = 1.0.1 =
 * Changes required for approval to the WordPress Theme Directory. Yay!

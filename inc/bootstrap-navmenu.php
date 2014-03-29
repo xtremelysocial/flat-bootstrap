@@ -218,20 +218,31 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		$fb_output .= '>';
 
 		// Add a home link		
-		$fb_output .= '<li><a href="' . home_url() . '">Home</a></li>';
+		//$fb_output .= '<li><a href="' . home_url() . '">Home</a></li>';
 		
-		// If static front page, a link to the blog
+		// If static front page, add a link to the blog
+		/*
 		$posts_page_id = get_option ( 'page_for_posts' );
 		if ( $posts_page_id ) {
 			$posts_page = get_page( $posts_page_id );
 			$fb_output .= '<li><a href="' . get_page_uri( $posts_page_id ) . '">' 
 				. $posts_page->post_title . '</a></li>';
 		}
+		*/
 		
+		// Add the first 4 pages, based on menu order
+		$pages = get_pages( array ( 'sort_column' => 'menu_order', 'parent' => 0, 'number' => 4 ) ); 
+		foreach ( $pages as $page ) {
+			$fb_output .= '<li><a href="' . get_page_uri( $page->ID ) . '">' 
+				. $page->post_title . '</a></li>';
+		}
+
 		// If admin, show link to add a menu
+		/*
 		if ( current_user_can( 'manage_options' ) ) {
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
 		}
+		*/
 
 		// End the unordered list
 		$fb_output .= '</ul>';

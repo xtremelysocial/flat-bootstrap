@@ -23,6 +23,19 @@ function get_dynamic_sidebar( $index = 1 ) {
 } //endfunction
 endif; // end ! function_exists
 
+/*
+ * Helper function to check if the theme is only being previewed from Admin as opposed
+ * to displayed as the active theme
+ */
+if ( ! function_exists( 'xsbf_theme_preview' ) ) :
+function xsbf_theme_preview() {
+	if ( isset ( $_SERVER['HTTP_REFERER'] ) ) {
+		if ( stripos( $_SERVER['HTTP_REFERER'], 'customize.php' ) !== false ) return true;
+	}
+	return false;
+} //endfunction
+endif; // end ! function_exists
+
 /**
  * Remove the [...] from the excerpt (will replace it next)
  */

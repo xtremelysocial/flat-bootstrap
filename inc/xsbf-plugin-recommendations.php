@@ -55,6 +55,13 @@ function xsbf_bootstrap_register_required_plugins() {
 			'slug' 		=> 'widget-classes',
 			'required' 	=> false,
 		),
+		
+		// Regenerate Thumbnails (needed to set images to our custom size)
+		array(
+			'name' 		=> 'Regenerate Thumbnails',
+			'slug' 		=> 'regenerate-thumbnails',
+			'required' 	=> false,
+		),
 
 		// Easy Bootstrap Shortcodes Plugin
 		/*array(
