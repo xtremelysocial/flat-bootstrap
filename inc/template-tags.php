@@ -26,12 +26,16 @@ endif; // end ! function_exists
 /*
  * Helper function to check if the theme is only being previewed from Admin as opposed
  * to displayed as the active theme
+ * 
+ * NOTE: THIS FUNCTION IS DEPRECATED AS IT IS NOT RECOMMENDED FOR USE BY WORDPRESS.ORG
  */
 if ( ! function_exists( 'xsbf_theme_preview' ) ) :
 function xsbf_theme_preview() {
+/*
 	if ( isset ( $_SERVER['HTTP_REFERER'] ) ) {
 		if ( stripos( $_SERVER['HTTP_REFERER'], 'customize.php' ) !== false ) return true;
 	}
+*/
 	return false;
 } //endfunction
 endif; // end ! function_exists

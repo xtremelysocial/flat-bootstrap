@@ -12,7 +12,15 @@
 	<?php if ( has_post_thumbnail() AND !is_search() ) : ?>
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>">
 		<div class="post-thumbnail">
-			<?php the_post_thumbnail( 'post-thumbnail', $attr = array( 'class'=>'thumbnail img-responsive' ) ); ?>
+			<?php 
+			// As of WP 3.9, if we don't have the right image size, use medium
+			if ( function_exists ( 'has_image_size') AND ! has_image_size ( 'post-thumbnail' ) ) {
+				the_post_thumbnail( 'medium', $attr = array( 'class'=>'thumbnail img-responsive post-thumbnail' ) ); 
+			// Otherwise, use our custom size
+			} else {
+				the_post_thumbnail( 'post-thumbnail' , $attr = array( 'class'=>'thumbnail img-responsive' ) );
+			} //endif has_image_size()
+			?>
 		</div>
 		</a>
 	<?php endif; ?>

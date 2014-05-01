@@ -29,7 +29,7 @@ get_header(); ?>
 		<?php endwhile; // end of the loop. ?>
 
 		<?php /* DISPLAY THE SUB-PAGES OF THIS PAGE */
-		$num_posts = 6; // Should be a factor of 12 column grid
+		$num_posts = 24; // Should be a factor of 12 column grid
 		$paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
 		$args = array(
 			'post_type' 		=> 'page',
@@ -56,7 +56,7 @@ get_header(); ?>
 			<?php /* The loop */ ?>
 			<?php $count = 0; ?>
 			<?php while ( $list_of_posts->have_posts() AND $count < $num_posts ) : $list_of_posts->the_post(); ?>
-				<?php if ( $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
+				<?php if ( $count > 0 AND $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
 				<div class="col-lg-<?php echo $num_cols ?>">
 				<?php // Display content of posts ?>
 				<?php get_template_part( 'content', 'page-posts' ); ?>

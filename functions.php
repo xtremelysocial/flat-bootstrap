@@ -27,6 +27,9 @@
  * navbar_classes - One or more of navbar-default, navbar-inverse, navbar-fixed-top, etc.
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
+ * sample_widgets - Whether to display sample widgets in the footer and page-bottom widet
+ 		areas.
+ * sample_footer_menu - Whether to display sample footer menu with Top and Home links
  *
  * NOTE: $theme_options is being deprecated and replaced with $xsbf_theme_options. You'll
  * need to update your child themes.
@@ -41,7 +44,9 @@ $defaults = array(
 	'fontawesome' 			=> true,
 	'bootstrap_gradients' 	=> false,
 	'navbar_classes'		=> 'navbar-default navbar-static-top',
-	'image_keyboard_nav' 	=> true
+	'image_keyboard_nav' 	=> true,
+	'sample_widgets' 		=> true,
+	'sample_footer_menu'	=> true
 );
 if ( isset ( $xsbf_theme_options ) AND is_array ( $xsbf_theme_options ) AND ! empty ( $xsbf_theme_options ) ) {
 	$xsbf_theme_options = wp_parse_args( $xsbf_theme_options, $defaults );
@@ -70,9 +75,12 @@ function xsbf_setup() {
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
 
-	// Enable support for Post Thumbnails on posts and pages. As of WordPress v2.9.
+	// Enable support for Post Thumbnails on posts and pages. As of WordPress v3.9,
+	// specific crop parameters handled.
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 640, 360, $crop = true );
+	//set_post_thumbnail_size( 640, 360, $crop = true );
+	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop it
+	//add_image_size( 'section-image', 1600, 400, array( 'center', 'center' ) ); // section image
 
 	// This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
 	register_nav_menus( array(

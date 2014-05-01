@@ -34,7 +34,7 @@ $list_of_posts = new WP_Query( $args );
 	<?php /* The loop */ ?>
 	<?php $count = 0; ?>
 	<?php while ( $list_of_posts->have_posts() AND $count < $num_posts ) : $list_of_posts->the_post(); ?>
-		<?php if ( $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
+		<?php if ( $count > 0 AND $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
 		<div class="col-lg-<?php echo $num_cols ?>">
 		<?php // Display content of posts ?>
 		<?php get_template_part( 'content', 'page-posts' ); ?>
