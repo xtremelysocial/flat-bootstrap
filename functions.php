@@ -27,6 +27,9 @@
  * navbar_classes - One or more of navbar-default, navbar-inverse, navbar-fixed-top, etc.
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
+ *
+ * NOTE: $theme_options is being deprecated and replaced with $xsbf_theme_options. You'll
+ * need to update your child themes.
  */
 $defaults = array(
 	'background_color' 		=> 'f2f2f2',
@@ -40,14 +43,17 @@ $defaults = array(
 	'navbar_classes'		=> 'navbar-default navbar-static-top',
 	'image_keyboard_nav' 	=> true
 );
-if ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) {
-	$theme_options = wp_parse_args( $theme_options, $defaults );
+if ( isset ( $xsbf_theme_options ) AND is_array ( $xsbf_theme_options ) AND ! empty ( $xsbf_theme_options ) ) {
+	$xsbf_theme_options = wp_parse_args( $xsbf_theme_options, $defaults );
+} elseif ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) {
+	$xsbf_theme_options = wp_parse_args( $theme_options, $defaults );
 } else {
-	$theme_options = $defaults;
+	$xsbf_theme_options = $defaults;
 }
+$theme_options = $xsbf_theme_options;
 
 // Plugins expect this as discreet variable, so set it
-$content_width = $theme_options['content_width'];
+$content_width = $xsbf_theme_options['content_width'];
 
 /**
  * Set up theme defaults and register support for various WordPress features.
@@ -59,7 +65,7 @@ $content_width = $theme_options['content_width'];
 if ( ! function_exists( 'xsbf_setup' ) ) :
 function xsbf_setup() {
 
-	global $theme_options;
+	global $xsbf_theme_options;
 
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
@@ -86,14 +92,14 @@ function xsbf_setup() {
 	// theme is full-width up to 1600px, so background will only show when user's
 	// screen is wider than that.
 	add_theme_support( 'custom-background', apply_filters( 'xsbf_custom_background_args', array(
-			'default-color' => $theme_options['background_color'],
+			'default-color' => $xsbf_theme_options['background_color'],
 			'default-image' => '',
 		) ) );
 
 	// Enable support for Post Formats. Note we haven't included any special styling. 
 	// Look at TwentyEleven theme for this.  As of WordPress v3.1.
-	if( ! empty ( $theme_options['post_formats']) ) {
-		add_theme_support( 'post-formats', $theme_options['post_formats'] );
+	if( ! empty ( $xsbf_theme_options['post_formats']) ) {
+		add_theme_support( 'post-formats', $xsbf_theme_options['post_formats'] );
 	 }
 
 	// Make theme available for translation. Translations can be filed in the /languages/
@@ -164,17 +170,17 @@ endif; // end ! function_exists
 if ( ! function_exists('xsbf_scripts') ) :
 function xsbf_scripts() {
 
-	global $theme_options;
+	global $xsbf_theme_options;
 
-	/* STYLESHEETS */
-	
+	/* LOAD STYLESHEETS */
+
 	// Load our custom version of Bootsrap CSS. Can easily override in a child theme.
 	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.0', 'all' );
 	wp_enqueue_style( 'bootstrap');
 
 	// If desired, load up the bootstrap-theme CSS for a full gradient look. Note you'll
 	// need to style other theme elements to match.
-	if ( $theme_options['bootstrap_gradients'] ) {
+	if ( $xsbf_theme_options['bootstrap_gradients'] ) {
 		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array(), '3.1.0', 'all' );
 		wp_enqueue_style( 'bootstrap-theme');
 	}
@@ -184,11 +190,11 @@ function xsbf_scripts() {
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array('bootstrap'), '20140217', 'all' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140217', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
 	// Add font-awesome support	
-	if ( isset ( $theme_options['fontawesome'] ) AND $theme_options['fontawesome'] ) {
+	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
 		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.0.3', 'all' );
 		wp_enqueue_style( 'font-awesome');
 	}
@@ -197,24 +203,23 @@ function xsbf_scripts() {
 	// content header, footer, etc.
 	wp_enqueue_style( 'xtremelysocial-style', get_stylesheet_uri() );
 
-	/* JAVASCRIPT */
+	/* LOAD JAVASCRIPT */
 
 	// Bootsrap core javascript. Load from CDN. Update version#'s after testing.
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.0', true );
 
-	// ONLY for single posts and pages, load javascript for touch carousels and smooth
-	// scrolling.
-	if ( is_singular() ) {
-		wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery', 'jquerymobile'), '20140217', true );
+	// Load our theme's javascript for smooth scrolling and optional for touch 
+	// carousels
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140413', true );
 
-		// jquery mobile script is a custom download with ONLY "touch" functions.
-		if ( $theme_options['touch_support'] ) {
-			wp_enqueue_script( 'jquerymobile', get_template_directory_uri() . '/jquerymobile/jquery.mobile.custom.min.js', array('jquery'), '1.4.0', true );
-		}
-	}
-
+	// jquery mobile script is a custom download with ONLY "touch" functions. Load
+	// this just on single posts and pages where a carousel might be placed
+	//if ( $xsbf_theme_options['touch_support'] AND wp_is_mobile() AND ( is_singular() OR is_front_page() ) ) {
+		wp_enqueue_script( 'jquerymobile', get_template_directory_uri() . '/jquerymobile/jquery.mobile.custom.min.js', array('jquery'), '1.4.0', true );
+	//}
+	
 	// Optional script from _S theme to allow keyboard nvigation through image pages
-	if ( $theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {
+	if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array('jquery'), '20120202' );
 	}
 	

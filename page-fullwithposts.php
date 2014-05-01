@@ -54,7 +54,8 @@ get_header(); ?>
 			<div class="container"><div class="row">
 
 			<?php /* Determine # of columns and # of posts per row */
-			$count_posts = count ( $list_of_posts->posts );
+			//$count_posts = count ( $list_of_posts->posts );
+			$count_posts = count ( $list_of_posts->posts ) <= $num_posts ? count ( $list_of_posts->posts ) : $num_posts;
 			if ( $count_posts % 4 == 0 ) $per_row = 4;
 			elseif ( $count_posts % 3 == 0) $per_row = 3;
 			else $per_row = 2;			
