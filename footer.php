@@ -23,6 +23,7 @@
 	?>
 
 	<?php // Check for footer navbar (optional)
+	global $xsbf_theme_options; 
 	$nav_menu = null; 
 	if ( function_exists('has_nav_menu') AND has_nav_menu( 'footer' ) ) {
 		$nav_menu = wp_nav_menu( 
