@@ -154,6 +154,8 @@ Since this theme is designed to be full-width, we've included a number of page t
 
 * _Full Width with Recent Posts_: This is full-width like above, but is great for your home page in that it displays 3 recent posts at the bottom of the page.
 
+* _Full Width Recent Posts No Header_: This is full-width with recent posts like above, but doesn't display a content header or featured image.
+
 * _Full Width with Sub Pages_: Ah yes. This template is great for listing products, your portfolio or whatever without needing a plugin or custom post types. Just add this template to a page and all of its sub-pages will display in a grid style layout with image thumbnail and title.
 
 * _Left Sidebar_: Just like the default template, but with the sidebar on the left. Maybe you like that better than on the right?
@@ -307,7 +309,20 @@ For more information on SemVer, please visit [http://semver.org/].
 == CHANGELOG ==
 
 = 1.2 =
-* Added a child theme for easy customization (see the flat-bootstrap-child directory)
+* Lined up fields on comment entry form. Set comment text box to not expand and shrink when it gains and loses focus.
+* Added padding to carousel captions
+* Set gray background on cover and section images so can see white text until image loads
+* Enhanced stripping of comments and empty <p> tags from content
+* Fix to page-fullwidthsubpages to display them all instead of just the first 6
+* Added page-postsnoheader page template
+* Moved page-top widget area to below the feature image as this looks nicer
+* Set a default footer nav menu to a smoothscroll to the Top and a link to Home. Can override by specifying your own footer nav menu.
+* Used WordPress v3.9 enhancement to specify crop on images and use alternate thumbnail sizes if our custom size not generated for a particular post/page
+* Changed readme.md to readme.txt for better compatibility with possible future WordPress theme directory features
+* Deprecated $theme_options and replaced it with $xsbf_theme_options. Please update your child themes as soon as possible.
+* Bumped version on css and js that was changed
+* Updated child theme
+* Updated screenshot
 
 = 1.1 =
 * Added a child theme for easy customization (see the flat-bootstrap-child directory)
