@@ -194,11 +194,11 @@ function xsbf_scripts() {
 	}
 	
 	// Our base WordPress CSS that handles default margins, paddings, etc.
-	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', '', '20140217', 'all' );
+	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', '', '20140506', 'all' );
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140217', 'all' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140506', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
 	// Add font-awesome support	
@@ -218,7 +218,7 @@ function xsbf_scripts() {
 
 	// Load our theme's javascript for smooth scrolling and optional for touch 
 	// carousels
-	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140413', true );
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140430', true );
 
 	// jquery mobile script is a custom download with ONLY "touch" functions. Load
 	// this just on single posts and pages where a carousel might be placed

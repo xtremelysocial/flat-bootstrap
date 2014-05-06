@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.6.0
-Tested up to: 3.8.2
-Stable tag: 1.1.1
+Requires at least: 3.7
+Tested up to: 3.9
+Stable tag: 1.2
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -305,6 +305,9 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.2 =
+* Added a child theme for easy customization (see the flat-bootstrap-child directory)
 
 = 1.1 =
 * Added a child theme for easy customization (see the flat-bootstrap-child directory)

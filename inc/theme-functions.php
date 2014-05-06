@@ -178,10 +178,16 @@ function xsbf_embed_defaults ( $defaults ) {
 if ( ! function_exists( 'xsbf_filter_ptags' ) ) :
 add_filter('the_content', 'xsbf_filter_ptags');
 function xsbf_filter_ptags ( $content ) {
+/*
 	$content = str_ireplace( '<p></p>', '', $content );
 	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
 	$content = str_ireplace( '<p> </p>', '', $content );
     //$content = preg_replace( array ( '/<p><\/p>/', '/<p><!--.*--><\/p>/', '/<p><!--.*-->/', '/<p><!--\/.*--><\/p>/' ), '', $content );
+*/
+	// Remove all comments
+	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
+	// Remove all <p></p> tags that are empty or only have whitespace between them
+	$content = preg_replace( '|<p>(\s)*</p>|', '', $content );
 	return $content;
 }
 endif; // end ! function_exists

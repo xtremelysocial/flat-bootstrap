@@ -470,14 +470,16 @@ label {
 }
 
 /* Set input field focus color to green */
-.form-control:focus,
-textarea#comment:focus {
+/*.form-control:focus,
+textarea#comment:focus {*/
+/*input:focus,
+textarea:focus {
     border-color: #1abc9c;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(109, 233, 102, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(109, 233, 102, 0.6); */
    /*-webkit-appearance: none !important;*/
-   outline: 0;
-}
+/*   outline: 0;
+}*/
 
 /* Force search field to not be rounded on iOS devices */
 input.search-field {
