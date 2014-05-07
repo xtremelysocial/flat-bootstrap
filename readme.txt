@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.6.0
-Tested up to: 3.8.1
-Stable tag: 1.1
+Requires at least: 3.7
+Tested up to: 3.9
+Stable tag: 1.2
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -154,6 +154,8 @@ Since this theme is designed to be full-width, we've included a number of page t
 
 * _Full Width with Recent Posts_: This is full-width like above, but is great for your home page in that it displays 3 recent posts at the bottom of the page.
 
+* _Full Width Recent Posts No Header_: This is full-width with recent posts like above, but doesn't display a content header or featured image.
+
 * _Full Width with Sub Pages_: Ah yes. This template is great for listing products, your portfolio or whatever without needing a plugin or custom post types. Just add this template to a page and all of its sub-pages will display in a grid style layout with image thumbnail and title.
 
 * _Left Sidebar_: Just like the default template, but with the sidebar on the left. Maybe you like that better than on the right?
@@ -284,7 +286,7 @@ However, if you really want true "shortcodes", we’ve recommended a coupe of pl
 
 = Why is there a full-width checkbox on my posts? = 
 
-WordPress as of version 3.8.1 doesn't let you have post templates like the page templates above. So until then, we've included a checkbox that will display your post full-width just like the fullwidth page template. This template is great for full-length articles, especially when you have one or more fullwidth images in them.
+WordPress as of version 3.8 doesn't let you have post templates like the page templates above. So until then, we've included a checkbox that will display your post full-width just like the fullwidth page template. This template is great for full-length articles, especially when you have one or more fullwidth images in them.
 
 See the section above How to Use this Theme for more information on the various page templates and full-width post template.
 
@@ -305,6 +307,23 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.2 =
+* Lined up fields on comment entry form. Set comment text box to not expand and shrink when it gains and loses focus.
+* Added padding to carousel captions
+* Set gray background on cover and section images so can see white text until image loads
+* Enhanced stripping of comments and empty <p> tags from content
+* Fix to page-fullwidthsubpages to display them all instead of just the first 6
+* Added page-postsnoheader page template
+* Moved page-top widget area to below the feature image as this looks nicer
+* Set a default footer nav menu to a smoothscroll to the Top and a link to Home. Can override by specifying your own footer nav menu.
+* Used WordPress v3.9 enhancement to specify crop on images and use alternate thumbnail sizes if our custom size not generated for a particular post/page
+* Changed readme.md to readme.txt for better compatibility with possible future WordPress theme directory features
+* Deprecated $theme_options and replaced it with $xsbf_theme_options. Please update your child themes as soon as possible.
+* Deprecated xsbf_theme_preview function as recommended by the WordPress theme review team
+* Bumped version on css and js that was changed
+* Updated child theme
+* Updated screenshot
 
 = 1.1 =
 * Added a child theme for easy customization (see the flat-bootstrap-child directory)

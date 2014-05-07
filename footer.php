@@ -23,6 +23,7 @@
 	?>
 
 	<?php // Check for footer navbar (optional)
+	global $xsbf_theme_options; 
 	$nav_menu = null; 
 	if ( function_exists('has_nav_menu') AND has_nav_menu( 'footer' ) ) {
 		$nav_menu = wp_nav_menu( 
@@ -36,7 +37,17 @@
 			'depth'					=> 1,
 			) 
 		);
-	}
+		
+	// If not, default one
+	} elseif ( $xsbf_theme_options['sample_footer_menu'] ) {
+			$nav_menu = '
+			<div class="sample-menu-footer-container">
+			<ul id="sample-menu-footer" class="list-inline dividers">
+			<li id="menu-item-sample-1" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-sample-1"><a class="smoothscroll" title="Back to top of page" href="#page"><span class="fa fa-angle-up"></span> Top</a></li>
+			<li id="menu-item-sample-2" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-sample-2"><a title="Home" href="' . get_home_url() . '">Home</a></li>
+			</ul>
+			</div>';
+	} //endif has_nav_menu()
 ?>
 
 	<?php // Check for site credits (can be overriden in a child theme

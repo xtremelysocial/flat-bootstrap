@@ -54,7 +54,8 @@ get_header(); ?>
 			<div class="container"><div class="row">
 
 			<?php /* Determine # of columns and # of posts per row */
-			$count_posts = count ( $list_of_posts->posts );
+			//$count_posts = count ( $list_of_posts->posts );
+			$count_posts = count ( $list_of_posts->posts ) <= $num_posts ? count ( $list_of_posts->posts ) : $num_posts;
 			if ( $count_posts % 4 == 0 ) $per_row = 4;
 			elseif ( $count_posts % 3 == 0) $per_row = 3;
 			else $per_row = 2;			
@@ -64,7 +65,7 @@ get_header(); ?>
 			<?php /* The loop */ ?>
 			<?php $count = 0; ?>
 			<?php while ( $list_of_posts->have_posts() AND $count < $num_posts ) : $list_of_posts->the_post(); ?>
-				<?php if ( $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
+				<?php if ( $count > 0 AND $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
 				<div class="col-lg-<?php echo $num_cols ?>">
 				<?php // Display content of posts ?>
 				<?php get_template_part( 'content', 'page-posts' ); ?>

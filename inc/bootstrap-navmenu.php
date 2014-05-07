@@ -233,7 +233,8 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		// Add the first 4 pages, based on menu order
 		$pages = get_pages( array ( 'sort_column' => 'menu_order', 'parent' => 0, 'number' => 4 ) ); 
 		foreach ( $pages as $page ) {
-			$fb_output .= '<li><a href="' . get_page_uri( $page->ID ) . '">' 
+			//$fb_output .= '<li><a href="' . get_page_uri( $page->ID ) . '">' 
+			$fb_output .= '<li><a href="' . get_page_link( $page->ID ) . '">' 
 				. $page->post_title . '</a></li>';
 		}
 

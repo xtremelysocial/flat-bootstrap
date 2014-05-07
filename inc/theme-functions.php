@@ -10,6 +10,34 @@
  * @package flat-bootstrap
  */
 
+/* Helper function to determine if a page or post template is full width or not.
+ * This function is used to add container tags and handle images on full-width pages
+ * differently.
+ */
+if ( ! function_exists('xsbf_is_fullwidth') ) :
+function xsbf_is_fullwidth() {
+
+	/* for pages, check the page template */
+	if ( is_page() AND + 
+		is_page_template( 'page-fullwidth-noheader.php' ) OR + 
+		is_page_template( 'page-fullwidth.php' ) OR +
+		is_page_template( 'page-fullwithposts.php' ) OR +
+		is_page_template( 'page-fullwithsubpages.php' )
+		) {
+			return true;
+
+	/* for posts, check the single template */
+	} elseif ( is_single() ) {
+		$current_template = get_single_template();
+		$fullwidth_template = get_query_template( 'single-fullwidth' );
+		if ( $current_template and $current_template == $fullwidth_template ) {
+			return true;
+		}
+	}
+	return false;
+}
+endif; // end ! function_exists
+
 /*
  * This function adds a container div to full-width pages right after the page content
  * so that other plugin's content is contained. Note that this is run with a priority of
@@ -18,12 +46,11 @@
 if ( ! function_exists('xsbf_add_container') ) :
 add_filter( 'the_content', 'xsbf_add_container', 5, 1 ); 
 function xsbf_add_container( $content ) {
-	if ( is_page_template( 'page-fullwidth-noheader.php' ) OR + 
-		 is_page_template( 'page-fullwidth.php' ) OR +
-		 is_page_template( 'page-fullwithposts.php' ) OR +
-		 is_page_template( 'page-fullwithsubpages.php' ) OR +
-		 is_single()
-		) {
+
+	// If the page template is full-width. Do it on all posts just in case its full
+	// width as well.
+	//if ( xsbf_is_fullwidth() OR is_single() ) {
+	if ( xsbf_is_fullwidth() ) {
 		$content .= '<div id="after-content" class="after-content">'
 			.'<div class="container ">';
 	}
@@ -39,16 +66,33 @@ endif; // end ! function_exists
 if ( ! function_exists('xsbf_end_container') ) :
 add_filter( 'the_content', 'xsbf_end_container', 1999, 1 ); 
 function xsbf_end_container( $content ) {
-	if ( is_page_template( 'page-fullwidth-noheader.php' ) OR + 
-		 is_page_template( 'page-fullwidth.php' ) OR +
-		 is_page_template( 'page-fullwithposts.php' ) OR +
-		 is_page_template( 'page-fullwithsubpages.php' ) OR +
-		 is_single()
-		) {
+
+	// If the page template is full-width. Do it on all posts just in case its full
+	// width as well.
+	//if ( xsbf_is_fullwidth() OR is_single() ) {
+	if ( xsbf_is_fullwidth() ) {
 		$content .= '</div><!-- .after-content -->'
 			.'</div><!-- .container -->';
 	}
 	return $content;
+}
+endif; // end ! function_exists
+
+/**
+ * Filter the single post template and change to full-width if custom field
+ * 'fullwidth' is true.
+ */
+if ( ! function_exists( 'xsbf_single_template' ) ) :
+add_filter( 'single_template', 'xsbf_single_template' );
+function xsbf_single_template( $single_template ) {
+
+	// If this post is full-width then use that template. Note locate_template
+	// first looks for it in a child theme, then in the parent directory.
+	$fullwidth = get_post_meta( get_the_ID(), '_fullwidth', $single = true );
+	if ( $fullwidth ) {
+    	$single_template = locate_template( array ( 'single-fullwidth.php' ) );
+    }
+    return $single_template;
 }
 endif; // end ! function_exists
 
@@ -73,6 +117,9 @@ function xsbf_img_caption ( $null, $attr, $content ) {
 	// If image is not full-width, then don't mess with it.
 	//if ( 1 > (int) $width OR empty ( $caption ) OR $content_width > $width )
 	if ( 1 > (int) $width OR $content_width > $width ) return null;
+	
+	// If we aren't on a full-width page or post, then don't mess with it either
+	if( ! xsbf_is_fullwidth() ) return null;
 
 	// Strip off all but the <img> tag and parse it
 	$content_img = strip_tags ( $content, '<img>' );
@@ -112,11 +159,11 @@ endif; // end ! function_exists
  */
 add_filter( 'embed_defaults', 'xsbf_embed_defaults' );
 function xsbf_embed_defaults ( $defaults ) {
-	global $theme_options;
-	if ( $theme_options['embed_video_width'] ) {
-		$defaults['width'] = $theme_options['embed_video_width'];
-		if ( $theme_options['embed_video_height'] ) {
-			$defaults['height'] = $theme_options['embed_video_height'];
+	global $xsbf_theme_options;
+	if ( $xsbf_theme_options['embed_video_width'] ) {
+		$defaults['width'] = $xsbf_theme_options['embed_video_width'];
+		if ( $xsbf_theme_options['embed_video_height'] ) {
+			$defaults['height'] = $xsbf_theme_options['embed_video_height'];
 		} else {
 			$defaults['height'] = ceil ( $defaults['width'] * 9 / 16 );
 		}
@@ -131,10 +178,16 @@ function xsbf_embed_defaults ( $defaults ) {
 if ( ! function_exists( 'xsbf_filter_ptags' ) ) :
 add_filter('the_content', 'xsbf_filter_ptags');
 function xsbf_filter_ptags ( $content ) {
+/*
 	$content = str_ireplace( '<p></p>', '', $content );
 	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
 	$content = str_ireplace( '<p> </p>', '', $content );
     //$content = preg_replace( array ( '/<p><\/p>/', '/<p><!--.*--><\/p>/', '/<p><!--.*-->/', '/<p><!--\/.*--><\/p>/' ), '', $content );
+*/
+	// Remove all comments
+	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
+	// Remove all <p></p> tags that are empty or only have whitespace between them
+	$content = preg_replace( '|<p>(\s)*</p>|', '', $content );
 	return $content;
 }
 endif; // end ! function_exists
@@ -241,24 +294,6 @@ function xsbf_save_postdata( $post_id ) {
 		$post_fullwidth = $_POST['xsbf_post_template'] ? true : false;
 		update_post_meta( $post_id, '_fullwidth', $post_fullwidth );
 	}
-}
-endif; // end ! function_exists
-
-/**
- * Filter the single post template and change to full-width if custom field
- * 'fullwidth' is true.
- */
-if ( ! function_exists( 'xsbf_single_template' ) ) :
-add_filter( 'single_template', 'xsbf_single_template' );
-function xsbf_single_template( $single_template ) {
-
-	$fullwidth = get_post_meta( get_the_ID(), '_fullwidth', $single = true );
-	if ( $fullwidth ) {
-    	//$single_template = dirname( __FILE__ ) . '/single-fullwidth.php';
-    	$single_template = get_stylesheet_directory() . '/single-fullwidth.php';
-    }
-	
-    return $single_template;
 }
 endif; // end ! function_exists
 

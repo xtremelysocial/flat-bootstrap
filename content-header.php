@@ -158,8 +158,8 @@
 
 		</div><!-- .container -->
 
-	<?php endif; // has_post_thumbnail() ?>
-
 	</header><!-- .content-header -->
+
+	<?php endif; // has_post_thumbnail() ?>
 
 <?php endif; // have_posts() ?>
