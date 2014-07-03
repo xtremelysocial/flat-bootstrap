@@ -161,5 +161,8 @@
 	</header><!-- .content-header -->
 
 	<?php endif; // has_post_thumbnail() ?>
-
+	
 <?php endif; // have_posts() ?>
+
+<?php // Page Top (after header) widget area 
+get_sidebar( 'pagetop' );

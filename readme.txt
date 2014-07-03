@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.7
 Tested up to: 3.9
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -307,6 +307,16 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.2.1 =
+* Changed Google fonts to load more efficiently from functions.php instead of using @import in the stylesheet. This also makes it easier to override the fonts in child themes.
+* Update page-fullwithposts.php to put the page meta and comment section after the recent posts. This looks much nicer.
+* Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
+* Added search field to the site-index page template
+* Moved Page Bottom widget area below the full-width site / page header
+* Display a default footer when previewing the theme and upon initial installation of the theme
+* Display a default Page Bottom widget when previewing the theme and upon initial installation of the theme
+
 
 = 1.2 =
 * Lined up fields on comment entry form. Set comment text box to not expand and shrink when it gains and loses focus.

@@ -201,6 +201,13 @@ function xsbf_scripts() {
 	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140506', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
+	// Load Google Fonts: Lato and Raleway
+/*
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);
+*/
+	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700',array(), null, 'screen' );	
+
 	// Add font-awesome support	
 	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
 		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.0.3', 'all' );

@@ -25,6 +25,7 @@ if ( $sidebar_footer ) :
 
 <?php
 /* Otherwise, if user is previewing this theme, then show some examples */
+/*
 elseif ( xsbf_theme_preview() ) :
 ?>
 	<div class="sidebar-footer clearfix">
@@ -48,4 +49,4 @@ elseif ( xsbf_theme_preview() ) :
 	</div><!-- .container -->
 	</div><!-- .sidebar-footer -->
 
-<?php endif;?>
+<?php */ endif;?>

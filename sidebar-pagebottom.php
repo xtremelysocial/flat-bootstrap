@@ -21,6 +21,7 @@ if ( $sidebar_pagebottom ) :
 
 <?php
 /* Otherwise, if user is previewing this theme, then show an example */
+/*
 elseif ( xsbf_theme_preview() ) :
 ?>
 	<div id="sidebar-pagebottom" class="sidebar-pagebottom">
@@ -41,4 +42,4 @@ elseif ( xsbf_theme_preview() ) :
 
 	</div><!-- .sidebar-pagebottom -->
 
-<?php endif;?>
+<?php */ endif;?>

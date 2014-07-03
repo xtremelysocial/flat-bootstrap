@@ -202,7 +202,7 @@ function xsbf_add_custom_box() {
     foreach ( $screens as $screen ) {
         add_meta_box(
             'xsbf_options',
-            __( 'Additional Post / Page Options', 'xs_bootstrap_flat' ),
+            __( 'Additional Post / Page Options', 'flat-bootstrap' ),
             'xsbf_inner_custom_box',
             $screen,
             'normal',
@@ -227,7 +227,7 @@ function xsbf_inner_custom_box( $post ) {
 	$value = get_post_meta( $post->ID, '_subtitle', true );
 
 	echo '<label for="xsbf_post_subtitle">';
-	   _e( "Subtitle (displays under the title in the content header)", 'xsbf_textdomain' );
+	   _e( "Subtitle (displays under the title in the content header)", 'flat-bootstrap' );
 	echo '</label> ';
 	echo '<textarea id="xsbf_post_subtitle" name="xsbf_post_subtitle" rows="2" cols="80"  class="form-control" style="width: 100%;">'
 	. esc_attr( $value ) 
@@ -240,7 +240,7 @@ function xsbf_inner_custom_box( $post ) {
 		
 		echo '<input type="checkbox" name="xsbf_post_template" value="xsbf_post_template" ' . $checked . '>';
 		echo '<label for="xsbf_post_template">';
-		   _e( "Display post full-width (no sidebar)?", 'xsbf_textdomain' );
+		   _e( "Display post full-width (no sidebar)?", 'flat-bootstrap' );
 		echo '</label> ';
 	} //endif 'post'
 }
