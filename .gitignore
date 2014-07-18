@@ -1,3 +1,5 @@
 .DS_Store
 zz_unused
 zz_screenshots
+/languages/xx_XX.pot
+/languages/es_ES.po

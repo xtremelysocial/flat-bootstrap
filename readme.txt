@@ -225,9 +225,13 @@ What this does is contain the text to about two-thirds of the screen width (Boot
 
 = Add widgets to the sidebar and optionally the footer, page top, and page bottom =
 
-We've included lots of widget areas. Of course there is an obligatory sidebar that you can put whatever you want to in. However, if you are using mostly full-width pages and full-width posts, its only going to display on the archives and search pages.
+We've included lots of widget areas. Of course there is a sidebar that you can put on the left or right. However, if you are using mostly full-width pages and full-width posts, its only going to display on the archives and search pages.
 
 So you may want to add sections to the page bottom which display after your content and before the footer. Full-width colored sections look great there for calls to action or whatever else you want. We recommend installing the Widget Classes plugin, so you can just add "bg-gray" or whatever color you want to it. We think these actually look better than loading up the sidebar, but that of course is entirely up to you.
+
+= Remove the default Page Bottom and Footer Widgets =
+
+If you added any widgets to the Page Bottom and Footer areas, the default widgets will no longer show. However, if you don't want to add any widgets to those areas and also don't want to show the default ones, you can simply add an empty text widget to each area.
 
 = Install additional plugins that work well with this theme =
 
@@ -314,9 +318,10 @@ For more information on SemVer, please visit [http://semver.org/].
 * Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
 * Added search field to the site-index page template
 * Moved Page Bottom widget area below the full-width site / page header
+* Since the footer menu doesn't allow submenus, display only the top-level menu items
 * Display a default footer when previewing the theme and upon initial installation of the theme
 * Display a default Page Bottom widget when previewing the theme and upon initial installation of the theme
-
+* Updated readme.txt to include instructions about removing these default widgets
 
 = 1.2 =
 * Lined up fields on comment entry form. Set comment text box to not expand and shrink when it gains and loses focus.
