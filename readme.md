@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.7
-Tested up to: 3.9
-Stable tag: 1.2.1
+Requires at least: 3.6.0
+Tested up to: 3.8.1
+Stable tag: 1.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -154,8 +154,6 @@ Since this theme is designed to be full-width, we've included a number of page t
 
 * _Full Width with Recent Posts_: This is full-width like above, but is great for your home page in that it displays 3 recent posts at the bottom of the page.
 
-* _Full Width Recent Posts No Header_: This is full-width with recent posts like above, but doesn't display a content header or featured image.
-
 * _Full Width with Sub Pages_: Ah yes. This template is great for listing products, your portfolio or whatever without needing a plugin or custom post types. Just add this template to a page and all of its sub-pages will display in a grid style layout with image thumbnail and title.
 
 * _Left Sidebar_: Just like the default template, but with the sidebar on the left. Maybe you like that better than on the right?
@@ -225,13 +223,9 @@ What this does is contain the text to about two-thirds of the screen width (Boot
 
 = Add widgets to the sidebar and optionally the footer, page top, and page bottom =
 
-We've included lots of widget areas. Of course there is a sidebar that you can put on the left or right. However, if you are using mostly full-width pages and full-width posts, its only going to display on the archives and search pages.
+We've included lots of widget areas. Of course there is an obligatory sidebar that you can put whatever you want to in. However, if you are using mostly full-width pages and full-width posts, its only going to display on the archives and search pages.
 
 So you may want to add sections to the page bottom which display after your content and before the footer. Full-width colored sections look great there for calls to action or whatever else you want. We recommend installing the Widget Classes plugin, so you can just add "bg-gray" or whatever color you want to it. We think these actually look better than loading up the sidebar, but that of course is entirely up to you.
-
-= Remove the default Page Bottom and Footer Widgets =
-
-If you added any widgets to the Page Bottom and Footer areas, the default widgets will no longer show. However, if you don't want to add any widgets to those areas and also don't want to show the default ones, you can simply add an empty text widget to each area.
 
 = Install additional plugins that work well with this theme =
 
@@ -290,7 +284,7 @@ However, if you really want true "shortcodes", we’ve recommended a coupe of pl
 
 = Why is there a full-width checkbox on my posts? = 
 
-WordPress as of version 3.8 doesn't let you have post templates like the page templates above. So until then, we've included a checkbox that will display your post full-width just like the fullwidth page template. This template is great for full-length articles, especially when you have one or more fullwidth images in them.
+WordPress as of version 3.8.1 doesn't let you have post templates like the page templates above. So until then, we've included a checkbox that will display your post full-width just like the fullwidth page template. This template is great for full-length articles, especially when you have one or more fullwidth images in them.
 
 See the section above How to Use this Theme for more information on the various page templates and full-width post template.
 
@@ -311,35 +305,6 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
-
-= 1.2.1 =
-* Changed Google fonts to load more efficiently from functions.php instead of using @import in the stylesheet. This also makes it easier to override the fonts in child themes.
-* Update page-fullwithposts.php to put the page meta and comment section after the recent posts. This looks much nicer.
-* Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
-* Added search field to the site-index page template
-* Moved Page Bottom widget area below the full-width site / page header
-* Since the footer menu doesn't allow submenus, display only the top-level menu items
-* Display a default footer when previewing the theme and upon initial installation of the theme
-* Display a default Page Bottom widget when previewing the theme and upon initial installation of the theme
-* Updated readme.txt to include instructions about removing these default widgets
-* Moved flat-bootstrap-child from being a submodule to included and managed directly by github in this parent theme
-
-= 1.2 =
-* Lined up fields on comment entry form. Set comment text box to not expand and shrink when it gains and loses focus.
-* Added padding to carousel captions
-* Set gray background on cover and section images so can see white text until image loads
-* Enhanced stripping of comments and empty <p> tags from content
-* Fix to page-fullwidthsubpages to display them all instead of just the first 6
-* Added page-postsnoheader page template
-* Moved page-top widget area to below the feature image as this looks nicer
-* Set a default footer nav menu to a smoothscroll to the Top and a link to Home. Can override by specifying your own footer nav menu.
-* Used WordPress v3.9 enhancement to specify crop on images and use alternate thumbnail sizes if our custom size not generated for a particular post/page
-* Changed readme.md to readme.txt for better compatibility with possible future WordPress theme directory features
-* Deprecated $theme_options and replaced it with $xsbf_theme_options. Please update your child themes as soon as possible.
-* Deprecated xsbf_theme_preview function as recommended by the WordPress theme review team
-* Bumped version on css and js that was changed
-* Updated child theme
-* Updated screenshot
 
 = 1.1 =
 * Added a child theme for easy customization (see the flat-bootstrap-child directory)
