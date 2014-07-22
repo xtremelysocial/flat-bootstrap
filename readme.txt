@@ -4,7 +4,7 @@ Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.7
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
@@ -314,7 +314,7 @@ For more information on SemVer, please visit [http://semver.org/].
 
 = 1.2.1 =
 * Changed Google fonts to load more efficiently from functions.php instead of using @import in the stylesheet. This also makes it easier to override the fonts in child themes.
-* Update page-fullwithposts.php to put the page meta and comment section after the recent posts. This looks much nicer.
+* Update page-fullwithposts.php and page-fullwithsubpages.php to put the page meta and comment section after the recent posts. This looks much nicer.
 * Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
 * Added search field to the site-index page template
 * Moved Page Bottom widget area below the full-width site / page header

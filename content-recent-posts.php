@@ -10,11 +10,11 @@
 
 <?php /* DISPLAY THE MOST RECENT POSTS (NOTE STICKY POSTS FIRST) */
 $num_posts = 3; // Should be a factor of 12 column grid
-$paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
+//$paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
 $args = array(
 	'post_type' => 'post',
 	'posts_per_page' => $num_posts,
-	'paged' => $paged
+	//'paged' => $paged
 );
 $list_of_posts = new WP_Query( $args );
 ?>

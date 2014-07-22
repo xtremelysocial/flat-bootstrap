@@ -17,11 +17,10 @@
 /* YOU CAN EDIT THESE VARIABLES HERE TO CHANGE THE WAY THE PAGE DISPLAYS
  *
  * $posts_per_page: Number of posts to display in a single page.
- * $per_row: Number of posts per row. Must divide into 12. ie. 1-4 or 6
+ * $posts_per_row: Number of posts per row. Must divide into 12. ie. 1-4 or 6
 */ 
 $posts_per_page = 999; //Make this really high for now
-//$posts_per_page = 2; //TEST
-$per_row = 2;
+$posts_per_row = 2;
 
 /* DON'T CHANGE ANYTHING BELOW HERE */
 get_header(); ?>
@@ -31,23 +30,26 @@ get_header(); ?>
 <div id="primary" class="content-area-wide">
 	<main id="main" class="site-main" role="main">
 	
-		<?php /* DISPLAY THE PAGE CONTENT FIRST IF THERE IS ANY */ ?>
+		<?php /* DISPLAY THE PAGE CONTENT FIRST */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'page-fullwidth' ); ?>
+			<?php //get_template_part( 'content', 'page-fullwidth' ); ?>
 
-		<?php endwhile; // end of the loop. ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+				<div class="entry-content">
+
+					<?php the_content(); ?>
+		
+					<?php get_template_part( 'content', 'page-nav' ); ?>
 
 		<?php /* DISPLAY THE SUB-PAGES OF THIS PAGE */
-		// There is no pagination yet, so $num_posts needs to be the max number of
+		// There is no pagination yet, so $posts_per_page needs to be the max number of
 		// child pages you'd ever have. TO-DO: ADD PAGINATION
-		//$num_posts = 24; // Should be a high number
 		$paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
 		$args = array(
 			'post_type' 		=> 'page',
 			'nopaging'			=> true,
-			//'posts_per_page' 	=> $num_posts,
-			//'posts_per_page' 	=> -1,
 			'posts_per_page' 	=> $posts_per_page,
 			'orderby' 			=> 'menu_order',
 			'order'				=> 'asc',
@@ -60,21 +62,14 @@ get_header(); ?>
 			<div id="page-subpages" class="page-subpages">
 			<div class="container"><div class="row">
 
-			<?php /* Determine # of columns and # of posts per row */
-/*
-			$count_posts = count ( $list_of_posts->posts );
-			if ( $count_posts % 4 == 0 ) $per_row = 4;
-			elseif ( $count_posts % 3 == 0) $per_row = 3;
-			else $per_row = 2;			
-*/
-			$num_cols = 12 / $per_row;
+			<?php /* Determine # of columns based on parameters above */
+			$num_cols = 12 / $posts_per_row;
 			?>
 
 			<?php /* The loop */ ?>
 			<?php $count = 0; ?>
-			<?php //while ( $list_of_posts->have_posts() AND $count < $num_posts ) : $list_of_posts->the_post(); ?>
 			<?php while ( $list_of_posts->have_posts() AND $count < $posts_per_page ) : $list_of_posts->the_post(); ?>
-				<?php if ( $count > 0 AND $count % $per_row == 0 ) echo '</div><div class="row">'; ?>
+				<?php if ( $count > 0 AND $count % $posts_per_row == 0 ) echo '</div><div class="row">'; ?>
 				<div class="col-lg-<?php echo $num_cols ?>">
 				<?php // Display content of posts ?>
 				<?php get_template_part( 'content', 'page-posts' ); ?>
@@ -85,7 +80,7 @@ get_header(); ?>
 			<?php //get_template_part( 'content', 'index-nav' ); ?>	
 
 			</div><!-- row --></div><!-- container -->
-			</div><!-- page-posts -->
+			</div><!-- page-subpages -->
 
 		<?php endif; ?>
 					
@@ -93,6 +88,11 @@ get_header(); ?>
 		/* Restore original Post Data */
 		wp_reset_postdata();		
 		?>
+					<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<div class="container"><footer class="entry-meta"><div class="edit-link">', '</div></div></footer>' ); ?>
+
+				</div><!-- .entry-content -->
+	
+			</article><!-- #post-## -->
 
 		<?php
 		// If comments are open or we have at least one comment, load up the comment template
@@ -104,6 +104,8 @@ get_header(); ?>
 			</div><!-- .container -->
 			</div><!-- .comments-wrap" -->
 		<?php endif; ?>
+
+		<?php endwhile; // end of the loop. ?>
 
 	</main><!-- #main -->
 </div><!-- #primary -->

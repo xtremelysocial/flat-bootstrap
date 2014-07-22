@@ -92,11 +92,11 @@ function xsbf_bootstrap_register_required_plugins() {
 		),
 
 		// Agnosia Bootstrap Carousel Plugin
-		array(
+		/*array(
 			'name' 		=> 'Agnosia Bootstrap Carousel by AuSoft',
 			'slug' 		=> 'agnosia-bootstrap-carousel',
 			'required' 	=> false,
-		),
+		),*/
 
 	);
 
