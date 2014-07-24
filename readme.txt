@@ -314,6 +314,7 @@ For more information on SemVer, please visit [http://semver.org/].
 
 = 1.2.1 =
 * Changed Google fonts to load more efficiently from functions.php instead of using @import in the stylesheet. This also makes it easier to override the fonts in child themes.
+* Removed background color from the page as this was overriding the user's chosen background color in the Theme Customizer
 * Update page-fullwithposts.php and page-fullwithsubpages.php to put the page meta and comment section after the recent posts. This looks much nicer.
 * Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
 * Added search field to the site-index page template
