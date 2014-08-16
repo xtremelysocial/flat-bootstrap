@@ -78,8 +78,7 @@ function xsbf_setup() {
 	// Enable support for Post Thumbnails on posts and pages. As of WordPress v3.9,
 	// specific crop parameters handled.
 	add_theme_support( 'post-thumbnails' );
-	//set_post_thumbnail_size( 640, 360, $crop = true );
-	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop it
+	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop left top
 	//add_image_size( 'section-image', 1600, 400, array( 'center', 'center' ) ); // section image
 
 	// This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
@@ -87,6 +86,9 @@ function xsbf_setup() {
 		'primary' 	=> __( 'Header Menu', 'flat-bootstrap' ),
 		'footer' 	=> __( 'Footer Menu', 'flat-bootstrap' ),
 	) );
+
+	// Enable responsive video if Jetpack plugin is active
+	add_theme_support( 'jetpack-responsive-videos' );
 
 	// This feature outputs HTML5 markup for the comment forms, search forms and 
 	// comment lists. As of WordPress v3.6.
@@ -198,7 +200,7 @@ function xsbf_scripts() {
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140506', 'all' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140724', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
 	// Load Google Fonts: Lato and Raleway
@@ -220,12 +222,8 @@ function xsbf_scripts() {
 
 	/* LOAD JAVASCRIPT */
 
-	// Bootsrap core javascript. Load from CDN. Update version#'s after testing.
+	// Bootsrap core javascript
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.0', true );
-
-	// Load our theme's javascript for smooth scrolling and optional for touch 
-	// carousels
-	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140430', true );
 
 	// jquery mobile script is a custom download with ONLY "touch" functions. Load
 	// this just on single posts and pages where a carousel might be placed
@@ -233,9 +231,12 @@ function xsbf_scripts() {
 		wp_enqueue_script( 'jquerymobile', get_template_directory_uri() . '/jquerymobile/jquery.mobile.custom.min.js', array('jquery'), '1.4.0', true );
 	//}
 	
+	// Our theme's javascript for smooth scrolling and optional for touch carousels
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140430', true );
+
 	// Optional script from _S theme to allow keyboard nvigation through image pages
 	if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {
-		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array('jquery'), '20120202' );
+		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array('jquery'), '20120202', true );
 	}
 	
 	// For single pages or posts, add javascript to reply inline
@@ -246,8 +247,8 @@ function xsbf_scripts() {
 	// For IE8 or older, load HTML5 compatibility files
 	preg_match ( '|MSIE\s([0..9]*)|', $_SERVER['HTTP_USER_AGENT'], $browser );
 	if ( $browser AND $browser[1] < 9 ) {
-		wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/html5/html5shiv.js', null, '3.7.0' );
-		wp_enqueue_script( 'respond', get_template_directory_uri() . '/html5/respond.min.js', null, '1.4.2' );
+		wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/html5/html5shiv.js', null, '3.7.0', true );
+		wp_enqueue_script( 'respond', get_template_directory_uri() . '/html5/respond.min.js', null, '1.4.2', true );
 	}
 
 } // end function

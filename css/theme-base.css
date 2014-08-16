@@ -723,7 +723,12 @@ code {
  */
 span.icon-lg,
 i.icon-lg {
-    font-size: 35px;
+    font-size: 50px;
+	padding: 20px;
+}
+span.icon-xlg,
+i.icon-xlg {
+    font-size: 50px;
 	padding: 20px;
 }
 

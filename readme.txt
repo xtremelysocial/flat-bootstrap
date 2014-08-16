@@ -231,6 +231,8 @@ So you may want to add sections to the page bottom which display after your cont
 
 = Remove the default Page Bottom and Footer Widgets =
 
+Most of our themes have sample widgets that display when you first install the theme. These are just examples of some of the types of things you can do with the widget areas.
+
 If you added any widgets to the Page Bottom and Footer areas, the default widgets will no longer show. However, if you don't want to add any widgets to those areas and also don't want to show the default ones, you can simply add an empty text widget to each area.
 
 = Install additional plugins that work well with this theme =
@@ -313,7 +315,10 @@ For more information on SemVer, please visit [http://semver.org/].
 == CHANGELOG ==
 
 = 1.2.1 =
+* Added responsive video! This works automatically as long as the Jetpack plugin is active.
+* Added basic support for the new Jetpack "Portfolio" post type. The title and description will display properly on the pages.
 * Changed Google fonts to load more efficiently from functions.php instead of using @import in the stylesheet. This also makes it easier to override the fonts in child themes.
+* Added Spanish language support thanks to Carlos Folch <8tintin@gmail.com>
 * Removed background color from the page as this was overriding the user's chosen background color in the Theme Customizer
 * Update page-fullwithposts.php and page-fullwithsubpages.php to put the page meta and comment section after the recent posts. This looks much nicer.
 * Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
@@ -322,6 +327,7 @@ For more information on SemVer, please visit [http://semver.org/].
 * Since the footer menu doesn't allow submenus, display only the top-level menu items
 * Display a default footer when previewing the theme and upon initial installation of the theme
 * Display a default Page Bottom widget when previewing the theme and upon initial installation of the theme
+* Added icon-xlg CSS class to easily make even larger icons for Font Awesome and Glyphicons
 * Updated readme.txt to include instructions about removing these default widgets
 * Moved flat-bootstrap-child from being a submodule to included and managed directly by github in this parent theme
 

@@ -13,7 +13,7 @@
 <?php if ( have_posts() ) : ?>
 
 	<?php 
-	// Check for featured image
+	// CHECK FOR FEATURED IMAGE
 	global $content_width;
 	$image_width = null;
 	if ( ( is_page() OR is_single() ) AND has_post_thumbnail() ) {
@@ -61,7 +61,7 @@
 		.'</div><!-- .section-image -->'
 		.'</header><!-- content-image-header -->';
 
-	// Otherwise, display the title and optional subtitle
+	// IF NO FEATUED IMAGE, THEN DISPLAY TITLE AND OPTIONAL SUBTITLE
 	elseif ( ! is_front_page() ) : ?> 
 
 		<header class="content-header">
@@ -70,7 +70,7 @@
 		<h1 class="page-title">		
 		<?php
 		if ( is_page() OR is_single() ) :
-			the_title(); 
+			the_title();
 						
 		elseif ( is_category() ) :
 			single_cat_title();
@@ -114,10 +114,9 @@
 
 		elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
 			_e( 'Links', 'flat-bootstrap' );
-
-		else :
-			_e( 'Archives', 'flat-bootstrap' );
 		*/
+		elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) ) :
+			_e( 'Portfolio', 'flat-bootstrap' );
 		elseif ( is_home() ) : //ONLY if home page is static and we are on the blog page
 			$home_page = get_option ( 'page_for_posts' );
 			if ( $home_page ) $post = get_post( $home_page );
@@ -126,30 +125,42 @@
 			} else {
 				_e( 'Blog', 'flat-bootstrap' );
 			}
-		/*
 		else :
-			_e( 'Oops, we need to update content-header to catch this page type', 'flat-bootstrap' );
-		*/
+			//_e( 'Oops, we need to update content-header to catch this page type', 'flat-bootstrap' );
+			//the_title(); 
+			_e( 'Archives', 'flat-bootstrap' );
+			//global $wp_query; print_r( $wp_query ); //TEST
+			//echo 'portfolio? ' . is_tax ( 'jetpack-portfolio-type' ) . '<br />'; //TEST
 		endif;
 		?>
 		</h1>
 		
 		<?php
+		// NOW LOOK FOR AN OPTIONAL SUBTITLE
 		// If home page, display the subtitle if there is one
 		if ( is_home() ) {
-			//$home_page = get_option ( 'page_for_posts' );
 			$subtitle = get_post_meta( $home_page, '_subtitle', $single = true );
 			if ( $subtitle ) printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $subtitle );
 
 		} else {
-
+			//echo 'we are not on our home page...<br />'; //TEST
+			//echo term_description ( null, 'portfolio' ); //TEST
+			//echo 'term_description=' . term_description() . '<br />'; //TEST
 			// Show an optional taxonomy (category, tag, etc.)
 			$term_description = term_description();
 			if ( ! empty( $term_description ) ) {
 				printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $term_description );
-
+			/*
+			} elseif ( is_post_type_archive( 'jetpack-portfolio' ) ) {
+				echo get_query_var( 'taxonomy' ); //TEST
+				$term_description = term_description( '', get_query_var( 'taxonomy' ) );
+				if ( ! empty( $term_description ) ) {
+					printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $term_description );
+				}
+			*/
 			// Show an optional custom page field named "subtitle"
 			} else {
+				//echo get_query_var( 'taxonomy' ); //TEST
 				$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 				if ( $subtitle ) printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $subtitle );
 			} // term_description

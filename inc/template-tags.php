@@ -61,7 +61,7 @@ function xsbf_get_the_excerpt( $excerpt ) {
 		if ( $excerpt ) {
 			$excerpt .= '&hellip; ';
 		}
-		$excerpt .= '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">Read More</a>';
+		$excerpt .= '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __( 'Read More', 'flat-bootstrap' ) . '</a>';
 	}
 	return $excerpt;
 }
