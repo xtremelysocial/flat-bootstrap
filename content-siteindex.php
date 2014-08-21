@@ -17,6 +17,11 @@
 	<ul>
 	<?php
 		wp_list_pages( array ( 'title_li' => '' ) );
+		
+		// Add login/logout/register link. Strip the <br/> tag from it.
+		echo '<li class="page-item page-item-loginout">'
+			.strip_tags ( wp_loginout( null, false), '<a>' )
+			.'</li>';
 	?>
 	</ul>
 </div><!-- .widget -->

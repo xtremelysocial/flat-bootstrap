@@ -48,6 +48,10 @@ For more information on Flat Bootstrap, see the "How to use our themes" [http://
 
 == CHANGELOG ==
 
+= 1.3 =
+* Updated maximum embedded video width to 1170px to match full-width page template
+* Bumped version to 1.3 to match parent theme (Flat Bootstrap)
+
 = 1.2 =
 * Changed theme_options variable to xsbf_theme_options to avoid collision with plugins
 * Added theme option for sample footer menu and one for possible future use in displaying sample widgets

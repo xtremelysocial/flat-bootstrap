@@ -13,24 +13,22 @@
 <?php if ( have_posts() ) : ?>
 
 	<?php 
-	// CHECK FOR FEATURED IMAGE
+	// CHECK FOR FEATURED IMAGE AND USE IT IF ITS FULL-WIDTH
 	global $content_width;
 	$image_width = null;
 	if ( ( is_page() OR is_single() ) AND has_post_thumbnail() ) {
-	//if ( is_page() AND has_post_thumbnail() ) {
 		$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full');
 		$image_width = $featured_image[1];
 	}
 
-	// Handle pages with full-width featured image
 	if ( $content_width AND $image_width >= $content_width ) :
 		echo '<header class="content-header-image">';
 
 		$image_url = $featured_image[0];
 		
 		// Use Title, Caption and Description from the featured image.
-		$title = get_post( get_post_thumbnail_id() )->post_title; // Title
-		$caption = get_post( get_post_thumbnail_id() )->post_excerpt; // Caption
+		$title = get_post( get_post_thumbnail_id() )->post_title;
+		$caption = get_post( get_post_thumbnail_id() )->post_excerpt;
 		$description = get_post(get_post_thumbnail_id())->post_content;
 		
 		// If no title or description, get them from the page or post and custom fields
@@ -42,7 +40,7 @@
 			echo '<div class="cover-image" style="background-image: url(\'' . $image_url . '\');">'
 				.'<div class="cover-image-overlay">';
 
-		// Otherwise, use a shorter image height
+		// If not home page, use a shorter image height
 		} else {
 			echo '<div class="section-image" style="background-image: url(\'' . $image_url . '\');">'
 				.'<div class="section-image-overlay">';
@@ -52,6 +50,7 @@
 		if ( $caption ) echo '<h2 class="header-image-caption">' . $caption . '</h2>'; 
 		if ( $description ) echo '<p class="header-image-description">' . $description . '</p>'; 
 
+		// Only for home page, show a scroll down icon
 		if ( is_front_page() ) {
 			echo '<div class="spacer"></div>';
 			echo '<a href="#primary" class="scroll-down smoothscroll"><span class="glyphicon glyphicon-chevron-down"></span></a>';
@@ -62,7 +61,9 @@
 		.'</header><!-- content-image-header -->';
 
 	// IF NO FEATUED IMAGE, THEN DISPLAY TITLE AND OPTIONAL SUBTITLE
-	elseif ( ! is_front_page() ) : ?> 
+	elseif ( ! is_front_page() ) : 
+	//else :
+	?> 
 
 		<header class="content-header">
 		<div class="container">
@@ -117,7 +118,9 @@
 		*/
 		elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) ) :
 			_e( 'Portfolio', 'flat-bootstrap' );
+			
 		elseif ( is_home() ) : //ONLY if home page is static and we are on the blog page
+		//elseif ( is_home() AND ! is_front_page() ) : //ONLY if home page is static and we are on the blog page
 			$home_page = get_option ( 'page_for_posts' );
 			if ( $home_page ) $post = get_post( $home_page );
 			if ( $post ) {
@@ -125,42 +128,31 @@
 			} else {
 				_e( 'Blog', 'flat-bootstrap' );
 			}
+
 		else :
-			//_e( 'Oops, we need to update content-header to catch this page type', 'flat-bootstrap' );
-			//the_title(); 
+		//elseif ( ! is_front_page() ) :
 			_e( 'Archives', 'flat-bootstrap' );
-			//global $wp_query; print_r( $wp_query ); //TEST
-			//echo 'portfolio? ' . is_tax ( 'jetpack-portfolio-type' ) . '<br />'; //TEST
 		endif;
 		?>
 		</h1>
 		
 		<?php
 		// NOW LOOK FOR AN OPTIONAL SUBTITLE
+
 		// If home page, display the subtitle if there is one
-		if ( is_home() ) {
+		//if ( is_home() ) {
+		if ( is_home() AND ! is_front_page() ) {
 			$subtitle = get_post_meta( $home_page, '_subtitle', $single = true );
 			if ( $subtitle ) printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $subtitle );
 
+		// If not home page, then display the term description or custom subtitle
 		} else {
-			//echo 'we are not on our home page...<br />'; //TEST
-			//echo term_description ( null, 'portfolio' ); //TEST
-			//echo 'term_description=' . term_description() . '<br />'; //TEST
-			// Show an optional taxonomy (category, tag, etc.)
 			$term_description = term_description();
 			if ( ! empty( $term_description ) ) {
 				printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $term_description );
-			/*
-			} elseif ( is_post_type_archive( 'jetpack-portfolio' ) ) {
-				echo get_query_var( 'taxonomy' ); //TEST
-				$term_description = term_description( '', get_query_var( 'taxonomy' ) );
-				if ( ! empty( $term_description ) ) {
-					printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $term_description );
-				}
-			*/
+
 			// Show an optional custom page field named "subtitle"
 			} else {
-				//echo get_query_var( 'taxonomy' ); //TEST
 				$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 				if ( $subtitle ) printf( '<h3 class="page-subtitle taxonomy-description">%s</h3>', $subtitle );
 			} // term_description

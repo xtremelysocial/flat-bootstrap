@@ -42,7 +42,7 @@
 $xsbf_theme_options = array(
 	'background_color' 		=> 'f2f2f2',
 	'content_width' 		=> 1170,
-	'embed_video_width' 	=> 600,
+	'embed_video_width' 	=> 1170,
 	'embed_video_height' 	=> null, // i.e. calculate it automatically
 	'post_formats' 			=> null,
 	'touch_support' 		=> true,

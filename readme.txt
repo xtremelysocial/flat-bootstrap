@@ -4,8 +4,8 @@ Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.7
-Tested up to: 3.9.1
-Stable tag: 1.2.1
+Tested up to: 3.9.2
+Stable tag: 1.3
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -59,7 +59,7 @@ Copyright: Font Awesome, http://fontawesome.io
 
 == TRANSLATIONS ==
 
-The theme is translation ready, but I don't speak enough Spanish or any other language to translate it ;-) I will be more than happy to update the theme with new languages, if anyone wants to help out with that!
+The theme is translation ready, but I don't speak enough of any other language to translate it ;-) I will be more than happy to update the theme with new languages, if anyone wants to help out with that!
 
 
 == INSTALLATION ==
@@ -68,7 +68,7 @@ The theme is translation ready, but I don't speak enough Spanish or any other la
 2. Unzip the folder into the `/wp-content/themes/` directory
 3. Activate the theme through the 'Appearance' menu in WordPress
 4. Read the "How to use the theme" and "Frequently Asked Questions" sections below and check out our website for information and examples on how best to use the theme.
-5. If you want to customize the theme, check out the readme.md file in the flat-bootstrap-child folder.
+5. If you want to customize the theme, check out the readme.txt file in the flat-bootstrap-child folder.
 
 
 == SCREENSHOTS ==
@@ -314,21 +314,21 @@ For more information on SemVer, please visit [http://semver.org/].
 
 == CHANGELOG ==
 
-= 1.2.1 =
+= 1.3 =
 * Added responsive video! This works automatically as long as the Jetpack plugin is active.
 * Added basic support for the new Jetpack "Portfolio" post type. The title and description will display properly on the pages.
 * Changed Google fonts to load more efficiently from functions.php instead of using @import in the stylesheet. This also makes it easier to override the fonts in child themes.
-* Added Spanish language support thanks to Carlos Folch <8tintin@gmail.com>
 * Removed background color from the page as this was overriding the user's chosen background color in the Theme Customizer
 * Update page-fullwithposts.php and page-fullwithsubpages.php to put the page meta and comment section after the recent posts. This looks much nicer.
 * Several fixes for multiple language support (fixed mismatched text domains, added some strings that were previously hard-coded, cleaned up some existing text strings, generated .pot translation file in the /languages directory)
-* Added search field to the site-index page template
-* Moved Page Bottom widget area below the full-width site / page header
+* Added Spanish language support thanks to Carlos Folch <8tintin@gmail.com>
+* Added search field and login/logout link to the site-index page template
+* Moved Page Top widget area below the full-width page header
 * Since the footer menu doesn't allow submenus, display only the top-level menu items
 * Display a default footer when previewing the theme and upon initial installation of the theme
 * Display a default Page Bottom widget when previewing the theme and upon initial installation of the theme
-* Added icon-xlg CSS class to easily make even larger icons for Font Awesome and Glyphicons
 * Updated readme.txt to include instructions about removing these default widgets
+* Added icon-xlg CSS class to easily make even larger icons for Font Awesome and Glyphicons
 * Moved flat-bootstrap-child from being a submodule to included and managed directly by github in this parent theme
 
 = 1.2 =
