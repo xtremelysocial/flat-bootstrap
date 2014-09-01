@@ -18,11 +18,13 @@ if ( ! function_exists('xsbf_is_fullwidth') ) :
 function xsbf_is_fullwidth() {
 
 	/* for pages, check the page template */
-	if ( is_page() AND + 
+	if ( is_page() AND ( + 
+		is_page_template( 'page-fullpostsnoheader.php' ) OR + 
 		is_page_template( 'page-fullwidth-noheader.php' ) OR + 
 		is_page_template( 'page-fullwidth.php' ) OR +
 		is_page_template( 'page-fullwithposts.php' ) OR +
 		is_page_template( 'page-fullwithsubpages.php' )
+		)
 		) {
 			return true;
 
