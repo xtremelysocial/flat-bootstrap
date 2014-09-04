@@ -99,9 +99,5 @@
 
 	</header><!-- #masthead -->
 
-	<?php // Page bottom (before footer) widget area 
-	//get_sidebar( 'pagetop' ); 
-	?>
-
 	<?php // Set up the content area (but don't put it in a container) ?>	
 	<div id="content" class="site-content">
