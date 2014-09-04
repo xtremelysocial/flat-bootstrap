@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.7
 Tested up to: 3.9.2
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -313,6 +313,12 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.3.1 =
+* Fix for recommended plugin installation which was throwing errors
+* Fix Page template for full-width with recent posts and no header (page-fullpostsnoheader.php) to put content embedded by plugins into a container
+* Style Jetpack contact form so email body text is the same width as the other fields
+* Use bold font for active navigation tab so its easier to distinguish from the other tabs
 
 = 1.3 =
 * Added responsive video! This works automatically as long as the Jetpack plugin is active.

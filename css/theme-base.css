@@ -562,7 +562,7 @@ form.contact-form input[type='text'],
 form.contact-form input[type='email'], 
 form.contact-form textarea {
     display: block;
-    width: 100%;
+    width: 98%;
     height: 36px;
     padding: 6px 12px;
     font-size: 16px;
@@ -592,6 +592,7 @@ form.contact-form textarea:focus {
 .nav-tabs>li.active>a:hover, 
 .nav-tabs>li.active>a:focus {
 	color: inherit;
+	font-weight: 500;	
 }
 
 /* Style <code> tag like <pre> tag so its white instead of red */
