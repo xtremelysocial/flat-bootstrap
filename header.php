@@ -33,8 +33,8 @@
 		  * IT BELOW THE NAV BAR (VIA CONTENT-HEADER.PHP)
 		  */
 		global $xsbf_theme_options;
-		$custom_header_above_nav = isset ( $xsbf_theme_options['custom_header_above_nav'] ) ? $xsbf_theme_options['custom_header_above_nav'] : false;
-		if ( $custom_header_above_nav ) :
+		$custom_header_location = isset ( $xsbf_theme_options['custom_header_location'] ) ? $xsbf_theme_options['custom_header_location'] : 'content-header';
+		if ( $custom_header_location == 'header' ) :
 		?>
 			<div id="site-branding" class="site-branding">
 		
@@ -62,7 +62,7 @@
 			</div><!-- .site-branding -->
 
 		<?php			
-		endif; // $custom_header_above_nav
+		endif; // $custom_header_location
 		?>			
 
 		<?php

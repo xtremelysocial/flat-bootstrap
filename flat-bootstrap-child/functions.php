@@ -30,6 +30,9 @@
  * fontawesome - Whether to load font-awesome font set or not
  * bootstrap_gradients - Whether to load Bootstrap "theme" CSS for gradients
  * navbar_classes - One or more of navbar-default, navbar-inverse, navbar-fixed-top, etc.
+ * custom_header_location - If 'header', displays the custom header above the navbar. If
+ * 		'content-header', displays it below the navbar in place of the colored content-
+ *		header section.
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
  * sample_widgets - Whether to display sample widgets in the footer and page-bottom widet
@@ -40,20 +43,20 @@
  * need to update your child themes.
  */
 $xsbf_theme_options = array(
-	'background_color' 		=> 'f2f2f2',
-	'content_width' 		=> 1170,
-	'embed_video_width' 	=> 1170,
-	'embed_video_height' 	=> null, // i.e. calculate it automatically
-	'post_formats' 			=> null,
-	'touch_support' 		=> true,
-	'fontawesome' 			=> true,
-	'bootstrap_gradients' 	=> false,
-	'navbar_classes'		=> 'navbar-default navbar-static-top',
-	'image_keyboard_nav' 	=> true,
-	'sample_widgets' 		=> true, // for possible future use
-	'sample_footer_menu'	=> true
+	//'background_color' 		=> 'f2f2f2',
+	//'content_width' 		=> 1170,
+	//'embed_video_width' 	=> 1170,
+	//'embed_video_height' 	=> null, // i.e. calculate it automatically
+	//'post_formats' 			=> null,
+	//'touch_support' 		=> true,
+	//'fontawesome' 			=> true,
+	//'bootstrap_gradients' 	=> false,
+	//'navbar_classes'		=> 'navbar-default navbar-static-top',
+	//'custom_header_location' 	=> 'header',
+	//'image_keyboard_nav' 	=> true,
+	//'sample_widgets' 		=> true, // for possible future use
+	//'sample_footer_menu'	=> true
 );
-
 
 /*
  * OVERRIDE THE SITE CREDITS TO GET RID OF THE "THEME BY XTREMELYSOCIAL" AND JUST LEAVE

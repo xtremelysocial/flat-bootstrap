@@ -25,8 +25,9 @@
  * fontawesome - Whether to load font-awesome font set or not
  * bootstrap_gradients - Whether to load Bootstrap "theme" CSS for gradients
  * navbar_classes - One or more of navbar-default, navbar-inverse, navbar-fixed-top, etc.
- * custom_header_above_nav - If true, puts a smaller (200px high) image above the navbar.
- *		If false, puts a large cover-image or section-image below the navbar.
+ * custom_header_location - If 'header', displays the custom header above the navbar. If
+ * 		'content-header', displays it below the navbar in place of the colored content-
+ *		header section.
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
  * sample_widgets - Whether to display sample widgets in the footer and page-bottom widet
@@ -43,7 +44,7 @@ $defaults = array(
 	'fontawesome' 				=> true,
 	'bootstrap_gradients' 		=> false,
 	'navbar_classes'			=> 'navbar-default navbar-static-top',
-	'custom_header_above_nav' 	=> true,
+	'custom_header_location' 	=> 'header',
 	'image_keyboard_nav' 		=> true,
 	'sample_widgets' 			=> true,
 	'sample_footer_menu'		=> true

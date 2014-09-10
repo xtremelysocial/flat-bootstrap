@@ -19,8 +19,7 @@
 	 */
 	 global $xsbf_theme_options;
 	 global $content_width;
-	 //$custom_header_location = $xsbf_theme_options['custom_header_location'];
-	$custom_header_location = isset ( $xsbf_theme_options['custom_header_above_nav'] ) ? 'header' : 'content-header';
+	 $custom_header_location = isset ( $xsbf_theme_options['custom_header_location'] ) ? $xsbf_theme_options['custom_header_location'] : 'content-header';
 	 $image_url = $image_width = $image_type = null;
 	 $title = $subtitle = $description = null;
 	 
