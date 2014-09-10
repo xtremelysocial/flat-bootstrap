@@ -12,12 +12,6 @@
  * OVERALL STYLES
  */
 
-/* Google fonts */
-/*
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);
-*/
-
 body {
 	font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
     font-weight: 300;
@@ -97,12 +91,6 @@ blockquote {
 .navbar-brand:focus {
     color: #19b798;
 }
-
-/*
-#page {
-	background-color: #f2f2f2;
-}
-*/
 
 /* Tone down field labels in the comments section and wherever else */
 label {
@@ -612,16 +600,6 @@ button.btn.btn-hollow:hover {
     color: #2f2f2f;
     background-color: #fff
 }
-/*.white a.btn.btn-hollow, 
-.bg-white a.btn.btn-hollow, 
-.offwhite a.btn.btn-hollow, 
-.bg-offwhite a.btn.btn-hollow, 
-.lightgray a.btn.btn-hollow, 
-.bg-lightgray a.btn.btn-hollow, 
-.gray a.btn.btn-hollow, 
-.bg-gray a.btn.btn-hollow, 
-.darkgray a.btn.btn-hollow,
-.bg-darkgray a.btn.btn-hollow {*/
 .white button.btn.btn-hollow, 
 .white .btn.btn-hollow, 
 .bg-white button.btn.btn-hollow, 

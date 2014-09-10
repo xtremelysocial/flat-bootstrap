@@ -13,42 +13,46 @@
  * 
  * Parameters:
  * background_color - Hex code for default background color without the #. eg) ffffff
- * content_width - Only for determining "full width" image. Actual width in Bootstrap.css.
- * 		1170 for screens over 1200px resolution, otherwise 970.
- * embed_video_width - Sets the width of videos that use the <embed> tag. This defaults
- * 		to the smallest width of content with a sidebar before the sidebar collapses.
- *		The height is automatically set at a 16:9 ratio unless overridden.
+ * content_width - Only for determining "full width" image. Actual width in Bootstrap.css
+ * 		is 1170 for screens over 1200px resolution, otherwise 970.
+ * embed_video_width - Sets the maximum width of videos that use the <embed> tag. The
+ * 		default is 1170 to handle full-width page templates. If you will ALWAYS display
+ * 		the sidebar, can set to 600 for better performance.
  * embed_video_height - Leave empty to automatically set at a 16:9 ratio to the width
- * post_formats - WordPress extra post formats. i.e. 'aside', 'image', 'video', 'quote',
- * 		'link'
+ * post_formats - Array of WordPress extra post formats. i.e. aside, image, video, quote,
+ * 		and/or link
  * touch_support - Whether to load touch support for carousels (sliders)
  * fontawesome - Whether to load font-awesome font set or not
  * bootstrap_gradients - Whether to load Bootstrap "theme" CSS for gradients
  * navbar_classes - One or more of navbar-default, navbar-inverse, navbar-fixed-top, etc.
+ * custom_header_above_nav - If true, puts a smaller (200px high) image above the navbar.
+ *		If false, puts a large cover-image or section-image below the navbar.
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
  * sample_widgets - Whether to display sample widgets in the footer and page-bottom widet
  		areas.
  * sample_footer_menu - Whether to display sample footer menu with Top and Home links
- *
+ */
+$defaults = array(
+	'background_color' 			=> 'f2f2f2',
+	'content_width' 			=> 1170, // used for full-width images
+	'embed_video_width' 		=> 1170, // allow for full-width pages
+	'embed_video_height' 		=> null, // i.e. calculate it automatically
+	'post_formats' 				=> null,
+	'touch_support' 			=> true,
+	'fontawesome' 				=> true,
+	'bootstrap_gradients' 		=> false,
+	'navbar_classes'			=> 'navbar-default navbar-static-top',
+	'custom_header_above_nav' 	=> true,
+	'image_keyboard_nav' 		=> true,
+	'sample_widgets' 			=> true,
+	'sample_footer_menu'		=> true
+);
+
+/**
  * NOTE: $theme_options is being deprecated and replaced with $xsbf_theme_options. You'll
  * need to update your child themes.
  */
-$defaults = array(
-	'background_color' 		=> 'f2f2f2',
-	'content_width' 		=> 1170,
-	//'embed_video_width' 	=> 600,
-	'embed_video_width' 	=> 1170, // allow for full-width pages
-	'embed_video_height' 	=> null, // i.e. calculate it automatically
-	'post_formats' 			=> null,
-	'touch_support' 		=> true,
-	'fontawesome' 			=> true,
-	'bootstrap_gradients' 	=> false,
-	'navbar_classes'		=> 'navbar-default navbar-static-top',
-	'image_keyboard_nav' 	=> true,
-	'sample_widgets' 		=> true,
-	'sample_footer_menu'	=> true
-);
 if ( isset ( $xsbf_theme_options ) AND is_array ( $xsbf_theme_options ) AND ! empty ( $xsbf_theme_options ) ) {
 	$xsbf_theme_options = wp_parse_args( $xsbf_theme_options, $defaults );
 } elseif ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) {
@@ -233,7 +237,7 @@ function xsbf_scripts() {
 	//}
 	
 	// Our theme's javascript for smooth scrolling and optional for touch carousels
-	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140430', true );
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140905', true );
 
 	// Optional script from _S theme to allow keyboard nvigation through image pages
 	if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {

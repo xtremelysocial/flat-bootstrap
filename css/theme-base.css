@@ -167,6 +167,7 @@ p.screen-reader-text {
 
 .custom-header-image {
 	padding-top: 30px;
+	/*height: 200px;*/
 }
 
 .site-title {
@@ -548,6 +549,7 @@ header.site-header.page-header {
  * "current" in a <span> tag on the link. Also set the hover to match the primary 
  * button color. 
  */
+/*
 .pagination>li>a:hover, 
 .pagination>li>span:hover, 
 .pagination>li>a:focus,
@@ -556,6 +558,7 @@ span.page-numbers.current {
   background-color: #16a085; /*darkgreen*/
   border-color: #16a085;
 }
+*/
 
 /* Format WordPress contact form with Bootstrap's form-control tag */
 form.contact-form input[type='text'], 
