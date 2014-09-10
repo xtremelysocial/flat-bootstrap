@@ -70,11 +70,11 @@ function xsbf_header_style() {
 			position: absolute;
 			clip: rect(1px, 1px, 1px, 1px);
 		}
-		/*.navbar-brand {
+		.navbar-brand {
 			position: relative;
 			clip: auto;
-			display: block;
-		}*/
+			/*display: block;*/
+		}
 	<?php
 		// If the user has set a custom color for the text use that
 		elseif ( HEADER_TEXTCOLOR != $header_text_color ) :
@@ -91,11 +91,11 @@ function xsbf_header_style() {
 	<?php endif; ?>
 
 	<?php if ( display_header_text() ) : ?>
-		/*.navbar-brand {
+		.navbar-brand {
 			position: absolute;
 			clip: rect(1px, 1px, 1px, 1px);
-			//display: none;
-		}*/
+			/*display: none;*/
+		}
 	<?php endif; ?>
 	</style>
 	<?php

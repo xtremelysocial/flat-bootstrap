@@ -14,7 +14,8 @@
  * SET THEME OPTIONS HERE
  *
  * Theme options can be overriden here. These are all set the same defaults as in the 
- * parent theme, but listed here so you can easily change them.
+ * parent theme, but listed here so you can easily change them. Just uncomment (remove
+ * the //) from any lines that you change.
  * 
  * Parameters:
  * background_color - Hex code for default background color without the #. eg) ffffff
@@ -44,18 +45,18 @@
  */
 $xsbf_theme_options = array(
 	//'background_color' 		=> 'f2f2f2',
-	//'content_width' 		=> 1170,
-	//'embed_video_width' 	=> 1170,
-	//'embed_video_height' 	=> null, // i.e. calculate it automatically
+	//'content_width' 			=> 1170,
+	//'embed_video_width' 		=> 1170,
+	//'embed_video_height' 		=> null, // i.e. calculate it automatically
 	//'post_formats' 			=> null,
-	//'touch_support' 		=> true,
+	//'touch_support' 			=> true,
 	//'fontawesome' 			=> true,
 	//'bootstrap_gradients' 	=> false,
-	//'navbar_classes'		=> 'navbar-default navbar-static-top',
+	//'navbar_classes'			=> 'navbar-default navbar-static-top',
 	//'custom_header_location' 	=> 'header',
-	//'image_keyboard_nav' 	=> true,
-	//'sample_widgets' 		=> true, // for possible future use
-	//'sample_footer_menu'	=> true
+	//'image_keyboard_nav' 		=> true,
+	//'sample_widgets' 			=> true, // for possible future use
+	//'sample_footer_menu'		=> true
 );
 
 /*
