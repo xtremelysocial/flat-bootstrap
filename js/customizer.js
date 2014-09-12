@@ -37,8 +37,8 @@
 			} else {
 				$( '.site-title, .site-title a, .site-description' ).css( {
 					'clip': 'auto',
-					'color': to,
-					'position': 'relative'
+					'position': 'relative',
+					'color': to
 				} );
 				$( '.navbar-brand' ).css( {
 					'clip': 'rect(1px, 1px, 1px, 1px)',

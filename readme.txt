@@ -125,11 +125,21 @@ To add a colored section to your content, just add a section like you did above 
 * bg-darkgray
 * bg-lightgreen
 * bg-darkgreen
-* bg-yellow
+* bg-brightgreen (new)
+* bg-darkbrightgreen (new)
 * bg-blue
 * bg-darkblue
+* bg-purple (new)
+* bg-darkpurple (new)
 * bg-midnightblue
+* bg-darkmidnightblue (new)
+* bg-yellow
+* bg-lightorange (new)
+* bg-orange (new)
+* bg-darkorange (new)
 * bg-red
+* bg-brightred (new)
+* bg-darkbrightred (new)
 * bg-almostblack
 * bg-notquiteblack
 * bg-black
@@ -318,7 +328,7 @@ For more information on SemVer, please visit [http://semver.org/].
 * Significantly expanded the color palette to include more blues, yellows, oranges, reds, and even added purples. These are all color-matched to look great together when used for colored sections in your content.
 * Added a default custom header to the theme to show off the feature when previewing the theme and upon initial installation. You can easily replace or remove it in Appearance -> Customize.
 * Added new $xsbf_theme_option for whether the custom header displays above or below the navbar. Rewrote header.php (if header above nav) and content-header.php (if header below nav). This consolidates our code, so child themes do not need to include these files anymore.
-* Simplified the code in custom-header.php related to above as well, so less code overrides are needed in the child themes.
+* Simplified the code in custom-header.php related to above as well, so less code overrides are needed in functions.php in the child themes.
 * Added French language translation thanks to Benoit Hamel <benoit.2.hamel@gmail.com>
 
 = 1.3.1 =
