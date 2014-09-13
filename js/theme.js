@@ -10,20 +10,20 @@
 
 	// Touchscreen swipe through carousel (slider)
 	$(document).ready(function() {  
-	
-			//must target by ID
+	   if ($.mobile) {
+			//must target by ID, so these need to be used in your content
 			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel').swiperight(function() {  
 				$(this).carousel('prev');  
 			});  
 			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel').swipeleft(function() {  
 				$(this).carousel('next');  
 			});  
-		//}
+		}
 	});  
 
-	// Smooth scroll within the page
+	// Smooth scroll to anchor within the page
 	$(document).ready(function() {
-	  $('.smoothscroll').click(function() {
+		$('.smoothscroll').click(function() {
 		  var target = $(this.hash);
 		  var offset = $('body').css('padding-top');
 		  if (offset) offset = offset.replace('px','');
@@ -34,7 +34,7 @@
 			}, 1000);
 			return false;
 		  }
-	  });
+	});
 	});
 	
 } )( jQuery );

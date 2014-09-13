@@ -104,8 +104,8 @@ endif; // xsbf_header_style
  * This function is NOT used by the Customizer, just the stand-alone header upload screen.
  * Since the front-end CSS is not loaded in Admin, all the heading styles need to be 
  * inlined here to match the front-end CSS, including the image, h1, and h2 styles. This
- * function does NOT need to handle hiding or displaying text as that is handled with
- * /js/customizer.js.
+ * function does NOT need to handle hiding or displaying text as that is handled by core
+ * WordPress.
  *
  * @see xsbf_custom_header_setup().
  */
@@ -129,7 +129,7 @@ if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
 		text-decoration: none;
 	}
 	#headimg h2 {
-		font: normal normal 300 24px/26px Raleway, Arial, 'Helvetica Neue', sans-serif;
+		font: 300 24px/26px Raleway, Arial, 'Helvetica Neue', sans-serif;
 	}
 
 	<?php // If text color not overriden, use default link color ?>

@@ -118,6 +118,10 @@ function xsbf_setup() {
 		add_theme_support( 'post-formats', $xsbf_theme_options['post_formats'] );
 	 }
 
+	// Enable support for excerpts on Pages. This is mainly for the Page with Subpages
+	// page template, but also nice for search results.
+	add_post_type_support( 'page', 'excerpt' );
+
 	// Make theme available for translation. Translations can be filed in the /languages/
 	// directory. If you want to translate this theme, please contact me!
 	load_theme_textdomain( 'flat-bootstrap', get_template_directory() . '/languages' );
@@ -202,18 +206,14 @@ function xsbf_scripts() {
 	}
 	
 	// Our base WordPress CSS that handles default margins, paddings, etc.
-	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', '', '20140506', 'all' );
+	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', '', '20140913', 'all' );
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140724', 'all' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140913', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
 	// Load Google Fonts: Lato and Raleway
-/*
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);
-*/
 	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700',array(), null, 'screen' );	
 
 	// Add font-awesome support	
@@ -233,12 +233,12 @@ function xsbf_scripts() {
 
 	// jquery mobile script is a custom download with ONLY "touch" functions. Load
 	// this just on single posts and pages where a carousel might be placed
-	//if ( $xsbf_theme_options['touch_support'] AND wp_is_mobile() AND ( is_singular() OR is_front_page() ) ) {
+	if ( $xsbf_theme_options['touch_support'] AND wp_is_mobile() AND is_singular() ) {
 		wp_enqueue_script( 'jquerymobile', get_template_directory_uri() . '/jquerymobile/jquery.mobile.custom.min.js', array('jquery'), '1.4.0', true );
-	//}
+	}
 	
 	// Our theme's javascript for smooth scrolling and optional for touch carousels
-	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140905', true );
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140913', true );
 
 	// Optional script from _S theme to allow keyboard nvigation through image pages
 	if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {
