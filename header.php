@@ -42,7 +42,7 @@
 			// Get custom header image and determine its size
 			if ( get_header_image() ) {
 			?>
-				<div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); height: <?php echo get_custom_header()->height ?>px;">
+				<div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); width: <?php echo get_custom_header()->width; ?>px; height: <?php echo get_custom_header()->height ?>px;">
 				<div class="container">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>

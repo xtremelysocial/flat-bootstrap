@@ -168,7 +168,8 @@ p.screen-reader-text {
 }
 
 /** 
- * STYLE THE MAIN COMPONENTS OF THIS THEME
+ * STYLE THE CORE COMPONENTS OF THIS THEME. MOST OF THESE CLASSES ARE FROM THE UNDERLYING
+ * _S (STARTER) THEME.
  */
 
 /* Limit the page for really wide screens, such as an iMac */
@@ -178,8 +179,11 @@ p.screen-reader-text {
 }
 
 .custom-header-image {
-	padding-top: 30px;
-	/*height: 200px;*/
+	margin: 0 auto;
+	background-repeat: none;
+	background-position: center center;	
+	max-width: 100%;
+	padding: 30px 0;
 }
 
 .site-title {
@@ -565,7 +569,7 @@ code {
 }
 
 /**
- * ADD NEW STYLES TO HANDLE THEME FEATURES
+ * ADD NEW STYLES TO HANDLE THEME FEATURES, SUCH AS HEADER IMAGES AND FEATURED IMAGES
  */
 .section-image, 
 .cover-image {

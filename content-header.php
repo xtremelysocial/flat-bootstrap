@@ -120,8 +120,13 @@
 		$title = __( 'Links', 'flat-bootstrap' );
 	*/
 
-	} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) ) {
+	/*} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
+		$title = __( 'Portfolio', 'flat-bootstrap' );*/
+	} elseif ( is_post_type_archive( 'jetpack-portfolio' ) ) {
 		$title = __( 'Portfolio', 'flat-bootstrap' );
+
+	} elseif ( is_tax( 'jetpack-portfolio-type' ) || is_tax( 'jetpack-portfolio-tag' ) ) {
+		$title = single_term_title( null, false );
 
 	} else {
 		//_e( 'Oops, we need to update content-header to catch this page type', 'flat-bootstrap' );
