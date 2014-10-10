@@ -326,9 +326,10 @@ For more information on SemVer, please visit [http://semver.org/].
 
 = 1.4 =
 * Significantly expanded the color palette to include more blues, yellows, oranges, reds, and even added purples. These are all color-matched to look great together when used for colored sections in your content.
-* Added a default custom header to the theme to show off the feature when previewing the theme and upon initial installation. You can easily replace or remove it in Appearance -> Customize.
+* Changed the automatic cropping of the custom header image to crop from the center. This way if your image has the center as focus, that center is what will be displayed on smaller screens. If you need to change it back to crop top left, then add custom CSS of .custom-header-image { background-position: top left; }
 * Added new $xsbf_theme_option for whether the custom header displays above or below the navbar. Rewrote header.php (if header above nav) and content-header.php (if header below nav). This consolidates our code, so child themes do not need to include these files anymore.
 * Simplified the code in custom-header.php related to above as well, so less code overrides are needed in functions.php in the child themes.
+* Enhanced the Page - With Subpages template to display links to next and previous sibling pages. This lets users easily page through all of the subpages without going back to the parent page.
 * Remove Jetpack (sharedaddy) sharing links from post excerpts.
 * Cleaned up Jetpack infinite scroll feature so Page Bottom and Footer widgets don't show until user reaches the last post.
 * Fixed logic to only load jquery mobile touch support on individual pages and posts where a carousel might be placed. Touch support can now also be turned off in child theme's functions.php by setting $xsbf_theme_options['touch_support'] = false.

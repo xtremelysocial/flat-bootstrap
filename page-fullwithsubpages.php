@@ -89,7 +89,7 @@ get_header(); ?>
 		wp_reset_postdata();		
 		?>
 					<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<div class="container"><footer class="entry-meta"><div class="edit-link">', '</div></div></footer>' ); ?>
-
+					
 				</div><!-- .entry-content -->
 	
 			</article><!-- #post-## -->
