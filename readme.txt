@@ -306,6 +306,27 @@ WordPress as of version 3.8 doesn't let you have post templates like the page te
 
 See the section above How to Use this Theme for more information on the various page templates and full-width post template.
 
+= How do I change the link colors? =
+
+Changing the link colors in the main post / page content area is pretty easy with CSS:
+
+`a { color: #16a085; }
+a:hover, a:focus { color: #19B798; }`
+
+Note that links in the footer, copyright section, or any colored sections you've added to a page will still use their original link colors. This is so the links look good and don't have conflicting color combinations.
+
+= How do I replace the site title with a custom logo? =
+
+After WordPress.com releases their official plugin for custom logos, we plan to support that. In the meantime, you can do it with something like this in CSS:
+
+`.site-title a {
+	background: url('http://yourdomain.com/images/logo.png') left top no-repeat;
+	display: block;
+	text-indent: -9999px;
+	width: 100px;
+	height: 100px;
+}`
+
 
 == VERSIONING ==
 
