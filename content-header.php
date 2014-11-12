@@ -5,7 +5,7 @@
  * This template is called from other page and archive templates to display the content
  * header, which is essentially the header for the page. If there is a wide featured
  * image, it displays that with the page title and subtitle/description overlaid on it.
- * Otherwise, it just displays that text.
+ * Otherwise, it just displays the text on a colored background.
  *
  * @package flat-bootstrap
  */
@@ -78,12 +78,24 @@
 			$description = $attachment_post->post_content;
 		}
 
-	} elseif ( is_post_type_archive( 'jetpack-testimonial' ) ) {
-		$title = get_theme_mod( 'jetpack-testimonial-page-title', __( 'Testimonials', 'flat-bootstrap' ) );
+	} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
+		$title = __( 'Portfolio', 'flat-bootstrap' );
 
-	} elseif ( $post->post_type == 'jetpack-testimonial' ) {
-		$title = get_theme_mod( 'jetpack-testimonial-page-title', __( 'Testimonials', 'flat-bootstrap' ) );
-		$subtitle = get_the_title();
+		if ( is_tax( 'jetpack-portfolio-type' ) || is_tax( 'jetpack-portfolio-tag' ) ) {
+			$subtitle = single_term_title( null, false );
+		}
+
+	} elseif ( is_post_type_archive( 'jetpack-testimonial' ) OR $post->post_type == 'jetpack-testimonial' ) {
+		$testimonial_options = get_theme_mod( 'jetpack_testimonials' );
+		if ( $testimonial_options ) { 
+			$title = $testimonial_options['page-title'];
+		} else {
+			$title = __( 'Testimonials', 'flat-bootstrap' );
+		}
+
+		if ( !is_post_type_archive( 'jetpack-testimonial' ) AND $post->post_type == 'jetpack-testimonial' ) {
+			$subtitle = get_the_title();
+		}
 
 	} elseif ( is_page() OR is_single() ) { 
 		$title = get_the_title();
@@ -128,20 +140,12 @@
 	} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
 		$title = __( 'Links', 'flat-bootstrap' );
 
-	/*} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
-		$title = __( 'Portfolio', 'flat-bootstrap' );*/
-	} elseif ( is_post_type_archive( 'jetpack-portfolio' ) ) {
-		$title = __( 'Portfolio', 'flat-bootstrap' );
-
-	} elseif ( is_tax( 'jetpack-portfolio-type' ) || is_tax( 'jetpack-portfolio-tag' ) ) {
-		$title = single_term_title( null, false );
-
 	} else {
 		$title = __( 'Archives', 'flat-bootstrap' );
 
 	} //endif is_home()
 
-	//Get the subtitle from the term description or custom subtitle field
+	//If subtitle not set above, first try the term description, then try our custom page subtitle field
 	if ( ! $subtitle ) {
 		$subtitle = term_description();
 		if ( ! $subtitle ) $subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );

@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php // If post, then display the post title and header meta ?>
-	<?php if ( 'post' == get_post_type() ) : ?>
+	<?php if ( in_array( get_post_type(), array ( 'post', 'jetpack-testimonial', 'jetpack-portfolio' ) ) ) : ?>
 		<?php get_template_part( 'content', 'post-header' ); ?>
 	<?php endif; ?>
 

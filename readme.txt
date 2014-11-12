@@ -59,7 +59,7 @@ Copyright: Font Awesome, http://fontawesome.io
 
 == TRANSLATIONS ==
 
-The theme is translation ready, but I don't speak enough of any other language to translate it ;-) I will be more than happy to update the theme with new languages, if anyone wants to help out with that!
+The theme is translation ready and has already been translated to Spanish and French. If you translate the theme to another language, please consider contacting me to have it added to the theme for everyone to use.
 
 
 == INSTALLATION ==
