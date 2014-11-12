@@ -8,36 +8,51 @@
  */
 
 /**
- * Theme options. Can override in child theme. For theme developers, this is array so 
+ * Theme options. Can override in child theme. For theme developers, this is an array so 
  * you can add these items to the customizer and store them all as a single options entry.
  * 
  * Parameters:
  * background_color - Hex code for default background color without the #. eg) ffffff
+ * 
  * content_width - Only for determining "full width" image. Actual width in Bootstrap.css
  * 		is 1170 for screens over 1200px resolution, otherwise 970.
+ * 
  * embed_video_width - Sets the maximum width of videos that use the <embed> tag. The
  * 		default is 1170 to handle full-width page templates. If you will ALWAYS display
  * 		the sidebar, can set to 600 for better performance.
+ * 
  * embed_video_height - Leave empty to automatically set at a 16:9 ratio to the width
+ * 
  * post_formats - Array of WordPress extra post formats. i.e. aside, image, video, quote,
  * 		and/or link
+ * 
  * touch_support - Whether to load touch support for carousels (sliders)
+ * 
  * fontawesome - Whether to load font-awesome font set or not
+ * 
  * bootstrap_gradients - Whether to load Bootstrap "theme" CSS for gradients
+ * 
  * navbar_classes - One or more of navbar-default, navbar-inverse, navbar-fixed-top, etc.
+ * 
  * custom_header_location - If 'header', displays the custom header above the navbar. If
  * 		'content-header', displays it below the navbar in place of the colored content-
  *		header section.
+ * 
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
+ * 
  * sample_widgets - Whether to display sample widgets in the footer and page-bottom widet
  		areas.
+ * 
  * sample_footer_menu - Whether to display sample footer menu with Top and Home links
+ * 
+ * testimonials - Whether to activate testimonials custom post type if Jetpack plugin is 
+ * 		active
  */
 $defaults = array(
 	'background_color' 			=> 'f2f2f2',
 	'content_width' 			=> 1170, // used for full-width images
-	'embed_video_width' 		=> 1170, // allow for full-width pages
+	'embed_video_width' 		=> 1170, // full-width videos on full-width pages
 	'embed_video_height' 		=> null, // i.e. calculate it automatically
 	'post_formats' 				=> null,
 	'touch_support' 			=> true,
@@ -47,7 +62,8 @@ $defaults = array(
 	'custom_header_location' 	=> 'header',
 	'image_keyboard_nav' 		=> true,
 	'sample_widgets' 			=> true,
-	'sample_footer_menu'		=> true
+	'sample_footer_menu'		=> true,
+	'testimonials'				=> true // requires Jetpack plugin
 );
 
 /**
@@ -93,9 +109,6 @@ function xsbf_setup() {
 		'footer' 	=> __( 'Footer Menu', 'flat-bootstrap' ),
 	) );
 
-	// Enable responsive video if Jetpack plugin is active
-	add_theme_support( 'jetpack-responsive-videos' );
-
 	// This feature outputs HTML5 markup for the comment forms, search forms and 
 	// comment lists. As of WordPress v3.6.
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
@@ -121,7 +134,7 @@ function xsbf_setup() {
 	// Enable support for excerpts on Pages. This is mainly for the Page with Subpages
 	// page template, but also nice for search results.
 	add_post_type_support( 'page', 'excerpt' );
-
+	
 	// Make theme available for translation. Translations can be filed in the /languages/
 	// directory. If you want to translate this theme, please contact me!
 	load_theme_textdomain( 'flat-bootstrap', get_template_directory() . '/languages' );
@@ -293,7 +306,8 @@ function xsbf_load_includes() {
 	// Custom functions that act independently of the theme templates. Optional.
 	include_once get_template_directory() . '/inc/extras.php';
 
-	// Jetpack compatibility file to handle endless posts. Optional.
+	// Jetpack compatibility file to handle endless posts, responsive videos,
+	// testimonials custom post type. Optional.
 	include_once get_template_directory() . '/inc/jetpack.php';
 
 	// Recommend plugins that compliment this theme. Optional.

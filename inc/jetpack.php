@@ -13,6 +13,19 @@
  * See: http://jetpack.me/support/infinite-scroll/
  */
 function xsbf_jetpack_setup() {
+	
+	global $xsbf_theme_options;
+
+	// Enable responsive video if Jetpack plugin is active
+	add_theme_support( 'jetpack-responsive-videos' );
+
+	// Enable support for the Testimonials custom post type Note we haven't 
+	// included any special styling, just handle displaying the pages.
+	if( ! empty ( $xsbf_theme_options['testimonials']) ) {
+		add_theme_support( 'jetpack-testimonial' );
+	 }
+
+	// Enable infinite scroll	
 	add_theme_support( 'infinite-scroll', array(
 		//'type'			 => 'click',
 		'container' 	 => 'main',

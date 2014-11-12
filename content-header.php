@@ -47,6 +47,8 @@
 	/* 
 	 * GET THE TEXT TO DISPLAY ON THE IMAGE OR CONTENT HEADER SECTION 
 	 */
+	 
+	 //print_r ( $post ); //TEST
 
 	// If home page is blog and site title already displayed (via header.php), do nothing
 	if ( is_home() AND is_front_page() AND $custom_header_location != 'content-header' ) {
@@ -76,6 +78,13 @@
 			$description = $attachment_post->post_content;
 		}
 
+	} elseif ( is_post_type_archive( 'jetpack-testimonial' ) ) {
+		$title = get_theme_mod( 'jetpack-testimonial-page-title', __( 'Testimonials', 'flat-bootstrap' ) );
+
+	} elseif ( $post->post_type == 'jetpack-testimonial' ) {
+		$title = get_theme_mod( 'jetpack-testimonial-page-title', __( 'Testimonials', 'flat-bootstrap' ) );
+		$subtitle = get_the_title();
+
 	} elseif ( is_page() OR is_single() ) { 
 		$title = get_the_title();
 			
@@ -103,7 +112,7 @@
 
 	} elseif ( is_year() ) {
 		$title = sprintf( __( 'Year: %s', 'flat-bootstrap' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
-	/*
+	
 	} elseif ( is_tax( 'post_format', 'post-format-aside' ) ) {
 		$title = __( 'Asides', 'flat-bootstrap' );
 
@@ -118,7 +127,6 @@
 
 	} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
 		$title = __( 'Links', 'flat-bootstrap' );
-	*/
 
 	/*} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
 		$title = __( 'Portfolio', 'flat-bootstrap' );*/
@@ -129,8 +137,6 @@
 		$title = single_term_title( null, false );
 
 	} else {
-		//_e( 'Oops, we need to update content-header to catch this page type', 'flat-bootstrap' );
-		//the_title();
 		$title = __( 'Archives', 'flat-bootstrap' );
 
 	} //endif is_home()

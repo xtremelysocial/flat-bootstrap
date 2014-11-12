@@ -351,7 +351,8 @@ For more information on SemVer, please visit [http://semver.org/].
 * Added new $xsbf_theme_option for whether the custom header displays above or below the navbar. Rewrote header.php (if header above nav) and content-header.php (if header below nav). This consolidates our code, so child themes do not need to include these files anymore.
 * Simplified the code in custom-header.php related to above as well, so less code overrides are needed in functions.php in the child themes.
 * Enhanced the Page - With Subpages template to display links to next and previous sibling pages. This lets users easily page through all of the subpages without going back to the parent page.
-* Remove Jetpack (sharedaddy) sharing links from post excerpts.
+* Remove Jetpack (sharedaddy) sharing links from post excerpts which were hideously ugly and not useful.
+* Added basic support for the new Jetpack "Testimonails" post type. The title and description will display properly on the pages.
 * Cleaned up Jetpack infinite scroll feature so Page Bottom and Footer widgets don't show until user reaches the last post.
 * Fixed logic to only load jquery mobile touch support on individual pages and posts where a carousel might be placed. Touch support can now also be turned off in child theme's functions.php by setting $xsbf_theme_options['touch_support'] = false.
 * Added French language translation thanks to Benoit Hamel <benoit.2.hamel@gmail.com>
