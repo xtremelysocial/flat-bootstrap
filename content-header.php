@@ -48,8 +48,6 @@
 	 * GET THE TEXT TO DISPLAY ON THE IMAGE OR CONTENT HEADER SECTION 
 	 */
 	 
-	 //print_r ( $post ); //TEST
-
 	// If home page is blog and site title already displayed (via header.php), do nothing
 	if ( is_home() AND is_front_page() AND $custom_header_location != 'content-header' ) {
 	

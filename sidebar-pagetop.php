@@ -11,6 +11,8 @@
 ?>
 
 <?php 
+global $xsbf_theme_options;
+	
 /* If page top "sidebar" has widgets, then display them */
 $sidebar_pagetop = get_dynamic_sidebar( 'Page Top' );
 if ( $sidebar_pagetop ) :
@@ -20,9 +22,9 @@ if ( $sidebar_pagetop ) :
 	</div><!-- .sidebar-pagetop -->
 
 <?php
-/* Otherwise, if user is previewing this theme, then show an example */
-/*
-elseif ( xsbf_theme_preview() ) :
+/* Otherwise, show an example if we are on the front page and its set to display the blog */
+/*elseif ( $xsbf_theme_options['sample_widgets'] != false AND is_front_page() AND is_home() ) :
+
 ?>
 	<div id="sidebar-pagetop" class="sidebar-pagetop">
 
