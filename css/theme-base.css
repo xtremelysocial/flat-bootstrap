@@ -159,14 +159,31 @@ p.screen-reader-text {
 	margin-bottom: 10px;
 }
 
+/* For standard WordPress slideshow, get rid of black background. We want to leave 
+ * whatever color background we have 
+ */
+.slideshow-window {
+	background-color: transparent !important; 
+	border: none !important;
+}
+
+/** 
+ * STYLE THE CORE COMPONENTS OF THIS THEME. MOST OF THESE CLASSES ARE FROM THE UNDERLYING
+ * _S (STARTER) THEME.
+ */
+
 /* Limit the page for really wide screens, such as an iMac */
-#page {
+#page, .navbar, .after-footer {
 	max-width: 1600px;
 	margin: 0 auto;
 }
 
 .custom-header-image {
-	padding-top: 30px;
+	margin: 0 auto;
+	background-repeat: none;
+	background-position: center center;	
+	max-width: 100%;
+	padding: 30px 0;
 }
 
 .site-title {
@@ -207,14 +224,6 @@ header.content-header {
 .content-header i {
     font-size: 35px;
     text-align: center;
-}
-
-/* For standard WordPress slideshow, get rid of black background. We want to leave 
- * whatever color background we have 
- */
-.slideshow-window {
-	background-color: transparent !important; 
-	border: none !important;
 }
 
 .content-area {
@@ -306,22 +315,6 @@ div.entry-meta,
 	}
 }
 
-/* Globally hidden elements when Infinite Scroll is supported and in use.
- * Older / Newer Posts Navigation (always hidden)
- * Theme Footer (when set to scrolling) 
- */
-.infinite-scroll .paging-navigation, 
-.infinite-scroll.neverending .site-footer { 
-	display: none;
-}
-
-/* When Infinite Scroll has reached its end we need to re-display elements that
- * were hidden before (via .neverending) 
- */
-.infinity-end.neverending .site-footer {
-	display: block;
-}
-
 /* Make sure no content breaks the layout */
 img, embed, iframe, media, swf, pre, code, container, select, .videopress-placeholder {
 	display: block;
@@ -404,15 +397,11 @@ footer#colophon.site-footer ul li {
 .comment-form [for="url"],
 .comment-form [for="comment"] {
 	float: left;
-	/*padding: 5px 0;*/
-	/*width: 120px;*/
 	width: 80px;
 }
 .comment-form input[type="text"],
 .comment-form input[type="email"],
 .comment-form input[type="url"] {
-	/*max-width: 270px;*/
-	/*width: 60%;*/
 	max-width: 310px;
 	width: 70%;
 }
@@ -480,11 +469,6 @@ p.comment-subscription-form {
 	border-bottom: 1px solid #ccc;
 }
 
-/* Get rid of the smiley face when using Jetpack stats */
-img.wp-smiley {
-     display: inline-block;
-}
-
 /**
  * SET SOME BOOTSTRAP STYLES AS A BASE FOR ALL THEMES
  */
@@ -548,42 +532,16 @@ header.site-header.page-header {
  * "current" in a <span> tag on the link. Also set the hover to match the primary 
  * button color. 
  */
+/*
 .pagination>li>a:hover, 
 .pagination>li>span:hover, 
 .pagination>li>a:focus,
 .pagination>li>span:focus, 
 span.page-numbers.current {
   background-color: #16a085; /*darkgreen*/
-  border-color: #16a085;
+  /*border-color: #16a085;
 }
-
-/* Format WordPress contact form with Bootstrap's form-control tag */
-form.contact-form input[type='text'], 
-form.contact-form input[type='email'], 
-form.contact-form textarea {
-    display: block;
-    width: 98%;
-    height: 36px;
-    padding: 6px 12px;
-    font-size: 16px;
-    line-height: 1.428571429;
-    color: #a1a1a1;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
-}
-form.contact-form input[type='text']:focus, 
-form.contact-form input[type='email']:focus, 
-form.contact-form textarea:focus {
-    color: #555;
-}
+*/
 
 .jumbotron {
 	margin-bottom: 0;
@@ -611,7 +569,7 @@ code {
 }
 
 /**
- * ADD NEW STYLES TO HANDLE THEME FEATURES
+ * ADD NEW STYLES TO HANDLE THEME FEATURES, SUCH AS HEADER IMAGES AND FEATURED IMAGES
  */
 .section-image, 
 .cover-image {
@@ -765,4 +723,59 @@ i.icon-xlg {
 }
 .centered {
     text-align: center;
+}
+
+/* 
+ * STYLE SOME COMMON WORDPRESS PLUGINS, SUCH AS JETPACK
+ */
+
+/* Globally hidden elements when Infinite Scroll is supported and in use.
+ * Older / Newer Posts Navigation (always hidden)
+ * Theme Footer and Page Bottom widget area (when set to scrolling) 
+ */
+.infinite-scroll .paging-navigation, 
+.infinite-scroll.neverending .site-footer,
+.infinite-scroll.neverending .sidebar-pagebottom { 
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that
+ * were hidden before (via .neverending) 
+ */
+.infinity-end.neverending .site-footer,
+.infinity-end.neverending .sidebar-pagebottom {
+	display: block;
+}
+
+/* Get rid of the smiley face when using Jetpack stats */
+img.wp-smiley {
+     display: inline-block;
+}
+
+/* Format Jetpack contact form with Bootstrap's form-control tag */
+form.contact-form input[type='text'], 
+form.contact-form input[type='email'], 
+form.contact-form textarea {
+    display: block;
+    width: 98%;
+    height: 36px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.428571429;
+    color: #a1a1a1;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+form.contact-form input[type='text']:focus, 
+form.contact-form input[type='email']:focus, 
+form.contact-form textarea:focus {
+    color: #555;
 }

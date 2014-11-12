@@ -28,19 +28,26 @@
 				} );
 				$( '.navbar-brand' ).css( {
 					'clip': 'auto',
-					/*'color': to,*/
-					'position': 'relative'
+					'position': 'relative',
+					'display': 'block'
 				} );
+				/*$( '.navbar-collapse' ).css( {
+					'width': '100%'
+				} );*/
 			} else {
 				$( '.site-title, .site-title a, .site-description' ).css( {
 					'clip': 'auto',
-					'color': to,
-					'position': 'relative'
+					'position': 'relative',
+					'color': to
 				} );
 				$( '.navbar-brand' ).css( {
 					'clip': 'rect(1px, 1px, 1px, 1px)',
-					'position': 'absolute'
+					'position': 'absolute',
+					'display': 'none'
 				} );
+				/*$( '.navbar-collapse' ).css( {
+					'width': 'auto'
+				} );*/
 			}
 		} );
 	} );

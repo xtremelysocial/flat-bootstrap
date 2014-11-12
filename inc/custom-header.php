@@ -5,15 +5,6 @@
  * Implements the WordPress Custom Header feature
  * http://codex.wordpress.org/Custom_Headers
  *
- * You can add an optional custom header image to header.php like so ...
-
-	<?php if ( get_header_image() ) : ?>
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
-	</a>
-	<?php endif; // End header image check. ?>
-
- *
  * @package flat-bootstrap
  */
 
@@ -48,13 +39,20 @@ if ( ! function_exists( 'xsbf_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
+ * This function handles BOTH previewing in the customizer as well as the actual display
+ * of the header in the front-end. This function ONLY needs to handle hiding or displaying
+ * the site title and custom header text color. All other styles are from the front-end 
+ * CSS.
+ *
  * @see xsbf_custom_header_setup().
  */
 function xsbf_header_style() {
+
+	// get_header_textcolor() returns 'blank' if hiding site title and tagline or returns
+	// any hex color value. HEADER_TEXTCOLOR is always the default color.
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
-	// get_header_textcolor() options: HEADER_TEXTCOLOR is default, hide text (returns 'blank') or any hex value
 	if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() ) 
 		return;
 
@@ -70,10 +68,10 @@ function xsbf_header_style() {
 			position: absolute;
 			clip: rect(1px, 1px, 1px, 1px);
 		}
-		/*.navbar-brand {
+		.navbar-brand {
 			position: relative;
 			clip: auto;
-		}*/
+		}
 	<?php
 		// If the user has set a custom color for the text use that
 		elseif ( HEADER_TEXTCOLOR != $header_text_color ) :
@@ -103,6 +101,12 @@ endif; // xsbf_header_style
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
+ * This function is NOT used by the Customizer, just the stand-alone header upload screen.
+ * Since the front-end CSS is not loaded in Admin, all the heading styles need to be 
+ * inlined here to match the front-end CSS, including the image, h1, and h2 styles. This
+ * function does NOT need to handle hiding or displaying text as that is handled by core
+ * WordPress.
+ *
  * @see xsbf_custom_header_setup().
  */
 if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
@@ -110,55 +114,22 @@ if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
 	$header_image = get_header_image();
 ?>
 	<style type="text/css" id="xsbf-admin-header-css">
+	/* This should match the CSS for the custom header */
 	.appearance_page_custom-header #headimg {
 		border: none;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing:    border-box;
-		box-sizing:         border-box;
-		<?php
-		if ( ! empty( $header_image ) ) {
-			echo 'background: url(' . esc_url( $header_image ) . ') no-repeat scroll top; background-size: 1600px auto;';
-		} ?>
-		padding: 0 20px;
+		min-height: 200px;
+		padding-left: 20px;
 	}
-	#headimg .home-link {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing:    border-box;
-		box-sizing:         border-box;
-		margin: 0 auto;
-		max-width: 1040px;
-		<?php
-		if ( ! empty( $header_image ) || display_header_text() ) {
-			echo 'min-height: 200px;';
-		} ?>
-		width: 100%;
-	}
-
-	<?php // Hide site title and tagline if user asked for that ?>
-	<?php if ( ! display_header_text() ) : ?>
-	#headimg h1,
-	#headimg h2 {
-		position: absolute !important;
-		clip: rect(1px 1px 1px 1px); /* IE7 */
-		clip: rect(1px, 1px, 1px, 1px);
-	}
-	<?php endif; ?>
 
 	#headimg h1 {
 		font: bold 41px/45px Raleway, Arial, 'Helvetica Neue', sans-serif;
-		margin: 25px 0 11px;
+		margin: 55px 0 2px;
 	}
 	#headimg h1 a {
 		text-decoration: none;
 	}
 	#headimg h2 {
 		font: 300 24px/26px Raleway, Arial, 'Helvetica Neue', sans-serif;
-		margin: 10px 0 25px;
-		/*text-shadow: none;*/
-	}
-	.default-header img {
-		max-width: 230px;
-		width: auto;
 	}
 
 	<?php // If text color not overriden, use default link color ?>
@@ -183,7 +154,6 @@ if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
 	}
 	<?php endif; ?>
 
-
 	</style>
 <?php
 }
@@ -194,12 +164,16 @@ endif; // ! function_exists
  *
  * This callback overrides the default markup displayed there.
  *
+ * This needs to output the HTML that ties to the inline CSS above to style the custom
+ * header image, site title, and tagline.
+ *
  * @return void
  */
 if ( ! function_exists( 'xsbf_admin_header_image' ) ) :
 function xsbf_admin_header_image() {
 	?>
 	<div id="headimg" style="background: url(<?php header_image(); ?>) no-repeat scroll top; background-size: 1600px auto;">
+	<div id="headimg">
 		<?php $style = ' style="color:#' . get_header_textcolor() . ';"'; ?>
 		<div class="home-link">
 			<h1 class="displaying-header-text"><a id="name"<?php echo $style; ?> onclick="return false;" href="#"><?php bloginfo( 'name' ); ?></a></h1>

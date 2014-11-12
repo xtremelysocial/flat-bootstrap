@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.7
-Tested up to: 3.9.2
-Stable tag: 1.3.1
+Requires at least: 3.8
+Tested up to: 4.0
+Stable tag: 1.4
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -59,7 +59,7 @@ Copyright: Font Awesome, http://fontawesome.io
 
 == TRANSLATIONS ==
 
-The theme is translation ready, but I don't speak enough of any other language to translate it ;-) I will be more than happy to update the theme with new languages, if anyone wants to help out with that!
+The theme is translation ready and has already been translated to Spanish and French. If you translate the theme to another language, please consider contacting me to have it added to the theme for everyone to use.
 
 
 == INSTALLATION ==
@@ -125,11 +125,21 @@ To add a colored section to your content, just add a section like you did above 
 * bg-darkgray
 * bg-lightgreen
 * bg-darkgreen
-* bg-yellow
+* bg-brightgreen (new)
+* bg-darkbrightgreen (new)
 * bg-blue
 * bg-darkblue
+* bg-purple (new)
+* bg-darkpurple (new)
 * bg-midnightblue
+* bg-darkmidnightblue (new)
+* bg-yellow
+* bg-lightorange (new)
+* bg-orange (new)
+* bg-darkorange (new)
 * bg-red
+* bg-brightred (new)
+* bg-darkbrightred (new)
 * bg-almostblack
 * bg-notquiteblack
 * bg-black
@@ -296,6 +306,27 @@ WordPress as of version 3.8 doesn't let you have post templates like the page te
 
 See the section above How to Use this Theme for more information on the various page templates and full-width post template.
 
+= How do I change the link colors? =
+
+Changing the link colors in the main post / page content area is pretty easy with CSS:
+
+`a { color: #16a085; }
+a:hover, a:focus { color: #19B798; }`
+
+Note that links in the footer, copyright section, or any colored sections you've added to a page will still use their original link colors. This is so the links look good and don't have conflicting color combinations.
+
+= How do I replace the site title with a custom logo? =
+
+After WordPress.com releases their official plugin for custom logos, we plan to support that. In the meantime, you can do it with something like this in CSS:
+
+`.site-title a {
+	background: url('http://yourdomain.com/images/logo.png') left top no-repeat;
+	display: block;
+	text-indent: -9999px;
+	width: 100px;
+	height: 100px;
+}`
+
 
 == VERSIONING ==
 
@@ -313,6 +344,18 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.4 =
+* Significantly expanded the color palette to include more blues, yellows, oranges, reds, and even added purples. These are all color-matched to look great together when used for colored sections in your content.
+* Changed the automatic cropping of the custom header image to crop from the center. This way if your image has the center as focus, that center is what will be displayed on smaller screens. If you need to change it back to crop top left, then add custom CSS of .custom-header-image { background-position: top left; }
+* Added new $xsbf_theme_option for whether the custom header displays above or below the navbar. Rewrote header.php (if header above nav) and content-header.php (if header below nav). This consolidates our code, so child themes do not need to include these files anymore.
+* Simplified the code in custom-header.php related to above as well, so less code overrides are needed in functions.php in the child themes.
+* Enhanced the Page - With Subpages template to display links to next and previous sibling pages. This lets users easily page through all of the subpages without going back to the parent page.
+* Remove Jetpack (sharedaddy) sharing links from post excerpts which were hideously ugly and not useful.
+* Added basic support for the new Jetpack "Testimonails" post type. The title and description will display properly on the pages.
+* Cleaned up Jetpack infinite scroll feature so Page Bottom and Footer widgets don't show until user reaches the last post.
+* Fixed logic to only load jquery mobile touch support on individual pages and posts where a carousel might be placed. Touch support can now also be turned off in child theme's functions.php by setting $xsbf_theme_options['touch_support'] = false.
+* Added French language translation thanks to Benoit Hamel <benoit.2.hamel@gmail.com>
 
 = 1.3.1 =
 * Fix for recommended plugin installation which was throwing errors

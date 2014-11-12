@@ -10,31 +10,23 @@
 
 	// Touchscreen swipe through carousel (slider)
 	$(document).ready(function() {  
-	
-		//if ( jQuery.isFunction('swiperight') ) {
-		//if(typeof swiperight == 'function') {		
-		//if (typeof swiperight !== 'undefined' && $.isFunction(swiperight)) {
-			//must target by ID
+	   if ($.mobile) {
+			//must target by ID, so these need to be used in your content
 			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel').swiperight(function() {  
 				$(this).carousel('prev');  
 			});  
 			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel').swipeleft(function() {  
 				$(this).carousel('next');  
 			});  
-		//}
+		}
 	});  
 
-	// Smooth scroll within the page
-	//$(function() {
+	// Smooth scroll to anchor within the page
 	$(document).ready(function() {
-	  //$('a[href*=#]:not([href=#])').click(function() {
-	  $('.smoothscroll').click(function() {
-		//if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+		$('.smoothscroll').click(function() {
 		  var target = $(this.hash);
 		  var offset = $('body').css('padding-top');
-		  //var offset = $('body').outerHeight;
 		  if (offset) offset = offset.replace('px','');
-		  //console.log ( 'offset=' + offset ); 
 		  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 		  if (target.length) {
 			$('html,body').animate({
@@ -42,8 +34,7 @@
 			}, 1000);
 			return false;
 		  }
-		//}
-	  });
+	});
 	});
 	
 } )( jQuery );

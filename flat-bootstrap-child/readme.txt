@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.7
-Tested up to: 3.9
-Stable tag: 1.2
+Requires at least: 3.8
+Tested up to: 4.0
+Stable tag: 1.4
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -48,9 +48,10 @@ For more information on Flat Bootstrap, see the "How to use our themes" [http://
 
 == CHANGELOG ==
 
-= 1.3 =
+= 1.4 =
+* Added $xsbf_theme_option to specify whether the custom header image displays above the navbar (like this child theme and its parent) or below the navbar (like other child themes such as Link, Pratt, Spot)
 * Updated maximum embedded video width to 1170px to match full-width page template
-* Bumped version to 1.3 to match parent theme (Flat Bootstrap)
+* Bumped version to 1.4 to match parent theme (Flat Bootstrap)
 
 = 1.2 =
 * Changed theme_options variable to xsbf_theme_options to avoid collision with plugins

@@ -15,18 +15,22 @@
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 		<?php endif; ?>
 
-		<?php $the_date = get_the_date(); ?>
-		<p><span class="posted-on"><span class="glyphicon glyphicon-calendar"></span>&nbsp;
-		<?php echo $the_date; ?> 
-		</span>
+		<?php if ( ! in_array( get_post_type(), array ( 'jetpack-testimonial', 'jetpack-portfolio' ) ) ) : ?>
 
-		<?php if ( is_multi_author() ) : ?>
- 			&nbsp;|&nbsp;<span class="by-line">
- 			<span class="glyphicon glyphicon-user"></span>&nbsp;
- 			<span class="author vcard">
-				<?php the_author_posts_link(); ?> 
+			<?php $the_date = get_the_date(); ?>
+			<p><span class="posted-on"><span class="glyphicon glyphicon-calendar"></span>&nbsp;
+			<?php echo $the_date; ?> 
 			</span>
-			</span>
+	
+			<?php if ( is_multi_author() ) : ?>
+	 			&nbsp;|&nbsp;<span class="by-line">
+	 			<span class="glyphicon glyphicon-user"></span>&nbsp;
+	 			<span class="author vcard">
+					<?php the_author_posts_link(); ?> 
+				</span>
+				</span>
+			<?php endif; ?>
+
 		<?php endif; ?>
 
 		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>

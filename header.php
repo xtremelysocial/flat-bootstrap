@@ -25,34 +25,51 @@
 
 	<?php do_action( 'before' ); ?>
 	
-	<header id="masthead" class="site-header" role="banner"><!-- page-header -->
-		<div id="site-branding" class="site-branding">
+	<header id="masthead" class="site-header" role="banner">
 
 		<?php
-		// Get custom header image and determine its size
-		if ( get_header_image() ) {
+		/**
+		  * CUSTOM HEADER IMAGE DISPLAYS HERE FOR THIS THEME, BUT CHILD THEMES MAY DISPLAY
+		  * IT BELOW THE NAV BAR (VIA CONTENT-HEADER.PHP)
+		  */
+		global $xsbf_theme_options;
+		$custom_header_location = isset ( $xsbf_theme_options['custom_header_location'] ) ? $xsbf_theme_options['custom_header_location'] : 'content-header';
+		if ( $custom_header_location == 'header' ) :
 		?>
-			<div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); height: <?php echo get_custom_header()->height ?>px;">
-			<div class="container">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</div></div>
-		<?php
+			<div id="site-branding" class="site-branding">
+		
+			<?php
+			// Get custom header image and determine its size
+			if ( get_header_image() ) {
+			?>
+				<div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); width: <?php echo get_custom_header()->width; ?>px; height: <?php echo get_custom_header()->height ?>px;">
+				<div class="container">
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
+				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+				</div></div>
+			<?php
 
-		// If no custom header, then just display the site title and tagline
-		} else {
-		?>
-			<div class="container">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</div>
-		<?php
-		} //endif get_header_image()
+			// If no custom header, then just display the site title and tagline
+			} else {
+			?>
+				<div class="container">
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
+				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+				</div>
+			<?php
+			} //endif get_header_image()
+			?>
+			</div><!-- .site-branding -->
+
+		<?php			
+		endif; // $custom_header_location
 		?>			
 
-		</div><!-- .site-branding -->
-
-		<?php // Display the primary nav bar ?>	
+		<?php
+		/**
+		  * ALWAYS DISPLAY THE NAV BAR
+		  */
+ 		?>	
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 
 			<h1 class="menu-toggle sr-only screen-reader-text"><?php _e( 'Primary Menu', 'flat-bootstrap' ); ?></h1>
