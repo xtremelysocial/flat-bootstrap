@@ -23,7 +23,7 @@ if ( $sidebar_pagebottom ) :
 
 <?php
 /* Otherwise, if user is previewing this theme, then show an example */
-elseif ( $xsbf_theme_options['sample_widgets'] != false ) :
+elseif ( $xsbf_theme_options['sample_widgets'] ) :
 ?>
 	<div id="sidebar-pagebottom" class="sidebar-pagebottom">
 
