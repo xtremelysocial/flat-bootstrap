@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -31,11 +31,11 @@ Flat Bootstrap WordPress theme is licensed under the GPL.
 
 Userscores WordPress Starter Theme - ​http://underscores.me/
 License: Distributed under the terms of the GPL License v2
-Copyright: Automattic, Inc., automattic.com
+Copyright: Automattic, Inc., http://automattic.com
 
 Twitter Bootstrap - http://getbootstrap.com/
 License: Distributed under the terms of the Apache License v2.0
-Copyright: Twitter, twitter.com
+Copyright: Twitter, http://twitter.com
 
 html5shiv - http://code.google.com/p/html5shiv/
 License: Distributed under the terms of the MIT/GPL2 License
@@ -43,19 +43,25 @@ Copyright: Alexander Farkas, https://github.com/aFarkas/
 
 Respond - https://github.com/scottjehl/Respond
 License: Distributed under the terms of the MIT License
-Copyright: Scott Jehl, scottjehl.com
+Copyright: Scott Jehl, http://scottjehl.com
 
 Google Fonts - http://www.google.com/fonts/
 License: Distributed under the terms of the OFL|SIL Open Font License
-Copyright: Google, google.com
+Copyright: Google, http://google.com
 
 jQuery Mobile - http://jquerymobile.com
 License: Distributed under the terms of the MIT License
-Copyright: jQuery Foundation, jquery.org
+Copyright: jQuery Foundation, http://jquery.org
 
 Font Awesome - http://fontawesome.io
 License: Distributed under the terms of the SIL OFL License 1.1 (fonts), MIT License (code), and CC BY 3.0 License (documentation)
 Copyright: Font Awesome, http://fontawesome.io
+
+Images - http://unsplash.com
+Images included in the download, such as the one depicted in the screenshot are from unsplash.com
+License: Distributed under the terms of the Creative Commons Zero / GPL License
+Copyright: unsplash, http://unsplash.com
+
 
 == TRANSLATIONS ==
 
@@ -344,6 +350,11 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.4.1 =
+* Updated screenshots to use a GPL image from unsplash.com
+* Updated licensing information to reflect screenshot image is GPL
+* Bumped version number
 
 = 1.4 =
 * Significantly expanded the color palette to include more blues, yellows, oranges, reds, and even added purples. These are all color-matched to look great together when used for colored sections in your content.

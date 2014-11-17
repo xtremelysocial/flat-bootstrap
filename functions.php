@@ -8,6 +8,8 @@
  */
 
 /**
+ * SET THEME OPTIONS HERE
+ *
  * Theme options. Can override in child theme. For theme developers, this is an array so 
  * you can add these items to the customizer and store them all as a single options entry.
  * 

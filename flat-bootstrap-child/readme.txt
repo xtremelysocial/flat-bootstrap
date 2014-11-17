@@ -53,6 +53,11 @@ For more information on Flat Bootstrap, see the "How to use our themes" [http://
 * Updated maximum embedded video width to 1170px to match full-width page template
 * Bumped version to 1.4 to match parent theme (Flat Bootstrap)
 
+= 1.3 (Previously mislabeled v1.1)
+* Add $xsbf_theme_option to control whether custom header image
+displays above or below the navbar
+* Rename readme.md to readme.txt and update version numbers
+
 = 1.2 =
 * Changed theme_options variable to xsbf_theme_options to avoid collision with plugins
 * Added theme option for sample footer menu and one for possible future use in displaying sample widgets

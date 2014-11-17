@@ -58,7 +58,7 @@
 	} //endif has_nav_menu()
 ?>
 
-	<?php // Check for site credits (can be overriden in a child theme
+	<?php // Check for site credits (can be overriden in a child theme)
 	$theme = wp_get_theme();
 	$site_credits = sprintf( __( '&copy; %1$s %2$s. Theme by %3$s.', 'flat-bootstrap' ), 
 		date ( 'Y' ),
@@ -84,8 +84,12 @@
 		<?php endif; ?>
 
 		<?php // Footer site credits
-		if ( $site_credits )  : ?>
+		if ( $site_credits AND $nav_menu ) : ?>
 			<div id="site-credits" class="site-credits pull-right">
+			<?php echo $site_credits; ?>
+			</div><!-- .site-credits -->
+		<?php elseif ( $site_credits ) : ?>
+			<div id="site-credits" class="site-credits pull-left">
 			<?php echo $site_credits; ?>
 			</div><!-- .site-credits -->
 		<?php endif; ?>
