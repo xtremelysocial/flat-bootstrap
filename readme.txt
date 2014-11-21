@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,10 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.4.2 =
+* Fixed a bug where static home pages were displaying the page title and it looked ugly. The idea is that you'll have whatever content on your home page that you want.
+* Fixed a bug where category and tag archives were displaying the page title without formatting
 
 = 1.4.1 =
 * Updated screenshots to use a GPL image from unsplash.com
