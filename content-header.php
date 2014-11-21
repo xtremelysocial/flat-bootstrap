@@ -49,10 +49,12 @@
 	 */
 	 
 	// If home page is blog and site title already displayed (via header.php), do nothing
-	if ( is_home() AND is_front_page() AND $custom_header_location != 'content-header' ) {
+	////if ( is_home() AND is_front_page() AND $custom_header_location == 'header' ) {
+	if ( $custom_header_location == 'header' AND is_front_page() AND ! $image_url ) {
 	
-	// If home page is blog and site title not already displayed (via header.php), get text from site
-	} elseif ( is_home() AND is_front_page() AND $custom_header_location != 'header' ) {
+	// If home page is blog and site title NOT already displayed (via header.php), get text from site
+	//} elseif ( is_home() AND is_front_page() AND $custom_header_location != 'header' ) {
+	} elseif ( $custom_header_location != 'header' AND is_front_page() ) {
 		$title = get_bloginfo('name');
 		$subtitle = get_bloginfo('description');
 
@@ -99,10 +101,10 @@
 		$title = get_the_title();
 			
 	} elseif ( is_category() ) {
-		$title = single_cat_title( false );
+		$title = single_cat_title( null, false );
 
 	} elseif ( is_tag() ) {
-		$title = single_tag_title( false );
+		$title = single_tag_title( null, false );
 
 	} elseif ( is_author() ) {
 		// Queue the first post, that way we know what author we're dealing with
@@ -143,8 +145,11 @@
 
 	} //endif is_home()
 
-	//If subtitle not set above, first try the term description, then try our custom page subtitle field
-	if ( ! $subtitle ) {
+	/*
+	 * IF TITLE THEN GET SUBTITLE, FIRST FROM THE TERM DESCRIPTION, THEN FROM OUR CUSTOM
+	 * PAGE TITLE
+	 */
+	if ( $title AND ! $subtitle ) {
 		$subtitle = term_description();
 		if ( ! $subtitle ) $subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 	}
