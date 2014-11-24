@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,10 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.4.3 =
+* Change title and subtitle on a static home page to come from the featured image itself instead of the site title and tagline. This provides more flexibility to display the text that you want.
+* Changed the Full Width with Subpages page template to put the title of the page before the featured image.
 
 = 1.4.2 =
 * Fixed a bug where static home pages were displaying the page title and it looked ugly. The idea is that you'll have whatever content on your home page that you want.
