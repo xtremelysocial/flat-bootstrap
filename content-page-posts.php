@@ -9,6 +9,11 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+
+	<header class="entry-header">
+		<?php the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">','</a></h3>' ); ?>
+	</header><!-- .entry-header -->
+
 	<?php if ( has_post_thumbnail() AND !is_search() ) : ?>
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>">
 		<div class="post-thumbnail">
@@ -24,10 +29,6 @@
 		</div>
 		</a>
 	<?php endif; ?>
-
-	<header class="entry-header">
-		<?php the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">','</a></h3>' ); ?>
-	</header><!-- .entry-header -->
 
  	<div class="entry-summary">
 		<?php the_excerpt(); ?>

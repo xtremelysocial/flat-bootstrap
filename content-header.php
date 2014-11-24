@@ -54,7 +54,7 @@
 	
 	// If home page is blog and site title NOT already displayed (via header.php), get text from site
 	//} elseif ( is_home() AND is_front_page() AND $custom_header_location != 'header' ) {
-	} elseif ( $custom_header_location != 'header' AND is_front_page() ) {
+	} elseif ( $custom_header_location != 'header' AND is_front_page() AND $image_type == 'header' ) {
 		$title = get_bloginfo('name');
 		$subtitle = get_bloginfo('description');
 
