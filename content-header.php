@@ -76,6 +76,9 @@
 			$title = $attachment_post->post_title;
 			$subtitle = $attachment_post->post_excerpt;
 			$description = $attachment_post->post_content;
+		} else {
+			$title = get_the_title();
+			$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 		}
 
 	} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
