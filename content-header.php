@@ -30,6 +30,13 @@
 	if ( is_singular() AND has_post_thumbnail() ) {
 		$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full');
 		$image_width = $featured_image[1];
+	} elseif ( is_home() AND ! is_front_page() ) {
+		$home_page = get_option ( 'page_for_posts' );
+		if ( $home_page ) $post = get_post( $home_page );
+		if ( $post ) {
+			$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full');
+			$image_width = $featured_image[1];
+		}
 	}
 
 	// If that featured image is full-width (>1170px wide), then use it
@@ -48,16 +55,23 @@
 	 * GET THE TEXT TO DISPLAY ON THE IMAGE OR CONTENT HEADER SECTION 
 	 */
 	 
-	// If home page is blog and site title already displayed (via header.php), do nothing
-	////if ( is_home() AND is_front_page() AND $custom_header_location == 'header' ) {
-	if ( $custom_header_location == 'header' AND is_front_page() AND ! $image_url ) {
+	//var_dump ( $custom_header_location, is_front_page(), is_home(), $image_type, $featured_image ); //TEST
 	
-	// If home page is blog and site title NOT already displayed (via header.php), get text from site
+	// If header image and its already been displayed (via header.php), do nothing
+	////if ( is_home() AND is_front_page() AND $custom_header_location == 'header' ) {
+	//if ( $custom_header_location == 'header' AND is_front_page() AND ! $image_url ) {
+	if ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header' ) {
+		// Do nothing
+	
+	// Otherwise, if header image, then display it with the site title and description
 	//} elseif ( is_home() AND is_front_page() AND $custom_header_location != 'header' ) {
 	} elseif ( $custom_header_location != 'header' AND is_front_page() AND $image_type == 'header' ) {
 		$title = get_bloginfo('name');
 		$subtitle = get_bloginfo('description');
 
+	} elseif ( is_home() AND is_front_page() ) {
+		// Do nothing
+	
 	// If home page is static and we are on the blog page
 	} elseif ( is_home() AND ! is_front_page() ) {
 		$home_page = get_option ( 'page_for_posts' );
@@ -76,6 +90,9 @@
 			$title = $attachment_post->post_title;
 			$subtitle = $attachment_post->post_excerpt;
 			$description = $attachment_post->post_content;
+		} elseif ( is_front_page() ) {
+			$title = get_bloginfo('name');
+			$subtitle = get_bloginfo('description');
 		} else {
 			$title = get_the_title();
 			$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
@@ -184,7 +201,7 @@
 				// Only for static home page, show a scroll down icon
 				if ( is_front_page() ) {
 					echo '<div class="spacer"></div>';
-					echo '<a href="#primary" class="scroll-down smoothscroll"><span class="glyphicon glyphicon-chevron-down"></span></a>';
+					echo '<a href="#pagetop" class="scroll-down smoothscroll"><span class="glyphicon glyphicon-chevron-down"></span></a>';
 				}
 				?>
 				
@@ -209,6 +226,8 @@
 	<?php endif; // $image_url ?>
 
 <?php endif; // have_posts() ?>
+
+<a id="pagetop"></a>
 
 <?php 
 /** 

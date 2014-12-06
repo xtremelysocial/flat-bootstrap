@@ -9,8 +9,7 @@
  */
 
 /**
- * Add theme support for Infinite Scroll.
- * See: http://jetpack.me/support/infinite-scroll/
+ * Add theme support for various Jetpack features
  */
 function xsbf_jetpack_setup() {
 	
@@ -25,7 +24,8 @@ function xsbf_jetpack_setup() {
 		add_theme_support( 'jetpack-testimonial' );
 	 }
 
-	// Enable infinite scroll	
+	// Enable infinite scroll (if user turns it on)	
+ 	// See: http://jetpack.me/support/infinite-scroll/
 	add_theme_support( 'infinite-scroll', array(
 		//'type'			 => 'click',
 		'container' 	 => 'main',
@@ -35,6 +35,16 @@ function xsbf_jetpack_setup() {
 		),		
 		'footer'    	 => 'page',
 	) );
+	
+	// Enable user to upload a custom site logo. The function can take a size argument. 
+	// The default is thumbnail, with other valid values being medium, large, full, and 
+	// any additional sizes declared by add_image_size. It can also take a header-text
+	// argument. This is an array of classes that should be hidden with the "Display 
+	// Header Text" setting. Defaults to the same classes as Underscores: site-title
+	// and site-description.
+	/*if( ! empty ( $xsbf_theme_options['site-logo']) ) {
+		add_theme_support( 'site-logo' );
+	}*/
 }
 add_action( 'after_setup_theme', 'xsbf_jetpack_setup' );
 

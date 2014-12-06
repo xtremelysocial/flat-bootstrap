@@ -18,6 +18,24 @@
 	<?php
 		wp_list_pages( array ( 'title_li' => '' ) );
 		
+		// Add link to portfolio page, if that custom post type is active
+		$portfolio_page = esc_url( get_post_type_archive_link( 'jetpack-portfolio' ) );
+		if ( $portfolio_page ) {
+			echo '<li class="page-item page-item-portfolio">'
+				.'<a href="' . $portfolio_page . '">'
+				. _x( 'Portfolio', 'flat-bootstrap' )
+				.'</a>';
+		}
+
+		// Add link to testimonial page, if that custom post type is active
+		$testimonial_page = esc_url( get_post_type_archive_link( 'jetpack-testimonial' ) );
+		if ( $testimonial_page ) {
+			echo '<li class="page-item page-item-portfolio">'
+				.'<a href="' . $testimonial_page . '">'
+				. _x( 'Testimonials', 'flat-bootstrap' )
+				.'</a>';
+		}
+
 		// Add login/logout/register link. Strip the <br/> tag from it.
 		echo '<li class="page-item page-item-loginout">'
 			.strip_tags ( wp_loginout( null, false), '<a>' )
@@ -42,10 +60,47 @@
 <?php endif; ?>
 
 <?php // Display a tag cloud
-$tag_cloud = wp_tag_cloud( array('echo'=>false) ); 
+$tag_cloud = wp_tag_cloud( array ( 
+	'echo'		=> false, 
+	'separator'	=> ', ',
+	'smallest' 	=> 12,
+	'largest'	=> 26
+) ); 
 if ( $tag_cloud ) {
 	echo '<h2>' . __( 'Tags', 'flat-bootstrap' ) . '</h2>';
 	echo $tag_cloud;
+}
+?>
+
+<?php // If this blog has portfolio categories (types), display them ?>
+<?php 
+$portfolio_types = wp_list_categories( array(
+		'show_count' => true,
+		'title_li'   => '', //_x ( 'Portfolio Categories', 'flat-bootstrap' ),
+		'taxonomy'	=> 'jetpack-portfolio-type',
+		'echo'		=> false
+) );
+if ( $portfolio_types ) : 
+?>
+<div class="widget widget_portfolio_types">
+	<h2 class="widgettitle"><?php _e( 'Portfolio Types', 'flat-bootstrap' ); ?></h2>
+	<ul>
+	<?php echo $portfolio_types;	?>
+	</ul>
+</div><!-- .widget -->
+<?php endif; ?>
+
+<?php // Display a portfolio tag cloud, if there are any
+$portfolio_tag_cloud = wp_tag_cloud( array ( 
+	'echo'		=> false, 
+	'separator'	=> ', ',
+	'taxonomy'	=>'jetpack-portfolio-tag',
+	'smallest' 	=> 12,
+	'largest'	=> 26,
+) ); 
+if ( $portfolio_tag_cloud ) {
+	echo '<h2>' . __( 'Portfolio Tags', 'flat-bootstrap' ) . '</h2>';
+	echo $portfolio_tag_cloud;
 }
 ?>
 

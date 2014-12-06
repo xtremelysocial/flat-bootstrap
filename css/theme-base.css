@@ -209,6 +209,15 @@ p.screen-reader-text {
 	font-size: 24px;
 }
 
+/*.site-logo {
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+	max-height: 100px;
+	width: auto;
+	margin: 20px 20px 20px;
+}*/
+
 a.scroll-down, a.scroll-down:hover span, a.scroll-down:focus span, .carousel-control:hover, .carousel-control:focus {
 	color: #fff;
 	font-size: 20px;

@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 3.8
 Tested up to: 4.0.1
-Stable tag: 1.4.4
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,11 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.5 = 
+* More changes to the header text. For child themes, if a custom header is uploaded, the front page will display the site title and description.
+* Change "smooth scroll" arrow on home page with featured image to scroll to the next section, whether that is a Page Top widget or the page content itself.
+* Site index page template (and 404 page) now supports Jetpack Portfolios and Testimonials. Displays links in the Site Content (pages) section. Also lists portfolio types and tag cloud if there are any.
 
 = 1.4.4 = 
 * If no title and caption on a featured image, get the title (and optional subtitle) from the page itself.
