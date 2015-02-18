@@ -53,8 +53,9 @@ function xsbf_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
-	if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() ) 
+	if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() ) {
 		return;
+	}
 
 	// If we get this far, we have custom styles. Let's do this.
 	?>

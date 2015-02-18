@@ -57,11 +57,13 @@ $defaults = array(
 	'embed_video_width' 		=> 1170, // full-width videos on full-width pages
 	'embed_video_height' 		=> null, // i.e. calculate it automatically
 	'post_formats' 				=> null,
+	//'post_formats'				=> array( 'video' ),
 	'touch_support' 			=> true,
 	'fontawesome' 				=> true,
 	'bootstrap_gradients' 		=> false,
 	'navbar_classes'			=> 'navbar-default navbar-static-top',
 	'custom_header_location' 	=> 'header',
+	'site_logo'					=> false,
 	'image_keyboard_nav' 		=> true,
 	'sample_widgets' 			=> true,
 	'sample_footer_menu'		=> true,
@@ -111,13 +113,14 @@ function xsbf_setup() {
 		'footer' 	=> __( 'Footer Menu', 'flat-bootstrap' ),
 	) );
 
-	// This feature outputs HTML5 markup for the comment forms, search forms and 
-	// comment lists. As of WordPress v3.6.
+	// This feature outputs HTML5 markup for the comment forms, search forms, comment 
+	// lists, etc. As of WordPress v3.6.
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
+	//add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 	
 	// Add editor CSS to style the WordPress visual post / page editor. Ours mainly
 	// pulls in all of our front-end CSS.
-	add_editor_style( '/css/editor-style.css' );
+	add_editor_style( 'css/editor-style.css' );
 
 	// Setup the WordPress core custom background feature. As of WordPress v3.4. This 
 	// theme is full-width up to 1600px, so background will only show when user's
@@ -210,41 +213,41 @@ function xsbf_scripts() {
 	/* LOAD STYLESHEETS */
 
 	// Load our custom version of Bootsrap CSS. Can easily override in a child theme.
-	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.0', 'all' );
+	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.3.2', 'all' );
 	wp_enqueue_style( 'bootstrap');
 
 	// If desired, load up the bootstrap-theme CSS for a full gradient look. Note you'll
 	// need to style other theme elements to match.
 	if ( $xsbf_theme_options['bootstrap_gradients'] ) {
-		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array(), '3.1.0', 'all' );
+		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array( 'bootstrap' ), '3.3.2', 'all' );
 		wp_enqueue_style( 'bootstrap-theme');
 	}
 	
 	// Our base WordPress CSS that handles default margins, paddings, etc.
-	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', '', '20140913', 'all' );
+	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', array( 'bootstrap' ), '20150201', 'all' );
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140913', 'all' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20150201', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
 	// Load Google Fonts: Lato and Raleway
-	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700',array(), null, 'screen' );	
+	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700', array(), null, 'screen' );	
 
 	// Add font-awesome support	
 	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
-		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.0.3', 'all' );
+		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.3.0', 'all' );
 		wp_enqueue_style( 'font-awesome');
 	}
 
 	// This theme's stylesheet, which contains the theme-specific CSS for coloring
 	// content header, footer, etc.
-	wp_enqueue_style( 'xtremelysocial-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'flat-bootstrap', get_stylesheet_uri() );
 
 	/* LOAD JAVASCRIPT */
 
 	// Bootsrap core javascript
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.0', true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.2', true );
 
 	// jquery mobile script is a custom download with ONLY "touch" functions. Load
 	// this just on single posts and pages where a carousel might be placed
@@ -298,6 +301,9 @@ function xsbf_load_includes() {
 	/**
 	 * OPTIONAL INCLUDE FILES
 	 */
+
+	//Overide the standard WordPress Gallery shortcode with Bootstrap styles
+	include_once get_template_directory() . '/inc/bootstrap-gallery.php';
  
 	// Implement the WordPress Custom Header feature. Optional.
 	include_once get_template_directory() . '/inc/custom-header.php';

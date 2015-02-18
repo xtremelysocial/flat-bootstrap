@@ -55,8 +55,6 @@
 	 * GET THE TEXT TO DISPLAY ON THE IMAGE OR CONTENT HEADER SECTION 
 	 */
 	 
-	//var_dump ( $custom_header_location, is_front_page(), is_home(), $image_type, $featured_image ); //TEST
-	
 	// If header image and its already been displayed (via header.php), do nothing
 	////if ( is_home() AND is_front_page() AND $custom_header_location == 'header' ) {
 	//if ( $custom_header_location == 'header' AND is_front_page() AND ! $image_url ) {

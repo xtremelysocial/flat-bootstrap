@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.8
-Tested up to: 4.0.1
-Stable tag: 1.5
+Requires at least: 3.9
+Tested up to: 4.1
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,20 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.6 =
+* Set lists in the Page Top and Page Bottom widget areas to be horizontal without bullets or numbers. This lets you add custom menus, category lists, and other widgets and they will look good full-width.
+* Fixed language translation issue in the Site Index page template (also on the 404 page).
+* Now loading our fonts in the WordPress visual editor (Raleway, Lato, and Font-Awesome).
+* Standard WordPress galleries are now formatted with Bootstrap to be fully responsive. Previously galleries did resize the images responsively, but now they will show a varying number of columns depending on the screen size.
+* Theme Customizer now refreshes the page when making changes to the header so you have a more accurate representation of what it will look like on your site.
+* For full-width custom page tamples, plugins that add content will have that content moved to the end of the page. Eg) Jetpack sharing buttons will now appear below the sub-pages listing, site index content, etc.
+* Removed extra padding between content and collapsed sidebar on smaller screens.
+* Added separate <span> tags around the footer copyright and "theme by" text so either can easily be hidden via custom CSS as opposed to editing PHP files.
+* Added some PHP and adjusted some CSS in preparation for a future version that supports upload of a custom site logo (using the Jetpack plugin).
+* Updated Bootstrap components to v3.3.2. Now includes config.json so you can customize Bootstrap starting with our default values.
+* Updated Font-Awesome to v4.3.0.
+* Updated jquery mobile to v1.4.5.
 
 = 1.5 = 
 * More changes to the header text. For child themes, if a custom header is uploaded, the front page will display the site title and description.

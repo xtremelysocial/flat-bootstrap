@@ -1,5 +1,6 @@
 /**
- * Theme: Flat Bootstrap
+ * Theme:	Flat Bootstrap
+ * File:	theme-base.css
  * 
  * The stylesheet for basic WordPress styles
  *
@@ -132,6 +133,9 @@ p.screen-reader-text {
 .gallery-caption {
 	text-shadow: none;
 	font-size: 16px;
+	text-align: center;
+	margin-top: -22px; /* Offset Bootstrap .thumbnail class */
+	margin-bottom: 22px;
 }
 
 /* Center the thumbnails since WordPress centers the caption text */
@@ -183,15 +187,15 @@ p.screen-reader-text {
 	background-repeat: none;
 	background-position: center center;	
 	max-width: 100%;
-	padding: 30px 0;
 }
 
-.site-title {
-	margin-top: 25px;
+.site-branding {
+	padding-top: 3px;
+	padding-bottom: 14px;
 }
+
 .site-description {
 	margin-top: 10px;
-	margin-bottom: 25px;
 	font-size: 24px;
 }
 
@@ -208,15 +212,6 @@ p.screen-reader-text {
 .custom-header-image h2 {
 	font-size: 24px;
 }
-
-/*.site-logo {
-	display: inline-block;
-	vertical-align: middle;
-	float: left;
-	max-height: 100px;
-	width: auto;
-	margin: 20px 20px 20px;
-}*/
 
 a.scroll-down, a.scroll-down:hover span, a.scroll-down:focus span, .carousel-control:hover, .carousel-control:focus {
 	color: #fff;
@@ -237,7 +232,6 @@ header.content-header {
 
 .content-area {
 	padding-top: 35px;
-	padding-bottom: 35px;
 }
 .content-area-wide .comments-area {
 	padding-bottom: 35px;
@@ -306,7 +300,6 @@ div.entry-meta,
 
 /* For sidebar, add some whitespace */
 #secondary {
-	padding-top: 35px;
 	padding-bottom: 35px;
 }
 #secondary aside.widget {
@@ -328,7 +321,6 @@ div.entry-meta,
 img, embed, iframe, media, swf, pre, code, container, select, .videopress-placeholder {
 	display: block;
 	max-width:100%;
-	/*height: auto;*/ /* this messes up embedded videos */
 	overflow:hidden;
 	white-space: pre;           /* CSS 2.0 */
 	white-space: pre-wrap;      /* CSS 2.1 */
@@ -379,13 +371,17 @@ li.pingback {
 	margin-right: 5px;
 }
 
-/* Get rid of bullets on sidebar lists and in our footer columns */
+/* Get rid of bullets on sidebars, footer, page top, and page bottom */
 #secondary ul, 
+#sidebar-pagetop ul,
+#sidebar-pagebottom ul,
 footer#colophon.site-footer ul {
 	list-style: none;
 	padding-left: 0;
 }
 #secondary ul ul, 
+#sidebar-pagetop ul ul,
+#sidebar-pagebottom ul ul,
 footer#colophon.site-footer ul ul {
 	list-style: none;
 	padding-left: 25px;
@@ -394,6 +390,23 @@ footer#colophon.site-footer ul ul {
 #secondary ul li, 
 footer#colophon.site-footer ul li {
 	margin-top: 10px;
+}
+
+/* Make custom menus in page top and page bottom inline (horizontal). */
+#sidebar-pagetop ul > li,
+#sidebar-pagebottom ul > li { 
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px
+}
+.#sidebar-pagetop ul > li:first-child, 
+.#sidebar-pagebottom ul > li:first-child {
+    padding-left: 0
+}
+
+#sidebar-pagetop .widget_nav_menu,
+#sidebar-pagebottom .widget_nav_menu { 
+	margin-top: 11px;
 }
 
 /* Style comments */
@@ -426,15 +439,8 @@ textarea {
 textarea#comment {
 	max-width: 743px; /*largest width of content area w/sidebar*/
 	width: 100%;
-	/*max-height: 70px;*/
 	max-height: 140px;
 }
-/*
-textarea#comment:active,
-textarea#comment:focus {
-	max-height: 140px;
-}
-*/
 
 /* Hide the label "Comment" above the comment box as its pretty obvious already */
 .comment-form-comment label {
@@ -537,21 +543,6 @@ header.site-header.page-header {
 	padding-right: 10px;	
 }
 
-/* Bootstrap uses "active" style on the <li>, but WordPress paginate_links() uses 
- * "current" in a <span> tag on the link. Also set the hover to match the primary 
- * button color. 
- */
-/*
-.pagination>li>a:hover, 
-.pagination>li>span:hover, 
-.pagination>li>a:focus,
-.pagination>li>span:focus, 
-span.page-numbers.current {
-  background-color: #16a085; /*darkgreen*/
-  /*border-color: #16a085;
-}
-*/
-
 .jumbotron {
 	margin-bottom: 0;
 }
@@ -564,9 +555,6 @@ span.page-numbers.current {
 
 /* Style <code> tag like <pre> tag so its white instead of red */
 code {
-    /*font-weight: 300;
-    font-size: 15px;
-    line-height: 1.428571429;*/
     word-break: break-all;
     word-wrap: break-word;
     color: #2f2f2f;
@@ -661,16 +649,15 @@ code {
 
 /* For larger screens, increase font size and spacing */
 @media (min-width: 768px) {
+
 	.cover-image h1,
 	.section-image h1,
-	.section-featured h1,
 	.wp-caption-text-fullwidth h1 {
 		font-size: 70px;
 		letter-spacing: 3px;
 	}
 	.cover-image h2,
 	.section-image h2,
-	.section-featured h2,
 	.wp-caption-text-fullwidth h2 {
 		font-size: 42px;
 		letter-spacing: 2px;
@@ -686,6 +673,17 @@ code {
 	}
 }
 
+/* When sidebar not collapsed, add more padding */
+@media (min-width: 992px) {
+
+	.content-area {
+		padding-bottom: 35px;
+	}
+	#secondary {
+		padding-top: 35px;
+	}
+}
+
 /* use <span> tags for glpyicons because WordPress visual editor strips empty <i> tags.
  * to make them large as in using for icons, add "icon-lg" class. 
  */
@@ -698,40 +696,6 @@ span.icon-xlg,
 i.icon-xlg {
     font-size: 50px;
 	padding: 20px;
-}
-
-/* 
- * PADDING AND OTHER UTILITIES
- */
- .padding {
- 	padding: 25px;
- }
-.padding-top {
-	padding-top: 25px; /* Match Hx tag top margins */
-}
-.padding-bottom {
-	padding-bottom: 25px;
-}
-.padding-top-bottom {
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
-.padding-right {
-	padding-right: 35px; /* Match grid gutters */
-}
-.padding-left {
-	padding-left: 35px; /* Match grid gutters */
-}
-.padding-left-right {
-	padding-left: 35px; /* Match grid gutters */
-	padding-right: 35px; /* Match grid gutters */
-}
-.nopadding-nomargin {
-    margin: 0;
-    padding: 0;
-}
-.centered {
-    text-align: center;
 }
 
 /* 
