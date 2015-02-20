@@ -23,7 +23,7 @@
 		if ( $portfolio_page ) {
 			echo '<li class="page-item page-item-portfolio">'
 				.'<a href="' . $portfolio_page . '">'
-				. _x( 'Portfolio', 'flat-bootstrap' )
+				. __( 'Portfolio', 'flat-bootstrap' )
 				.'</a>';
 		}
 
@@ -32,7 +32,7 @@
 		if ( $testimonial_page ) {
 			echo '<li class="page-item page-item-portfolio">'
 				.'<a href="' . $testimonial_page . '">'
-				. _x( 'Testimonials', 'flat-bootstrap' )
+				. __( 'Testimonials', 'flat-bootstrap' )
 				.'</a>';
 		}
 

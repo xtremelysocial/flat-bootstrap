@@ -25,10 +25,10 @@
 				<?php 
 				// As of WP 3.9, if we don't have the right image size, use large
 				if ( function_exists ( 'has_image_size') AND ! has_image_size ( 'post-thumbnail' ) ) {
-					the_post_thumbnail( 'large', $attr = array( 'class'=>'thumbnail img-responsive post-thumbnail' ) ); 
+					the_post_thumbnail( 'large', $attr = array( 'class'=>'thumbnail img-responsive large-thumbnail' ) ); 
 				// Otherwise, use our custom size
 				} else {
-					the_post_thumbnail( 'post-thumbnail' , $attr = array( 'class'=>'thumbnail img-responsive' ) );
+					the_post_thumbnail( 'post-thumbnail' , $attr = array( 'class'=>'thumbnail img-responsive post-thumbnail' ) );
 				} //endif has_image_size()
 				?>
 

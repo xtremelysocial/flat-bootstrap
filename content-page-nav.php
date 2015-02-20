@@ -26,10 +26,7 @@ if ( $link_pages ) echo '<ul class="pager">' . $link_pages . '</ul>';
 /*
  * For sub-pages, display links to previous and next sibling
  */
-if ( $post->ID != $post->post_parent AND + 
-	 $post->post_parent != 0 AND + 
-	 get_page_template_slug( $post->post_parent ) == 'page-fullwithsubpages.php' AND +
-	 ! is_page_template( 'page-fullwithsubpages.php' ) ) {
+if ( $post->ID != $post->post_parent AND $post->post_parent != 0 AND get_page_template_slug( $post->post_parent ) == 'page-fullwithsubpages.php' AND ! is_page_template( 'page-fullwithsubpages.php' ) ) {
 
 	$args = array(
 		'parent'   		=> $post->post_parent,
@@ -52,7 +49,6 @@ if ( $post->ID != $post->post_parent AND +
 		<nav role="navigation" id="subpage-navigation" class="page-navigation">
 		<h1 class="screen-reader-text sr-only"><?php _e( 'Page navigation', 'flat-bootstrap' ); ?></h1>
 		<ul class="pager">
-		
 		<?php if ( ! empty( $prevID ) ) { ?>
 		<li class="nav-next">
 		<a href="<?php echo get_permalink($prevID); ?>">

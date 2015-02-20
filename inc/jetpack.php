@@ -42,9 +42,10 @@ function xsbf_jetpack_setup() {
 	// argument. This is an array of classes that should be hidden with the "Display 
 	// Header Text" setting. Defaults to the same classes as Underscores: site-title
 	// and site-description.
-	/*if( ! empty ( $xsbf_theme_options['site-logo']) ) {
-		add_theme_support( 'site-logo' );
-	}*/
+	if( ! empty ( $xsbf_theme_options['site_logo']) ) {
+		add_theme_support( 'site-logo', array( 'size' => 'site-logo' ) );
+		add_image_size( 'site-logo', 1170, 200 );
+	}
 }
 add_action( 'after_setup_theme', 'xsbf_jetpack_setup' );
 

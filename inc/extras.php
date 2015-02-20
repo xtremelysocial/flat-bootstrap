@@ -35,6 +35,7 @@ function xsbf_body_classes( $classes ) {
 	if ( get_header_image() ) {
 		$classes[] = 'has-header-image';
 	}
+	
 	// Adds classes for various sizes of featured images
 	if ( has_post_thumbnail() ) {
 		$classes[] = 'featured-image';

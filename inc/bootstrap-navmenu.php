@@ -90,8 +90,6 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			$atts = array();
 			
-			//var_dump ( $item ); //TEST
-
 			/* If keyword "smoothscroll" then add the class to trigger the javascript */
 			if ( ! empty( $item->attr_title ) AND stripos ( $item->attr_title, 'smoothscroll' ) !== false ) {
 				$item->attr_title = str_ireplace( 'smoothscroll', '', $item->attr_title );

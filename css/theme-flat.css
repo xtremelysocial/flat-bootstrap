@@ -1,5 +1,6 @@
 /**
- * Theme: Flat Bootstrap
+ * Theme:	Flat Bootstrap
+ * File:	theme-flat.css
  * 
  * The stylesheet for our flat ui
  *
@@ -134,6 +135,40 @@ label {
 }
 
 /* 
+ * PADDING AND OTHER UTILITIES
+ */
+ .padding {
+ 	padding: 25px;
+ }
+.padding-top {
+	padding-top: 25px; /* Match Hx tag top margins */
+}
+.padding-bottom {
+	padding-bottom: 25px;
+}
+.padding-top-bottom {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.padding-right {
+	padding-right: 35px; /* Match grid gutters */
+}
+.padding-left {
+	padding-left: 35px; /* Match grid gutters */
+}
+.padding-left-right {
+	padding-left: 35px; /* Match grid gutters */
+	padding-right: 35px; /* Match grid gutters */
+}
+.nopadding-nomargin {
+    margin: 0;
+    padding: 0;
+}
+.centered {
+    text-align: center;
+}
+
+/* 
  * COLORED BACKGROUNDS FOR SECTIONS
  */
 
@@ -208,6 +243,7 @@ label {
 .color-darkgreen {
     color: #16a085;
 }
+
 .darkgreen h1, 
 .darkgreen h2, 
 .darkgreen h3, 
@@ -231,6 +267,7 @@ label {
 .color-brightgreen {
     color: #2ecc71;
 }
+
 .brightgreen h1, 
 .brightgreen h2, 
 .brightgreen h3, 
@@ -254,6 +291,7 @@ label {
 .color-darkbrightgreen {
     color: #27AE60;
 }
+
 .darkbrightgreen h1, 
 .darkbrightgreen h2, 
 .darkbrightgreen h3, 
@@ -274,6 +312,7 @@ label {
     background: #f1c40f;
     color: #fff;
 }
+
 .yellow h1, 
 .yellow h2, 
 .yellow h3, 
@@ -288,6 +327,7 @@ label {
 .bg-yellow h6 {
 	color: #fff;
 }
+
 .yellow p, .bg-yellow p {
     font-weight: 500
 }
@@ -300,6 +340,7 @@ label {
 .color-lightorange {
 	color: #F39C12;
 }
+
 .lightorange h1, 
 .lightorange h2, 
 .lightorange h3, 
@@ -314,6 +355,7 @@ label {
 .bg-lightorange h6 {
 	color: #fff;
 }
+
 .lightorange p, .bg-lightorange p {
     font-weight: 500
 }
@@ -326,6 +368,7 @@ label {
 .color-orange {
 	color: #E67E22;
 }
+
 .orange h1, 
 .orange h2, 
 .orange h3, 
@@ -349,6 +392,7 @@ label {
 .color-darkorange {
 	color: #D35400;
 }
+
 .darkorange h1, 
 .darkorange h2, 
 .darkorange h3, 
@@ -372,6 +416,7 @@ label {
 .color-blue {
 	color: #3498db;
 }
+
 .blue h1, 
 .blue h2, 
 .blue h3, 
@@ -395,6 +440,7 @@ label {
 .color-darkblue {
 	color: #2980b9;
 }
+
 .darkblue h1, 
 .darkblue h2, 
 .darkblue h3, 
@@ -410,6 +456,7 @@ label {
 	color: #fff;
 }
 
+
 .purple, 
 .bg-purple {
 	background-color: #9B59B6;
@@ -418,6 +465,7 @@ label {
 .color-purple {
 	color: #9B59B6;
 }
+
 .purple h1, 
 .purple h2, 
 .purple h3, 
@@ -441,6 +489,7 @@ label {
 .color-darkpurple {
 	color: #8E44AD;
 }
+
 .darkpurple h1, 
 .darkpurple h2, 
 .darkpurple h3, 
@@ -464,6 +513,7 @@ label {
 .color-midnightblue {
 	color: #34495e;
 }
+
 .midnightblue h1, 
 .midnightblue h2, 
 .midnightblue h3, 
@@ -487,6 +537,7 @@ label {
 .color-darkmidnightblue {
 	color: #2C3E50;
 }
+
 .darkmidnightblue h1, 
 .darkmidnightblue h2, 
 .darkmidnightblue h3, 
@@ -502,7 +553,6 @@ label {
 	color: #fff;
 }
 
-
 .red, .bg-red {
 	background-color: #ff7878;
 	color: #fff;
@@ -510,6 +560,7 @@ label {
 .color-red {
 	color: #ff7878;
 }
+
 .red h1, 
 .red h2, 
 .red h3, 
@@ -525,6 +576,7 @@ label {
 	color: #fff;
 }
 
+
 .brightred, .bg-brightred {
 	background-color: #E74C3C;
 	color: #fff;
@@ -532,6 +584,7 @@ label {
 .color-brightred {
 	color: #E74C3C;
 }
+
 .brightred h1, 
 .brightred h2, 
 .brightred h3, 
@@ -554,6 +607,7 @@ label {
 .color-darkred {
 	color: #C0392B;
 }
+
 .darkred h1, 
 .darkred h2, 
 .darkred h3, 
@@ -577,6 +631,7 @@ label {
 .color-almostblack {
 	color: #2f2f2f;
 }
+
 .almostblack h1, 
 .almostblack h2, 
 .almostblack h3, 
@@ -600,6 +655,7 @@ label {
 .color-notquiteblack {
 	color: #222;
 }
+
 .notquiteblack h1, 
 .notquiteblack h2, 
 .notquiteblack h3, 
@@ -623,6 +679,7 @@ label {
 .color-black {
 	color: #000;
 }
+
 .black h1, 
 .black h2, 
 .black h3, 
@@ -673,11 +730,56 @@ label {
 .bg-brightred i, 
 .darkred i, 
 .bg-darkred i, 
+.notquiteblack i, 
+.bg-notquitetblack i, 
 .almostblack i, 
 .bg-almostblack i, 
 .black i, 
 .bg-black i {
 	color: #fff;
+}
+
+.lightgreen a i:hover, 
+.bg-lightgreen a i:hover, 
+.darkgreen a i:hover, 
+.bg-darkgreen a i:hover, 
+.brightgreen a i:hover, 
+.bg-brightgreen a i:hover, 
+.darkbrightgreen a i:hover, 
+.bg-darkbrightgreen a i:hover, 
+.blue a i:hover, 
+.bg-blue a i:hover, 
+.darkblue a i:hover, 
+.bg-darkblue a i:hover, 
+.purple a i:hover, 
+.bg-purple a i:hover, 
+.darkpurple a i:hover, 
+.bg-darkpurple a i:hover, 
+.midnightblue a i:hover, 
+.bg-midnightblue a i:hover, 
+.darkmidnightblue a i:hover, 
+.bg-darkmidnightblue a i:hover, 
+.yellow a i:hover, 
+.bg-yellow a i:hover,
+.lightorange a i:hover, 
+.bg-lightorange a i:hover,
+.orange a i:hover, 
+.bg-orange a i:hover,
+.darkorange a i:hover, 
+.bg-darkorange a i:hover,
+.red a i:hover, 
+.bg-red a i:hover, 
+.brightred a i:hover, 
+.bg-brightred a i:hover, 
+.darkred a i:hover, 
+.bg-darkred a i:hover, 
+.notquiteblack a i:hover, 
+.bg-notquitetblack a i:hover, 
+.almostblack a i:hover, 
+.bg-almostblack a i:hover, 
+.black a i:hover, 
+.bg-black a i:hover {
+	color: #e7e7e7;
 }
 
 /* Set the link color to white and underlined for certain background colors */
@@ -701,6 +803,8 @@ label {
 .bg-blue a:not(.btn), 
 .darkblue a:not(.btn), 
 .bg-darkblue a:not(.btn), 
+.midnightblue a:not(.btn), 
+.bg-midnightblue a:not(.btn), 
 .red a:not(.btn), 
 .bg-red a:not(.btn),
 .brightred a:not(.btn), 
@@ -731,9 +835,13 @@ label {
 .bg-blue a:hover:not(.btn), 
 .darkblue a:hover:not(.btn), 
 .bg-darkblue a:hover:not(.btn), 
+.midnightblue a:hover:not(.btn), 
+.bg-midnightblue a:hover:not(.btn), 
 .red a:hover:not(.btn), 
-.bg-red a:hover:not(.btn) {
-	color: #7b7b7b;
+.bg-red a:hover:not(.btn),
+.darkred a:not(.btn), 
+.bg-darkred a:not(.btn) {
+	color: #e7e7e7;
 }
 
 .form-control {
@@ -791,19 +899,62 @@ input[type="submit"]:focus {
     outline: 0;
 }
 
+/* Set navbar hover and active to green */
+/*
+.dropdown-menu>li>a:hover, 
+.dropdown-menu>li>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+@media (max-width:767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, 
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+		color: #fff;
+		background-color: #1abc9c
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a, 
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover, 
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+		color: #fff;
+		background-color: #1abc9c
+    }
+}
+*/
+
 /* Bootstrap uses "active" style on the <li>, but WordPress paginate_links() uses 
  * "current" in a <span> tag on the link. Also set the hover to match the primary button
  * color. 
  */
 .pagination>li>a, 
-.pagination>li>span, 
+.pagination>li>span,
 span.page-numbers.current {
 	color: #16a085;
 }
 .pagination>li>a:hover, 
 .pagination>li>span:hover, 
 .pagination>li>a:focus,
-.pagination>li>span:focus, 
+.pagination>li>span:focus,
 span.page-numbers.current {
 	z-index: 2;
 	color: #fff;
@@ -921,4 +1072,9 @@ button.btn.btn-hollow:hover,
     color: #fff;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* When gallery is only a single column, get rid of background color */
+.gallery-row .col-lg-12 .thumbnail {
+	background-color: inherit;
 }
