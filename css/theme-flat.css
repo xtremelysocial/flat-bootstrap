@@ -899,19 +899,62 @@ input[type="submit"]:focus {
     outline: 0;
 }
 
+/* Set navbar hover and active to green */
+/*
+.dropdown-menu>li>a:hover, 
+.dropdown-menu>li>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+@media (max-width:767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, 
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+		color: #fff;
+		background-color: #1abc9c
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a, 
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover, 
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+		color: #fff;
+		background-color: #1abc9c
+    }
+}
+*/
+
 /* Bootstrap uses "active" style on the <li>, but WordPress paginate_links() uses 
  * "current" in a <span> tag on the link. Also set the hover to match the primary button
  * color. 
  */
 .pagination>li>a, 
-.pagination>li>span, 
+.pagination>li>span,
 span.page-numbers.current {
 	color: #16a085;
 }
 .pagination>li>a:hover, 
 .pagination>li>span:hover, 
 .pagination>li>a:focus,
-.pagination>li>span:focus, 
+.pagination>li>span:focus,
 span.page-numbers.current {
 	z-index: 2;
 	color: #fff;
