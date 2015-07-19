@@ -25,8 +25,8 @@
  * 
  * embed_video_height - Leave empty to automatically set at a 16:9 ratio to the width
  * 
- * post_formats - Array of WordPress extra post formats. i.e. aside, image, video, quote,
- * 		and/or link
+ * post_formats - Array of WordPress extra post formats. i.e. aside, gallery, link, image, 
+ * 		quote, status, video, audio, chat.
  * 
  * touch_support - Whether to load touch support for carousels (sliders)
  * 
@@ -57,7 +57,7 @@ $defaults = array(
 	'embed_video_width' 		=> 1170, // full-width videos on full-width pages
 	'embed_video_height' 		=> null, // i.e. calculate it automatically
 	'post_formats' 				=> null,
-	//'post_formats'				=> array( 'video' ),
+	//'post_formats'				=> array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ),
 	'touch_support' 			=> true,
 	'fontawesome' 				=> true,
 	'bootstrap_gradients' 		=> false,
@@ -87,7 +87,7 @@ $theme_options = $xsbf_theme_options;
 $content_width = $xsbf_theme_options['content_width'];
 
 /**
- * Set up theme defaults and register support for various WordPress features.
+ * Setup theme defaults and register support for various WordPress features.
  *
  * Note that this function is hooked into the after_setup_theme hook, which runs
  * before the init hook. The init hook is too late for some features, such as indicating
@@ -105,7 +105,8 @@ function xsbf_setup() {
 	// specific crop parameters handled.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop left top
-	//add_image_size( 'section-image', 1600, 400, array( 'center', 'center' ) ); // section image
+	//set_post_thumbnail_size( 750, 422, array( 'left', 'top' ) ); // crop left top
+	//add_image_size( 'gallery-image', 640, 360, array( 'left', 'top' ) ); // gallery/portfolio
 
 	// This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
 	register_nav_menus( array(
@@ -134,6 +135,9 @@ function xsbf_setup() {
 	// Look at TwentyEleven theme for this.  As of WordPress v3.1.
 	if( ! empty ( $xsbf_theme_options['post_formats']) ) {
 		add_theme_support( 'post-formats', $xsbf_theme_options['post_formats'] );
+		
+		// Also add these post-formats to pages!
+		//add_post_type_support( 'page', 'post-formats' );
 	 }
 
 	// Enable support for excerpts on Pages. This is mainly for the Page with Subpages
@@ -147,6 +151,18 @@ function xsbf_setup() {
 } // end function
 add_action( 'after_setup_theme', 'xsbf_setup' );
 endif; // end ! function_exists
+
+/**
+ * Add our custom image size to the WordPress gallery drop-down list
+ */
+/*
+add_filter( 'image_size_names_choose', 'xsbf_image_sizes' );
+function xsbf_image_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'gallery-image' => __( 'Gallery Image (640x360)' ),
+    ) );
+}
+*/
 
 /**
  * Register widgetized areas
@@ -303,7 +319,7 @@ function xsbf_load_includes() {
 	 */
 
 	//Overide the standard WordPress Gallery shortcode with Bootstrap styles
-	include_once get_template_directory() . '/inc/bootstrap-gallery.php';
+	//include_once get_template_directory() . '/inc/bootstrap-gallery.php';
  
 	// Implement the WordPress Custom Header feature. Optional.
 	include_once get_template_directory() . '/inc/custom-header.php';
