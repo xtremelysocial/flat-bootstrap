@@ -803,8 +803,8 @@ label {
 .bg-blue a:not(.btn), 
 .darkblue a:not(.btn), 
 .bg-darkblue a:not(.btn), 
-.midnightblue a:not(.btn), 
-.bg-midnightblue a:not(.btn), 
+/*.midnightblue a:not(.btn), 
+.bg-midnightblue a:not(.btn),*/
 .red a:not(.btn), 
 .bg-red a:not(.btn),
 .brightred a:not(.btn), 
@@ -835,8 +835,8 @@ label {
 .bg-blue a:hover:not(.btn), 
 .darkblue a:hover:not(.btn), 
 .bg-darkblue a:hover:not(.btn), 
-.midnightblue a:hover:not(.btn), 
-.bg-midnightblue a:hover:not(.btn), 
+/*.midnightblue a:hover:not(.btn), 
+.bg-midnightblue a:hover:not(.btn),*/
 .red a:hover:not(.btn), 
 .bg-red a:hover:not(.btn),
 .darkred a:not(.btn), 
@@ -1074,7 +1074,13 @@ button.btn.btn-hollow:hover,
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* When gallery is only a single column, get rid of background color */
-.gallery-row .col-lg-12 .thumbnail {
-	background-color: inherit;
+/* Enhance Bootstrap to allow for columns with no gutter (margin) */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
 }

@@ -42,7 +42,7 @@ function xsbf_bootstrap_register_required_plugins() {
 	 */
 	$plugins = array(
 
-		// Jetpack Plugin (for widget visibility)
+		// Jetpack Plugin (for widget visibility, better looking image galleries, etc.)
 		array(
 			'name' 		=> 'Jetpack',
 			'slug' 		=> 'jetpack',
@@ -63,7 +63,7 @@ function xsbf_bootstrap_register_required_plugins() {
 			'required' 	=> false,
 		),*/
 		
-		// Regenerate Thumbnails (needed to set images to our custom size)
+		// Regenerate Thumbnails (needed to resize images to fit the theme)
 		array(
 			'name' 		=> 'Regenerate Thumbnails',
 			'slug' 		=> 'regenerate-thumbnails',
@@ -91,7 +91,8 @@ function xsbf_bootstrap_register_required_plugins() {
 			'required' 	=> false,
 		),
 
-		// Agnosia Bootstrap Carousel Plugin
+		// Agnosia Bootstrap Carousel Plugin - No longer needed because the above
+		// plugins handle carousels now
 		/*array(
 			'name' 		=> 'Agnosia Bootstrap Carousel by AuSoft',
 			'slug' 		=> 'agnosia-bootstrap-carousel',

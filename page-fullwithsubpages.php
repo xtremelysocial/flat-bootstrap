@@ -41,8 +41,6 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 		
-					<?php get_template_part( 'content', 'page-nav' ); ?>
-
 		<?php /* DISPLAY THE SUB-PAGES OF THIS PAGE */
 		// There is no pagination yet, so $posts_per_page needs to be the max number of
 		// child pages you'd ever have. TO-DO: ADD PAGINATION
@@ -76,6 +74,8 @@ get_header(); ?>
 				</div>
 				<?php $count++; ?>
 			<?php endwhile; ?>
+
+			<?php get_template_part( 'content', 'page-nav' ); ?>
 
 			<?php //get_template_part( 'content', 'index-nav' ); ?>	
 

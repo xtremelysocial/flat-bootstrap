@@ -94,7 +94,7 @@
           	.'</button>';
 
 		// Site title (Bootstrap "brand") in navbar. Hidden by default. Customizer will
-		// display it if user turns of the main site title and tagline.
+		// display it if user turns off the main site title and tagline.
 		$navbar .= '<a class="navbar-brand" href="'
 			.esc_url( home_url( '/' ) )
 			.'" rel="home">'

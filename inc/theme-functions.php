@@ -312,6 +312,15 @@ function xsbf_get_avatar ( $avatar, $id_or_email, $size, $default, $alt ) {
 endif; // end ! function_exists
 
 /**
+ * Add Bootstrap thumbnail class to gallery images
+ */
+add_filter('wp_get_attachment_link', 'xsbf_attachment_link_class', 10, 1); //Add Bootstrap thumnail class
+function xsbf_attachment_link_class($html) {
+	$html = str_replace('attachment-', 'thumbnail attachment-', $html);
+	return $html;
+}
+
+/**
  * Adjust the number of columns for the footer based on how many widgets were added.
  * This is Bootstrap-specific using col-sm-n.
  */

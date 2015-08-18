@@ -32,11 +32,8 @@ function xsbf_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
-	if ( get_header_image() ) {
-		$classes[] = 'has-header-image';
-	}
-	
-	// Adds classes for various sizes of featured images
+	// Adds classes for various sizes of featured images. Our theme overrides the 
+	// custom header with a large featured image.
 	if ( has_post_thumbnail() ) {
 		$classes[] = 'featured-image';
 
@@ -50,6 +47,10 @@ function xsbf_body_classes( $classes ) {
 				$classes[] = 'has-section-image';
 			} //endif is_home
 		} //endif $content_width
+
+	// If custom header and not overridden, then add class for that
+	} elseif ( get_header_image() ) {
+		$classes[] = 'has-header-image';
 	} //endif has_post_thumbnail
 
 	return $classes;
