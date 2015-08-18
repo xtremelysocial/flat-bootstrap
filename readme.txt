@@ -359,7 +359,6 @@ For more information on SemVer, please visit [http://semver.org/].
 * Removed extra padding between content and collapsed sidebar on smaller screens.
 * Added separate <span> tags around the footer copyright and "theme by" text so either can easily be hidden via custom CSS as opposed to editing PHP files.
 * Change body classes to only indicate has-header-image if there is not a wide featured image being displayed instead
-* Standard WordPress galleries are now formatted with Bootstrap to be fully responsive. Previously, galleries did resize the images responsively, but now they will show a varying number of columns depending on the screen size.
 * Galleries now use HTML5 tags (<figure>, <figcaption>)
 * Changed up the style of gallery captions (text)
 * Fixed an issue on archive pages where a subtitle was appearing in the page header (it was pulling the subtitle from the first post on the archive page)
