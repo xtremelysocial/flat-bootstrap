@@ -316,7 +316,7 @@ endif; // end ! function_exists
  */
 add_filter('wp_get_attachment_link', 'xsbf_attachment_link_class', 10, 1); //Add Bootstrap thumnail class
 function xsbf_attachment_link_class($html) {
-	$html = str_replace('attachment-', 'thumbnail attachment-', $html);
+	$html = str_replace('class="attachment-', 'class="thumbnail attachment-' , $html);
 	return $html;
 }
 
@@ -328,25 +328,39 @@ if ( ! function_exists( 'xsbf_footer_filter' ) ) :
 add_filter('xsbf_footer' , 'xsbf_footer_filter' , 10 , 1);
 function xsbf_footer_filter( $footer ) {
 
-	/* Find and count all the <aside> tags. One per active widget */
-	preg_match_all ( '|<aside[^>]+>(.*)</[^>]+>|U', $footer, $matches );
-	$num_widgets = count ( $matches[0] ); 
+	// Use PHP to parse the DOM structure and count the number of widgets
+	//ini_set ( 'display_errors', 1 ); //TEST
+	//$dom = new DOMDocument;
+	$dom = new DOMDocument('1.0', 'utf-8');
+	$dom->loadHTML( $footer );
+	$asides = $dom->getElementsByTagName('aside');
+	//echo '<pre>'; print_r( $asides); echo '</pre>'; //TEST
+	$num_widgets = $asides->length; 
+	//echo "num_widgets={$num_widgets}<br />"; //TEST
 
-	// Store a counter so we can add clearfix to the 4 column layout
-	static $counter; $counter++;
+	// Loop through each widget and modify the Bootstrap grid, depending on how many
+	foreach ($asides as $counter => $aside) {
+		//if ( $num_widgets >= 4 ) {
+		if ( $num_widgets == 4 ) {
+			$aside->setAttribute( 'class', str_ireplace( 'col-sm-4', 'col-sm-6 col-lg-3 clearfix', $aside->getAttribute('class') ) );
+			// For the above to work, we need to add a clearing div after the 2nd column
+			if ( $counter == 2 ) {
+				$cleardiv = $dom->createElement('div');
+				$cleardiv->setAttribute('class', 'clearfix hidden-lg');
+				$aside->parentNode->insertBefore($cleardiv, $aside);
+			}
+		} elseif ( $num_widgets == 3 ) {
+			//$aside->setAttribute( 'class', str_ireplace( 'col-sm-4', 'col-sm-4', $aside->getAttribute('class') ) );
+		} elseif ( $num_widgets == 2 ) {
+			$aside->setAttribute( 'class', str_ireplace( 'col-sm-4', 'col-sm-6', $aside->getAttribute('class') ) );
+		} else {
+			$aside->setAttribute( 'class', str_ireplace( 'col-sm-4', 'col-sm-12', $aside->getAttribute('class') ) );
+		} //endif
+	} //endforeach
 
-	// Set the Bootstrap column CSS based on number of widgets. Allow up to 4.
-	if ( $num_widgets >= 4 ) {
-		$footer = str_ireplace( 'class="widget col-sm-4', 'class="widget col-sm-6 col-lg-3 ', $footer );
-		if ( $counter == 2) $footer = str_ireplace( '</aside>', '</aside><div class="clearfix hidden-lg"></div>', $footer );
-	} elseif ( $num_widgets == 3 ) {
-		// This is already the default, but if default changed then uncomment this
-		//$footer = str_ireplace( 'class="widget col-sm-4', 'class="widget col-md-4 ', $footer );
-	} elseif ( $num_widgets == 2 ) {
-		$footer = str_ireplace( 'class="widget col-sm-4', 'class="widget col-sm-6 ', $footer );
-	} else {
-		$footer = str_ireplace( 'class="widget col-sm-4', 'class="widget col-sm-12 ', $footer );
-	}
+	// Save what we just changed and return the value
+	$footer = $dom->saveHTML();
+	//ini_set ( 'display_errors', 0 ); //TEST
     return $footer;
 }
 endif; // end ! function_exists

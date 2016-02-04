@@ -11,8 +11,10 @@
 ?>
 
 <?php 
-/* If footer "sidebar" has widgets, then display them */
-$sidebar_footer = get_dynamic_sidebar( 'Footer' );
+/* If footer "sidebar" has widgets, then display them. The filter is very important as
+   it handles adjusting the bootstrap grid based on the number of widgets in the footer
+ */
+$sidebar_footer = get_dynamic_sidebar( 'sidebar-2' );
 if ( $sidebar_footer ) :
 ?>
 	<div class="sidebar-footer clearfix">

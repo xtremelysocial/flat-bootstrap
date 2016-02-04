@@ -13,6 +13,8 @@
 
 	<div class="entry-content">
 
+		<?php //get_sidebar( 'home' ); ?>
+		
 		<?php the_content(); ?>
 		
 		<?php get_template_part( 'content', 'page-nav' ); ?>

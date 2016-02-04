@@ -14,7 +14,7 @@
 global $xsbf_theme_options;
 	
 /* If page top "sidebar" has widgets, then display them */
-$sidebar_pagetop = get_dynamic_sidebar( 'Page Top' );
+$sidebar_pagetop = get_dynamic_sidebar( 'sidebar-3' );
 if ( $sidebar_pagetop ) :
 ?>
 	<div id="sidebar-pagetop" class="sidebar-pagetop">

@@ -9,7 +9,7 @@
 ?>
 	<div id="secondary" class="widget-area col-md-4 col-md-pull-8" role="complementary">
 		<?php do_action( 'before_sidebar' ); ?>
-		<?php if ( ! dynamic_sidebar( 'Sidebar' ) ) : ?>
+		<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
 
 			<aside id="search" class="widget widget_search">
 				<br />

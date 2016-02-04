@@ -78,6 +78,7 @@ endif; // end ! function_exists
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  */
+/*
 if ( ! function_exists( 'xsbf_wp_title' ) ) :
 add_filter( 'wp_title', 'xsbf_wp_title', 10, 2 );
 function xsbf_wp_title( $title, $sep ) {
@@ -101,3 +102,4 @@ function xsbf_wp_title( $title, $sep ) {
 	return $title;
 }
 endif; // end ! function_exists
+*/

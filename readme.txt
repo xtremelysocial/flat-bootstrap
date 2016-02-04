@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 1.6
+Requires at least: 4.2
+Tested up to: 4.4.2
+Stable tag: 1.7
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,18 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.7 =
+* Increased the font size for the extra large icon ("icon-xlg") to 72px (was 50px). Reduced padding to 5px for that as well as the large icon ("icon-lg").
+* Added support for the new <title> tag introduced in WordPress v4.1. It enhances consistency across all WordPress themes for plugins that modify the output of the page title.
+* Added two new utility functions to look for files first in the child theme directory before looking in the parent. This allows you to copy down more files into your child directory to edit them.
+* Removed bottom margin on alignment CSS tags (alignleft, alighright, aligncenter). This provides more flexibility as margins (or padding) can be added with other CSS tags.
+* Finally completely squashed that pesky bug where a bogus page subtitle was sometimes displaying on blog pages.
+* Rewrote the Footer widget area logic to more reliably handle from 1 to 4 widgets. Specifically, 4 widgets now collapses to 2 rows of 2 widgets on tablets without causing any display issues.
+* Fixed an issue where the Jetpack Carousel plugin, when activated, was getting messed up by the Bootstrap "thumbnail" CSS class. You are now free to use that plugin without issues!
+* Fixed the <code> tag so that it doesn't cause extra line-breaks. You can now use <code> when you want it to display inline and <pre> when you want it to appear as a block on its own.
+* Added text domain to TGM Activation Plugin Recommendations and fixed text domain on the site credits to allow translation
+* Fixed a bug where the default sidebar widgets were displaying when a language translation was made on the sidebar name itself. Now the user-added widgets display instead like they should!
 
 = 1.6 =
 * Set lists in the Page Top and Page Bottom widget areas to be horizontal without bullets or numbers. This lets you add custom menus, category lists, and other widgets and they will look good full-width.

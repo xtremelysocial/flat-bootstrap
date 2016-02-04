@@ -13,7 +13,6 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
@@ -44,7 +43,7 @@
 			?>
 				<div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); width: <?php echo get_custom_header()->width; ?>px; height: <?php echo get_custom_header()->height ?>px;">
 				<div class="container">
-                <?php if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
+                <?php //if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
                 <div class="site-branding-text">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
@@ -56,7 +55,7 @@
 			} else {
 			?>
 				<div class="container">
-                <?php if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
+                <?php //if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
                 <div class="site-branding-text">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
@@ -104,15 +103,17 @@
         $navbar .= '</div><!-- navbar-header -->';
 
 		// Display the desktop navbar
+		$navbar .= '<div class="navbar-collapse collapse">';
 		$navbar .= wp_nav_menu( 
 			array(  'theme_location' => 'primary',
-			'container_class' => 'navbar-collapse collapse', //<nav> or <div> class
+			//'container_class' => 'navbar-collapse collapse', //<nav> or <div> class
 			'menu_class' => 'nav navbar-nav', //<ul> class
 			'walker' => new wp_bootstrap_navwalker(),
 			'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 			'echo'	=> false
 			) 
 		);
+				
 		echo apply_filters( 'xsbf_navbar', $navbar );
 		?>
 

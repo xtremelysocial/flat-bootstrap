@@ -39,8 +39,10 @@ get_header(); ?>
 
 				<div class="entry-content">
 
+					<?php //get_sidebar( 'home' ); ?>
+					
 					<?php the_content(); ?>
-		
+					
 		<?php /* DISPLAY THE SUB-PAGES OF THIS PAGE */
 		// There is no pagination yet, so $posts_per_page needs to be the max number of
 		// child pages you'd ever have. TO-DO: ADD PAGINATION
