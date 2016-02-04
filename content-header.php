@@ -169,7 +169,7 @@
 	 */
 	if ( $title AND ! $subtitle ) {
 		$subtitle = term_description();
-		if ( ! $subtitle AND !is_archive() ) $subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
+		if ( ! $subtitle AND is_singular() ) $subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 	}
 		
 	/* 

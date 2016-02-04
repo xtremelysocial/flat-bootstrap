@@ -90,7 +90,7 @@ add_filter('xsbf_credits', 'xsbf_child_credits');
 function xsbf_child_credits ( $site_credits ) {
 		
 	$theme = wp_get_theme();
-	$site_credits = sprintf( __( '&copy; %1$s %2$s', 'xtremelysocial' ), 
+	$site_credits = sprintf( __( '&copy; %1$s %2$s', 'flat-bootstrap' ), 
 		date ( 'Y' ),
 		'<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a>'
 	);

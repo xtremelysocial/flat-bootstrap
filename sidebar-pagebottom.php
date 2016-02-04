@@ -14,7 +14,7 @@
 global $xsbf_theme_options;
 
 /* If page bottom "sidebar" has widgets, then display them */
-$sidebar_pagebottom = get_dynamic_sidebar( 'Page Bottom' );
+$sidebar_pagebottom = get_dynamic_sidebar( 'sidebar-4' );
 if ( $sidebar_pagebottom ) :
 ?>
 	<div id="sidebar-pagebottom" class="sidebar-pagebottom">

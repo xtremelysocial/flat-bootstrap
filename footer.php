@@ -40,21 +40,21 @@
 		
 	// If not, default one
 	} elseif ( $xsbf_theme_options['sample_footer_menu'] ) {
-			$nav_menu = '
-			<div class="sample-menu-footer-container">
-			<ul id="sample-menu-footer" class="list-inline dividers">
-			<li id="menu-item-sample-1" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-sample-1"><a class="smoothscroll" title="'
-			.__( 'Back to top of page', 'flat-bootstrap' )
-			.'" href="#page"><span class="fa fa-angle-up"></span> '
-			.__( 'Top', 'flat-bootstrap' )
-			.'</a></li>
-			<li id="menu-item-sample-2" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-sample-2"><a title="'
-			.__( 'Home', 'flat-bootstrap' )
-			.'" href="' . get_home_url() . '">'
-			.__( 'Home', 'flat-bootstrap' )
-			.'</a></li>
-			</ul>
-			</div>';
+		$nav_menu = '
+		<div class="sample-menu-footer-container">
+		<ul id="sample-menu-footer" class="list-inline dividers">
+		<li id="menu-item-sample-1" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-sample-1"><a class="smoothscroll" title="'
+		.__( 'Back to top of page', 'flat-bootstrap' )
+		.'" href="#page"><span class="fa fa-angle-up"></span> '
+		.__( 'Top', 'flat-bootstrap' )
+		.'</a></li>
+		<li id="menu-item-sample-2" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-sample-2"><a title="'
+		.__( 'Home', 'flat-bootstrap' )
+		.'" href="' . get_home_url() . '">'
+		.__( 'Home', 'flat-bootstrap' )
+		.'</a></li>
+		</ul>
+		</div>';
 	} //endif has_nav_menu()
 ?>
 

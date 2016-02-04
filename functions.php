@@ -71,17 +71,17 @@ $defaults = array(
 );
 
 /**
- * NOTE: $theme_options is being deprecated and replaced with $xsbf_theme_options. You'll
- * need to update your child themes.
+ * NOTE: $theme_options has been deprecated and replaced with $xsbf_theme_options. You'll
+ * need to update your child themes before we get to version 2.0.
  */
 if ( isset ( $xsbf_theme_options ) AND is_array ( $xsbf_theme_options ) AND ! empty ( $xsbf_theme_options ) ) {
 	$xsbf_theme_options = wp_parse_args( $xsbf_theme_options, $defaults );
-} elseif ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) {
+} elseif ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) { // deprecated
 	$xsbf_theme_options = wp_parse_args( $theme_options, $defaults );
 } else {
 	$xsbf_theme_options = $defaults;
 }
-$theme_options = $xsbf_theme_options;
+$theme_options = $xsbf_theme_options; // deprecated
 
 // Plugins expect this as discreet variable, so set it
 $content_width = $xsbf_theme_options['content_width'];
@@ -97,6 +97,10 @@ if ( ! function_exists( 'xsbf_setup' ) ) :
 function xsbf_setup() {
 
 	global $xsbf_theme_options;
+
+	// Add support for WordPress core to add <title> tag to the header. As of WordPress 
+	// v4.1. Its just done for consistency across all WordPress themes.
+	add_theme_support( 'title-tag' );
 
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
@@ -132,7 +136,7 @@ function xsbf_setup() {
 		) ) );
 
 	// Enable support for Post Formats. Note we haven't included any special styling. 
-	// Look at TwentyEleven theme for this.  As of WordPress v3.1.
+	// Look at TwentyEleven theme for this. As of WordPress v3.1.
 	if( ! empty ( $xsbf_theme_options['post_formats']) ) {
 		add_theme_support( 'post-formats', $xsbf_theme_options['post_formats'] );
 		
@@ -159,10 +163,32 @@ endif; // end ! function_exists
 add_filter( 'image_size_names_choose', 'xsbf_image_sizes' );
 function xsbf_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'gallery-image' => __( 'Gallery Image (640x360)' ),
+        'gallery-image' => __( 'Gallery Image (640x360)', 'flat-bootstrap' ),
     ) );
 }
 */
+
+/**
+ * Utility function for finding a file first in the child theme and then the parent
+ */
+function xsbf_theme_directory ( $file ) {
+	if ( file_exists ( get_stylesheet_directory() . $file ) ) {
+		return get_stylesheet_diretory() . $file;
+	} else {
+		return get_template_diretory() . $file;
+	}
+}
+
+/**
+ * Utility function for finding a file by URL first in the child theme and then the parent
+ */
+function xsbf_theme_directory_uri ( $file ) {
+	if ( file_exists ( get_stylesheet_directory_uri() . $file ) ) {
+		return get_stylesheet_diretory_uri() . $file;
+	} else {
+		return get_template_diretory_uri() . $file;
+	}
+}
 
 /**
  * Register widgetized areas
@@ -214,6 +240,19 @@ function xsbf_widgets_init() {
 		'after_widget' 	=> '</div><!-- container --></aside>',
 	) );
 
+/*
+	// Home Page (Only) Widget Area. Single Column.
+	register_sidebar( array(
+		'name' 			=> __( 'Home Page', 'flat-bootstrap' ),
+		'id' 			=> 'sidebar-5',
+		'description' 	=> __( 'Optional section that displays only on the home page. It appears whether the home page is static or the blog. This is a single column area that spans the full width of the page.', 'flat-bootstrap' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix"><div class="container">',
+		'before_title' 	=> '<h2 class="widget-title">',
+		'after_title' 	=> '</h2>',
+		'after_widget' 	=> '</div><!-- container --></div>',
+	) );
+*/
+
 } //end function
 add_action( 'widgets_init', 'xsbf_widgets_init' );
 endif; // end ! function_exists
@@ -262,7 +301,7 @@ function xsbf_scripts() {
 
 	/* LOAD JAVASCRIPT */
 
-	// Bootsrap core javascript
+	// Bootstrap core javascript
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.2', true );
 
 	// jquery mobile script is a custom download with ONLY "touch" functions. Load

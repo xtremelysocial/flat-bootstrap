@@ -105,13 +105,13 @@ p.screen-reader-text {
 	display: inline;
 	float: left;
 	margin-right: 10px;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 }
 .alignright, .align-right {
 	display: inline;
 	float: right;
 	margin-left: 10px;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 }
 .aligncenter, .align-center {
 	clear: both;
@@ -119,7 +119,7 @@ p.screen-reader-text {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 }
 .nocenter {
 	text-align: left;
@@ -554,10 +554,10 @@ header.site-header.page-header {
 	font-weight: 500;	
 }
 
-/* Style <code> tag like <pre> tag so its white instead of red */
+/* Style code tag like pre tag so its white instead of red */
 code {
-    word-break: break-all;
-    word-wrap: break-word;
+    /*word-break: break-all;
+    word-wrap: break-word;*/
     color: #2f2f2f;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
@@ -691,12 +691,12 @@ code {
 span.icon-lg,
 i.icon-lg {
     font-size: 50px;
-	padding: 20px;
+	padding: 5px;
 }
 span.icon-xlg,
 i.icon-xlg {
-    font-size: 50px;
-	padding: 20px;
+    font-size: 72px;
+	padding: 5px;
 }
 
 /* 
