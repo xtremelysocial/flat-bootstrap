@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 4.2
 Tested up to: 4.4.2
-Stable tag: 1.7
+Stable tag: 1.7.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,9 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.7.1 =
+* Quick fix to suppress an error message about libxml invalid tags when processing the site footer. This would only display when WordPress was in debug mode (like on a test site), but it was annoying anyway. If anyone cares, the "error" is really a warning that PHP's libxml doesn't yet understand HTML5 tags. It still processes them just fine, though.
 
 = 1.7 =
 * Increased the font size for the extra large icon ("icon-xlg") to 72px (was 50px). Reduced padding to 5px for that as well as the large icon ("icon-lg").
