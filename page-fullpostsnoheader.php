@@ -31,7 +31,7 @@ get_header(); ?>
 
 				<div class="entry-content">
 
-					<?php //get_sidebar( 'home' ); ?>
+					<?php get_sidebar( 'home' ); ?>
 
 					<?php the_content(); ?>
 

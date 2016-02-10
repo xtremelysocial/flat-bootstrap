@@ -372,10 +372,11 @@ li.pingback {
 	margin-right: 5px;
 }
 
-/* Get rid of bullets on sidebars, footer, page top, and page bottom */
+/* Get rid of bullets on sidebars, footer, page top, page bottom, and home page */
 #secondary ul, 
 #sidebar-pagetop ul,
 #sidebar-pagebottom ul,
+#sidebar-home ul,
 footer#colophon.site-footer ul {
 	list-style: none;
 	padding-left: 0;
@@ -383,6 +384,7 @@ footer#colophon.site-footer ul {
 #secondary ul ul, 
 #sidebar-pagetop ul ul,
 #sidebar-pagebottom ul ul,
+#sidebar-home ul ul,
 footer#colophon.site-footer ul ul {
 	list-style: none;
 	padding-left: 25px;
@@ -393,22 +395,27 @@ footer#colophon.site-footer ul li {
 	margin-top: 10px;
 }
 
-/* Make custom menus in page top and page bottom inline (horizontal). */
+/* Make custom menus in page top, page bottom, and home page inline (horizontal). */
+/*
 #sidebar-pagetop ul > li,
-#sidebar-pagebottom ul > li { 
+#sidebar-pagebottom ul > li,
+#sidebar-home ul > li { 
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px
 }
 .#sidebar-pagetop ul > li:first-child, 
-.#sidebar-pagebottom ul > li:first-child {
+.#sidebar-pagebottom ul > li:first-child,
+.#sidebar-home ul > li:first-child {
     padding-left: 0
 }
 
 #sidebar-pagetop .widget_nav_menu,
-#sidebar-pagebottom .widget_nav_menu { 
+#sidebar-pagebottom .widget_nav_menu, 
+#sidebar-home .widget_nav_menu { 
 	margin-top: 11px;
 }
+*/
 
 /* Style comments */
 .comment-list .children {

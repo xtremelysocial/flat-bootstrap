@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-<?php //get_sidebar( 'home' ); ?>
+<?php get_sidebar( 'home' ); ?>
 
 <div class="container">
 <div id="main-grid" class="row">

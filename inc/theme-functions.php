@@ -52,10 +52,10 @@ function xsbf_add_container( $content ) {
 	// If the page template is full-width. Do it on all posts just in case its full
 	// width as well.
 	//if ( xsbf_is_fullwidth() OR is_single() ) {
-	if ( xsbf_is_fullwidth() ) {
+	//if ( xsbf_is_fullwidth() ) {
 		$content .= '<div id="after-content" class="after-content">'
 			.'<div class="container ">';
-	}
+	//}
 	return $content;
 }
 endif; // end ! function_exists
@@ -72,10 +72,10 @@ function xsbf_end_container( $content ) {
 	// If the page template is full-width. Do it on all posts just in case its full
 	// width as well.
 	//if ( xsbf_is_fullwidth() OR is_single() ) {
-	if ( xsbf_is_fullwidth() ) {
+	//if ( xsbf_is_fullwidth() ) {
 		$content .= '</div><!-- .after-content -->'
 			.'</div><!-- .container -->';
-	}
+	//}
 	return $content;
 }
 endif; // end ! function_exists
@@ -332,7 +332,10 @@ function xsbf_footer_filter( $footer ) {
 	//ini_set ( 'display_errors', 1 ); //TEST
 	//$dom = new DOMDocument;
 	$dom = new DOMDocument('1.0', 'utf-8');
+	libxml_use_internal_errors(true);
 	$dom->loadHTML( $footer );
+	libxml_clear_errors();
+	
 	$asides = $dom->getElementsByTagName('aside');
 	//echo '<pre>'; print_r( $asides); echo '</pre>'; //TEST
 	$num_widgets = $asides->length; 
