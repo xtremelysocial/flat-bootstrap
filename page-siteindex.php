@@ -16,7 +16,7 @@ get_header(); ?>
 
 <?php get_template_part( 'content', 'header' ); ?>
 
-<?php //get_sidebar( 'home' ); ?>
+<?php get_sidebar( 'home' ); ?>
 
 <div class="container">
 <div id="main-grid" class="row">
@@ -26,10 +26,24 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
-				
-				<?php get_template_part( 'content', 'siteindex' ); ?>
+				<?php //get_template_part( 'content', 'page' ); ?>
 
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+					<div class="entry-content">
+
+						<?php the_content(); ?>
+
+						<?php get_template_part( 'content', 'siteindex' ); ?>
+
+						<?php get_template_part( 'content', 'page-nav' ); ?>
+
+						<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<footer class="entry-meta"><div class="edit-link">', '</div></footer>' ); ?>
+
+					</div><!-- .entry-content -->
+	
+				</article><!-- #post-## -->
+				
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template
 					if ( comments_open() || '0' != get_comments_number() )

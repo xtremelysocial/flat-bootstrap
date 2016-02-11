@@ -10,9 +10,9 @@
 
 <nav role="navigation" id="nav-below" class="paging-navigation">
 
-	<h1 class="screen-reader-text sr-only"><?php _e( 'paging-navigation', 'flat-bootstrap' ); ?></h1>
-
 	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+
+	<h1 class="screen-reader-text sr-only"><?php _e( 'paging-navigation', 'flat-bootstrap' ); ?></h1>
 
 		<?php
 		$pagination = array(

@@ -240,18 +240,16 @@ function xsbf_widgets_init() {
 		'after_widget' 	=> '</div><!-- container --></aside>',
 	) );
 
-/*
 	// Home Page (Only) Widget Area. Single Column.
 	register_sidebar( array(
 		'name' 			=> __( 'Home Page', 'flat-bootstrap' ),
 		'id' 			=> 'sidebar-5',
 		'description' 	=> __( 'Optional section that displays only on the home page. It appears whether the home page is static or the blog. This is a single column area that spans the full width of the page.', 'flat-bootstrap' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix"><div class="container">',
+		'before_widget' => '<div id="%1$s" class="section widget %2$s clearfix"><div class="container">',
 		'before_title' 	=> '<h2 class="widget-title">',
 		'after_title' 	=> '</h2>',
 		'after_widget' 	=> '</div><!-- container --></div>',
 	) );
-*/
 
 } //end function
 add_action( 'widgets_init', 'xsbf_widgets_init' );

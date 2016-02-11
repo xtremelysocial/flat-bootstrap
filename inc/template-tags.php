@@ -10,15 +10,24 @@
  */
 
 /*
- * Helper function so we can check sidebar for content before displaying it.
+ * Helper function so we can check sidebar for content before displaying it. Since the
+ * underlying dynamic_sidebar() will always return the first sidebar if none is specified,
+ * we override that so that this function only returns something if the specified sidebar
+ * is actually active.
  * Note: This function may end up in WordPress Core, but doesn't exist as of v3.8
  */
 if ( ! function_exists( 'get_dynamic_sidebar' ) ) :
-function get_dynamic_sidebar( $index = 1 ) {
+//function get_dynamic_sidebar( $index = 1 ) {
+function get_dynamic_sidebar( $index = null ) {
+	//echo 'index=' . $index . '<br />'; //TEST
 	$sidebar_contents = "";
-	ob_start();
-	dynamic_sidebar( $index );
-	$sidebar_contents = ob_get_clean();
+
+	if ( $index AND is_active_sidebar( $index ) ) {
+		ob_start();
+		dynamic_sidebar( $index );
+		$sidebar_contents = ob_get_clean();
+	} //endif is_active_sidebar
+
 	return $sidebar_contents;
 } //endfunction
 endif; // end ! function_exists
@@ -29,16 +38,16 @@ endif; // end ! function_exists
  * 
  * NOTE: THIS FUNCTION IS DEPRECATED AS IT IS NOT RECOMMENDED FOR USE BY WORDPRESS.ORG
  */
+/*
 if ( ! function_exists( 'xsbf_theme_preview' ) ) :
 function xsbf_theme_preview() {
-/*
 	if ( isset ( $_SERVER['HTTP_REFERER'] ) ) {
 		if ( stripos( $_SERVER['HTTP_REFERER'], 'customize.php' ) !== false ) return true;
 	}
-*/
 	return false;
 } //endfunction
 endif; // end ! function_exists
+*/
 
 /**
  * Remove the [...] from the excerpt (will replace it next)
