@@ -328,18 +328,16 @@ if ( ! function_exists( 'xsbf_footer_filter' ) ) :
 add_filter('xsbf_footer' , 'xsbf_footer_filter' , 10 , 1);
 function xsbf_footer_filter( $footer ) {
 
-	// Use PHP to parse the DOM structure and count the number of widgets
-	//ini_set ( 'display_errors', 1 ); //TEST
-	//$dom = new DOMDocument;
+	// Use PHP to parse the DOM structure and count the number of widgets. Note that we
+	// have to suppress errors because libxml doesn't recognize html5 tags yet. It still
+	// processes them just fine, though.
 	$dom = new DOMDocument('1.0', 'utf-8');
 	libxml_use_internal_errors(true);
 	$dom->loadHTML( $footer );
 	libxml_clear_errors();
-	
+
 	$asides = $dom->getElementsByTagName('aside');
-	//echo '<pre>'; print_r( $asides); echo '</pre>'; //TEST
 	$num_widgets = $asides->length; 
-	//echo "num_widgets={$num_widgets}<br />"; //TEST
 
 	// Loop through each widget and modify the Bootstrap grid, depending on how many
 	foreach ($asides as $counter => $aside) {

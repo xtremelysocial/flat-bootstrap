@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 4.2
 Tested up to: 4.4.2
-Stable tag: 1.7
+Stable tag: 1.7.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -356,6 +356,9 @@ For more information on SemVer, please visit [http://semver.org/].
 * Previously on full-width page templates, we used javascript to move content from any plugins to the bottom of the page. For example, to push social sharing buttons below the content. In this release, we do that for all pages and articles, regardless of whether they are full-width or not. For example, social sharing buttons now get moved below the site index page content when using that page template.
 * Turned off making lists horizontal instead of vertical in the page top and page bottom widget areas (and the new home page widget area). We noticed that the formatting would get all messed up if the list was more than a single level deep.
 * Minor change to not display screen-reader text for page navigation unless there is actually multiple pages. 
+
+= 1.7.1 =
+* Quick fix to suppress an error message about libxml invalid tags when processing the site footer. This would only display when WordPress was in debug mode (like on a test site), but it was annoying anyway. If anyone cares, the "error" is really a warning that PHP's libxml doesn't yet understand HTML5 tags. It still processes them just fine, though.
 
 = 1.7 =
 * Increased the font size for the extra large icon ("icon-xlg") to 72px (was 50px). Reduced padding to 5px for that as well as the large icon ("icon-lg").
