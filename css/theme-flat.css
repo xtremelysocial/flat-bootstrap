@@ -988,17 +988,18 @@ span.page-numbers.current {
     color: #bdc3c7; /*silver*/
 }
 
+/* Push the carousel indicators down below the image or content */
+.carousel-indicators {
+	bottom: -35px;
+}
+
+/* Handle "sticky" (featured) posts */
 .sticky .entry-title:after {
 	background-color: #1abc9c;
 	color: #fff;
 }
 
 .bypostauthor {
-}
-
-/* Push the carousel indicators down below the image or content */
-.carousel-indicators {
-	bottom: -35px;
 }
 
 /* Make user profile pics (avatars) circles */
