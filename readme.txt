@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 4.2
 Tested up to: 4.4.2
-Stable tag: 1.7.1
+Stable tag: 1.8.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -350,6 +350,9 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.8.1 =
+* Quick fix to back out changes in v1.8 that uses javascript to move content from plugins on ANY page back to only being applied to full-width page templates. At least one user was having an issue with a plugin. I will be looking at changing when and how this is done in the v1.9 release.
 
 = 1.8 =
 * Added a home page widget so you can add text or other widgets that get displayed only on your home page. Each widget added will take up the full width of the site. Padding is automatically added around each widget for a nicer look. These home page widgets work whether you have your blog displayed on the home page or you have a "static" home page set. When the blog is home, it provides a nice way to put some welcome or introduction text at the top of the page before your blog entries.

@@ -52,10 +52,10 @@ function xsbf_add_container( $content ) {
 	// If the page template is full-width. Do it on all posts just in case its full
 	// width as well.
 	//if ( xsbf_is_fullwidth() OR is_single() ) {
-	//if ( xsbf_is_fullwidth() ) {
+	if ( xsbf_is_fullwidth() ) {
 		$content .= '<div id="after-content" class="after-content">'
 			.'<div class="container ">';
-	//}
+	}
 	return $content;
 }
 endif; // end ! function_exists
@@ -72,10 +72,10 @@ function xsbf_end_container( $content ) {
 	// If the page template is full-width. Do it on all posts just in case its full
 	// width as well.
 	//if ( xsbf_is_fullwidth() OR is_single() ) {
-	//if ( xsbf_is_fullwidth() ) {
+	if ( xsbf_is_fullwidth() ) {
 		$content .= '</div><!-- .after-content -->'
 			.'</div><!-- .container -->';
-	//}
+	}
 	return $content;
 }
 endif; // end ! function_exists
