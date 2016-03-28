@@ -65,6 +65,7 @@ function xsbf_add_container( $content ) {
 		}
 
 	} //is_singular
+
 	return $content;
 }
 endif; // end ! function_exists
@@ -92,6 +93,7 @@ function xsbf_end_container( $content ) {
 			$content .= '</div><!-- .after-content -->';
 		}
 	} //is_singular
+
 	return $content;
 }
 endif; // end ! function_exists
