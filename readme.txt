@@ -5,7 +5,7 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 4.2
 Tested up to: 4.4.2
-Stable tag: 1.8.1
+Stable tag: 1.9
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -15,18 +15,20 @@ Flat Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style the
 
 Flat Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones.
 
-It is based on the standard WordPress starter theme (_S) and the Twitter Bootstrap CSS framework. The theme was inspired by the HTML/CSS themes from Blacktie.co and color schemes from Designmodo.com’s flat UI.
+It is based on the standard WordPress starter theme (_S) and the Twitter Bootstrap CSS framework. The theme was inspired by the HTML/CSS themes from Blacktie.co (Carlos Alvarez) and color schemes from Designmodo.com’s flat UI.
 
 Features include a mobile navigation bar, multiple columns (grid), buttons, icons, labels, badges, tabbed content areas, collapsible content areas, progress bars, alert boxes, carousels (sliders) and much, much more. This is a theme for both users and theme developers with lots of features but without the bloat. 
 
 This theme includes a child theme to be able to easily customize the theme. The Flat Bootstrap Child theme is for users and developers and comes with a style.css and functions.php file. Just copy the flat-bootstrap-child directory into your /themes directory and make your changes there.
+
+PLEASE NOTE: Version 1.9 has had a major "spring cleaning" of the functions, templates, and CSS. Please be sure to test it out on your site.
 
 For more information on the Flat Bootstrap theme go to [http://xtremelysocial.com/wordpress/flat/].
 
 
 == LICENSE ==
 
-Flat Bootstrap WordPress theme, Copyright (C) 2014 XtremelySocial
+Flat Bootstrap WordPress theme, Copyright (C) 2014-2016 XtremelySocial
 Flat Bootstrap WordPress theme is licensed under the GPL.
 
 Userscores WordPress Starter Theme - ​http://underscores.me/
@@ -79,7 +81,7 @@ The theme is translation ready and has already been translated to Danish, French
 
 == SCREENSHOTS ==
 
-For now, WordPress doesn't allow themes to have more than one screenshot, but you can go to [http://xtremelysocial.com/wordpress/flat/] to see a bunch of them.
+For now, WordPress doesn't allow themes to have more than one screenshot, but you can go to [http://xtremelysocial.com/wordpress/flat/] to see more of them.
 
 
 == HOW TO USE THE THEME ==
@@ -104,6 +106,22 @@ If you use the "No Sidebar" template, you won't have to mess with the container 
 
 While you're in the editor, you may or may not notice that we've added a new section called Additional Post / Page Options. There you will find a Subtitle field that we encourage you to fill out at least for pages. It will display under the title of the page or post. Most premium themes have this and it looks great, so we included it.
 
+NEW! If you want to display some text or another widget on your home page, you can use the Home Page widget area. This will display regardless of whether you have a static page or your blog set as your home. In the latter case, its a great way to create an "intro" sections to your website even when you want users focused on your blog.
+
+If you want to have a colored background for a home page widget (or Page Top and Page Bottom widget areas), its easiest to use the Simple CSS for Widgets plugin. It adds a CSS Class field to every widget. Create a text widget and add the classes "section bg-midnightblue" or any other color from our color palette.
+
+If you really don't want to use a widget, you can do the same thing this way. Leave the widget title blank and put all of this in the widget text area:
+
+`</div></div>
+<div class="section bg-midnightblue">
+<div class="container">
+<h1>Welcome to our Website!</h1>
+<p>This is an optional widget area that you can display on all your pages or just your home page. It works when the blog is your home page.</p>
+</div></div>
+<div><div>`
+
+The first two </div>'s break out of the default widget <div>'s. The last two <div>'s are needed because the default widget will of course end its own <div>'s. Be very careful with this, though, because if you mess this up it will break your site layout.
+
 = Set theme options =
 
 One of the first things you'll want to set is your header menu and optionally a footer menu. Use the standard WordPress menu editor to build those and set theme there or in Appearance -> Customize. 
@@ -122,7 +140,7 @@ Also note that if you change background color, that only shows beyond 1600px wid
 
 = Set colored backgrounds in the content on your page or post =
 
-To add a colored section to your content, just add a section like you did above and change the color to one of the ones below. These colors are all perfectly color-matched to go together and are common colors for "flat" style websites. They are largely taken from Gizmodo's flat-ui, but we've given them easy to remember names.
+To add a colored section to your content, just add a section like you did above and change the color to one of the ones below. These colors are all perfectly color-matched to go together and are common colors for "flat" style websites. They are largely taken from Gizmodo's flat-ui, but we've given them easy to remember names and added more.
 
 * bg-white
 * bg-offwhite
@@ -131,21 +149,21 @@ To add a colored section to your content, just add a section like you did above 
 * bg-darkgray
 * bg-lightgreen
 * bg-darkgreen
-* bg-brightgreen (new)
-* bg-darkbrightgreen (new)
+* bg-brightgreen
+* bg-darkbrightgreen
+* bg-yellow
+* bg-lightorange
+* bg-orange
+* bg-darkorange
 * bg-blue
 * bg-darkblue
-* bg-purple (new)
-* bg-darkpurple (new)
+* bg-purple
+* bg-darkpurple
 * bg-midnightblue
-* bg-darkmidnightblue (new)
-* bg-yellow
-* bg-lightorange (new)
-* bg-orange (new)
-* bg-darkorange (new)
+* bg-darkmidnightblue
 * bg-red
-* bg-brightred (new)
-* bg-darkbrightred (new)
+* bg-brightred
+* bg-darkred
 * bg-almostblack
 * bg-notquiteblack
 * bg-black
@@ -209,7 +227,7 @@ Bootstrap comes with a bunch of icons you can use. Check them out here: [http://
 
 We put the `&nbsp;` code in there just to add a space as WordPress likes to strip out HTML tags that it thinks are empty.
 
-But wait... there's more! We've also included Font Awesome which takes the whole icon thing to  another level. Particularly useful are the social networking icons, but there are tons more to choose from. Just like Bootstrap's icons, these icons are stored as a font file meaning they are pixel-perfect at any font size even on retina (high pixel density) displays like the iPad, Macbook Pro Retina, high-end Android tablets, etc.
+But wait... there's more! We've also included Font Awesome which takes the whole icon thing to another level. Particularly useful are the social networking icons, but there are tons more to choose from. Just like Bootstrap's icons, these icons are stored as a font file meaning they are pixel-perfect at any font size even on retina (high pixel density) displays like the iPad, Macbook Pro Retina, high-end Android tablets, etc.
 
 To use Font Awesome icons, just put the following in your content: 
 `<span class="fa fa-facebook"><span>`
@@ -227,7 +245,7 @@ In addition to the all the standard Bootstrap buttons, we've also added a couple
 
 = Set a POST to full width =
 
-Yep, you can do that! Very few themes have this feature because its not a standard part of WordPress, but we've added it because this theme is so focused on full-width. When editing a post, within our Additional Post / Page Options section there is a checkbox to display the them full-width. It works exactly like the "Full Width" page template described above.
+Yep, you can do that! Very few themes have this feature because its not a standard part of WordPress, but we've added it because this theme is so focused on full-width. When editing a post, within our Additional Post / Page Options section there is a checkbox to display the post full-width. It works exactly like the "Full Width" page template described above.
 
 If you are concerned that the text is too wide to be read easily on large screens, use the Bootstrap grid system (columns) to narrow the text only on large screens. This works perfectly for that:
 
@@ -237,13 +255,15 @@ Content goes here.
 </div>
 </div></div>`
 
-What this does is contain the text to about two-thirds of the screen width (Bootstrap's grid is 12 columns), but ONLY on large screens. For smaller screens, it displays full width. Now you are starting to see the power of Bootstrap's grid system ;-) You can also use col-lg-10 and col-lg-offset-1 if you'd like it a littler wider.
+What this does is contain the text to about two-thirds of the screen width (Bootstrap's grid is 12 columns), but ONLY on large screens. For smaller screens, it displays full-width. Now you are starting to see the power of Bootstrap's grid system ;-) You can also use col-lg-10 and col-lg-offset-1 if you'd like it a littler wider.
 
-= Add widgets to the sidebar and optionally the footer, page top, and page bottom =
+= Add widgets to the sidebar and optionally the home page, footer, page top, and page bottom =
 
-We've included lots of widget areas. Of course there is a sidebar that you can put on the left or right. However, if you are using mostly full-width pages and full-width posts, its only going to display on the archives and search pages.
+We've included lots of widget areas. Of course there is a sidebar that you can put on the left or right (move it to the left by choosing the "Sidebar Left" page template). However, if you are using mostly full-width pages and full-width posts, its only going to display on the archives and search pages and regular pages that aren't full-width.
 
-So you may want to add sections to the page bottom which display after your content and before the footer. Full-width colored sections look great there for calls to action or whatever else you want. We recommend installing the Widget Classes plugin, so you can just add "bg-gray" or whatever color you want to it. We think these actually look better than loading up the sidebar, but that of course is entirely up to you.
+So you may want to add sections to the page bottom which display after your content and before the footer. Full-width colored sections look great there for calls to action or whatever else you want. We recommend installing the Simple CSS for Widgets plugin, so you can just add "bg-gray" or whatever color you want to it. We think these actually look better than loading up the sidebar, but that of course is entirely up to you.
+
+NEW: The Home Page widget area obviously will display only on the home page, but it works whether you have a static page or your blog set as your home page. In the latter case, it's a great way to add an "intro" section or sections to your home page even though you want the blog to display there as well.
 
 = Remove the default Page Bottom and Footer Widgets =
 
@@ -257,13 +277,13 @@ When you first installed the theme, you may have noticed a banner at the top of 
 
 * _Jetpack_ - This plugin from the makers of WordPress themselves adds a ton of features. The most relevant for this theme are: Tiled Galleries and Widget Visibility. The latter can be used to display certain "Sidebar" or "Page Bottom" widgets only on certain pages.
 
-* _Widget Classes_ - Great way to easily add a background color to an entire widget, especially the ones in the "Page Bottom".
+* _Simple CSS for Widgets_ - Great way to easily add a background color to an entire widget, especially the ones in the Page Top, Page Bottom, and Home Page widget areas.
+
+NEW: _Regenerate Thumbnails_ - This is very useful when first setting up the theme because it allows you to resize all your featured images to match this theme's standard sizes. See below section for more information.
 
 * _Bootstrap 3 Shortcodes_ - This plugin supports most of the Bootstrap components and makes it easy to insert the HTML and then you can easily edit it. Its a lot like the quicktags we included, but much more comprehensive. 
 
 There are other Bootstrap Shortcode plugins out there as well and they all will work well with this theme. Some of them require you to uncheck a box to indicate that you are already using a theme that includes Bootstrap so the plugin doesn't try to add another copy of it. That's primarily the reason we chose to recommend the one above is simply because it doesn't try to add Bootstrap it all. It requires a theme like this one that has it.
-
-* _Agnosia Bootstrap Carousel_ - This provides a shortcode for creating carousels, which most WordPress themes refer to as "sliders". Note that Jetpack above has this as well, so may just want to use that. But since this is a Bootstrap theme, we wanted to recommend a plugin that supports Bootstrap's particular look and feel, especially since we've styled that look in this theme.
 
 = Set Post “Thumbnail” Image Sizes =
 
@@ -288,9 +308,9 @@ Great question! There are thousands of WordPress themes and dozens of Bootstrap 
 
 We developed this theme to be unique in these key ways:
 
-1. It is based on the WordPress core "starter theme", so you already know how to style it and override templates and such in a child theme without learning anything new!
+1. It is based on the WordPress core "starter theme" ("underscores" or "_S"), so you already know how to style it and override templates and such in a child theme without learning anything new!
 
-2. It is based on Bootstrap for cross-browser capability in a fully responsive theme with tons of components that you can use in your content, such as buttons, navbars, sliders, etc.
+2. It is based on Bootstrap by Twitter for cross-browser capability in a fully responsive theme with tons of components that you can use in your content, such as buttons, navbars, sliders, etc.
 
 3. It is designed to be a modern, "flat" (or technically "almost flat") theme with full-width colored sections and full-width images. This really brings your content alive and allows the reader to focus on that content instead of the theme itself.
 
@@ -350,6 +370,85 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.9 - Mar 26 2016 = 
+This is the "spring cleaning" edition. This version focuses on both cleaning up and updating the templates, functions, and CSS as well as allowing for more varied themes in the future. The child theme has been updated to include some of the common user requests as well. Jetpack Testimonials are now displayed better and Jetpack Portfolio items can  have a subtitle. All this has been done with the intent to cause little no disruption to existing child themes.
+
+BACK-END UPDATES
+
+* Updated all components, including Bootstrap, Font Awesome, and html5shiv (for older browser compatibility) to the latest versions.
+
+* Refactored the CSS to more easily allow child themes with different typography and overall styling. We added table of contents to each CSS file so its easy to see and search for where various classes are. For example, those related to "Posts and Pages". Specifically these changes were made to the CSS stylesheets: 
+	- Several styles were moved into our custom bootstrap.css. This reduces the size and increases performance a bit.
+	- Many styles were moved from theme-flat.css to either theme-base.css or this theme's style.css. theme-flat.css now only contains enhances to Bootstrap so developers and power users can better pick and choose which of the theme's stylesheets to include in a child theme.
+
+* Similarly refactored some of the functions in functions.php to allow fonts and scripts to be more easily overridden in child themes. Specifically:
+	- Rewrote xsbf_scripts() to now have 3 separate functions within it: xsbf_load_fonts(), xsbf_load_css(), and xsbf_load_js(). This allows for finer granularity in overriding these things in child themes. However, the original xsbf_scripts() function is still used as a wrapper for these functions in case anyone completely rewrote that function in a child theme. 
+	- Changed the xsbf_load_includes function to use an array of function names to include and loop through them instead of having to have code to load each one individually.
+	- Changed the sidebar filters to always fire, even when the widget area doesn't have any widgets. This allows for "samples" or "defaults" to be displayedby child themes until a user adds some of their own widgets (or removed completely). This relates to the functions xsbf_home(), xsbf_pagetop(), xsbf_pagebottom(), and xsbf_footer().
+
+* Removed variables and functions that we have deprecated in earlier releases to streamline the code. Specifically:
+	- $theme_options variable (use $xsbf_theme_options instead). This is most important for child themes to use the right variable for overrides.
+	- All background colors from the color palette that weren't prefixed with "bg-" are removed to avoid conflict with plugins. Example: You can no longer specify just "white" or "blue" background colors. Instead use "bg-white" or "bg-blue". Note that color-white and color-blue, etc. for font or icon colors are still active.
+	- Removed function xsbf_theme_preview(). WordPress.org didn't want to allow this function. (That's why we just display sample widgets if no widgets are defined in that particular widget area)
+	- Removed two functions no longer used since WordPress put the custom header image and custom background image functions into the Customizer instead of separate admin screens. The functions removed are xsbf_admin_header_style() and xsbf_admin_header_image(). These functions will also be removed from the various child theme's functions.php file as well when they are updated.
+	- Removed two more functions, xsbf_theme_directory() and xsbf_theme_directory_uri(), because we never implemented them and decided not to mess with WordPress' logic around loading template files.
+
+* Simplified the content-header.php by leveraging new WordPress v4.3 the_archive_title and the_archive_description functions. No more complicated code to check titles for post types, post formats, etc. Filters are now used in /inc/jetpack.php to override what displays for Jetpack Portfolios and Testimonials as opposed to cluttering up the core theme template files.
+
+* Updated theme functions.php file to only load /inc/jetpack.php if Jetpack is installed and activated. Within jetpack.php only add logic around portfolios and testimonials if that particular custom post type has been activated.
+
+* Removed the function from functions.php that handled embedded video sizes. WordPress now includes even better logic in core. 
+
+* The scroll-to-top link that is displayed when the user hasn't added their own custom footer menu now uses Bootstrap's included font icons (glyphicons) instead of font-awesome. All other font icons in the theme were already working this way. Now if you want a child theme with a different icon set, feel free to skip loading font-awesome.
+
+FRONT-END-UPDATES
+
+* Strengthened the logic around moving plugin content to the bottom of the page. This is now done for pages with sidebars instead of just for full-width page templates, but the logic is much improved to minimize conflicts with plugins. This is done primarily for plugins that add content after the main page content, such as social sharing icons.
+
+* If you use our "sections" CSS class to create colored sections with top and bottom "white space" (padding / margins), you'll notice that the top and bottom white space is now 46px whether you start the section with an h1-h3 tag or an h4-h6 tag. If you care, Bootstrap normally adds 22px top margin to h1-h3 tags and 11px top margin to h4-h6. This was driving us nuts, so we found a way to fix this with CSS. Now the first hx tag in the section sets the top margin to 11px. Since the bottom margin is also 11px for hx and p tags, the top and bottom white space will match. Yay! Now if you want to get really fancy and line up a paragraph (p tag) in the sidebar of your blog, you can use new margin and padding classes described below. Specifically, use `<p class="m-t-1">...</p>` to add 11px margin to the top.
+
+* Put back some padding for icons (<i></i> tag) when using the icon-lg and icon-xlg styles. We added some left and right padding (15px for icon-lg, 25px for icon-xlg) so these icons aren't smashed up against each other, such as when listing social media icons.
+
+* Updated the Flat Bootstrap Child Theme to show users more things that can easily be done with CSS. Specifically: 
+	- Bumped parent theme (template) version to 1.9.
+	- Changed loading of parent theme's stylesheet using wp_enqueue_style() instead of using @import in style.css. This is now best practice for performance reasons.
+	- Changed primary link cover (and link hover) just to show users how to do it.
+
+* Jetpack Testimonials are now displayed better. We show the user profile pic (featured image), then put the actual quote (content) and user's name (title) formatted as a blockquote. Individual testimonial pages still exist but the user's name doesn't link to it and the annoying "read more" (when there is nothing more to read) is gone.
+
+* Added "smooth scrolling" effect when clicking on the comments link at the top of a page or post. Cool, huh?
+
+* The theme's screenshot now supports "retina" (high resolution) displays. It is now 1200x900px.
+
+BUT WAIT, THERE'S MORE!
+
+Part of the reason we wanted to clean up the code was to make it easier for us (and others) to release more varied themes, write plugins that can include just relevant parts of the theme (such as our color palette and additional buttons in theme-flat.php), and generally have a solid "foundation" to embrace the future.
+
+Bootstrap v4 is now in its second alpha release and will someday be GA (Generally Available). The changes to it are so massive that they plan to support Bootstrap v3.x for  a long time.
+
+One of the major changes is that they are providing various padding and margin CSS classes. Since Bootstrap v3.x doesn't have any, we have included the ones from v4. You are free to start using those to prepare for the future.
+
+We still support our own custom padding classes, such as "section", "padding", "padding-top-bottom", etc. We will always keep the "section" class as an easy way to apply sensible padding to a section, but may deprecate the other ones at some point. We may alter the "section" class by a couple of pixels to better align with these new Bootstrap classes better, though.
+
+The Bootstrap v4 padding and margin classes follow the form:
+
+[p|m]-[a|x|y|l|r|t|b]-[0|1|2|3]
+
+Wait, WTH does that mean? Well, its "programmer speak" for how to format the class. 
+	- [p|m] means either padding (p) or margin (m). 
+	- [a|x|y|t|r|b|l] means all sides, left and right (x-axis), top and bottom (y-axis), top (t), right (r), bottom (b), or left (l). 
+	- [0|1|2|3|auto] 0 means no no margin or padding. In our theme 1 means 11px, 2 means approximately 16.5px and 3 means 33px. Auto can only be used with margin (m) and the x-axis. So m-x-auto sets the left and right margin to "auto" which means the element will be centered horizontally.
+	
+Here are a few examples to get you started:
+	- p-y-3 = 33px padding on the top and bottom (our "section" is 35px BTW, so that's why we may adjust it to 33px in the future)
+	- p-x-2 = 16.5px margin on the left and right
+	- m-a-1 = 11px margin on all sides
+	- m-t-0 = no top margin
+	
+For more information see [http://v4-alpha.getbootstrap.com/components/utilities/#spacing]. For a full list, look at our /inc/theme-flat.css and search for "Bootstrap v4 margin and padding". Happy white-spacing, everyone!
+
+* Updated this here readme.txt file to update the how-to information. Of course we also updated our child theme to implement examples of some of the most common requests from users.
 
 = 1.8.1 =
 * Quick fix to back out changes in v1.8 that uses javascript to move content from plugins on ANY page back to only being applied to full-width page templates. At least one user was having an issue with a plugin. I will be looking at changing when and how this is done in the v1.9 release.

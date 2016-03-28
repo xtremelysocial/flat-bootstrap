@@ -17,6 +17,7 @@
 if ( ! function_exists('xsbf_is_fullwidth') ) :
 function xsbf_is_fullwidth() {
 
+
 	/* for pages, check the page template */
 	if ( is_page() AND ( + 
 		is_page_template( 'page-fullpostsnoheader.php' ) OR + 
@@ -42,40 +43,57 @@ endif; // end ! function_exists
 
 /*
  * This function adds a container div to full-width pages right after the page content
- * so that other plugin's content is contained. Note that this is run with a priority of
- * 5 (default is 10) so it runs before other plugins.
+ * so that other plugin's content is contained. It is also used for our siteindex page
+ * template to move content from plugins down to the bottom. Note that this is run with
+ * a priority of 5 (default is 10) so it runs before other plugins.
  */
 if ( ! function_exists('xsbf_add_container') ) :
 add_filter( 'the_content', 'xsbf_add_container', 5, 1 ); 
 function xsbf_add_container( $content ) {
 
-	// If the page template is full-width. Do it on all posts just in case its full
-	// width as well.
-	//if ( xsbf_is_fullwidth() OR is_single() ) {
-	if ( xsbf_is_fullwidth() ) {
-		$content .= '<div id="after-content" class="after-content">'
-			.'<div class="container ">';
-	}
+	// Only do this for single posts, pages, and custom post types
+	if ( is_singular() ) {
+
+		// If fullwidth page, then add a container.
+		if ( xsbf_is_fullwidth() ) {
+			$content .= '<div id="xsbf-after-content" class="after-content">'
+				.'<div class="container ">';
+
+		// Otherwise, don't include a container. 
+		} else {
+			$content .= '<div id="xsbf-after-content" class="after-content">';
+		}
+
+	} //is_singular
+
 	return $content;
 }
 endif; // end ! function_exists
 
 /*
- * This function ends the container div on full-width pages Note that this is run with a
- * priority of 1999 (default is 10) so it runs after other plugins. If you run into a
- * stubborn plugin, you can make this as high of a number as you need to.
+ * This function ends the container div added above (full-width pages and our siteindex
+ * template. Note that this is run with a priority of 1999 (default is 10) so it runs
+ * after other plugins. If you run into a stubborn plugin, you can make this as high of a
+ * number as you need to.
  */
 if ( ! function_exists('xsbf_end_container') ) :
 add_filter( 'the_content', 'xsbf_end_container', 1999, 1 ); 
 function xsbf_end_container( $content ) {
 
-	// If the page template is full-width. Do it on all posts just in case its full
-	// width as well.
-	//if ( xsbf_is_fullwidth() OR is_single() ) {
-	if ( xsbf_is_fullwidth() ) {
-		$content .= '</div><!-- .after-content -->'
-			.'</div><!-- .container -->';
-	}
+	// Only do this for single posts, pages, and custom post types
+	if ( is_singular() ) {
+
+		// If fullwidth page, then end the after-content and container divs.
+		if ( xsbf_is_fullwidth() ) {
+			$content .= '</div><!-- #xsbf-after-content -->'
+				.'</div><!-- .container -->';
+
+		// Otherwise, just end the after-content div. 
+		} else {
+			$content .= '</div><!-- .after-content -->';
+		}
+	} //is_singular
+
 	return $content;
 }
 endif; // end ! function_exists
@@ -154,38 +172,20 @@ function xsbf_img_caption ( $null, $attr, $content ) {
 endif; // end ! function_exists
 
 /*
- * Limit embedded content (video) width to fit within the theme. Width can be overriden
- * with theme options. Height is automatically calculated at a 16:9 ratio unless its 
- * also overidden in the theme options.
- * TO-DO: Consider replacing all this with fitvid.js to automatically resize
- */
-add_filter( 'embed_defaults', 'xsbf_embed_defaults' );
-function xsbf_embed_defaults ( $defaults ) {
-	global $xsbf_theme_options;
-	if ( $xsbf_theme_options['embed_video_width'] ) {
-		$defaults['width'] = $xsbf_theme_options['embed_video_width'];
-		if ( $xsbf_theme_options['embed_video_height'] ) {
-			$defaults['height'] = $xsbf_theme_options['embed_video_height'];
-		} else {
-			$defaults['height'] = ceil ( $defaults['width'] * 9 / 16 );
-		}
-	}
-	return $defaults;
-}
-
-/*
  * Remove stupid WordPress <p></p> tags and comments. This just traps the easy ones.
+ * 
  * TO-DO: Expand this to catch all possible scenarios. 
  */
 if ( ! function_exists( 'xsbf_filter_ptags' ) ) :
 add_filter('the_content', 'xsbf_filter_ptags');
 function xsbf_filter_ptags ( $content ) {
-/*
+
+	// Remove empty p tags
 	$content = str_ireplace( '<p></p>', '', $content );
-	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
 	$content = str_ireplace( '<p> </p>', '', $content );
+	//$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
     //$content = preg_replace( array ( '/<p><\/p>/', '/<p><!--.*--><\/p>/', '/<p><!--.*-->/', '/<p><!--\/.*--><\/p>/' ), '', $content );
-*/
+
 	// Remove all comments
 	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
 	// Remove all <p></p> tags that are empty or only have whitespace between them
@@ -200,7 +200,7 @@ endif; // end ! function_exists
 if ( ! function_exists( 'xsbf_add_custom_box' ) ) :
 add_action( 'add_meta_boxes', 'xsbf_add_custom_box' );
 function xsbf_add_custom_box() {
-    $screens = array( 'post', 'page' );
+    $screens = array( 'post', 'page', 'jetpack-portfolio' );
     foreach ( $screens as $screen ) {
         add_meta_box(
             'xsbf_options',
@@ -322,11 +322,17 @@ function xsbf_attachment_link_class($html) {
 
 /**
  * Adjust the number of columns for the footer based on how many widgets were added.
- * This is Bootstrap-specific using col-sm-n.
+ * This is Bootstrap-specific using col-sm-n. Note that we run this last with priority 
+ * 99 so that if child themes or plugins add content, it will process it.
  */
 if ( ! function_exists( 'xsbf_footer_filter' ) ) :
-add_filter('xsbf_footer' , 'xsbf_footer_filter' , 10 , 1);
+//add_filter('xsbf_footer' , 'xsbf_footer_filter' , 10 , 1);
+add_filter('xsbf_footer' , 'xsbf_footer_filter' , 99 , 1);
 function xsbf_footer_filter( $footer ) {
+
+	// Since Flat Bootstrap v1.9, this filter also fires even when the footer is empty,
+	// so bail if nothing to process.
+	if ( ! $footer ) return $footer; 
 
 	// Use PHP to parse the DOM structure and count the number of widgets. Note that we
 	// have to suppress errors because libxml doesn't recognize html5 tags yet. It still
@@ -361,7 +367,6 @@ function xsbf_footer_filter( $footer ) {
 
 	// Save what we just changed and return the value
 	$footer = $dom->saveHTML();
-	//ini_set ( 'display_errors', 0 ); //TEST
     return $footer;
 }
 endif; // end ! function_exists

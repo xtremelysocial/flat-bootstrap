@@ -2,7 +2,10 @@
 /**
  * Theme: Flat Bootstrap
  * 
- * The Sidebar positioned on the left. If no widgets added, display some as samples.
+ * The main sidebar positioned on the left via a custom page template. The default 
+ * sidebar on the right. By default, if no widgets have been added, display some as
+ * samples. However, there is a filter to allow child themes to override the samples or
+ * remove them altogether.
  *
  * @package flat-bootstrap
  */

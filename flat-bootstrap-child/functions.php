@@ -59,7 +59,7 @@
  * 
  * testimonials - Whether to activate testimonials custom post type if Jetpack plugin is active
  *
- * NOTE: $theme_options is being deprecated and replaced with $xsbf_theme_options. You'll
+ * NOTE: $theme_options has been deprecated and replaced with $xsbf_theme_options. You'll
  * need to update your child themes.
  */
 $xsbf_theme_options = array(
@@ -78,6 +78,23 @@ $xsbf_theme_options = array(
 	//'sample_footer_menu'		=> true,
 	//'testimonials'			=> true
 );
+
+/* 
+ * Load the parent theme's stylesheet here for performance reasons instead of using 
+ * @include in this theme's stylesheet. Load this after the parent theme's styles.
+ */
+add_action( 'wp_enqueue_scripts', 'xsbf_child_enqueue_styles' );
+function xsbf_child_enqueue_styles() {
+	wp_enqueue_style( 'flat-bootstrap', 
+		get_template_directory_uri() . '/style.css',
+		array ( 'bootstrap', 'theme-base', 'theme-flat')
+	);
+
+	wp_enqueue_style( 'child', 
+		get_stylesheet_directory_uri() . '/style.css', 
+		array('flat-bootstrap') 
+	);
+}
 
 /*
  * OVERRIDE THE SITE CREDITS TO GET RID OF THE "THEME BY XTREMELYSOCIAL" AND JUST LEAVE
