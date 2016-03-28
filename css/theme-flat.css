@@ -8,109 +8,540 @@
  *
  * @package flat-bootstrap
  */
- 
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Elements
+# Content
+	## Comments
+	## Colors
+	## Padding
+# Forms and Buttons
+# Media
+	## Captions and Galleries
+# Miscellaneous
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+
 /* 
- * OVERALL STYLES
+ * For now, set some of our own generic icon sizes, since WordPress includes some icons
+ * already, such as glyphicons. This theme uses font-awesome which has way more icons and
+ * has its own size and padding options, such as fa-2x, fa-3x, etc.
+ * 
+ * NOTE that the WordPress visual editor strips blank icon (<i></i>) and span
+ * (<span></span>) tags. You MUST add a &nbsp; in between the tags to preserve them.
+ * 
+ * TO-DO: Find a filter to modify the WordPress function or TinyMCE editor function that 
+ * strips these and either prevent that or automatically add the &nbsp; in between. We
+ * can maybe even set &nbsp; in that case to be hidden although it doesn't seem to hurt
+ * anything anyway. 
+ * 
+ * TO-DO: Consider deprecating this with Bootstrap v4 because it doesn't have ANY font
+ * icons, so we will always load font-awesome in our themes and it has its own fa-2x, 
+ * fa-3x, etc. sizes
+ * 
+ */
+span.icon-lg,
+i.icon-lg {
+    font-size: 50px;
+	padding: 0 15px;
+}
+span.icon-xlg,
+i.icon-xlg {
+    font-size: 72px;
+	padding: 0 25px;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Colors
+--------------------------------------------------------------*/
+
+/* 
+ * Our color palette based off of designmodo's "flat-ui", but with normal color names
+ * assigned instead and some additional ones added for lighter and darker colors.
  */
 
-body {
-	font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    color: #555;
-
-    -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
+.bg-white {
+	background-color: #fff;
+}
+.color-white {
+	color: #fff;
 }
 
-a {
-    color: #16a085;
-    word-wrap: break-word;
-
-    -webkit-transition: color .1s ease-in, background .1s ease-in;
-    -moz-transition: color .1s ease-in, background .1s ease-in;
-    -ms-transition: color .1s ease-in, background .1s ease-in;
-    -o-transition: color .1s ease-in, background .1s ease-in;
-    transition: color .1s ease-in, background .1s ease-in;
+.bg-offwhite {
+	background-color: #f2f2f2;
+}
+.color-offwhite {
+	color: #f2f2f2;
 }
 
-a:hover,
-a:focus {
-    color: #19B798;
-    text-decoration: none;
-    outline: 0;
+.bg-lightgray {
+	background-color: #ebebeb;
 }
-a:before,
-a:after,
-a:hover i:before,
-a:focus i:before {
-    -webkit-transition: color .1s ease-in, background .1s ease-in;
-    -moz-transition: color .1s ease-in, background .1s ease-in;
-    -ms-transition: color .1s ease-in, background .1s ease-in;
-    -o-transition: color .1s ease-in, background .1s ease-in;
-    transition: color .1s ease-in, background .1s ease-in;
+.color-lightgray {
+	color: #ebebeb;
 }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6 {
-	font-family: "Raleway", Arial, "Helvetica Neue", sans-serif;
+.bg-gray {
+	background-color: #e7e7e7;
 }
-h1, 
-h2, 
-h3 {
-    font-weight: 300;
+.color-gray {
+	color: #e7e7e7;
 }
 
-p {
-    line-height: 28px;
+.bg-darkgray {
+	background-color: #e0e0e0;
+}
+.color-darkgray {
+	color: #e0e0e0;
 }
 
-blockquote {
-	border-color: #16a085;
+.bg-lightgreen {
+    background-color: #1abc9c;
+	color: #fff;
+}
+.color-lightgreen {
+    color: #1abc9c;
+}
+.bg-lightgreen h1, 
+.bg-lightgreen h2, 
+.bg-lightgreen h3, 
+.bg-lightgreen h4,
+.bg-lightgreen h5, 
+.bg-lightgreen h6 {
+	color: #fff;
 }
 
- hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+.bg-darkgreen {
+    background-color: #16a085;
+	color: #fff;
 }
-
-.navbar-default 
-.navbar-brand {
+.color-darkgreen {
     color: #16a085;
 }
-.navbar-default 
-.navbar-brand:hover, 
-.navbar-default 
-.navbar-brand:focus {
-    color: #19b798;
+
+.bg-darkgreen h1, 
+.bg-darkgreen h2, 
+.bg-darkgreen h3, 
+.bg-darkgreen h4, 
+.bg-darkgreen h5, 
+.bg-darkgreen h6 {
+	color: #fff;
 }
 
-/* Tone down field labels in the comments section and wherever else */
-label {
-	font-weight: 300;
+.bg-brightgreen {
+	background-color: #2ecc71;
+	color: white;
 }
+.color-brightgreen {
+    color: #2ecc71;
+}
+
+.bg-brightgreen h1, 
+.bg-brightgreen h2, 
+.bg-brightgreen h3, 
+.bg-brightgreen h4, 
+.bg-brightgreen h5, 
+.bg-brightgreen h6 {
+	color: #fff;
+}
+
+.bg-darkbrightgreen {
+	background-color: #27AE60;
+	color: white;
+}
+.color-darkbrightgreen {
+    color: #27AE60;
+}
+
+.bg-brightgreen h1, 
+.bg-brightgreen h2, 
+.bg-brightgreen h3, 
+.bg-brightgreen h4, 
+.bg-brightgreen h5, 
+.bg-brightgreen h6 {
+	color: #fff;
+}
+
+.bg-yellow {
+    background: #f1c40f;
+    color: #fff;
+}
+
+.bg-yellow h1, 
+.bg-yellow h2, 
+.bg-yellow h3, 
+.bg-yellow h4, 
+.bg-yellow h5, 
+.bg-yellow h6 {
+	color: #fff;
+}
+
+.bg-yellow p {
+    font-weight: 500
+}
+
+.bg-lightorange {
+    background-color: #F39C12;
+    color: #fff;
+}
+.color-lightorange {
+	color: #F39C12;
+}
+
+.bg-lightorange h1, 
+.bg-lightorange h2, 
+.bg-lightorange h3, 
+.bg-lightorange h4, 
+.bg-lightorange h5, 
+.bg-lightorange h6 {
+	color: #fff;
+}
+
+.bg-lightorange p {
+    font-weight: 500
+}
+
+.bg-orange {
+    background-color: #E67E22;
+    color: #fff;
+}
+.color-orange {
+	color: #E67E22;
+}
+
+.bg-orange h1, 
+.bg-orange h2, 
+.bg-orange h3, 
+.bg-orange h4, 
+.bg-orange h5, 
+.bg-orange h6 {
+	color: #fff;
+}
+
+.bg-darkorange {
+    background-color: #D35400;
+    color: #fff;
+}
+.color-darkorange {
+	color: #D35400;
+}
+
+.bg-darkorange h1, 
+.bg-darkorange h2, 
+.bg-darkorange h3, 
+.bg-darkorange h4, 
+.bg-darkorange h5, 
+.bg-darkorange h6 {
+	color: #fff;
+}
+
+.bg-blue {
+	background-color: #3498db;
+	color: #fff;
+}
+.color-blue {
+	color: #3498db;
+}
+
+.bg-blue h1, 
+.bg-blue h2, 
+.bg-blue h3, 
+.bg-blue h4, 
+.bg-blue h5, 
+.bg-blue h6 {
+	color: #fff;
+}
+
+.bg-darkblue {
+	background-color: #2980b9;
+	color: #fff;
+}
+.color-darkblue {
+	color: #2980b9;
+}
+
+.bg-darkblue h1, 
+.bg-darkblue h2, 
+.bg-darkblue h3, 
+.bg-darkblue h4, 
+.bg-darkblue h5, 
+.bg-darkblue h6 {
+	color: #fff;
+}
+
+
+.bg-purple {
+	background-color: #9B59B6;
+	color: #fff;
+}
+.color-purple {
+	color: #9B59B6;
+}
+
+.bg-purple h1, 
+.bg-purple h2, 
+.bg-purple h3, 
+.bg-purple h4, 
+.bg-purple h5, 
+.bg-purple h6 {
+	color: #fff;
+}
+
+.bg-darkpurple {
+	background-color: #8E44AD;
+	color: #fff;
+}
+.color-darkpurple {
+	color: #8E44AD;
+}
+
+.bg-darkpurple h1, 
+.bg-darkpurple h2, 
+.bg-darkpurple h3, 
+.bg-darkpurple h4, 
+.bg-darkpurple h5, 
+.bg-darkpurple h6 {
+	color: #fff;
+}
+
+.bg-midnightblue {
+	background-color: #34495e;
+	color: #fff;
+}
+.color-midnightblue {
+	color: #34495e;
+}
+
+.bg-midnightblue h1, 
+.bg-midnightblue h2, 
+.bg-midnightblue h3, 
+.bg-midnightblue h4, 
+.bg-midnightblue h5, 
+.bg-midnightblue h6 {
+	color: #fff;
+}
+
+.bg-darkmidnightblue {
+	background-color: #2C3E50;
+	color: #fff;
+}
+.color-darkmidnightblue {
+	color: #2C3E50;
+}
+
+.bg-darkmidnightblue h1, 
+.bg-darkmidnightblue h2, 
+.bg-darkmidnightblue h3, 
+.bg-darkmidnightblue h4, 
+.bg-darkmidnightblue h5, 
+.bg-darkmidnightblue h6 {
+	color: #fff;
+}
+
+.bg-red {
+	background-color: #ff7878;
+	color: #fff;
+}
+.color-red {
+	color: #ff7878;
+}
+
+.bg-red h1, 
+.bg-red h2, 
+.bg-red h3, 
+.bg-red h4, 
+.bg-red h5, 
+.bg-red h6 {
+	color: #fff;
+}
+
+.bg-brightred {
+	background-color: #E74C3C;
+	color: #fff;
+}
+.color-brightred {
+	color: #E74C3C;
+}
+
+.bg-brightred h1, 
+.bg-brightred h2, 
+.bg-brightred h3, 
+.bg-brightred h4, 
+.bg-brightred h5, 
+.bg-brightred h6 {
+	color: #fff;
+}
+
+.bg-darkred {
+	background-color: #C0392B;
+	color: #fff;
+}
+.color-darkred {
+	color: #C0392B;
+}
+
+.bg-darkred h1, 
+.bg-darkred h2, 
+.bg-darkred h3, 
+.bg-darkred h4, 
+.bg-darkred h5, 
+.bg-darkred h6 {
+	color: #fff;
+}
+
+.bg-almostblack {
+	background-color: #2f2f2f;
+	color: #fff;
+}
+.color-almostblack {
+	color: #2f2f2f;
+}
+
+.bg-almostblack h1, 
+.bg-almostblack h2, 
+.bg-almostblack h3, 
+.bg-almostblack h4, 
+.bg-almostblack h5, 
+.bg-almostblack h6 {
+	color: #fff;
+}
+
+.bg-notquiteblack {
+	background-color: #222;
+	color: #fff;
+}
+.color-notquiteblack {
+	color: #222;
+}
+
+.bg-notquiteblack h1, 
+.bg-notquiteblack h2, 
+.bg-notquiteblack h3, 
+.bg-notquiteblack h4, 
+.bg-notquiteblack h5, 
+.bg-notquiteblack h6 {
+	color: #fff;
+}
+
+.bg-black {
+	background-color: #000;
+	color: #fff;
+}
+.color-black {
+	color: #000;
+}
+
+.bg-black h1, 
+.bg-black h2, 
+.bg-black h3, 
+.bg-black h4, 
+.bg-black h5, 
+.bg-black h6 {
+	color: #fff;
+}
+
+/* Set the icons to white for all dark-colored sections */
+.bg-lightgreen i, 
+.bg-darkgreen i, 
+.bg-brightgreen i, 
+.bg-darkbrightgreen i, 
+.bg-blue i, 
+.bg-darkblue i, 
+.bg-purple i, 
+.bg-darkpurple i, 
+.bg-midnightblue i, 
+.bg-darkmidnightblue i, 
+.bg-yellow i,
+.bg-lightorange i,
+.bg-orange i,
+.bg-darkorange i,
+.bg-red i, 
+.bg-brightred i, 
+.bg-darkred i, 
+.bg-notquitetblack i, 
+.bg-almostblack i, 
+.bg-black i {
+	color: #fff;
+}
+
+.bg-lightgreen a i:hover, 
+.bg-darkgreen a i:hover, 
+.bg-brightgreen a i:hover, 
+.bg-darkbrightgreen a i:hover, 
+.bg-blue a i:hover, 
+.bg-darkblue a i:hover, 
+.bg-purple a i:hover, 
+.bg-darkpurple a i:hover, 
+.bg-midnightblue a i:hover, 
+.bg-darkmidnightblue a i:hover, 
+.bg-yellow a i:hover,
+.bg-lightorange a i:hover,
+.bg-orange a i:hover,
+.bg-darkorange a i:hover,
+.bg-red a i:hover, 
+.bg-brightred a i:hover, 
+.bg-darkred a i:hover, 
+.bg-notquitetblack a i:hover, 
+.bg-almostblack a i:hover, 
+.bg-black a i:hover {
+	color: #e7e7e7;
+}
+
+/* Set the link color to white and underlined for certain background colors */
+.bg-lightgreen a:not(.btn), 
+.bg-darkgreen a:not(.btn), 
+.bg-brightgreen a:not(.btn), 
+.bg-brightdarkgreen a:not(.btn), 
+.bg-yellow a:not(.btn), 
+.bg-lightorange a:not(.btn), 
+.bg-orange a:not(.btn), 
+.bg-darkorange a:not(.btn), 
+.bg-blue a:not(.btn), 
+.bg-darkblue a:not(.btn), 
+.bg-red a:not(.btn),
+.bg-brightred a:not(.btn),
+.bg-darkred a:not(.btn) {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.bg-lightgreen a:hover:not(.btn), 
+.bg-darkgreen a:hover:not(.btn), 
+.bg-brightgreen a:hover:not(.btn), 
+.bg-darkbrightgreen a:hover:not(.btn), 
+.bg-yellow a:hover:not(.btn), 
+.bg-lightorange a:hover:not(.btn), 
+.bg-orange a:hover:not(.btn), 
+.bg-darkorange a:hover:not(.btn), 
+.bg-blue a:hover:not(.btn), 
+.bg-red a:hover:not(.btn),
+.bg-darkred a:not(.btn) {
+	color: #e7e7e7;
+}
+
+/*--------------------------------------------------------------
+## Padding
+--------------------------------------------------------------*/
 
 /* 
- * FULL-WIDTH SECTIONS
+ * Our sections with padding. These are mostly to add top and bottom padding since 
+ * Bootstrap adds left and right padding to containers and rows and even includes 
+ * "gutter" margins between columns.
  */
 .section {
 	padding-top: 35px;
 	padding-bottom: 35px;
 }
 
-/* Bootstrap grids (rows) need this if not in a container */
-.section.fullwidth {
-	padding-left: 15px;
-	padding-right: 15px;
-}
 .section.nopadding {
 	padding-top: 0;
 	padding-bottom: 0;
@@ -135,13 +566,39 @@ label {
 }
 
 /* 
- * PADDING AND OTHER UTILITIES
+ * For the first h1-h3 in a section, set top margin to bottom margin (11px) so the 
+ * section has equal padding. Note h4-h6 already have 11px instead of 22px.
+ * TO-DO: Do this for our main content area and sidebar as well.
+ */
+.section > .container > h1:first-child,
+.section > .container > .h1:first-child,
+.section > .container > h2:first-child,
+.section > .container > .h2:first-child,
+.section > .container > h3:first-child,
+.section > .container > .h3:first-child {
+	margin-top: 11px;
+}
+
+/* Bootstrap grids (rows) need this if not in a container. Its probably better to just 
+ * use container-fluid, but this is another more generic option.
+ * TO-DO: Consider getting rid of this if we change to container-fluid
+*/
+.section.fullwidth {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* 
+ * General padding options
+ * TO-DO: Consider deprecating these and use Bootstrap 4's utility classes instead. We 
+ * can use those even with Bootstrap 3 since the latter doesn't have any so it won't 
+ * cause conflicts. Or perhaps just change them to match BS4's p-*-3 (33px).
  */
  .padding {
  	padding: 25px;
  }
 .padding-top {
-	padding-top: 25px; /* Match Hx tag top margins */
+	padding-top: 25px;  /* Bootstrap Hx and even p tags have top margins already */
 }
 .padding-bottom {
 	padding-bottom: 25px;
@@ -164,891 +621,282 @@ label {
     margin: 0;
     padding: 0;
 }
-.centered {
-    text-align: center;
+
+/* Bootstrap v4 margin and padding. Talk about future-proof, oh yeah! */
+.m-x-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
 }
+
+.m-a-0 {
+  margin: 0 0 !important;
+}
+
+.m-t-0 {
+  margin-top: 0 !important;
+}
+
+.m-r-0 {
+  margin-right: 0 !important;
+}
+
+.m-b-0 {
+  margin-bottom: 0 !important;
+}
+
+.m-l-0 {
+  margin-left: 0 !important;
+}
+
+.m-x-0 {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.m-y-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.m-a-1 {
+  margin: 1rem 1rem !important;
+}
+
+.m-t-1 {
+  margin-top: 1rem !important;
+}
+
+.m-r-1 {
+  margin-right: 1rem !important;
+}
+
+.m-b-1 {
+  margin-bottom: 1rem !important;
+}
+
+.m-l-1 {
+  margin-left: 1rem !important;
+}
+
+.m-x-1 {
+  margin-right: 1rem !important;
+  margin-left: 1rem !important;
+}
+
+.m-y-1 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.m-a-2 {
+  margin: 1.5rem 1.5rem !important;
+}
+
+.m-t-2 {
+  margin-top: 1.5rem !important;
+}
+
+.m-r-2 {
+  margin-right: 1.5rem !important;
+}
+
+.m-b-2 {
+  margin-bottom: 1.5rem !important;
+}
+
+.m-l-2 {
+  margin-left: 1.5rem !important;
+}
+
+.m-x-2 {
+  margin-right: 1.5rem !important;
+  margin-left: 1.5rem !important;
+}
+
+.m-y-2 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.m-a-3 {
+  margin: 3rem 3rem !important;
+}
+
+.m-t-3 {
+  margin-top: 3rem !important;
+}
+
+.m-r-3 {
+  margin-right: 3rem !important;
+}
+
+.m-b-3 {
+  margin-bottom: 3rem !important;
+}
+
+.m-l-3 {
+  margin-left: 3rem !important;
+}
+
+.m-x-3 {
+  margin-right: 3rem !important;
+  margin-left: 3rem !important;
+}
+
+.m-y-3 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.p-a-0 {
+  padding: 0 0 !important;
+}
+
+.p-t-0 {
+  padding-top: 0 !important;
+}
+
+.p-r-0 {
+  padding-right: 0 !important;
+}
+
+.p-b-0 {
+  padding-bottom: 0 !important;
+}
+
+.p-l-0 {
+  padding-left: 0 !important;
+}
+
+.p-x-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.p-y-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.p-a-1 {
+  padding: 1rem 1rem !important;
+}
+
+.p-t-1 {
+  padding-top: 1rem !important;
+}
+
+.p-r-1 {
+  padding-right: 1rem !important;
+}
+
+.p-b-1 {
+  padding-bottom: 1rem !important;
+}
+
+.p-l-1 {
+  padding-left: 1rem !important;
+}
+
+.p-x-1 {
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+}
+
+.p-y-1 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.p-a-2 {
+  padding: 1.5rem 1.5rem !important;
+}
+
+.p-t-2 {
+  padding-top: 1.5rem !important;
+}
+
+.p-r-2 {
+  padding-right: 1.5rem !important;
+}
+
+.p-b-2 {
+  padding-bottom: 1.5rem !important;
+}
+
+.p-l-2 {
+  padding-left: 1.5rem !important;
+}
+
+.p-x-2 {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.p-y-2 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.p-a-3 {
+  padding: 3rem 3rem !important;
+}
+
+.p-t-3 {
+  padding-top: 3rem !important;
+}
+
+.p-r-3 {
+  padding-right: 3rem !important;
+}
+
+.p-b-3 {
+  padding-bottom: 3rem !important;
+}
+
+.p-l-3 {
+  padding-left: 3rem !important;
+}
+
+.p-x-3 {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
+}
+
+.p-y-3 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+/*--------------------------------------------------------------
+# Forms and Buttons
+--------------------------------------------------------------*/
 
 /* 
- * COLORED BACKGROUNDS FOR SECTIONS
+ * New button that is inverted (hollow) so works on any dark background 
+ * TO-DO: Bootstrap 4 has a new btn-outline which is similar but instead of white on
+ * hover, it uses the button color. Consider adding that sooner than Bootstrap 4.
  */
-
-.white, 
-.bg-white {
-	background-color: #fff;
-}
-.color-white {
-	color: #fff;
-}
-
-.offwhite, 
-.bg-offwhite {
-	background-color: #f2f2f2;
-}
-.color-offwhite {
-	color: #f2f2f2;
-}
-
-.lightgray, 
-.bg-lightgray {
-	background-color: #ebebeb;
-}
-.color-lightgray {
-	color: #ebebeb;
-}
-
-.gray, 
-.bg-gray {
-	background-color: #e7e7e7;
-}
-.color-gray {
-	color: #e7e7e7;
-}
-
-.darkgray, 
-.bg-darkgray {
-	background-color: #e0e0e0;
-}
-.color-darkgray {
-	color: #e0e0e0;
-}
-
-.lightgreen, 
-.bg-lightgreen {
-    background-color: #1abc9c;
-	color: #fff;
-}
-.color-lightgreen {
-    color: #1abc9c;
-}
-.lightgreen h1, 
-.lightgreen h2, 
-.lightgreen h3, 
-.lightgreen h4, 
-.lightgreen h5, 
-.lightgreen h6, 
-.bg-lightgreen h1, 
-.bg-lightgreen h2, 
-.bg-lightgreen h3, 
-.bg-lightgreen h4,
-.bg-lightgreen h5, 
-.bg-lightgreen h6 {
-	color: #fff;
-}
-
-.darkgreen, 
-.bg-darkgreen {
-    background-color: #16a085;
-	color: #fff;
-}
-.color-darkgreen {
-    color: #16a085;
-}
-
-.darkgreen h1, 
-.darkgreen h2, 
-.darkgreen h3, 
-.darkgreen h4, 
-.darkgreen h5, 
-.darkgreen h6, 
-.bg-darkgreen h1, 
-.bg-darkgreen h2, 
-.bg-darkgreen h3, 
-.bg-darkgreen h4, 
-.bg-darkgreen h5, 
-.bg-darkgreen h6 {
-	color: #fff;
-}
-
-.brightgreen,
-.bg-brightgreen {
-	background-color: #2ecc71;
-	color: white;
-}
-.color-brightgreen {
-    color: #2ecc71;
-}
-
-.brightgreen h1, 
-.brightgreen h2, 
-.brightgreen h3, 
-.brightgreen h4, 
-.brightgreen h5, 
-.brightgreen h6, 
-.bg-brightgreen h1, 
-.bg-brightgreen h2, 
-.bg-brightgreen h3, 
-.bg-brightgreen h4, 
-.bg-brightgreen h5, 
-.bg-brightgreen h6 {
-	color: #fff;
-}
-
-.darkbrightgreen,
-.bg-darkbrightgreen {
-	background-color: #27AE60;
-	color: white;
-}
-.color-darkbrightgreen {
-    color: #27AE60;
-}
-
-.darkbrightgreen h1, 
-.darkbrightgreen h2, 
-.darkbrightgreen h3, 
-.darkbrightgreen h4, 
-.darkbrightgreen h5, 
-.darkbrightgreen h6, 
-.bg-brightgreen h1, 
-.bg-brightgreen h2, 
-.bg-brightgreen h3, 
-.bg-brightgreen h4, 
-.bg-brightgreen h5, 
-.bg-brightgreen h6 {
-	color: #fff;
-}
-
-.yellow, 
-.bg-yellow {
-    background: #f1c40f;
-    color: #fff;
-}
-
-.yellow h1, 
-.yellow h2, 
-.yellow h3, 
-.yellow h4, 
-.yellow h5, 
-.yellow h6, 
-.bg-yellow h1, 
-.bg-yellow h2, 
-.bg-yellow h3, 
-.bg-yellow h4, 
-.bg-yellow h5, 
-.bg-yellow h6 {
-	color: #fff;
-}
-
-.yellow p, .bg-yellow p {
-    font-weight: 500
-}
-
-.lightorange, 
-.bg-lightorange {
-    background-color: #F39C12;
-    color: #fff;
-}
-.color-lightorange {
-	color: #F39C12;
-}
-
-.lightorange h1, 
-.lightorange h2, 
-.lightorange h3, 
-.lightorange h4, 
-.lightorange h5, 
-.lightorange h6, 
-.bg-lightorange h1, 
-.bg-lightorange h2, 
-.bg-lightorange h3, 
-.bg-lightorange h4, 
-.bg-lightorange h5, 
-.bg-lightorange h6 {
-	color: #fff;
-}
-
-.lightorange p, .bg-lightorange p {
-    font-weight: 500
-}
-
-.orange, 
-.bg-orange {
-    background-color: #E67E22;
-    color: #fff;
-}
-.color-orange {
-	color: #E67E22;
-}
-
-.orange h1, 
-.orange h2, 
-.orange h3, 
-.orange h4, 
-.orange h5, 
-.orange h6, 
-.bg-orange h1, 
-.bg-orange h2, 
-.bg-orange h3, 
-.bg-orange h4, 
-.bg-orange h5, 
-.bg-orange h6 {
-	color: #fff;
-}
-
-.darkorange, 
-.bg-darkorange {
-    background-color: #D35400;
-    color: #fff;
-}
-.color-darkorange {
-	color: #D35400;
-}
-
-.darkorange h1, 
-.darkorange h2, 
-.darkorange h3, 
-.darkorange h4, 
-.darkorange h5, 
-.darkorange h6, 
-.bg-darkorange h1, 
-.bg-darkorange h2, 
-.bg-darkorange h3, 
-.bg-darkorange h4, 
-.bg-darkorange h5, 
-.bg-darkorange h6 {
-	color: #fff;
-}
-
-.blue, 
-.bg-blue {
-	background-color: #3498db;
-	color: #fff;
-}
-.color-blue {
-	color: #3498db;
-}
-
-.blue h1, 
-.blue h2, 
-.blue h3, 
-.blue h4, 
-.blue h5, 
-.blue h6, 
-.bg-blue h1, 
-.bg-blue h2, 
-.bg-blue h3, 
-.bg-blue h4, 
-.bg-blue h5, 
-.bg-blue h6 {
-	color: #fff;
-}
-
-.darkblue,
-.bg-darkblue {
-	background-color: #2980b9;
-	color: #fff;
-}
-.color-darkblue {
-	color: #2980b9;
-}
-
-.darkblue h1, 
-.darkblue h2, 
-.darkblue h3, 
-.darkblue h4, 
-.darkblue h5, 
-.darkblue h6, 
-.bg-darkblue h1, 
-.bg-darkblue h2, 
-.bg-darkblue h3, 
-.bg-darkblue h4, 
-.bg-darkblue h5, 
-.bg-darkblue h6 {
-	color: #fff;
-}
-
-
-.purple, 
-.bg-purple {
-	background-color: #9B59B6;
-	color: #fff;
-}
-.color-purple {
-	color: #9B59B6;
-}
-
-.purple h1, 
-.purple h2, 
-.purple h3, 
-.purple h4, 
-.purple h5, 
-.purple h6, 
-.bg-purple h1, 
-.bg-purple h2, 
-.bg-purple h3, 
-.bg-purple h4, 
-.bg-purple h5, 
-.bg-purple h6 {
-	color: #fff;
-}
-
-.darkpurple,
-.bg-darkpurple {
-	background-color: #8E44AD;
-	color: #fff;
-}
-.color-darkpurple {
-	color: #8E44AD;
-}
-
-.darkpurple h1, 
-.darkpurple h2, 
-.darkpurple h3, 
-.darkpurple h4, 
-.darkpurple h5, 
-.darkpurple h6, 
-.bg-darkpurple h1, 
-.bg-darkpurple h2, 
-.bg-darkpurple h3, 
-.bg-darkpurple h4, 
-.bg-darkpurple h5, 
-.bg-darkpurple h6 {
-	color: #fff;
-}
-
-.midnightblue, 
-.bg-midnightblue {
-	background-color: #34495e;
-	color: #fff;
-}
-.color-midnightblue {
-	color: #34495e;
-}
-
-.midnightblue h1, 
-.midnightblue h2, 
-.midnightblue h3, 
-.midnightblue h4, 
-.midnightblue h5, 
-.midnightblue h6, 
-.bg-midnightblue h1, 
-.bg-midnightblue h2, 
-.bg-midnightblue h3, 
-.bg-midnightblue h4, 
-.bg-midnightblue h5, 
-.bg-midnightblue h6 {
-	color: #fff;
-}
-
-.darkmidnightblue, 
-.bg-darkmidnightblue {
-	background-color: #2C3E50;
-	color: #fff;
-}
-.color-darkmidnightblue {
-	color: #2C3E50;
-}
-
-.darkmidnightblue h1, 
-.darkmidnightblue h2, 
-.darkmidnightblue h3, 
-.darkmidnightblue h4, 
-.darkmidnightblue h5, 
-.darkmidnightblue h6, 
-.bg-darkmidnightblue h1, 
-.bg-darkmidnightblue h2, 
-.bg-darkmidnightblue h3, 
-.bg-darkmidnightblue h4, 
-.bg-darkmidnightblue h5, 
-.bg-darkmidnightblue h6 {
-	color: #fff;
-}
-
-.red, .bg-red {
-	background-color: #ff7878;
-	color: #fff;
-}
-.color-red {
-	color: #ff7878;
-}
-
-.red h1, 
-.red h2, 
-.red h3, 
-.red h4, 
-.red h5, 
-.red h6, 
-.bg-red h1, 
-.bg-red h2, 
-.bg-red h3, 
-.bg-red h4, 
-.bg-red h5, 
-.bg-red h6 {
-	color: #fff;
-}
-
-
-.brightred, .bg-brightred {
-	background-color: #E74C3C;
-	color: #fff;
-}
-.color-brightred {
-	color: #E74C3C;
-}
-
-.brightred h1, 
-.brightred h2, 
-.brightred h3, 
-.brightred h4, 
-.brightred h5, 
-.brightred h6, 
-.bg-brightred h1, 
-.bg-brightred h2, 
-.bg-brightred h3, 
-.bg-brightred h4, 
-.bg-brightred h5, 
-.bg-brightred h6 {
-	color: #fff;
-}
-
-.darkred, .bg-darkred {
-	background-color: #C0392B;
-	color: #fff;
-}
-.color-darkred {
-	color: #C0392B;
-}
-
-.darkred h1, 
-.darkred h2, 
-.darkred h3, 
-.darkred h4, 
-.darkred h5, 
-.darkred h6, 
-.bg-darkred h1, 
-.bg-darkred h2, 
-.bg-darkred h3, 
-.bg-darkred h4, 
-.bg-darkred h5, 
-.bg-darkred h6 {
-	color: #fff;
-}
-
-.almostblack, 
-.bg-almostblack {
-	background-color: #2f2f2f;
-	color: #fff;
-}
-.color-almostblack {
-	color: #2f2f2f;
-}
-
-.almostblack h1, 
-.almostblack h2, 
-.almostblack h3, 
-.almostblack h4, 
-.almostblack h5, 
-.almostblack h6, 
-.bg-almostblack h1, 
-.bg-almostblack h2, 
-.bg-almostblack h3, 
-.bg-almostblack h4, 
-.bg-almostblack h5, 
-.bg-almostblack h6 {
-	color: #fff;
-}
-
-.notquiteblack, 
-.bg-notquiteblack {
-	background-color: #222;
-	color: #fff;
-}
-.color-notquiteblack {
-	color: #222;
-}
-
-.notquiteblack h1, 
-.notquiteblack h2, 
-.notquiteblack h3, 
-.notquiteblack h4, 
-.notquiteblack h5, 
-.notquiteblack h6, 
-.bg-notquiteblack h1, 
-.bg-notquiteblack h2, 
-.bg-notquiteblack h3, 
-.bg-notquiteblack h4, 
-.bg-notquiteblack h5, 
-.bg-notquiteblack h6 {
-	color: #fff;
-}
-
-.black, 
-.bg-black {
-	background-color: #000;
-	color: #fff;
-}
-.color-black {
-	color: #000;
-}
-
-.black h1, 
-.black h2, 
-.black h3, 
-.black h4, 
-.black h5, 
-.black h6, 
-.bg-black h1, 
-.bg-black h2, 
-.bg-black h3, 
-.bg-black h4, 
-.bg-black h5, 
-.bg-black h6 {
-	color: #fff;
-}
-
-/* Set the icons to white for all dark-colored sections */
-.lightgreen i, 
-.bg-lightgreen i, 
-.darkgreen i, 
-.bg-darkgreen i, 
-.brightgreen i, 
-.bg-brightgreen i, 
-.darkbrightgreen i, 
-.bg-darkbrightgreen i, 
-.blue i, 
-.bg-blue i, 
-.darkblue i, 
-.bg-darkblue i, 
-.purple i, 
-.bg-purple i, 
-.darkpurple i, 
-.bg-darkpurple i, 
-.midnightblue i, 
-.bg-midnightblue i, 
-.darkmidnightblue i, 
-.bg-darkmidnightblue i, 
-.yellow i, 
-.bg-yellow i,
-.lightorange i, 
-.bg-lightorange i,
-.orange i, 
-.bg-orange i,
-.darkorange i, 
-.bg-darkorange i,
-.red i, 
-.bg-red i, 
-.brightred i, 
-.bg-brightred i, 
-.darkred i, 
-.bg-darkred i, 
-.notquiteblack i, 
-.bg-notquitetblack i, 
-.almostblack i, 
-.bg-almostblack i, 
-.black i, 
-.bg-black i {
-	color: #fff;
-}
-
-.lightgreen a i:hover, 
-.bg-lightgreen a i:hover, 
-.darkgreen a i:hover, 
-.bg-darkgreen a i:hover, 
-.brightgreen a i:hover, 
-.bg-brightgreen a i:hover, 
-.darkbrightgreen a i:hover, 
-.bg-darkbrightgreen a i:hover, 
-.blue a i:hover, 
-.bg-blue a i:hover, 
-.darkblue a i:hover, 
-.bg-darkblue a i:hover, 
-.purple a i:hover, 
-.bg-purple a i:hover, 
-.darkpurple a i:hover, 
-.bg-darkpurple a i:hover, 
-.midnightblue a i:hover, 
-.bg-midnightblue a i:hover, 
-.darkmidnightblue a i:hover, 
-.bg-darkmidnightblue a i:hover, 
-.yellow a i:hover, 
-.bg-yellow a i:hover,
-.lightorange a i:hover, 
-.bg-lightorange a i:hover,
-.orange a i:hover, 
-.bg-orange a i:hover,
-.darkorange a i:hover, 
-.bg-darkorange a i:hover,
-.red a i:hover, 
-.bg-red a i:hover, 
-.brightred a i:hover, 
-.bg-brightred a i:hover, 
-.darkred a i:hover, 
-.bg-darkred a i:hover, 
-.notquiteblack a i:hover, 
-.bg-notquitetblack a i:hover, 
-.almostblack a i:hover, 
-.bg-almostblack a i:hover, 
-.black a i:hover, 
-.bg-black a i:hover {
-	color: #e7e7e7;
-}
-
-/* Set the link color to white and underlined for certain background colors */
-.lightgreen a:not(.btn), 
-.bg-lightgreen a:not(.btn), 
-.darkgreen a:not(.btn), 
-.bg-darkgreen a:not(.btn), 
-.brightgreen a:not(.btn), 
-.bg-brightgreen a:not(.btn), 
-.brightdarkgreen a:not(.btn), 
-.bg-brightdarkgreen a:not(.btn), 
-.yellow a:not(.btn), 
-.bg-yellow a:not(.btn), 
-.lightorange a:not(.btn), 
-.bg-lightorange a:not(.btn), 
-.orange a:not(.btn), 
-.bg-orange a:not(.btn), 
-.darkorange a:not(.btn), 
-.bg-darkorange a:not(.btn), 
-.blue a:not(.btn), 
-.bg-blue a:not(.btn), 
-.darkblue a:not(.btn), 
-.bg-darkblue a:not(.btn), 
-/*.midnightblue a:not(.btn), 
-.bg-midnightblue a:not(.btn),*/
-.red a:not(.btn), 
-.bg-red a:not(.btn),
-.brightred a:not(.btn), 
-.bg-brightred a:not(.btn),
-.darkred a:not(.btn), 
-.bg-darkred a:not(.btn) {
-	color: #fff;
-	text-decoration: underline;
-}
-
-.lightgreen a:hover:not(.btn), 
-.bg-lightgreen a:hover:not(.btn), 
-.darkgreen a:hover:not(.btn), 
-.bg-darkgreen a:hover:not(.btn), 
-.brightgreen a:hover:not(.btn), 
-.bg-brightgreen a:hover:not(.btn), 
-.darkbrightgreen a:hover:not(.btn), 
-.bg-darkbrightgreen a:hover:not(.btn), 
-.yellow a:hover:not(.btn), 
-.bg-yellow a:hover:not(.btn), 
-.lightorange a:hover:not(.btn), 
-.bg-lightorange a:hover:not(.btn), 
-.orange a:hover:not(.btn), 
-.bg-orange a:hover:not(.btn), 
-.darkorange a:hover:not(.btn), 
-.bg-darkorange a:hover:not(.btn), 
-.blue a:hover:not(.btn), 
-.bg-blue a:hover:not(.btn), 
-.darkblue a:hover:not(.btn), 
-.bg-darkblue a:hover:not(.btn), 
-/*.midnightblue a:hover:not(.btn), 
-.bg-midnightblue a:hover:not(.btn),*/
-.red a:hover:not(.btn), 
-.bg-red a:hover:not(.btn),
-.darkred a:not(.btn), 
-.bg-darkred a:not(.btn) {
-	color: #e7e7e7;
-}
-
-.form-control {
-	color: #555;
-}
-
-/* Set input field focus color to green */
-/*.form-control:focus,
-textarea#comment:focus {*/
-/*input:focus,
-textarea:focus {
-    border-color: #1abc9c;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(109, 233, 102, 0.6); */
-   /*-webkit-appearance: none !important;*/
-/*   outline: 0;
-}*/
-
-/* Force search field to not be rounded on iOS devices */
-input.search-field {
-	-webkit-appearance: none !important;
-	-webkit-border-radius: 0 !important;
-	-moz-border-radius: 0 !important;
-	border-radius: 0 !important;
-}
-
-/* 
- * SET INPUT BUTTONS TO LOOK LIKE BTN-PRIMARY (GREEN)
- */
-button,
-html input[type="button"],
-input[type="submit"] {
-    color: #fff;
-    background-color: #1abc9c;
-    border-color: #1abc9c;
-    background-image: none;
-	font-size: 16px;
-	line-height: 22px;
-	padding: 6px 12px;
-    border: none;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-    outline: 0;
-}
-button:hover, 
-button:focus,
-html input[type="button"]:hover, 
-html input[type="button"]:focus,
-input[type="submit"]:hover, 
-input[type="submit"]:focus {
-    color: #fff;
-    background-color: #16a085;
-    border-color: #16a085;
-    outline: 0;
-}
-
-/* Set navbar hover and active to green */
-/*
-.dropdown-menu>li>a:hover, 
-.dropdown-menu>li>a:focus {
-    color: #fff;
-    background-color: #1abc9c
-}
-
-.navbar-default .navbar-nav>.active>a, 
-.navbar-default .navbar-nav>.active>a:hover, 
-.navbar-default .navbar-nav>.active>a:focus {
-    color: #fff;
-    background-color: #1abc9c
-}
-
-.navbar-default .navbar-nav>li>a:hover, 
-.navbar-default .navbar-nav>li>a:focus {
-    color: #fff;
-    background-color: #1abc9c
-}
-.navbar-default .navbar-nav>.open>a, 
-.navbar-default .navbar-nav>.open>a:hover, 
-.navbar-default .navbar-nav>.open>a:focus {
-    color: #fff;
-    background-color: #1abc9c
-}
-
-@media (max-width:767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, 
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
-		color: #fff;
-		background-color: #1abc9c
-    }
-
-    .navbar-default .navbar-nav .open .dropdown-menu>.active>a, 
-    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover, 
-    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
-		color: #fff;
-		background-color: #1abc9c
-    }
-}
-*/
-
-/* Bootstrap uses "active" style on the <li>, but WordPress paginate_links() uses 
- * "current" in a <span> tag on the link. Also set the hover to match the primary button
- * color. 
- */
-.pagination>li>a, 
-.pagination>li>span,
-span.page-numbers.current {
-	color: #16a085;
-}
-.pagination>li>a:hover, 
-.pagination>li>span:hover, 
-.pagination>li>a:focus,
-.pagination>li>span:focus,
-span.page-numbers.current {
-	z-index: 2;
-	color: #fff;
-    background-color: #16a085;
-    border-color: #16a085;
-}
-
-/* Get rid of gradient on carousel left and right */
-.carousel-control.left, .carousel-control.right {
-	background-image: none;
-	background-repeat: none;
-}
-.carousel-caption,
-.carousel-caption h4,
-.carousel-caption p {
-	font-weight: bold;
-}
-.carousel-caption {
-	text-shadow: none;
-	background-color: #16a085;
-	color: #fff;
-	opacity: .75;
-	font-weight: bold;
-}
-.carousel-caption a {
-	color: #fff;
-	text-decoration: underline;
-}
-.carousel-caption a:hover,
-.carousel-caption a:focus {
-    color: #bdc3c7; /*silver*/
-}
-
-/* Push the carousel indicators down below the image or content */
-.carousel-indicators {
-	bottom: -35px;
-}
-
-/* Handle "sticky" (featured) posts */
-.sticky .entry-title:after {
-	background-color: #1abc9c;
-	color: #fff;
-}
-
-.bypostauthor {
-}
-
-/* Make user profile pics (avatars) circles */
-.avatar {
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	border-radius: 50%;
-}
-img.avatar.thumbnail {
-	border: none;
-	padding: 0;
-}
-
-/* 
- * NEW STUFF ADDED, SUCH AS ADDITIONAL BUTTONS
- */
-
-/* New button that is inverted (hollow) so works on any dark background */
 a.btn.btn-hollow,
 button.btn.btn-hollow {
 	color: #fff;
   	border: 2px solid #fff;
     background-color: transparent;
 }
-/*.btn-hollow:hover, a.btn.btn-hollow:hover {*/
 .btn-hollow:hover, 
 btn.btn-hollow:hover,
 button.btn.btn-hollow:hover {
     color: #2f2f2f;
     background-color: #fff
 }
-.white button.btn.btn-hollow, 
-.white .btn.btn-hollow, 
 .bg-white button.btn.btn-hollow, 
 .bg-white .btn.btn-hollow, 
-.offwhite button.btn.btn-hollow, 
-.offwhite .btn.btn-hollow, 
 .bg-offwhite button.btn.btn-hollow, 
 .bg-offwhite .btn.btn-hollow, 
-.lightgray button.btn.btn-hollow, 
-.lightgray .btn.btn-hollow, 
 .bg-lightgray button.btn.btn-hollow, 
 .bg-lightgray .btn.btn-hollow, 
-.gray button.btn.btn-hollow, 
-.gray .btn.btn-hollow, 
 .bg-gray button.btn.btn-hollow, 
 .bg-gray .btn.btn-hollow, 
-.darkgray button.btn.btn-hollow, 
-.darkgray .btn.btn-hollow,
 .bg-darkgray button.btn.btn-hollow, 
 .bg-darkgray .btn.btn-hollow {
 	color: #1abc9c;
@@ -1061,7 +909,9 @@ button.btn.btn-hollow:hover,
     background-color: #fff;
 }
 
-/* New button that is partially transparent to let background color show through */
+/* 
+ * New button that is partially transparent to let background color show through 
+ */
 .btn-transparent {
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.35);
@@ -1075,7 +925,11 @@ button.btn.btn-hollow:hover,
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Enhance Bootstrap to allow for columns with no gutter (margin) */
+/* 
+ * Enhance Bootstrap to allow for columns with no gutter (margin) 
+ * TO-DO: Bootstrap 4 handles this stuff already, so consider removing at that time
+ */
+
 .row.no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -1085,3 +939,4 @@ button.btn.btn-hollow:hover,
   padding-right: 0;
   padding-left: 0;
 }
+

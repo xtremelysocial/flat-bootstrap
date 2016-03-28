@@ -15,10 +15,13 @@ global $xsbf_theme_options;
 	
 /* If page top "sidebar" has widgets, then display them */
 $sidebar_pagetop = get_dynamic_sidebar( 'sidebar-3' );
+$sidebar_pagetop = apply_filters( 'xsbf_pagetop', $sidebar_pagetop );
+
 if ( $sidebar_pagetop ) :
 ?>
 	<div id="sidebar-pagetop" class="sidebar-pagetop">
-		<?php echo apply_filters( 'xsbf_pagetop', $sidebar_pagetop ); ?>
+		<?php //echo apply_filters( 'xsbf_pagetop', $sidebar_pagetop ); ?>
+		<?php echo $sidebar_pagetop; ?>
 	</div><!-- .sidebar-pagetop -->
 
 <?php
@@ -28,7 +31,7 @@ if ( $sidebar_pagetop ) :
 ?>
 	<div id="sidebar-pagetop" class="sidebar-pagetop">
 
-		<aside id="sample-text" class="widget widget_text section bg-darkgray centered clearfix">
+		<aside id="sample-text" class="widget widget_text section bg-darkgray text-center clearfix">
 		<div class="container">
 		<!-- <h2 class="widget-title"><?php //_e( 'WELCOME TO OUR SITE', 'flat-bootstrap' ); ?></h2> -->
 		<div class="textwidget">

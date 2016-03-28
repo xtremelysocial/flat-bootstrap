@@ -14,15 +14,14 @@
 global $xsbf_theme_options;
 	
 /* If home page "sidebar" has widgets, then display them */
-/* echo 'is_front_page=' . is_front_page() . '<br />'; //TEST
-echo 'is_home=' . is_home() . '<br />'; //TEST
-echo 'is_paged=' . is_paged() . '<br />'; //TEST */
 if ( is_front_page() and !is_paged() ) {
 $sidebar_home = get_dynamic_sidebar( 'sidebar-5' );
+$sidebar_home = apply_filters( 'xsbf_home', $sidebar_home );
 if ( $sidebar_home ) :
 ?>
 	<div id="sidebar-home" class="sidebar-home">
-		<?php echo apply_filters( 'xsbf_home', $sidebar_home ); ?>
+		<?php //echo apply_filters( 'xsbf_home', $sidebar_home ); ?>
+		<?php echo $sidebar_home; ?>
 	</div><!-- .sidebar-home -->
 
 <?php
@@ -32,7 +31,7 @@ if ( $sidebar_home ) :
 ?>
 	<div id="sidebar-home" class="sidebar-home">
 
-		<aside id="sample-text" class="widget widget_text section bg-darkgray centered clearfix">
+		<aside id="sample-text" class="widget widget_text section bg-darkgray text-center clearfix">
 		<div class="container">
 		<!-- <h2 class="widget-title"><?php //_e( 'WELCOME TO OUR SITE', 'flat-bootstrap' ); ?></h2> -->
 		<div class="textwidget">

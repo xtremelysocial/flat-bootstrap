@@ -13,9 +13,9 @@
 	
 		<?php if ( !is_single() AND !is_page() ) : ?>
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-		<?php endif; ?>
+		<?php endif; // !is_single... ?>
 
-		<?php if ( ! in_array( get_post_type(), array ( 'jetpack-testimonial', 'jetpack-portfolio' ) ) ) : ?>
+		<?php if ( is_single() OR is_home() ) : ?>
 
 			<?php $the_date = get_the_date(); ?>
 			<p><span class="posted-on"><span class="glyphicon glyphicon-calendar"></span>&nbsp;
@@ -29,16 +29,18 @@
 					<?php the_author_posts_link(); ?> 
 				</span>
 				</span>
-			<?php endif; ?>
+			<?php endif; // is_multi_author ?>
 
-		<?php endif; ?>
+		<?php //endif; // is_single ?>
 
 		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
 			 &nbsp;|&nbsp;<span class="comments-link">
 			 <span class="glyphicon glyphicon-comment"></span>&nbsp;
-			 <?php comments_popup_link( __( 'Leave a comment', 'flat-bootstrap' ), __( '1 Comment</span>', 'flat-bootstrap' ), __( '% Comments', 'flat-bootstrap' ) ); ?>
+			 <?php comments_popup_link( __( 'Leave a comment', 'flat-bootstrap' ), __( '1 Comment</span>', 'flat-bootstrap' ), __( '% Comments', 'flat-bootstrap' ), 'smoothscroll' ); ?>
 			 </span>
-		<?php endif; ?>
+		<?php endif; // ! post_password... ?>
+
+		<?php endif; // is_single ?>
 		
 	</div><!-- .entry-meta -->
 </header><!-- .entry-header -->

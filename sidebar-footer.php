@@ -15,12 +15,15 @@
    it handles adjusting the bootstrap grid based on the number of widgets in the footer
  */
 $sidebar_footer = get_dynamic_sidebar( 'sidebar-2' );
+$sidebar_footer = apply_filters( 'xsbf_footer', $sidebar_footer );
+
 if ( $sidebar_footer ) :
 ?>
 	<div class="sidebar-footer clearfix">
 	<div class="container">
 		<div class="row">
-		<?php echo apply_filters( 'xsbf_footer', $sidebar_footer ); ?>
+		<?php //echo apply_filters( 'xsbf_footer', $sidebar_footer ); ?>
+		<?php echo $sidebar_footer; ?>
 		</div><!-- .row -->
 	</div><!-- .container -->
 	</div><!-- .sidebar-footer -->

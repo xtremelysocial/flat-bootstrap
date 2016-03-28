@@ -16,8 +16,9 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() )
+if ( post_password_required() ) {
 	return;
+}
 ?>
 
 <div id="comments" class="comments-area">
@@ -34,7 +35,7 @@ if ( post_password_required() )
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
-			<h1 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'flat-bootstrap' ); ?></h1>
+			<h2 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'flat-bootstrap' ); ?></h2>
 			<ul class="pager">
 			<li class="previous"><?php next_comments_link( __( '&larr; Newer Comments', 'flat-bootstrap' ) ); ?>
 			<li class="next"><?php previous_comments_link( __( 'Older Comments &rarr;', 'flat-bootstrap' ) ); ?>

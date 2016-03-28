@@ -54,19 +54,20 @@
 	/* 
 	 * GET THE TEXT TO DISPLAY ON THE IMAGE OR CONTENT HEADER SECTION 
 	 */
-	 
-	// If header image and its already been displayed (via header.php), do nothing
-	////if ( is_home() AND is_front_page() AND $custom_header_location == 'header' ) {
-	//if ( $custom_header_location == 'header' AND is_front_page() AND ! $image_url ) {
-	if ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header' ) {
+
+	// If header image and its already been displayed (via header.php), do nothing.
+	if ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header') {
+	//if ( ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header') OR ( is_home() AND is_front_page() ) ) {
 		// Do nothing
 	
-	// Otherwise, if header image, then display it with the site title and description
-	//} elseif ( is_home() AND is_front_page() AND $custom_header_location != 'header' ) {
+	// Otherwise, if on "home" page and header image, then display it with the site title
+	// and description
 	} elseif ( $custom_header_location != 'header' AND is_front_page() AND $image_type == 'header' ) {
 		$title = get_bloginfo('name');
 		$subtitle = get_bloginfo('description');
 
+	// However, if the "home" page is set to the blog and there isn't a header image,
+	// then don't do anything.
 	} elseif ( is_home() AND is_front_page() ) {
 		// Do nothing
 	
@@ -96,84 +97,60 @@
 			$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 		}
 
-	} elseif ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
-		$title = __( 'Portfolio', 'flat-bootstrap' );
-
-		if ( is_tax( 'jetpack-portfolio-type' ) || is_tax( 'jetpack-portfolio-tag' ) ) {
-			$subtitle = single_term_title( null, false );
-		}
-
-	} elseif ( is_post_type_archive( 'jetpack-testimonial' ) OR $post->post_type == 'jetpack-testimonial' ) {
-		$testimonial_options = get_theme_mod( 'jetpack_testimonials' );
-		if ( $testimonial_options ) { 
-			$title = $testimonial_options['page-title'];
-		} else {
-			$title = __( 'Testimonials', 'flat-bootstrap' );
-		}
-
-		if ( !is_post_type_archive( 'jetpack-testimonial' ) AND $post->post_type == 'jetpack-testimonial' ) {
-			$subtitle = get_the_title();
-		}
-
-	} elseif ( is_page() OR is_single() ) { 
-		$title = get_the_title();
-			
-	} elseif ( is_category() ) {
-		$title = single_cat_title( null, false );
-
-	} elseif ( is_tag() ) {
-		$title = single_tag_title( null, false );
-
-	} elseif ( is_author() ) {
-		// Queue the first post, that way we know what author we're dealing with
-		the_post();
-		$title = sprintf( __( 'Author: %s', 'flat-bootstrap' ), '<span class="vcard">' . get_the_author() . '</span>' );
-		// Since we called the_post() above, we need to rewind the loop back to the beginning that way we can run the loop properly, in full.
-		rewind_posts();
-
+	// If search, include the search term in the title
 	} elseif ( is_search() ) {
 		$title = sprintf( __( 'Search Results for: %s', 'flat-bootstrap' ), '<span>' . get_search_query() . '</span>' );
 
-	} elseif ( is_day() ) {
-		$title = sprintf( __( 'Day: %s', 'flat-bootstrap' ), '<span>' . get_the_date() . '</span>' );
+	// Could use get_the_archive_title() here, but it adds "Category: "
+	} elseif ( is_category() ) {
+		$title = single_cat_title( null, false );
+ 		$subtitle = get_the_archive_description();
 
-	} elseif ( is_month() ) {
-		$title = sprintf( __( 'Month: %s', 'flat-bootstrap' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+	// Could use get_the_archive_title() here, but it adds "Tag: "
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( null, false );
+ 		$subtitle = get_the_archive_description();
 
-	} elseif ( is_year() ) {
-		$title = sprintf( __( 'Year: %s', 'flat-bootstrap' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
-	
-	} elseif ( is_tax( 'post_format', 'post-format-aside' ) ) {
-		$title = __( 'Asides', 'flat-bootstrap' );
 
-	} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-		$title = __( 'Images', 'flat-bootstrap');
+	// Handle archive pages. These functions as of WordPress v4.1.0. Note that Jetpack
+	// portfolios and testimonials are now handled in /inc/jetpack.php.
+ 	} elseif ( is_archive() ) {
+ 		$title = get_the_archive_title();
+ 		$subtitle = get_the_archive_description();
 
-	} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-		$title = __( 'Videos', 'flat-bootstrap' );
+	// Handle regular pages and posts. Note that subtitle is a custom field we added to
+	// this theme. is_singular() handles single pages, posts, and even custom post types.
+ 	//} else {
+	//} elseif ( is_page() OR is_single() ) { 
+	} elseif ( is_page() OR is_singular() ) {
+ 		$title = get_the_title();
+		//if ( is_page() OR is_singular() ) {
+			$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
+		//}
 
-	} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-		$title = __( 'Quotes', 'flat-bootstrap' );
-
-	} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-		$title = __( 'Links', 'flat-bootstrap' );
-
+	// This should never happen, but this is here to catch issues
 	} else {
-		$title = __( 'Archives', 'flat-bootstrap' );
+		$title = get_the_title();
+		$subtitle = "We don't know what page type this is. Check content-header.php.";
 
 	} //endif is_home()
 
 	/*
+	 * REMOVE THIS. WE ARE NOW JUST HANDLING SUBTITLES ALONG WITH TITLES ABOVE. MUCH 
+	 * CLEANER THAT WAY.
+	 * 
 	 * IF TITLE THEN GET SUBTITLE, FIRST FROM THE TERM DESCRIPTION, THEN FROM OUR CUSTOM
 	 * PAGE TITLE
 	 */
+/*
 	if ( $title AND ! $subtitle ) {
 		$subtitle = term_description();
 		if ( ! $subtitle AND is_singular() ) $subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 	}
-		
+*/		
 	/* 
-	 * IF WE HAVE AN IMAGE, THEN DISPLAY IT WITH THE TEXT AS AN OVERLAY 
+	 * IF WE HAVE A LARGE FEATURED IMAGE OR CUSTOM HEADER, THEN DISPLAY IT AS A BACK-
+	 * GROUND WITH THE TEXT AS AN OVERLAY.
 	 */
 	if ( $image_url ) :
 
@@ -209,9 +186,8 @@
 
 	<?php
 	/* 
-	 * IF NO IMAGE, THEN DISPLAY TEXT IN CONTENT HEADER 
+	 * OTHERWISE IF NO IMAGE, THEN JUST DISPLAY TEXT WITH "CONTENT-HEADER" CSS STYLE
 	 */
-
 	elseif ( $title ) :
 	?>
 		<header class="content-header">

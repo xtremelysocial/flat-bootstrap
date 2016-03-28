@@ -12,10 +12,10 @@
 	$(document).ready(function() {  
 	   if ($.mobile) {
 			//must target by ID, so these need to be used in your content
-			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel').swiperight(function() {  
+			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel, #carousel-example-generic').swiperight(function() {  
 				$(this).carousel('prev');  
 			});  
-			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel').swipeleft(function() {  
+			$('#myCarousel, #myCarousel2, #agnosia-bootstrap-carousel, #carousel-example-generic').swipeleft(function() {  
 				$(this).carousel('next');  
 			});  
 		}
@@ -37,11 +37,10 @@
 	});
 
 	// Put anything added to content by plugins at the end. This way our sub-pages and
-	// recent post sections appear before it.
+	// recent post sections, etc. appear before it.
 	$(document).ready(function() {
-		// Move Jetpack sharing (sharedaddy) to bottom of page	
-		$( '#after-content' ).wrapAll( '<div class="after-content-wrapper" />' );
-		$( '.entry-content' ).append( $( '.after-content-wrapper' ) );
+		$( '#xsbf-after-content' ).wrapAll( '<div id="xsbf-after-content-wrapper" />' );
+		$( '#xsbf-entry-content' ).append( $( '#xsbf-after-content-wrapper' ) );
 	});
 
 	});

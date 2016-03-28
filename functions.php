@@ -48,8 +48,8 @@
  * 
  * sample_footer_menu - Whether to display sample footer menu with Top and Home links
  * 
- * testimonials - Whether to activate testimonials custom post type if Jetpack plugin is 
- * 		active
+ * testimonials - Whether to activate testimonials custom post type (Jetpack plugin must 
+ * be active for this to do anything.
  */
 $defaults = array(
 	'background_color' 			=> 'f2f2f2',
@@ -63,6 +63,7 @@ $defaults = array(
 	'bootstrap_gradients' 		=> false,
 	'navbar_classes'			=> 'navbar-default navbar-static-top',
 	'custom_header_location' 	=> 'header',
+	//'custom_header_location' 	=> 'content-header',
 	'site_logo'					=> false,
 	'image_keyboard_nav' 		=> true,
 	'sample_widgets' 			=> true,
@@ -72,18 +73,17 @@ $defaults = array(
 
 /**
  * NOTE: $theme_options has been deprecated and replaced with $xsbf_theme_options. You'll
- * need to update your child themes before we get to version 2.0.
+ * need to update your child themes.
  */
+global $xsbf_theme_options;
 if ( isset ( $xsbf_theme_options ) AND is_array ( $xsbf_theme_options ) AND ! empty ( $xsbf_theme_options ) ) {
 	$xsbf_theme_options = wp_parse_args( $xsbf_theme_options, $defaults );
-} elseif ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) { // deprecated
-	$xsbf_theme_options = wp_parse_args( $theme_options, $defaults );
 } else {
 	$xsbf_theme_options = $defaults;
 }
-$theme_options = $xsbf_theme_options; // deprecated
 
-// Plugins expect this as discreet variable, so set it
+// Plugins expect this as discreet variable, so set it. Note this is the max width for
+// full-width page (and post) templates, not the size with a sidebar present.
 $content_width = $xsbf_theme_options['content_width'];
 
 /**
@@ -94,9 +94,11 @@ $content_width = $xsbf_theme_options['content_width'];
  * support post thumbnails.
  */
 if ( ! function_exists( 'xsbf_setup' ) ) :
+add_action( 'after_setup_theme', 'xsbf_setup' );
 function xsbf_setup() {
 
 	global $xsbf_theme_options;
+	//global $content_width; // Note: set from $xsbf_theme_options also
 
 	// Add support for WordPress core to add <title> tag to the header. As of WordPress 
 	// v4.1. Its just done for consistency across all WordPress themes.
@@ -108,10 +110,11 @@ function xsbf_setup() {
 	// Enable support for Post Thumbnails on posts and pages. As of WordPress v3.9,
 	// specific crop parameters handled.
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop left top
+	
+	// This is our standard thumbnail size for things like blog posts.
 	//set_post_thumbnail_size( 750, 422, array( 'left', 'top' ) ); // crop left top
-	//add_image_size( 'gallery-image', 640, 360, array( 'left', 'top' ) ); // gallery/portfolio
-
+	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop left top
+	
 	// This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
 	register_nav_menus( array(
 		'primary' 	=> __( 'Header Menu', 'flat-bootstrap' ),
@@ -135,8 +138,10 @@ function xsbf_setup() {
 			'default-image' => '',
 		) ) );
 
-	// Enable support for Post Formats. Note we haven't included any special styling. 
-	// Look at TwentyEleven theme for this. As of WordPress v3.1.
+	// Enable support for Post Formats. Note we haven't included any special styling or
+	// any custom templates for it. Most themes just display the entire post content, but
+	// some change the templates. Look at TwentyEleven theme for this. As of WordPress
+	// v3.1.
 	if( ! empty ( $xsbf_theme_options['post_formats']) ) {
 		add_theme_support( 'post-formats', $xsbf_theme_options['post_formats'] );
 		
@@ -153,48 +158,17 @@ function xsbf_setup() {
 	load_theme_textdomain( 'flat-bootstrap', get_template_directory() . '/languages' );
 
 } // end function
-add_action( 'after_setup_theme', 'xsbf_setup' );
 endif; // end ! function_exists
-
-/**
- * Add our custom image size to the WordPress gallery drop-down list
- */
-/*
-add_filter( 'image_size_names_choose', 'xsbf_image_sizes' );
-function xsbf_image_sizes( $sizes ) {
-    return array_merge( $sizes, array(
-        'gallery-image' => __( 'Gallery Image (640x360)', 'flat-bootstrap' ),
-    ) );
-}
-*/
-
-/**
- * Utility function for finding a file first in the child theme and then the parent
- */
-function xsbf_theme_directory ( $file ) {
-	if ( file_exists ( get_stylesheet_directory() . $file ) ) {
-		return get_stylesheet_diretory() . $file;
-	} else {
-		return get_template_diretory() . $file;
-	}
-}
-
-/**
- * Utility function for finding a file by URL first in the child theme and then the parent
- */
-function xsbf_theme_directory_uri ( $file ) {
-	if ( file_exists ( get_stylesheet_directory_uri() . $file ) ) {
-		return get_stylesheet_diretory_uri() . $file;
-	} else {
-		return get_template_diretory_uri() . $file;
-	}
-}
 
 /**
  * Register widgetized areas
  */
 if ( ! function_exists('xsbf_widgets_init') ) :
+add_action( 'widgets_init', 'xsbf_widgets_init' );
 function xsbf_widgets_init() {
+
+	// Note that you can't change the 'id' fields or users will have to redo all their 
+	// widgets.
 
 	// Put sidebar first as this is standard in almost all WordPress themes
 	register_sidebar( array(
@@ -245,62 +219,92 @@ function xsbf_widgets_init() {
 		'name' 			=> __( 'Home Page', 'flat-bootstrap' ),
 		'id' 			=> 'sidebar-5',
 		'description' 	=> __( 'Optional section that displays only on the home page. It appears whether the home page is static or the blog. This is a single column area that spans the full width of the page.', 'flat-bootstrap' ),
-		'before_widget' => '<div id="%1$s" class="section widget %2$s clearfix"><div class="container">',
+		//'before_widget' => '<div id="%1$s" class="section widget %2$s clearfix"><div class="container">',
+		'before_widget' => '<div id="%1$s" class="widget %2$s clearfix"><div class="container">',
 		'before_title' 	=> '<h2 class="widget-title">',
 		'after_title' 	=> '</h2>',
 		'after_widget' 	=> '</div><!-- container --></div>',
 	) );
 
 } //end function
-add_action( 'widgets_init', 'xsbf_widgets_init' );
 endif; // end ! function_exists
 
 /**
- * Load CSS Styles and Javascript Files
+ * Load CSS Styles, Javascript Scripts, and Fonts
+ * 
+ * NOTE: xsbf_scripts is now been split into 3 separate smaller functions so that child 
+ * themes can more easily override just parts. This is backward compatible because the 
+ * main script is still used as a container for them.
  */
 if ( ! function_exists('xsbf_scripts') ) :
-function xsbf_scripts() {
+
+/* 
+ * LOAD FONTS 
+ */
+if ( ! function_exists('xsbf_load_fonts') ) :
+add_action( 'wp_enqueue_scripts', 'xsbf_load_fonts' );
+function xsbf_load_fonts() {
 
 	global $xsbf_theme_options;
 
-	/* LOAD STYLESHEETS */
+	// Load Google Fonts: Lato and Raleway
+	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700', array(), null, 'all' );	
+
+	// Add font-awesome support	
+	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
+		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.5.0', 'all' );
+		wp_enqueue_style( 'font-awesome');
+	}
+
+} // end function xsbf_load_fonts
+endif; // end ! function_exists
+
+/**
+ * LOAD CSS STYLESHEETS 
+ */
+if ( ! function_exists('xsbf_load_css') ) :
+add_action( 'wp_enqueue_scripts', 'xsbf_load_css' );
+function xsbf_load_css() {
+
+	global $xsbf_theme_options;
 
 	// Load our custom version of Bootsrap CSS. Can easily override in a child theme.
-	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.3.2', 'all' );
+	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.3.6', 'all' );
 	wp_enqueue_style( 'bootstrap');
 
 	// If desired, load up the bootstrap-theme CSS for a full gradient look. Note you'll
 	// need to style other theme elements to match.
 	if ( $xsbf_theme_options['bootstrap_gradients'] ) {
-		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array( 'bootstrap' ), '3.3.2', 'all' );
+		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array( 'bootstrap' ), '3.3.6', 'all' );
 		wp_enqueue_style( 'bootstrap-theme');
 	}
 	
 	// Our base WordPress CSS that handles default margins, paddings, etc.
-	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', array( 'bootstrap' ), '20150201', 'all' );
+	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', array( 'bootstrap' ), '20160323', 'all' );
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20150201', 'all' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20160323', 'all' );
 	wp_enqueue_style( 'theme-flat');
-
-	// Load Google Fonts: Lato and Raleway
-	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700', array(), null, 'screen' );	
-
-	// Add font-awesome support	
-	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
-		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.3.0', 'all' );
-		wp_enqueue_style( 'font-awesome');
-	}
 
 	// This theme's stylesheet, which contains the theme-specific CSS for coloring
 	// content header, footer, etc.
 	wp_enqueue_style( 'flat-bootstrap', get_stylesheet_uri() );
 
-	/* LOAD JAVASCRIPT */
+} // end function xsbf_load_css
+endif; // end ! function_exists
+
+/* 
+ * LOAD JAVASCRIPT 
+ */
+if ( ! function_exists('xsbf_load_js') ) :
+add_action( 'wp_enqueue_scripts', 'xsbf_load_js' );
+function xsbf_load_js() {
+
+	global $xsbf_theme_options;
 
 	// Bootstrap core javascript
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.2', true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.6', true );
 
 	// jquery mobile script is a custom download with ONLY "touch" functions. Load
 	// this just on single posts and pages where a carousel might be placed
@@ -309,7 +313,7 @@ function xsbf_scripts() {
 	}
 	
 	// Our theme's javascript for smooth scrolling and optional for touch carousels
-	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140913', true );
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20160303', true );
 
 	// Optional script from _S theme to allow keyboard nvigation through image pages
 	if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {
@@ -324,55 +328,45 @@ function xsbf_scripts() {
 	// For IE8 or older, load HTML5 compatibility files
 	preg_match ( '|MSIE\s([0..9]*)|', $_SERVER['HTTP_USER_AGENT'], $browser );
 	if ( $browser AND $browser[1] < 9 ) {
-		wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/html5/html5shiv.js', null, '3.7.0', true );
+		wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/html5/html5shiv.min.js', null, '3.7.3', true );
 		wp_enqueue_script( 'respond', get_template_directory_uri() . '/html5/respond.min.js', null, '1.4.2', true );
 	}
 
-} // end function
-add_action( 'wp_enqueue_scripts', 'xsbf_scripts' );
-endif; // end ! function_exists
+} // end function xsbf_load_js
+endif; // end ! function_exists xsbf_load_js
+
+endif; // end ! function_exists xsbf_scripts
 
 /**
- * LOAD OUR REQUIRED AND OPTIONAL INCLUDE FILES FOR VARIOUS THEME FEATURES
+ * LOAD OUR INCLUDE FILES FOR VARIOUS THEME FEATURES
+ * 
+ * This entire function can be overridden by a child theme. Just declare the function 
+ * and set the array to the files to include. You don't need to use the if not function
+ * exists wrapper in your child theme.
  */
 if ( ! function_exists('xsbf_load_includes') ) :
 function xsbf_load_includes() {
 
-	/**
-	 * REQUIRED INCLUDE FILES
-	 */
+/* Build array of include files */
+$includes = array (
+	'/inc/template-tags.php',
+	'/inc/theme-functions.php',
+	'/inc/bootstrap-navmenu.php',
+	'/inc/custom-header.php',
+	'/inc/customizer.php',
+	'/inc/extras.php',
+	'/inc/xsbf-plugin-recommendations.php'
+	);
 
-	// Custom template tags for this theme. This is needed for sure.
-	require_once get_template_directory() . '/inc/template-tags.php';
+/* Add Jetpack support if that plugin is active */
+if ( class_exists( 'Jetpack' ) ) {
+	$includes[] = '/inc/jetpack.php';
+}
 
-	// Functions not related to template tags. This is needed for sure.
-	require_once get_template_directory() . '/inc/theme-functions.php';
-
-	//Overide the standard WordPress nav menu with Bootstrap divs, data attributes, and CSS
-	require_once get_template_directory() . '/inc/bootstrap-navmenu.php';
-
-	/**
-	 * OPTIONAL INCLUDE FILES
-	 */
-
-	//Overide the standard WordPress Gallery shortcode with Bootstrap styles
-	//include_once get_template_directory() . '/inc/bootstrap-gallery.php';
- 
-	// Implement the WordPress Custom Header feature. Optional.
-	include_once get_template_directory() . '/inc/custom-header.php';
-
-	// WordPress Theme Customizer. Optional.
-	include_once get_template_directory() . '/inc/customizer.php';
-
-	// Custom functions that act independently of the theme templates. Optional.
-	include_once get_template_directory() . '/inc/extras.php';
-
-	// Jetpack compatibility file to handle endless posts, responsive videos,
-	// testimonials custom post type. Optional.
-	include_once get_template_directory() . '/inc/jetpack.php';
-
-	// Recommend plugins that compliment this theme. Optional.
-	include_once get_template_directory() . '/inc/xsbf-plugin-recommendations.php';
+/* Load each of the includes */
+foreach ( $includes as $include ) {
+	include_once get_template_directory() . $include;
+} //end foreach
 
 } // end function
 xsbf_load_includes();

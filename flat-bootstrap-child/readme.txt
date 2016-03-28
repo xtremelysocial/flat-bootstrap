@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.4
+Requires at least: 4.2
+Tested up to: 4.4.2
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -47,6 +47,11 @@ For more information on Flat Bootstrap, see the "How to use our themes" [http://
 
 
 == CHANGELOG ==
+
+= 1.5 =
+* Bumped parent theme (template) version to 1.9.
+* Changed loading of parent theme's stylesheet using wp_enqueue_style() instead of using @import in style.css. This is now best practice for performance reasons.
+* Changed primary link cover (and link hover) just to show users how to do it.
 
 = 1.4 =
 * Added $xsbf_theme_option to specify whether the custom header image displays above the navbar (like this child theme and its parent) or below the navbar (like other child themes such as Link, Pratt, Spot)
