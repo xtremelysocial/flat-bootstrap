@@ -12,14 +12,27 @@
 	</div><!-- #content -->
 
 	<?php // Page bottom (before footer) widget area 
-	get_sidebar( 'pagebottom' ); 
+	if ( ! is_page_template( 'page-landing.php' ) ) {	
+		get_sidebar( 'pagebottom' ); 
+	}
+	?>
+
+	<?php // Jetpack social menu, if Jetpack active
+	if ( function_exists( 'jetpack_social_menu' ) AND has_nav_menu( 'jetpack-social-menu' ) AND ! is_page_template( 'page-landing.php') ) {
+		echo '<footer id="social-menu" class="social-menu"><div class="container">';
+		jetpack_social_menu();
+		echo '</div><!-- .container --></footer><!-- #social-menu -->';
+	} //end function_exists
 	?>
 
 	<?php // Start the footer area ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		
-	<?php // Footer "sidebar" widget area (1 to 4 columns supported)
-	get_sidebar( 'footer' );
+	<?php // Footer "sidebar" widget area (1 to 4 columns supported). Don't display on 
+		  // our landing page template.
+	if ( ! is_page_template( 'page-landing.php' ) ) {
+		get_sidebar( 'footer' );
+	}
 	?>
 
 	<?php // Check for footer navbar (optional)

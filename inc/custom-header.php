@@ -12,8 +12,6 @@
  * Setup the WordPress core custom header feature.
  *
  * @uses xsbf_header_style()
- * @uses xsbf_admin_header_style() => NOTE: No longer used by WordPress
- * @uses xsbf_admin_header_image() => NOTE: No longer used by WordPress
  *
  * @package flat-bootstrap
  */
@@ -21,18 +19,69 @@ if ( ! function_exists( 'xsbf_custom_header_setup' ) ) :
 add_action( 'after_setup_theme', 'xsbf_custom_header_setup' );
 function xsbf_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'xsbf_custom_header_args', array(
-		'default-image'          => '',
+		//'default-image'          => '',
 		'default-text-color'     => '555555',
-		'width'                  => 1600,
-		'height'                 => 200,
+		/*'width'                  => 1600,
+		'height'                 => 200,*/
+		'default-image' 		=> get_template_directory_uri() . '/images/headers/briefcase.jpg',
+		'width' 				=> 1600,
+		'height' 				=> 700, //large: home 700, other 400; mobile home 480, other 340 mobile; images are 900
 		'flex-width'             => true,
 		'flex-height'            => true,
 		'header-text'            => true,
 		'wp-head-callback'       => 'xsbf_header_style'
-		/*'wp-head-callback'       => 'xsbf_header_style',
-		'admin-head-callback'    => 'xsbf_admin_header_style',
-		'admin-preview-callback' => 'xsbf_admin_header_image',*/
 	) ) );
+
+	//The %2$s references the child theme directory (ie the stylesheet directory), use 
+	// %s to reference the parent directory.
+	register_default_headers( array(
+		'abstract' => array(
+			'url'           => '%s/images/headers/abstract.jpg',
+			'thumbnail_url' => '%s/images/headers/abstract-thumbnail.jpg',
+			'description'   => __( 'Abstract', 'flat-bootstrap' )
+		),
+		'book' => array(
+			'url'           => '%s/images/headers/book.jpg',
+			'thumbnail_url' => '%s/images/headers/book-thumbnail.jpg',
+			'description'   => __( 'Book', 'flat-bootstrap' )
+		),
+		'briefcase' => array(
+			'url'           => '%s/images/headers/briefcase.jpg',
+			'thumbnail_url' => '%s/images/headers/briefcase-thumbnail.jpg',
+			'description'   => __( 'Briefcase', 'flat-bootstrap' )
+		),
+		'camera' => array(
+			'url'           => '%s/images/headers/camera.jpg',
+			'thumbnail_url' => '%s/images/headers/camera-thumbnail.jpg',
+			'description'   => __( 'Camera', 'flat-bootstrap' )
+		),
+		'city' => array(
+			'url'           => '%s/images/headers/city.jpg',
+			'thumbnail_url' => '%s/images/headers/city-thumbnail.jpg',
+			'description'   => __( 'City', 'flat-bootstrap' )
+		),
+		'desk' => array(
+			'url'           => '%s/images/headers/desk.jpg',
+			'thumbnail_url' => '%s/images/headers/desk-thumbnail.jpg',
+			'description'   => __( 'Desk', 'flat-bootstrap' )
+		),
+		'guitar' => array(
+			'url'           => '%s/images/headers/guitar.jpg',
+			'thumbnail_url' => '%s/images/headers/guitar-thumbnail.jpg',
+			'description'   => __( 'Guitar', 'flat-bootstrap' )
+		),
+		'notepad' => array(
+			'url'           => '%s/images/headers/notepad.jpg',
+			'thumbnail_url' => '%s/images/headers/notepad-thumbnail.jpg',
+			'description'   => __( 'Notepad', 'flat-bootstrap' )
+		),
+		'skyline' => array(
+			'url'           => '%s/images/headers/skyline.jpg',
+			'thumbnail_url' => '%s/images/headers/skyline-thumbnail.jpg',
+			'description'   => __( 'Skyline', 'flat-bootstrap' )
+		),
+	) );
+	
 }
 endif; //end ! function_exists
 
@@ -60,17 +109,30 @@ function xsbf_header_style() {
 
 	// If we get this far, we have custom styles. Let's do this.
 	?>
-	<style type="text/css">
+	<style type="text/css" id="custom-header-css">
 	<?php
 		// Has the text been hidden?
 		if ( 'blank' == $header_text_color ) :
 	?>
-		/*.site-title,
-		.site-description {*/
-		.site-branding {
+		/*.site-branding {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}*/
+		.site-title {
 			position: absolute;
 			clip: rect(1px, 1px, 1px, 1px);
 		}
+		.site-description {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		.navbar-default .navbar-brand {
+		  color: #16a085;
+		}
+		.navbar-default .navbar-brand:hover,
+		.navbar-default .navbar-brand:focus {
+		  color: #19b798;
+		}		
 		.navbar-brand {
 			position: relative;
 			clip: auto;
@@ -98,5 +160,6 @@ function xsbf_header_style() {
 	<?php endif; ?>
 	</style>
 	<?php
-}
-endif; // xsbf_header_style
+} //endfunction xsbf_header_style
+
+endif; // ! function_exists

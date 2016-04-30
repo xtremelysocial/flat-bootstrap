@@ -34,6 +34,8 @@ get_header(); ?>
 				</div><!-- .comments-wrap" -->
 				<?php endif; ?>
 
+				<?php get_template_part( 'content', 'post-nav' ); ?>
+
 			<?php endwhile; // end of the loop. ?>
 
 		</main><!-- #main -->

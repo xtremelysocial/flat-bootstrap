@@ -4,7 +4,7 @@ Theme URI: http://xtremelysocial.com/wordpress/flat/
 Author: XtremelySocial
 Author URI: http://xtremelysocial.com
 Description: Flat Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones. It is based on the WordPress standard starter theme (_S) and the Twitter Bootstrap CSS framework. Features include a mobile navigation bar, multiple columns (grid), buttons, icons, labels, badges, tabbed content areas, collapsible content areas, progress bars, alert boxes, carousels (sliders) and much, much more. This is a theme for both users and theme developers with lots of features but without the bloat. For a live demo go to http://xtremelysocial.com/wordpress/flat/. PLEASE NOTE: Version 1.9 has had a major "spring cleaning" of the functions, templates, and CSS. Please be sure to test it out on your site.
-Version: 1.9
+Version: 2.0
 License: GNU General Public License
 License URI: http://www.opensource.org/licenses/GPL-3.0
 Text Domain: flat-bootstrap
@@ -28,6 +28,7 @@ See readme.txt file for license information on components used in this theme.
 # Content
 	## Header
 	## Footer
+	## Widget Areas
 	## Posts and pages
 	## Comments
 # Media
@@ -35,7 +36,6 @@ See readme.txt file for license information on components used in this theme.
 # Widgets & Plugins
 	## Widgets
 	## Plugins
-
 --------------------------------------------------------------*/
 
 /*
@@ -60,19 +60,19 @@ body {
     font-size: 18px; /*BS is 16px;*/
 }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6 {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
 	font-family: "Raleway", Arial, "Helvetica Neue", sans-serif; /*"Helvetica Neue", Helvetica, Arial, sans-serif;*/
 }
 
 /* Lighten the h1-h3 headings so you can use <b> tags to have certain words stand out */
-h1, 
-h2, 
-h3 {
+h1, .h1,
+h2, .h2,
+h3, .h3 {
     font-weight: 300; /*BS is 500 for h1-h6, including .h1-.h6*/
 }
 
@@ -93,9 +93,9 @@ code {
 }
 
 /* Remove a bit of margin since Bootstrap h1-h3 tags already have 22px top margin */
- hr {
-    margin: 16px 0; /*22px 0;*/
-}
+/* hr {
+    margin: 16px 0;*/ /*22px 0;*/
+/*}*/
 
 /*
  * Override margins on jumbotron in case someone uses it like a colored "section" from
@@ -121,6 +121,17 @@ blockquote footer {
 .panel-title>.small>a:hover {
 	color: #19b798;
 }
+
+/* Replace out the blue glow when tabbing through / clicking on input fields */
+/*:focus,
+.form-control:focus {
+  	outline-color: #19b798;
+	outline: none;
+ 	-webkit-appearance: none;
+ 	-webkit-box-shadow: 0 0 3px 1px #19b798;
+	-moz-box-shadow: 0 0 3px 1px #19b798;
+	box-shadow: 0 0 3px 1px #19b798;
+}*/
 
 /*--------------------------------------------------------------
 # Forms and Buttons
@@ -169,6 +180,7 @@ input[type="submit"] {
     color: #fff;
     background-color: #1abc9c;
     border-color: #1abc9c;
+	font-weight: normal;
 }
 button:hover, 
 button:focus,
@@ -217,8 +229,8 @@ input.search-field {
 --------------------------------------------------------------*/
 
 /*
- * Generically style the links here. Set colors below to make it easier for users to 
- * override.
+ * Generically style the links here. The link color and hover are now in bootstrap.css.
+ * You can override them in a child theme.
  */
 a {
     word-wrap: break-word;
@@ -254,6 +266,15 @@ a:focus i:before {
 .navbar-brand {
 	font-weight: 500;
 	/*height: 50px; BS already 50px*/ /* Fixes layout if nav bar wraps before collapsing for mobile */
+}
+
+/* Set navbar brand to match the link color and hover */
+.navbar-default .navbar-brand {
+  color: #16a085;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #19b798;
 }
 
 /* 
@@ -296,6 +317,32 @@ div.navbar-collapse.collapse {
 ## Footer
 --------------------------------------------------------------*/
 
+/* Format the Jetpack Social Menu footer */
+#social-menu {
+	color: white;
+	background-color: #16a085; /*#34495e;*/ /*#222222;*/
+	padding: 48px 0;
+	text-align: center; 
+}
+#social-menu a {
+	color: white;
+	font-weight: normal;
+}
+#social-menu a:hover,
+#social-menu a:active,
+#social-menu a:focus {
+	color: #e7e7e7;
+}
+#social-menu ul li {
+	font-size: 70px;
+	padding: 0 12px;
+}
+
+/* We have padding above, so remove Jetpack's bottom margin */
+.jetpack-social-navigation ul {
+	margin: 0 !important;
+}
+
 /* Set our footer to "almost" black */
 .sidebar-footer {
 	background-color: #2f2f2f;
@@ -336,6 +383,35 @@ div.navbar-collapse.collapse {
 }
 
 /*--------------------------------------------------------------
+## Widget Areas
+--------------------------------------------------------------*/
+
+/* Set home page widget area to midnight blue with section padding */
+/*.sidebar-home .widget_text {
+	background-color: #34495e;
+	color: #fff;
+}
+.sidebar-home .widget_text h1, 
+.sidebar-home .widget_text h2, 
+.sidebar-home .widget_text h3, 
+.sidebar-home .widget_text h4, 
+.sidebar-home .widget_text h5, 
+.sidebar-home .widget_text h6 {
+	color: #fff;
+}
+*/
+/*.sidebar-home > .widget_text > .container > h2:first-child {
+	margin-top: 11px;
+	padding-top: 35px;*/
+	/*background-color: yellow;*/ /* //TEST */
+/*}*/
+/*.sidebar-home > .widget_text > .container > .textwidget > p:last-child {
+	padding-bottom: 35px;
+	margin-bottom: 11px; */
+	/*background-color: orange;*/ /* //TEST */
+/*}*/
+
+/*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
 
@@ -353,6 +429,12 @@ div.navbar-collapse.collapse {
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+
+/* Color commments "by post author" */
+.bypostauthor > article > footer > .comment-author:after {
+	background-color: #1abc9c;
+	color: #fff;
+}
 
 /* Reduce the size of comment edit link */
 .comment-edit-link {
@@ -403,14 +485,22 @@ div.navbar-collapse.collapse {
 	/*margin-left: 1.625em !important;*/
 }
 
+/* Get WordPress Popular Posts Widget to look like other thumbnail posts */
+ul.wppp_list img {
+	float: left;
+	margin-right: 10px;
+	/*vertical-align: text-top;*/
+}
+
 /*--------------------------------------------------------------
 ## Plugins
 --------------------------------------------------------------*/
 
-/* Format Jetpack contact form with Bootstrap's form-control tag. */
+/* Format Jetpack contact form and subscription form with Bootstrap's form-control tag. */
 form.contact-form input[type='text'], 
 form.contact-form input[type='email'], 
 form.contact-form textarea {
+/*jetpack_subscription_widget input[type='email'] {*/
     display: block;
     width: 98%;
     height: 36px;
@@ -435,3 +525,36 @@ form.contact-form textarea:focus {
     color: #555;
 }
 
+/* Format Jetpack icons to inherit the font-size and not display an underline on links */
+.genericon {
+	font-size: inherit !important;
+}
+a.genericon {
+	text-decoration: none !important;
+}
+
+/* Tone down the Jetpack Portfolio titles when using the [portfolio] shortcode */
+.portfolio-entry-title {
+	font-weight: 500 !important;
+}
+
+/* On smaller screens limit testimonial thumbnail size to match when in columns */
+.testimonial-thumbnail {
+	max-width: 155px;
+	max-height: 155px;
+}
+.testimonial-entry-summary {
+	padding-top: 15px; 
+}
+
+/* Jetpack Social Sharing (Sharedaddy) */
+/*div.sharedaddy h3.sd-title {
+    font-size: 16pt !important;
+    font-weight: 500 !important
+}
+
+.sd-social-icon .sd-content ul li[class * =share-] a, 
+.sd-social-icon .sd-content ul li[class * =share-] a:hover,
+.sd-social-icon .sd-content ul li[class * =share-] div.option a {
+    padding: 16px !important;
+}*/

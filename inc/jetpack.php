@@ -15,6 +15,12 @@ function xsbf_jetpack_setup() {
 	
 	global $xsbf_theme_options;
 
+	// Enable Jetpack Social Menu and label it as such to avoid confusion with our social menu
+	if ( class_exists( 'Jetpack' ) ) {
+		add_theme_support( 'jetpack-social-menu' );
+	} //end class_exists
+	add_filter( 'jetpack_social_menu_description', function(){ return __( 'Jetpack Social Menu', 'flat-bootstrap' );}, 0 );
+
 	// Enable responsive video if Jetpack plugin is active
 	add_theme_support( 'jetpack-responsive-videos' );
 
@@ -59,12 +65,10 @@ if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'custom-content-typ
 add_filter( 'get_the_archive_title', 'xsbf_archive_title' );
 function xsbf_archive_title( $title ) {
 
-	//if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
 	if ( is_post_type_archive( 'jetpack-portfolio' ) OR is_tax ( 'jetpack-portfolio-type' ) OR is_tax ( 'jetpack-portfolio-tag' ) ) {
 		$title = __( 'Portfolio', 'flat-bootstrap' );
 
 	} elseif ( is_post_type_archive( 'jetpack-testimonial' ) ) {
-	//} elseif ( is_post_type_archive( 'jetpack-testimonial' ) OR $post->post_type == 'jetpack-testimonial' ) {
 		$testimonial_options = get_theme_mod( 'jetpack_testimonials' );
 		if ( $testimonial_options ) { 
 			$title = $testimonial_options['page-title'];
@@ -84,14 +88,13 @@ if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'custom-content-typ
 add_filter( 'get_the_archive_description', 'xsbf_archive_description' );
 function xsbf_archive_description( $description ) {
 
-	//print_r ( Jetpack::get_active_modules() ); //TEST
-
 	if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
 		if ( is_tax( 'jetpack-portfolio-type' ) ) {
 			$description = __( 'Category', 'flat-bootstrap' ) . ': ' . single_term_title( null, false );
 		} elseif ( is_tax( 'jetpack-portfolio-tag' ) ) {
 			$description = __( 'Tag', 'flat-bootstrap' ) . ': ' . single_term_title( null, false );
 		}
+		if ( $description == '' ) $description = __( 'All portfolio items', 'flat-bootstrap' );
 
 	} elseif ( is_post_type_archive( 'jetpack-testimonial' ) ) { 
 		$testimonial_options = get_theme_mod( 'jetpack_testimonials' );
