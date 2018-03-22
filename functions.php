@@ -59,7 +59,7 @@ $defaults = array(
 	'embed_video_width' 		=> 1170, // full-width videos on full-width pages
 	'embed_video_height' 		=> null, // i.e. calculate it automatically
 	'post_formats' 				=> null,
-	//'post_formats'				=> array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ),
+	//'post_formats'			=> array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ),
 	'touch_support' 			=> true,
 	'fontawesome' 				=> true,
 	'bootstrap_gradients' 		=> false,
@@ -69,7 +69,7 @@ $defaults = array(
 	'image_keyboard_nav' 		=> true,
 	'sample_widgets' 			=> true,
 	'sample_footer_menu'		=> true,
-	//'testimonials'				=> true // requires Jetpack plugin
+	//'testimonials'			=> true // requires Jetpack plugin
 );
 
 /**
@@ -370,7 +370,8 @@ $includes = array (
 	'/inc/custom-header.php',
 	'/inc/customizer.php',
 	'/inc/extras.php',
-	'/inc/xsbf-plugin-recommendations.php'
+	'/inc/xsbf-plugin-recommendations.php',
+	/*'/plugins/flat-bootstrap-widgets/flat-bootstrap-widgets.php'*/
 	);
 
 /* Add Jetpack support if that plugin is active */

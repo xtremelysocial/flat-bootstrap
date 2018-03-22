@@ -458,10 +458,18 @@ header.content-header {
 footer#colophon.site-footer ul {
 	list-style: none;
 }
+
+/* Space out the lists in sidebars and footers */
 #secondary ul li, 
-footer#colophon.site-footer ul li {
+/*footer#colophon.site-footer ul li {*/
+.sidebar-footer ul li {
 	margin-top: 12px;
 }
+
+/* Don't add margin to our footer nav menu, though */
+/*footer#colophon.site-footer .after-footer ul li {
+	margin-top: 0;
+}*/
 
 /*--------------------------------------------------------------
 ## Footer
