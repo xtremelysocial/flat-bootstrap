@@ -20,13 +20,14 @@
 	 global $xsbf_theme_options;
 	 global $content_width;
 	 $custom_header_location = isset ( $xsbf_theme_options['custom_header_location'] ) ? $xsbf_theme_options['custom_header_location'] : 'content-header';
+	 //$custom_header_location = 'content-header'; /* force Flat Bootstrap to display header image below navbar */
 	 $image_url = $image_width = $image_type = null;
 	 $title = $subtitle = $description = null;
 	 
 	/**
-	 * CHECK FOR A WIDE FEATURED IMAGE OR AN UPLOADED CUSTOM HEADER IMAGE
+	 * FIRST CHECK FOR A FEATURED IMAGE BECAUSE IF ITS WIDE ENOUGH, IT WILL OVERRIDE ANY
+	 * CUSTOM HEADER IMAGE.
 	 */
-	 // First get the featured image, if there is one
 	if ( is_singular() AND has_post_thumbnail() ) {
 		$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full');
 		$image_width = $featured_image[1];
@@ -39,11 +40,17 @@
 		}
 	}
 
+	/**
+	 * IF THAT FEATURED IMAGE IS WIDE ENOUGH (>1170px), THEN USE IT AS A CONTENT HEADER
+	 */
 	// If that featured image is full-width (>1170px wide), then use it
 	if ( $content_width AND $image_width >= $content_width ) {
 		$image_url = $featured_image[0];
 		$image_type = 'featured';
 
+	/**
+	 * OTHERWISE, IF WE HAVE A CUSTOM HEADER IMAGE, THEN USE THAT
+	 */
 	// If custom header not already displayed (via header.php), then use it here
 	} elseif ( $custom_header_location != 'header' AND get_header_image() ) {
 		$image_url = get_header_image();
@@ -55,9 +62,10 @@
 	 * GET THE TEXT TO DISPLAY ON THE IMAGE OR CONTENT HEADER SECTION 
 	 */
 
-	// If header image and its already been displayed (via header.php), do nothing.
-	if ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header') {
+	// If on the front page and there is no custom header or featured image, do nothing
+	//if ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header') {
 	//if ( ( $custom_header_location == 'header' AND is_front_page() AND $image_type == 'header') OR ( is_home() AND is_front_page() ) ) {
+	if ( $custom_header_location != 'content-header' AND is_front_page() AND ! $image_type ) {
 		// Do nothing
 	
 	// Otherwise, if on "home" page and header image, then display it with the site title
@@ -111,45 +119,27 @@
 		$title = single_tag_title( null, false );
  		$subtitle = get_the_archive_description();
 
-
 	// Handle archive pages. These functions as of WordPress v4.1.0. Note that Jetpack
-	// portfolios and testimonials are now handled in /inc/jetpack.php.
+	// portfolios and testimonial titles are now handled in /inc/jetpack.php.
  	} elseif ( is_archive() ) {
  		$title = get_the_archive_title();
  		$subtitle = get_the_archive_description();
 
 	// Handle regular pages and posts. Note that subtitle is a custom field we added to
 	// this theme. is_singular() handles single pages, posts, and even custom post types.
- 	//} else {
-	//} elseif ( is_page() OR is_single() ) { 
 	} elseif ( is_page() OR is_singular() ) {
  		$title = get_the_title();
-		//if ( is_page() OR is_singular() ) {
-			$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
-		//}
+		$subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
 
 	// This should never happen, but this is here to catch issues
 	} else {
 		$title = get_the_title();
-		$subtitle = "We don't know what page type this is. Check content-header.php.";
+		$subtitle = __( 'We don\'t know what page type this is. Check content-header.php.', 'flat-bootstrap' );
 
 	} //endif is_home()
 
-	/*
-	 * REMOVE THIS. WE ARE NOW JUST HANDLING SUBTITLES ALONG WITH TITLES ABOVE. MUCH 
-	 * CLEANER THAT WAY.
-	 * 
-	 * IF TITLE THEN GET SUBTITLE, FIRST FROM THE TERM DESCRIPTION, THEN FROM OUR CUSTOM
-	 * PAGE TITLE
-	 */
-/*
-	if ( $title AND ! $subtitle ) {
-		$subtitle = term_description();
-		if ( ! $subtitle AND is_singular() ) $subtitle = get_post_meta( get_the_ID(), '_subtitle', $single = true );
-	}
-*/		
 	/* 
-	 * IF WE HAVE A LARGE FEATURED IMAGE OR CUSTOM HEADER, THEN DISPLAY IT AS A BACK-
+	 * IF WE FOUND A LARGE FEATURED IMAGE OR CUSTOM HEADER, THEN DISPLAY IT AS A BACK-
 	 * GROUND WITH THE TEXT AS AN OVERLAY.
 	 */
 	if ( $image_url ) :
@@ -184,12 +174,26 @@
 			</div><!-- .cover-image or .section-image -->
 		</header><!-- content-header-image -->
 
+		<a id="pagetop"></a>
+		<?php 
+		if ( ! is_page_template( 'page-landing.php' ) ) {	
+			get_sidebar( 'pagetop' );
+		}
+		?>
+
 	<?php
 	/* 
-	 * OTHERWISE IF NO IMAGE, THEN JUST DISPLAY TEXT WITH "CONTENT-HEADER" CSS STYLE
+	 * OTHERWISE IF NO IMAGE, DISPLAY THE PAGE TOP WIDGET AREA, THEN THEN JUST DISPLAY
+	 * TEXT WITH "CONTENT-HEADER" CSS STYLE
 	 */
 	elseif ( $title ) :
 	?>
+		<a id="pagetop"></a>
+		<?php 
+		if ( ! is_page_template( 'page-landing.php' ) ) {	
+			get_sidebar( 'pagetop' );
+		}
+		?>
 		<header class="content-header">
 		<div class="container">
 		<h1 class="page-title"><?php echo $title; ?></h1>
@@ -200,11 +204,3 @@
 	<?php endif; // $image_url ?>
 
 <?php endif; // have_posts() ?>
-
-<a id="pagetop"></a>
-
-<?php 
-/** 
- * DISPLAY THE PAGE TOP (AFTER HEADER) WIDGET AREA
- */
-get_sidebar( 'pagetop' );

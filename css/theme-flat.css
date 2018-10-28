@@ -13,14 +13,13 @@
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Elements
-# Content
-	## Comments
-	## Colors
-	## Padding
+# Colors
+# Padding
 # Forms and Buttons
-# Media
-	## Captions and Galleries
-# Miscellaneous
+# Alerts
+# Grid
+# Widgets
+# Plugins
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -57,11 +56,7 @@ i.icon-xlg {
 }
 
 /*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-## Colors
+# Colors
 --------------------------------------------------------------*/
 
 /* 
@@ -106,7 +101,9 @@ i.icon-xlg {
 
 .bg-lightgreen {
     background-color: #1abc9c;
-	color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-lightgreen {
     color: #1abc9c;
@@ -122,7 +119,9 @@ i.icon-xlg {
 
 .bg-darkgreen {
     background-color: #16a085;
-	color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-darkgreen {
     color: #16a085;
@@ -139,7 +138,9 @@ i.icon-xlg {
 
 .bg-brightgreen {
 	background-color: #2ecc71;
-	color: white;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-brightgreen {
     color: #2ecc71;
@@ -156,24 +157,28 @@ i.icon-xlg {
 
 .bg-darkbrightgreen {
 	background-color: #27AE60;
-	color: white;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-darkbrightgreen {
     color: #27AE60;
 }
 
-.bg-brightgreen h1, 
-.bg-brightgreen h2, 
-.bg-brightgreen h3, 
-.bg-brightgreen h4, 
-.bg-brightgreen h5, 
-.bg-brightgreen h6 {
+.bg-darkbrightgreen h1, 
+.bg-darkbrightgreen h2, 
+.bg-darkbrightgreen h3, 
+.bg-darkbrightgreen h4, 
+.bg-darkbrightgreen h5, 
+.bg-darkbrightgreen h6 {
 	color: #fff;
 }
 
 .bg-yellow {
     background: #f1c40f;
-    color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 
 .bg-yellow h1, 
@@ -185,13 +190,11 @@ i.icon-xlg {
 	color: #fff;
 }
 
-.bg-yellow p {
-    font-weight: 500
-}
-
 .bg-lightorange {
     background-color: #F39C12;
-    color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-lightorange {
 	color: #F39C12;
@@ -206,13 +209,11 @@ i.icon-xlg {
 	color: #fff;
 }
 
-.bg-lightorange p {
-    font-weight: 500
-}
-
 .bg-orange {
     background-color: #E67E22;
-    color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-orange {
 	color: #E67E22;
@@ -229,7 +230,9 @@ i.icon-xlg {
 
 .bg-darkorange {
     background-color: #D35400;
-    color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-darkorange {
 	color: #D35400;
@@ -247,6 +250,8 @@ i.icon-xlg {
 .bg-blue {
 	background-color: #3498db;
 	color: #fff;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
 }
 .color-blue {
 	color: #3498db;
@@ -264,6 +269,8 @@ i.icon-xlg {
 .bg-darkblue {
 	background-color: #2980b9;
 	color: #fff;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
 }
 .color-darkblue {
 	color: #2980b9;
@@ -275,41 +282,6 @@ i.icon-xlg {
 .bg-darkblue h4, 
 .bg-darkblue h5, 
 .bg-darkblue h6 {
-	color: #fff;
-}
-
-
-.bg-purple {
-	background-color: #9B59B6;
-	color: #fff;
-}
-.color-purple {
-	color: #9B59B6;
-}
-
-.bg-purple h1, 
-.bg-purple h2, 
-.bg-purple h3, 
-.bg-purple h4, 
-.bg-purple h5, 
-.bg-purple h6 {
-	color: #fff;
-}
-
-.bg-darkpurple {
-	background-color: #8E44AD;
-	color: #fff;
-}
-.color-darkpurple {
-	color: #8E44AD;
-}
-
-.bg-darkpurple h1, 
-.bg-darkpurple h2, 
-.bg-darkpurple h3, 
-.bg-darkpurple h4, 
-.bg-darkpurple h5, 
-.bg-darkpurple h6 {
 	color: #fff;
 }
 
@@ -347,9 +319,49 @@ i.icon-xlg {
 	color: #fff;
 }
 
+.bg-purple {
+	background-color: #9B59B6;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
+}
+.color-purple {
+	color: #9B59B6;
+}
+
+.bg-purple h1, 
+.bg-purple h2, 
+.bg-purple h3, 
+.bg-purple h4, 
+.bg-purple h5, 
+.bg-purple h6 {
+	color: #fff;
+}
+
+.bg-darkpurple {
+	background-color: #8E44AD;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
+}
+.color-darkpurple {
+	color: #8E44AD;
+}
+
+.bg-darkpurple h1, 
+.bg-darkpurple h2, 
+.bg-darkpurple h3, 
+.bg-darkpurple h4, 
+.bg-darkpurple h5, 
+.bg-darkpurple h6 {
+	color: #fff;
+}
+
 .bg-red {
 	background-color: #ff7878;
-	color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-red {
 	color: #ff7878;
@@ -366,7 +378,9 @@ i.icon-xlg {
 
 .bg-brightred {
 	background-color: #E74C3C;
-	color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-brightred {
 	color: #E74C3C;
@@ -383,7 +397,9 @@ i.icon-xlg {
 
 .bg-darkred {
 	background-color: #C0392B;
-	color: #fff;
+	/*color: #fff;*/
+	color: #f2f2f2;
+    font-weight: normal;
 }
 .color-darkred {
 	color: #C0392B;
@@ -449,21 +465,36 @@ i.icon-xlg {
 	color: #fff;
 }
 
+/* Increase contrast on certain colored backgrounds. We increase the font weight, but
+ * then tone the font color down a bit (offwhite). 
+ */
+.bg-yellow,
+.bg-lightorange,
+.bg-orange,
+.bg-darkorange,
+.bg-lightgreen,
+.bg-darkgreen,
+.bg-brightgreen,
+.bg-darkbrightgreen {
+	color: #f2f2f2;
+    font-weight: normal;
+}
+
 /* Set the icons to white for all dark-colored sections */
 .bg-lightgreen i, 
 .bg-darkgreen i, 
 .bg-brightgreen i, 
 .bg-darkbrightgreen i, 
-.bg-blue i, 
-.bg-darkblue i, 
-.bg-purple i, 
-.bg-darkpurple i, 
-.bg-midnightblue i, 
-.bg-darkmidnightblue i, 
 .bg-yellow i,
 .bg-lightorange i,
 .bg-orange i,
 .bg-darkorange i,
+.bg-blue i, 
+.bg-darkblue i, 
+.bg-midnightblue i, 
+.bg-darkmidnightblue i, 
+.bg-purple i, 
+.bg-darkpurple i, 
 .bg-red i, 
 .bg-brightred i, 
 .bg-darkred i, 
@@ -471,22 +502,25 @@ i.icon-xlg {
 .bg-almostblack i, 
 .bg-black i {
 	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
 }
 
 .bg-lightgreen a i:hover, 
 .bg-darkgreen a i:hover, 
 .bg-brightgreen a i:hover, 
 .bg-darkbrightgreen a i:hover, 
-.bg-blue a i:hover, 
-.bg-darkblue a i:hover, 
-.bg-purple a i:hover, 
-.bg-darkpurple a i:hover, 
-.bg-midnightblue a i:hover, 
-.bg-darkmidnightblue a i:hover, 
 .bg-yellow a i:hover,
 .bg-lightorange a i:hover,
 .bg-orange a i:hover,
 .bg-darkorange a i:hover,
+.bg-blue a i:hover, 
+.bg-darkblue a i:hover, 
+.bg-midnightblue a i:hover, 
+.bg-darkmidnightblue a i:hover, 
+.bg-purple a i:hover, 
+.bg-darkpurple a i:hover, 
 .bg-red a i:hover, 
 .bg-brightred a i:hover, 
 .bg-darkred a i:hover, 
@@ -494,69 +528,130 @@ i.icon-xlg {
 .bg-almostblack a i:hover, 
 .bg-black a i:hover {
 	color: #e7e7e7;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
 }
 
-/* Set the link color to white and underlined for certain background colors */
-.bg-lightgreen a:not(.btn), 
+/* Set the link and hover colors for dark sections */
+.bg-lightgreen a:not(.btn),
 .bg-darkgreen a:not(.btn), 
 .bg-brightgreen a:not(.btn), 
-.bg-brightdarkgreen a:not(.btn), 
-.bg-yellow a:not(.btn), 
-.bg-lightorange a:not(.btn), 
+.bg-darkbrightgreen a:not(.btn), 
+.bg-yellow a:not(.btn),
+.bg-lightorange a:not(.btn),
 .bg-orange a:not(.btn), 
 .bg-darkorange a:not(.btn), 
 .bg-blue a:not(.btn), 
 .bg-darkblue a:not(.btn), 
+.bg-midnightblue a:not(.btn), 
+.bg-darkmidnightblue a:not(.btn), 
+.bg-purple a:not(.btn), 
+.bg-darkpurple a:not(.btn), 
 .bg-red a:not(.btn),
 .bg-brightred a:not(.btn),
 .bg-darkred a:not(.btn) {
 	color: #fff;
-	text-decoration: underline;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
 }
 
-.bg-lightgreen a:hover:not(.btn), 
+.bg-lightgreen a:hover:not(.btn),
 .bg-darkgreen a:hover:not(.btn), 
 .bg-brightgreen a:hover:not(.btn), 
 .bg-darkbrightgreen a:hover:not(.btn), 
 .bg-yellow a:hover:not(.btn), 
-.bg-lightorange a:hover:not(.btn), 
-.bg-orange a:hover:not(.btn), 
+.bg-lightorange a:hover:not(.btn),
+.bg-orange a:hover:not(.btn),
 .bg-darkorange a:hover:not(.btn), 
 .bg-blue a:hover:not(.btn), 
+.bg-darkblue a:hover:not(.btn), 
+.bg-midnightblue a:hover:not(.btn), 
+.bg-darkmidnightblue a:hover:not(.btn), 
+.bg-purple a:hover:not(.btn), 
+.bg-darkpurple a:hover:not(.btn), 
 .bg-red a:hover:not(.btn),
-.bg-darkred a:not(.btn) {
+.bg-brightred a:hover:not(.btn),
+.bg-darkred a:hover:not(.btn) {
 	color: #e7e7e7;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
 }
 
 /*--------------------------------------------------------------
-## Padding
+# Padding
 --------------------------------------------------------------*/
 
 /* 
- * Our sections with padding. These are mostly to add top and bottom padding since 
- * Bootstrap adds left and right padding to containers and rows and even includes 
- * "gutter" margins between columns.
+ * We want 24px equal "whitespace" on all sides. When MANUALLY applying a padding, assume
+ * the section starts with an hx tag and already has 24px top margin. Also assume the
+ * section ends with a p, ul, etc. tag which already has 12px bottom margin. Users can
+ * adjust with Bootstrap 4 m-t-1 and m-b-1, etc.
  */
-.section {
-	padding-top: 35px;
-	padding-bottom: 35px;
+.padding {
+ 	padding: 0 24px 12px 24px;
+ 	/*padding: 24px;*/
+}
+.padding-top {
+	padding-top: 24px;
+}
+.padding-bottom {
+	padding-bottom: 24px;
+}
+.padding-top-bottom {
+	padding: 24px 0;
+}
+.padding-right {
+	padding-right: 24px;
+}
+.padding-left {
+	padding-left: 24px;
+}
+.padding-left-right {
+	padding-left: 24px;
+	padding-right: 24px;
+}
+.nopadding-nomargin {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
+/* 
+ * When AUTOMATICALLY applying a padding with our plugin, set the padding back to being
+ * equal. Then remove the top margin from the widget title and late remove bottom padding
+ * for individual widgets that need it.
+ */
+.widget.padding {
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+.padding .widget-title {
+	margin-top: 0;
+}
+
+/* 
+ * We want 48px equal top and bottom "whitespace" on a section. When MANUALLY applying a
+ * section, assume the section starts with an hx tag and already has 24px top margin. 
+ * Also assume the section ends with a p, ul, etc. tag which already has 12px bottom
+ * margin. Users can adjust with Bootstrap 4 m-t-2 and m-b-1, etc.
+ */
+.section {
+	padding-top: 24px;
+	padding-bottom: 36px;
+	/*padding-top: 48px;
+	padding-bottom: 48px;*/
+}
 .section.nopadding {
-	padding-top: 0;
-	padding-bottom: 0;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
 }
 .section.nopadding-top {
-	padding-top: 0;
+	padding-top: 0 !important;
 }
 .section.nopadding-bottom {
-	padding-bottom: 0;
-}
-.section.padding-top {
-	padding-top: 35px;
-}
-.section.padding-bottom {
-	padding-bottom: 35px;
+	padding-bottom: 0 !important;
 }
 .section.border-bottom {
 	border-bottom: #bdc3c7 solid 1px;
@@ -566,319 +661,344 @@ i.icon-xlg {
 }
 
 /* 
- * For the first h1-h3 in a section, set top margin to bottom margin (11px) so the 
- * section has equal padding. Note h4-h6 already have 11px instead of 22px.
- * TO-DO: Do this for our main content area and sidebar as well.
+ * When AUTOMATICALLY applying a section with our plugin, set the padding back to being
+ * equal. Then remove the top margin from the widget title and later remove bottom padding
+ * for individual widgets that need it.
  */
-.section > .container > h1:first-child,
-.section > .container > .h1:first-child,
-.section > .container > h2:first-child,
-.section > .container > .h2:first-child,
-.section > .container > h3:first-child,
-.section > .container > .h3:first-child {
-	margin-top: 11px;
+.widget.section {
+	padding-top: 48px;
+	padding-bottom: 48px;
 }
 
-/* Bootstrap grids (rows) need this if not in a container. Its probably better to just 
- * use container-fluid, but this is another more generic option.
- * TO-DO: Consider getting rid of this if we change to container-fluid
-*/
-.section.fullwidth {
-	padding-left: 15px;
-	padding-right: 15px;
+.section .widget-title {
+	margin-top: 0;
 }
+
+/* When widgets are center aligned, remove left padding / margins from nested lists */
+/*.section .aligncenter ul ul, 
+.padding .aligncenter ul ul {
+	padding-left: 0;
+}*/
+
+/*#secondary > .padding .aligncenter ul ul, 
+#sidebar-pagetop > .padding .aligncenter ul ul,
+#sidebar-pagebottom > .padding .aligncenter ul ul,
+#sidebar-home > .padding .aligncenter ul ul,
+footer#colophon.site-footer > .padding .aligncenter ul ul,
+#secondary > .section .aligncenter ul ul, 
+#sidebar-pagetop > .section .aligncenter ul ul,
+#sidebar-pagebottom > .section .aligncenter ul ul,
+#sidebar-home > .section .aligncenter ul ul,
+footer#colophon.site-footer > .section .aligncenter ul ul {
+	padding-left: 0;
+}*/
 
 /* 
- * General padding options
- * TO-DO: Consider deprecating these and use Bootstrap 4's utility classes instead. We 
- * can use those even with Bootstrap 3 since the latter doesn't have any so it won't 
- * cause conflicts. Or perhaps just change them to match BS4's p-*-3 (33px).
- */
- .padding {
- 	padding: 25px;
- }
-.padding-top {
-	padding-top: 25px;  /* Bootstrap Hx and even p tags have top margins already */
-}
-.padding-bottom {
-	padding-bottom: 25px;
-}
-.padding-top-bottom {
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
-.padding-right {
-	padding-right: 35px; /* Match grid gutters */
-}
-.padding-left {
-	padding-left: 35px; /* Match grid gutters */
-}
-.padding-left-right {
-	padding-left: 35px; /* Match grid gutters */
-	padding-right: 35px; /* Match grid gutters */
-}
-.nopadding-nomargin {
-    margin: 0;
-    padding: 0;
-}
+ * NOTE: See below Widgets and Plugins sections for more specific tweaks to margins and
+ * padding
+*/
 
 /* Bootstrap v4 margin and padding. Talk about future-proof, oh yeah! */
-.m-x-auto {
+.mx-auto {
   margin-right: auto !important;
   margin-left: auto !important;
 }
 
-.m-a-0 {
+.m-0 {
   margin: 0 0 !important;
 }
 
-.m-t-0 {
+.mt-0 {
   margin-top: 0 !important;
 }
 
-.m-r-0 {
+.mr-0 {
   margin-right: 0 !important;
 }
 
-.m-b-0 {
+.mb-0 {
   margin-bottom: 0 !important;
 }
 
-.m-l-0 {
+.ml-0 {
   margin-left: 0 !important;
 }
 
-.m-x-0 {
+.mx-0 {
   margin-right: 0 !important;
   margin-left: 0 !important;
 }
 
-.m-y-0 {
+.my-0 {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-.m-a-1 {
-  margin: 1rem 1rem !important;
+.m-1 {
+  margin: 12px 12px !important;
 }
 
-.m-t-1 {
-  margin-top: 1rem !important;
+.mt-1 {
+  margin-top: 12px !important;
 }
 
-.m-r-1 {
-  margin-right: 1rem !important;
+.mr-1 {
+  margin-right: 12px !important;
 }
 
-.m-b-1 {
-  margin-bottom: 1rem !important;
+.mb-1 {
+  margin-bottom: 12px !important;
 }
 
-.m-l-1 {
-  margin-left: 1rem !important;
+.ml-1 {
+  margin-left: 12px !important;
 }
 
-.m-x-1 {
-  margin-right: 1rem !important;
-  margin-left: 1rem !important;
+.mx-1 {
+  margin-right: 12px !important;
+  margin-left: 12px !important;
 }
 
-.m-y-1 {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
+.my-1 {
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
 }
 
-.m-a-2 {
-  margin: 1.5rem 1.5rem !important;
+.m-2 {
+  margin: 24px 24px !important;
 }
 
-.m-t-2 {
-  margin-top: 1.5rem !important;
+.mt-2 {
+  margin-top: 24px !important;
 }
 
-.m-r-2 {
-  margin-right: 1.5rem !important;
+.mr-2 {
+  margin-right: 24px !important;
 }
 
-.m-b-2 {
-  margin-bottom: 1.5rem !important;
+.mb-2 {
+  margin-bottom: 24px !important;
 }
 
-.m-l-2 {
-  margin-left: 1.5rem !important;
+.ml-2 {
+  margin-left: 24px !important;
 }
 
-.m-x-2 {
-  margin-right: 1.5rem !important;
-  margin-left: 1.5rem !important;
+.mx-2 {
+  margin-right: 24px !important;
+  margin-left: 24px !important;
 }
 
-.m-y-2 {
-  margin-top: 1.5rem !important;
-  margin-bottom: 1.5rem !important;
+.my-2 {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
 }
 
-.m-a-3 {
-  margin: 3rem 3rem !important;
+.m-3 {
+  margin: 36px 36px !important;
 }
 
-.m-t-3 {
-  margin-top: 3rem !important;
+.mt-3 {
+  margin-top: 36px !important;
 }
 
-.m-r-3 {
-  margin-right: 3rem !important;
+.mr-3 {
+  margin-right: 36px !important;
 }
 
-.m-b-3 {
-  margin-bottom: 3rem !important;
+.mb-3 {
+  margin-bottom: 36px !important;
 }
 
-.m-l-3 {
-  margin-left: 3rem !important;
+.ml-3 {
+  margin-left: 36px !important;
 }
 
-.m-x-3 {
-  margin-right: 3rem !important;
-  margin-left: 3rem !important;
+.mx-3 {
+  margin-right: 36px !important;
+  margin-left: 36px !important;
 }
 
-.m-y-3 {
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+.my-3 {
+  margin-top: 36px !important;
+  margin-bottom: 36px !important;
 }
 
-.p-a-0 {
+.p-0 {
   padding: 0 0 !important;
 }
 
-.p-t-0 {
+.pt-0 {
   padding-top: 0 !important;
 }
 
-.p-r-0 {
+.pr-0 {
   padding-right: 0 !important;
 }
 
-.p-b-0 {
+.pb-0 {
   padding-bottom: 0 !important;
 }
 
-.p-l-0 {
+.pl-0 {
   padding-left: 0 !important;
 }
 
-.p-x-0 {
+.px-0 {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
 
-.p-y-0 {
+.py-0 {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
-.p-a-1 {
-  padding: 1rem 1rem !important;
+.p-1 {
+  padding: 12px 12px !important;
 }
 
-.p-t-1 {
-  padding-top: 1rem !important;
+.pt-1 {
+  padding-top: 12px !important;
 }
 
-.p-r-1 {
-  padding-right: 1rem !important;
+.pr-1 {
+  padding-right: 12px !important;
 }
 
-.p-b-1 {
-  padding-bottom: 1rem !important;
+.pb-1 {
+  padding-bottom: 12px !important;
 }
 
-.p-l-1 {
-  padding-left: 1rem !important;
+.pl-1 {
+  padding-left: 12px !important;
 }
 
-.p-x-1 {
-  padding-right: 1rem !important;
-  padding-left: 1rem !important;
+.px-1 {
+  padding-right: 12px !important;
+  padding-left: 12px !important;
 }
 
-.p-y-1 {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
+.py-1 {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
 }
 
-.p-a-2 {
-  padding: 1.5rem 1.5rem !important;
+.p-2 {
+  padding: 24px 24px !important;
 }
 
-.p-t-2 {
-  padding-top: 1.5rem !important;
+.pt-2 {
+  padding-top: 24px !important;
 }
 
-.p-r-2 {
-  padding-right: 1.5rem !important;
+.pr-2 {
+  padding-right: 24px !important;
 }
 
-.p-b-2 {
-  padding-bottom: 1.5rem !important;
+.pb-2 {
+  padding-bottom: 24px !important;
 }
 
-.p-l-2 {
-  padding-left: 1.5rem !important;
+.pl-2 {
+  padding-left: 24px !important;
 }
 
-.p-x-2 {
-  padding-right: 1.5rem !important;
-  padding-left: 1.5rem !important;
+.px-2 {
+  padding-right: 24px !important;
+  padding-left: 24px !important;
 }
 
-.p-y-2 {
-  padding-top: 1.5rem !important;
-  padding-bottom: 1.5rem !important;
+.py-2 {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
 }
 
-.p-a-3 {
-  padding: 3rem 3rem !important;
+.pa-3 {
+  padding: 36px 36px !important;
 }
 
-.p-t-3 {
-  padding-top: 3rem !important;
+.pt-3 {
+  padding-top: 36px !important;
 }
 
-.p-r-3 {
-  padding-right: 3rem !important;
+.pr-3 {
+  padding-right: 36px !important;
 }
 
-.p-b-3 {
-  padding-bottom: 3rem !important;
+.pb-3 {
+  padding-bottom: 36px !important;
 }
 
-.p-l-3 {
-  padding-left: 3rem !important;
+.pl-3 {
+  padding-left: 36px !important;
 }
 
-.p-x-3 {
-  padding-right: 3rem !important;
-  padding-left: 3rem !important;
+.px-3 {
+  padding-right: 36px !important;
+  padding-left: 36px !important;
 }
 
-.p-y-3 {
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
+.py-3 {
+  padding-top: 36px !important;
+  padding-bottom: 36px !important;
 }
 
 /*--------------------------------------------------------------
 # Forms and Buttons
 --------------------------------------------------------------*/
 
-/* 
- * New button that is inverted (hollow) so works on any dark background 
- * TO-DO: Bootstrap 4 has a new btn-outline which is similar but instead of white on
- * hover, it uses the button color. Consider adding that sooner than Bootstrap 4.
- */
+/* New Bootstrap v4 "inverse" (dark) button. In our case it's midnight blue. */
+.btn-inverse {
+  color: #ffffff;
+  background-color: #34495e;
+}
+.btn-inverse:hover,
+.btn-inverse.hover,
+.btn-inverse:focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.open > .dropdown-toggle.btn-inverse {
+  color: #ffffff;
+  background-color: #415b76;
+  border-color: #415b76;
+}
+.btn-inverse:active,
+.btn-inverse.active,
+.open > .dropdown-toggle.btn-inverse {
+  background: #2c3e50;
+  border-color: #2c3e50;
+}
+.btn-inverse.disabled,
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse,
+.btn-inverse.disabled:hover,
+.btn-inverse[disabled]:hover,
+fieldset[disabled] .btn-inverse:hover,
+.btn-inverse.disabled.hover,
+.btn-inverse[disabled].hover,
+fieldset[disabled] .btn-inverse.hover,
+.btn-inverse.disabled:focus,
+.btn-inverse[disabled]:focus,
+fieldset[disabled] .btn-inverse:focus,
+.btn-inverse.disabled:active,
+.btn-inverse[disabled]:active,
+fieldset[disabled] .btn-inverse:active,
+.btn-inverse.disabled.active,
+.btn-inverse[disabled].active,
+fieldset[disabled] .btn-inverse.active {
+  background-color: #bdc3c7;
+  border-color: #34495e;
+}
+.btn-inverse .badge {
+  color: #34495e;
+  background-color: #ffffff;
+}
+
+/* New "hollow" ("outline") button that is inverted so works on any dark background */
 a.btn.btn-hollow,
 button.btn.btn-hollow {
+	/*color: #f2f2f2;*/
 	color: #fff;
   	border: 2px solid #fff;
     background-color: transparent;
@@ -887,8 +1007,9 @@ button.btn.btn-hollow {
 btn.btn-hollow:hover,
 button.btn.btn-hollow:hover {
     color: #2f2f2f;
-    background-color: #fff
+    background-color: #fff;
 }
+
 .bg-white button.btn.btn-hollow, 
 .bg-white .btn.btn-hollow, 
 .bg-offwhite button.btn.btn-hollow, 
@@ -906,29 +1027,75 @@ button.btn.btn-hollow:hover {
 button.btn.btn-hollow:hover, 
 .btn.btn-hollow:hover {
     color: #2f2f2f;
-    background-color: #fff;
+    background-color: #f2f2f2;
 }
 
 /* 
- * New button that is partially transparent to let background color show through 
+ * New "transparent" or button that is partially transparent to let background color 
+ * show through 
  */
 .btn-transparent {
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.35);
-    color: inherit;
+    color: #fff;
 }
-
 .btn-transparent:hover, 
 .btn-transparent:focus {
-    color: #fff;
-    text-decoration: none;
+    color: #f2f2f2;
     background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+.bg-almostblack .btn-transparent:hover,
+.bg-almostblack .btn-transparent:focus,
+.bg-notquiteblack .btn-transparent:hover,
+.bg-notquiteblack .btn-transparent:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.bg-black .btn-transparent {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.bg-black .btn-transparent:hover,
+.bg-black .btn-transparent:focus {
+    background-color: rgba(255, 255, 255, 0.20);
+    border-color: rgba(255, 255, 255, 0.20);
 }
 
+/*--------------------------------------------------------------
+# Alerts
+--------------------------------------------------------------*/
+
+/* Add alert-primary as for some reason Bootstrap doesn't include it */
+.alert-primary {
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+  color: #ffffff;
+}
+.alert-primary hr {
+  border-top-color: #17a689;
+}
+.alert-primary .alert-link {
+  color: #e6e6e6;
+}
+
+/*--------------------------------------------------------------
+# Grid
+--------------------------------------------------------------*/
 /* 
  * Enhance Bootstrap to allow for columns with no gutter (margin) 
  * TO-DO: Bootstrap 4 handles this stuff already, so consider removing at that time
  */
+
+/* Bootstrap grids (rows) need this if not in a container. Its probably better to just 
+ * use container-fluid, but this is another more generic option.
+ * TO-DO: Consider getting rid of this if we change to container-fluid
+*/
+.section.fullwidth {
+	padding-left: 15px;
+	padding-right: 15px;
+}
 
 .row.no-gutters {
   margin-right: 0;
@@ -940,3 +1107,72 @@ button.btn.btn-hollow:hover,
   padding-left: 0;
 }
 
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+
+/* 
+ * These widgets already have bottom margin on the last element, so reduce bottom padding
+ * in our colored sections: Text widget, Custom Menu widget.
+ */
+.section.widget_text,
+.section.widget_nav_menu {
+	padding-bottom: 36px;
+}
+.padding.widget_text,
+.padding.widget_nav_menu {
+	padding-bottom: 12px;
+}
+
+/* 
+ * When search form collapses, we need to leave the bottom margin so adjust whitespace
+ * in our padded sections.
+*/
+/* 
+ * Search widget form. Remove bottom margin in our sections because it's non-standard
+ * (5px). 
+ */
+/*.section .search-form label,
+.padding .search-form label {
+	margin-bottom: 0;
+}*/
+.section .search-submit,
+.padding .search-submit {
+	margin-bottom: 5px; /* match input field */
+}
+.section.widget_search {
+	padding-bottom: 43px; /* reduce by 5px added above */
+}
+.padding.widget_search {
+	padding-bottom: 19px; /* reduce by 5px added above */
+}
+
+/* Calendar widget. Inherit colors in our sections. */
+.section .widget_calendar #wp-calendar,
+.padding .widget_calendar #wp-calendar {
+	color: inherit;
+}
+.section #wp-calendar caption,
+.padding #wp-calendar caption {
+	color: inherit;
+}
+
+/*--------------------------------------------------------------
+# Plugins
+--------------------------------------------------------------*/
+
+/* Jetpack Contact Info widget. ALWAYS add bottom margin to map. */
+.widget_contact_info .contact-map {
+	margin-bottom: 12px;
+}
+
+/* 
+ * Jetpack Subscription widget. Already has bottom margin on the last element, so reduce 
+ * bottom padding in our colored sections.
+ */
+.section.jetpack_subscription_widget {
+	padding-bottom: 36px;
+}
+.padding.jetpack_subscription_widget {
+	padding-bottom: 12px;
+}

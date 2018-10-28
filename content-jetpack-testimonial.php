@@ -9,8 +9,7 @@
  * parts to get what we want here. 
  * 
  * The main purpose of this is to output the title without a link to the single entry and 
- * get rid of the "read more" link. In the future, we may want to use a different profile
- * picture size, etc. 
+ * get rid of the "read more" link.
  *
  * @package flat-bootstrap
  */
@@ -18,15 +17,17 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php /* Display the post thumbnail (profile pic) first. Float it to the left. */ ?>
-	<?php if ( has_post_thumbnail() AND !is_search() ) : ?>
-		<div class="post-thumbnail">
-		<?php the_post_thumbnail( 'post-thumbnail' , $attr = array( 'class'=>'thumbnail img-responsive post-thumbnail' ) ); ?>
-		</div><!-- .post-thumnail -->
-	<?php endif; ?>
+	<div class="testimonial-row row">
 
-	<?php /* Display the post content (quote) as a blockquote and float it left too. */  ?>
-	<div class="entry-summary">
+	<div class="testimonial-thumbnail-div col-md-3">
+	<?php /* Display the post thumbnail (profile pic) on the left */ ?>
+	<?php if ( has_post_thumbnail() AND !is_search() ) : ?>
+		<?php the_post_thumbnail( 'post-thumbnail' , $attr = array( 'class'=>'thumbnail img-responsive testimonial-thumbnail' ) ); ?>
+	<?php endif; ?>
+	</div><!-- .post-thumnail -->
+
+	<?php /* Display the post content (quote) as a blockquote */ ?>
+	<div class="testimonial-entry-summary col-md-9">
 	<blockquote><p>
 	<?php 
 	$the_content = get_the_content();
@@ -36,6 +37,12 @@
 	<footer><?php the_title(); ?></footer>
 	</blockquote>
 	</div><!-- .entry-summary -->
+
+	<footer class="entry-meta">
+		<?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'flat-bootstrap' ), '<span class="edit-link">', '</span>' ); ?>
+	</footer>
+
+	</div><!-- #testimonial-row -->
 
 </article><!-- #post-## -->
 

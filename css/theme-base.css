@@ -21,7 +21,7 @@
 	## Sidebars
 	## Footer
 	## Posts and pages
-	## Asides (not used)
+	## Post Formats (not used)
 	## Comments
 # Media
 	## Captions and Galleries
@@ -36,15 +36,49 @@
 # Typography
 --------------------------------------------------------------*/
 
-/*
- * Bootstrap handles basic typography and theme-specific typography should be set in the
- * theme's style.css
- */
-
 /* Set some basic body styles */
 body {
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
+}
+
+/* 
+ * Set "vertical rhythm" to 24px top and 12px bottom margin for consistency across
+ * elements. BS3 uses 22px (h1-h3) or 11px (h4-h6) top margin and 11px bottom margin for
+ * most elements, but some are different such as .lead, etc. BS4 uses NO top margin at all
+ * and looks terrible. Note that theme-flat.css adjusts some margins when padding classes
+ * are added.
+ */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.jumbotron p {
+	margin-top: 24px;
+	margin-bottom: 12px;
+}
+
+p,
+code,
+pre,
+blockquote,
+.lead,
+.pagination {
+	margin-top: 0;
+	margin-bottom: 12px;
+}
+
+ul, 
+ol {
+	/*padding: 0;*/
+	margin-bottom: 12px;
+}
+
+ul ul,
+ol ol {
+	margin-left: 24px;
 }
 
 /*--------------------------------------------------------------
@@ -128,28 +162,6 @@ p.screen-reader-text {
 	text-align: left;
 }
 
-/* For reference purposes, this is what core Bootstrap has for centering text
-.text-center {
-  text-align: center;
-}
-*/
-
-/* For reference purposes, this is what core Bootstrap has for centering blocks
-.center-block { // Bootstrap
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}*/
-
-/* For reference purposes, this is what WordPress core has
-.aligncenter { // WordPress _S
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-*/
-
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
@@ -199,41 +211,49 @@ p.screen-reader-text {
 ## Header
 --------------------------------------------------------------*/
 
-/* 
- * Limit the entire page for really wide screens, such as an iMac.
- *
- * TO-DO: Consider having #page wrap absolutely everything, so we wouldn't need to limit
- * page bottom, footer, etc.
- */
-#page, 
-.navbar, 
-.after-footer {
-	max-width: 1600px;
-	margin: 0 auto;
-}
-
-/* Prevent the page layout from breaking even if the user's CSS is bad */
+/* Limit the entire page for really wide screens, such as an iMac. */
 #page {
+	max-width: 1600px;
+	/*max-width: 1200px;*/
+	/*border: 1px solid #efefef;*/
+	margin: 0 auto;
 	overflow: hidden;
 }
 
-/* 
- * Site Branding is a wrapper for both site title and description so they can be hidden
- * together more easily.
+/* Custom site logo */
+.custom-logo {
+	max-height: 100px;
+	width: auto;
+	margin-left: 15px;
+	vertical-align: middle;
+}
+
+/*  
+ * Wrapper for custom logo (if active), site title, and site description. Height ends up
+ * being 180px total.
  */
-/*.site-branding {
-	padding-top: 3px;
-	padding-bottom: 14px;
-}*/
+.site-branding {
+	padding: 36px 0;
+	vertical-align: middle;
+}
+.site-branding > * {
+  vertical-align: middle;
+}
+
+/* Wrap site title and description so they can be vertically aligned center */
+.site-branding-text {
+	margin-left: 15px;
+	display: inline-block;
+}
 
 .site-title {
-	margin-top: 25px;
+	margin-top: 12px; /* site-branding has padding */
 }
 
 .site-description {
 	font-size: 24px;
-	margin-top: 10px;
-	margin-bottom: 25px;
+	margin-top: 13px;
+	margin-bottom: 12px; /* site-branding has padding */
 }
 
 .site-title a, .site-title a:hover, .site-title a:active {
@@ -276,19 +296,19 @@ a.scroll-down:focus span,
 }
 
 /* 
- * This is our content header that is below the header and before the content area. Top
- * margin is set to 24px because Bootstrap already has 22px top margin on h1-h3 tags.
- * It also adds 11px bottom margin. So this equates to 46px top and bottom spacing.
+ * This is our content header that is below the header and before the content area. 
+ * Top padding and bottom padding is set based on h1-h3 tags have 24px top margin and 
+ * 12px bottom margin. Total top and bottom "whitespace" is 48px.
  */
 .content-header {
     padding-top: 24px;
-    padding-bottom: 35px;
+    padding-bottom: 36px;
 }
 header.content-header {
-	min-height: 170px;
+	min-height: 195px; /* title, subtitle, and above padding */
 }
 .content-header i {
-    font-size: 35px;
+    font-size: 36px;
     text-align: center;
 }
 
@@ -306,7 +326,7 @@ header.content-header {
 	background-repeat: no-repeat;
 	text-align:center;
 	background-attachment: scroll;
-	background-position: top center;
+	background-position: center;
 	background-color: #e7e7e7; /*gray*/
 	width: 100%;
   	position: relative;
@@ -339,6 +359,7 @@ header.content-header {
 .section-image, 
 .section-image-overlay {
 	min-height: 340px;
+	/*min-height: 320px;*/
 }
 .section-image h1, 
 .cover-image h1 {
@@ -399,9 +420,11 @@ header.content-header {
 	}
 	.cover-image, .cover-image-overlay {
 		min-height: 700px;
+		/*min-height: 620px;*/
 	}
 	.section-image, .section-image-overlay {
 		min-height: 400px;
+		/*min-height: 320px;*/
 	}
 }
 
@@ -409,12 +432,23 @@ header.content-header {
 ## Sidebars
 --------------------------------------------------------------*/
 
-/* For main sidebar, add some whitespace */
+/* For main sidebar, add some whitespace. 36px + 12px = 48px to match top. */
 #secondary {
-	padding-bottom: 35px;
+	padding-top: 36px;
+	padding-bottom: 36px;
 }
 #secondary aside.widget {
-	margin-bottom: 10px; /* Heading will add 25px */
+	margin-bottom: 12px;
+}
+
+/* Remove top-margin on hx tags for the FIRST widget in the main sidebar */
+#secondary > .widget:first-child > h1:first-child,
+#secondary > .widget:first-child > h2:first-child,
+#secondary > .widget:first-child > h3:first-child,
+#secondary > .widget:first-child > h4:first-child,
+#secondary > .widget:first-child > h5:first-child,
+#secondary > .widget:first-child > h6:first-child {
+	margin-top: 0;
 }
 
 /* Get rid of bullets on sidebars, footer, page top, page bottom, and home page */
@@ -424,69 +458,44 @@ header.content-header {
 #sidebar-home ul,
 footer#colophon.site-footer ul {
 	list-style: none;
-	padding-left: 0;
-}
-#secondary ul ul, 
-#sidebar-pagetop ul ul,
-#sidebar-pagebottom ul ul,
-#sidebar-home ul ul,
-footer#colophon.site-footer ul ul {
-	list-style: none;
-	padding-left: 25px;
+	padding: 0; /* Since removed from generic ul style above */
 }
 
+/* Space out the lists in sidebars and footers */
 #secondary ul li, 
-footer#colophon.site-footer ul li {
-	margin-top: 10px;
+/*footer#colophon.site-footer ul li {*/
+.sidebar-footer ul li {
+	margin-top: 12px;
 }
 
-/* Make custom menus in page top, page bottom, and home page inline (horizontal). */
-/*
-#sidebar-pagetop ul > li,
-#sidebar-pagebottom ul > li,
-#sidebar-home ul > li { 
-    display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px
-}
-.#sidebar-pagetop ul > li:first-child, 
-.#sidebar-pagebottom ul > li:first-child,
-.#sidebar-home ul > li:first-child {
-    padding-left: 0
-}
-
-#sidebar-pagetop .widget_nav_menu,
-#sidebar-pagebottom .widget_nav_menu, 
-#sidebar-home .widget_nav_menu { 
-	margin-top: 11px;
-}
-*/
+/* Don't add margin to our footer nav menu, though */
+/*footer#colophon.site-footer .after-footer ul li {
+	margin-top: 0;
+}*/
 
 /*--------------------------------------------------------------
 ## Footer
 --------------------------------------------------------------*/
 
-/* Format the footer widget area */
+/* 
+ * Since our footer collapses into 2 columns on iPad-sized screens, add some of the
+ * whitespace to the individual columns instead of putting it all into the whole footer
+ * area.
+ */
 .sidebar-footer {
-	padding-top: 35px;
+	padding: 24px 0;
 }
-.sidebar-footer h1, 
-.sidebar-footer h2, 
-.sidebar-footer h3, 
-.sidebar-footer h4, 
-.sidebar-footer h5, 
-.sidebar-footer h6 {
-	margin-top: 11px;
-	padding-bottom: 11px;
+.sidebar-footer .widget {
+	padding-top: 24px;
+	padding-bottom: 12px; /* lists, paragraphs, etc. already 12px bottom margin */
 }
-.sidebar-footer aside.widget {
-	margin-bottom: 35px;
+.sidebar-footer .widget-title {
+	margin-top: 0;
 }
 
 /* Format the "after footer", which has the footer nav menu and site credits */
 .after-footer {
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding: 32px 0 24px; /* ul and p tags already have 12px bottom margin */
 }
 
 /* Let's put dividers between footer menu items */
@@ -498,6 +507,11 @@ footer#colophon.site-footer ul li {
   border-left: 1px solid #dddddd;
 }
 
+/* Remove top margin from our footer nav menu since its horizontal */
+/*footer#colophon.site-footer .after-footer ul li {
+	margin-top: 0;
+}*/
+
 /* 
  * Format the sample footer menu "top of page" icon. Since this stylesheet is WordPress
  * rather than relying on font-awesome, make the caret icon look the same. For some
@@ -508,8 +522,8 @@ footer#colophon.site-footer ul li {
 }
 
 /* Need to pad site credits to line up with the footer nav menu */
-#site-credits {
-	padding-top: 10px;
+.site-credits {
+	margin-bottom: 12px;
 }
 
 /* Center the text after the footer for smartphones */
@@ -519,7 +533,7 @@ footer#colophon.site-footer ul li {
 		float: none !important;
 	}
 	.site-credits {
-		padding-bottom: 15px;
+		padding-bottom: 12px;
 	}
 }
 
@@ -528,12 +542,13 @@ footer#colophon.site-footer ul li {
 --------------------------------------------------------------*/
 
 /* Content areas */
-
 .content-area {
-	padding-top: 35px;
+	padding-top: 36px;
+	padding-bottom: 24px; /* p tags, etc. already have 12px bottom margin */
 }
+
 .content-area-wide .comments-area {
-	padding-bottom: 35px;
+	padding-bottom: 36px;
 }
 
 .page .entry-content {
@@ -541,11 +556,22 @@ footer#colophon.site-footer ul li {
 }
 
 .entry-summary {
-	margin-bottom: 25px;
+	margin-bottom: 24px;
 }
 
 article.post {
-	margin-bottom: 25px;
+	margin-bottom: 24px;
+}
+
+/* Remove top-margin on hx tags for archives and the FIRST one on a page */
+.entry-title,
+#xsbf-entry-content > h1:first-child,
+#xsbf-entry-content > h2:first-child,
+#xsbf-entry-content > h3:first-child,
+#xsbf-entry-content > h4:first-child,
+#xsbf-entry-content > h5:first-child,
+#xsbf-entry-content > h6:first-child {
+	margin-top: 0;
 }
 
 /* When full-width pages are changed back to have a sidebar, fix the layout */
@@ -557,6 +583,29 @@ article.post {
 .content-area .entry-content .container .row {
 	margin-left: 0;
 	margin-right: 0;
+}
+
+/* For larger screens, add some padding to sidebar to offset it from the content area */
+@media (min-width: 992px) { /*768?*/
+
+	/*.content-area.col-md-8 {
+		padding-right: 30px;
+	}*/
+
+	/*.content-area.col-md-8.col-md-push-4 {
+		padding-left: 30px;
+	}*/
+
+	/* Add left padding to sidebar when its on the right */
+	#secondary.widget-area.sidebar-right {
+		padding-left: 15px;
+	}
+
+	/* Add right padding to the sidebar when its on the left */
+	#secondary.widget-area.sidebar-left {
+		padding-right: 15px;
+	}
+
 }
 
 /* Entry meta */
@@ -615,21 +664,8 @@ div.entry-meta,
 	vertical-align: middle;
 }
 
-/* When sidebar not collapsed, add more padding. Make sure this is below both the #sidebar
- * and #posts and pages CSS sections as it applies to both
- */
-@media (min-width: 992px) {
-
-	.content-area {
-		padding-bottom: 35px;
-	}
-	#secondary {
-		padding-top: 35px;
-	}
-}
-
 /*--------------------------------------------------------------
-## Asides
+## Post Formats
 --------------------------------------------------------------*/
 
 /* 
@@ -641,18 +677,46 @@ div.entry-meta,
 ## Comments
 --------------------------------------------------------------*/
 
+/* Add some whitespace to the whole comments area */
+#comments {
+	background-color: #e7e7e7;
+	margin: 12px 0 24px;
+	padding: 24px 24px 12px 24px; /* h3 already has 24px top margin */
+}
+#comments h2 {
+	margin-top: 0;
+}
+
+.comment-reply-title {
+	margin-top: 0; /* padding added above already */
+}
+
 /* Get rid of bullets on comment <ul> and set some padding and indenting */
 .comment-list,
 .comment-list .children {
 	list-style-type: none;
-	padding: 0;
+	/*padding: 0;*/
 }
 
 /* Set child comment indent to a percentage for better responsive handling */
 .comment-list .children {
-	/*margin-left: 25px;*/
 	margin-left: 5%;
 }
+
+/* Highlight comments by the post author */
+.bypostauthor > article > footer > .comment-author:after {
+	content: "Author";
+	display: inine-block;
+	/*font-size: 20px;*/
+	font-size: 16px;
+	margin-left: 9px;
+	padding: 3px;
+	/*vertical-align: middle;*/
+}
+
+/*input {
+	border-color: #ccc;
+}*/
 
 /* Style the standard WordPress comment form. Note Jetpack comments styled later. */
 .comment-form [for="author"],
@@ -667,6 +731,7 @@ div.entry-meta,
 .comment-form input[type="url"] {
 	max-width: 310px;
 	width: 70%;
+	border-color: #ccc;
 }
 
 .comment-form, 
@@ -681,6 +746,7 @@ textarea#comment {
 	max-width: 743px; /*largest width of content area w/sidebar*/
 	width: 100%;
 	max-height: 140px;
+	/*background-color: #f2f2f2;*/
 }
 
 /* Hide the label "Comment" above the comment box as its pretty obvious already */
@@ -688,11 +754,12 @@ textarea#comment {
 	display: none;
 }
 p.comment-subscription-form {
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 }
 
 .reply {
-	margin-bottom: 25px;
+	/*display: inline;*/
+	margin-bottom: 12px;
 }
 
 /* Get rid of the word "says" from comments */
@@ -703,20 +770,6 @@ p.comment-subscription-form {
 /* Space out pingbacks ("trackbacks") */
 li.pingback {
 	margin-bottom: 15px;
-}
-
-/* Come on now, of course we need a margin before their name and comment */
-.avatar {
-	float: left;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-/* 
- * Not used here, but required for inclusion by WordPress. Set this in the theme's
- * stylesheet if you want 
- */
-.bypostauthor {
 }
 
 /* Set the comment box height via CSS for consistency across browsers */
@@ -730,7 +783,6 @@ form.contact-form textarea {
 
 /* Make sure these elements don't break the layout */
 img, embed, iframe, media, swf, pre, code, container, select, .videopress-placeholder {
-	/*display: block;*/
 	max-width: 100%;
 	overflow: hidden;
 	white-space: pre;           /* CSS 2.0 */
@@ -764,7 +816,8 @@ img,
 	font-weight: 500;
 	text-align: center;
 	/*margin-top: -22px;*/ /* Offset Bootstrap .thumbnail class */
-	margin-bottom: 22px;
+	/*margin-bottom: 22px;*/
+	margin-bottom: 24px;
 }
 
 /* Center the thumbnails since WordPress centers the caption text */
@@ -810,8 +863,16 @@ img,
 ## Profile Pictures ("avatars")
 --------------------------------------------------------------*/
 
-/* Make user profile pics (avatars) circles */
+/* Come on now, of course we need a margin before their name and comment */
 .avatar {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+/* Make user profile pics (avatars) circles */
+.avatar,
+.testimonial-thumbnail {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
@@ -837,14 +898,20 @@ img.avatar.thumbnail {
 	font-size: 14px;
 	max-width: 300px;
 }
+aside.aligncenter > #calendar_wrap {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 .widget_calendar #wp-calendar {
-	color: #555;
+	/*color: #555;*/ /* Remove this in case someone adds a colored background */
 	width: 95%;
 	text-align: center;
 }
 .widget_calendar #wp-calendar caption,
 .widget_calendar #wp-calendar td,
 .widget_calendar #wp-calendar th {
+	color: inherit; 
 	text-align: center;
 }
 .widget_calendar #wp-calendar caption {
@@ -853,13 +920,13 @@ img.avatar.thumbnail {
 	text-transform: uppercase;
 }
 .widget_calendar #wp-calendar th {
-	background: #f4f4f4;
+	/*background: #f4f4f4;*/ /* Remove this in case someone adds a colored background */
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	font-weight: bold;
 }
 .widget_calendar #wp-calendar tfoot td {
-	background: #f4f4f4;
+	/*background: #f4f4f4;*/ /* Remove this in case someone adds a colored background */
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 }

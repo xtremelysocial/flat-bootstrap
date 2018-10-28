@@ -17,6 +17,7 @@ function xsbf_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'refresh';
+	//$wp_customize->get_setting( 'header_image' )->transport 	= 'postMessage';
 }
 add_action( 'customize_register', 'xsbf_customize_register' );
 

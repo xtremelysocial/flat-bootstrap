@@ -3,9 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 4.2
-Tested up to: 4.4.2
-Stable tag: 1.9
+Requires at least: 4.3
+Tested up to: 4.5
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -353,6 +353,10 @@ After WordPress.com releases their official plugin for custom logos, we plan to 
 	height: 100px;
 }`
 
+= How do I add a custom background image to the header? =
+
+<<< TO-DO: FILL IN THE ANSWER HERE >>>
+
 
 == VERSIONING ==
 
@@ -370,6 +374,38 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 2.0 - Apr 20 2016 = 
+This is the "front-end" or "user facing" edition. While v1.9 focused on the "back end", this version  focuses on enhancements that are visible to end users as well as some tweaks to support future futures that may be rolled into the theme or released in a separate plugin.
+
+FRONT-END UPDATES
+
+* Slightly changed the colors of the various buttons to exactly match our color palette. In general, buttons should look better with various colored backgrounds. This does mean that you may need to use one of our "hollow" (btn-hollow) or "transparent" (btn-transparent) button in certain colored sections, but those look great so it shouldn't be an issue.
+* Added a new "inverse" button (btn-inverse) that is midnight blue and looks great. 
+* Also changed the colors of alerts ("info boxes"), panels, and progress bars to match our color palette. Things should be looking even more color-coordinated from now on.
+* Updated link colors within various colored sections so that they still look good even with more widely-varied theme link colors. Increased contrast on fonts with certain background colors as well.
+* Changed up typography to open it up with just a bit more whitespace. Vertical rhythm is now 12, 24, 36, 48px versus 11, 22, 33 px. 
+* Cleaned up padding and margins on various elements to get more consistent "whitespace".
+* Increased post "thumbnails" to 750x422px to fill the full width of the main content area with sidebar. Added some padding between the main content area and sidebar as a result. You should use the Resize Images plugin to take advantage of this unless you are happy with the current sizes.
+* Adjusted the new Bootstrap v4 margin and padding classes to match the theme's new padding and margins. Use these to adjust margins or padding on headers (hx tags) or text (p tags, etc.) to get the spacing you want on your pages and widget areas. Eg) m-t-0 to remove top margin from a heading. m-t-2 to get a paragraph to match the normal top margin on a heading, etc.
+* The comments section now displays with a gray background to help offset it from the page content. With flat-style designs, color is important to create "hierarchy" and separate sections.
+* Added a nice colored label for comments from the post author. This looks similar to how featured articles are denoted. 
+* Added better support for Jetpack Portfolios and Jetpack Testimonials. Testimonials now show a round profile picture and the quote in blockquotes. They also don't link to an individual testimonial page as there was no value to that.
+* Single articles (posts) now display next and previous post links. 
+* Added support for Jetpack "Social Menus". If you create one, it will now display in a nice green section with large social media icons. Enjoy!
+* Added basic support for WordPress v4.5+ "Site Logos". Now you can upload a square logo and it will display in the header.
+* Custom header images now display below the header. This is a big "breaking change", but it looks great and is more in line with how our various child themes work. If you are using this feature already and want your header to remain the same, you'll need to use a little custom CSS. Add the background image directly in the CSS or use our updated Flat Bootstrap Child Theme which it sets it back to work the "old way". See our FAQ for additional details.
+* Updated our Flat Bootstrap Child theme to set the custom header back to displaying in the header instead of below it.
+* Tweaked the way background images work so you can now set one and also still change the background color of the main page area. This let's you show a background pattern on really large screens, like the iMac.
+* The theme now displays the full content of custom post formats. So for example, if you have a video post and flag it as such, the actual embedded video will display in the blog list. 
+* In the page template Page with Posts, we now display a blank post thumbnail image on wider screens where we show them "three up". This helps align things better when thumbnail images are missing. On smaller screens, when the "three up" collapses to a single column, the blank thumbnail is not shown. 
+
+BACK-END UPDATES
+
+* Changed where certain CSS styles reside between theme-base.css and theme-flat.css have been further adjusted from Flat Bootstrap v1.9 just a bit. This is to allow more flexibility in child themes as far as choosing which stylesheet(s) to include.
+* Added a new option value for $xsbf_theme_options['custom_header_location']. If it set to anything but 'header' or 'content-header', it will display both a site header above the navbar as well as a custom header below the navbar. This was support our new way of handling custom headers in the theme as well as allow people to easily set it back to the "old way" like we did in the included Flat Bootstrap Child theme.
+* Added a new class to the sidebar (#secondary) to indicate whether the sidebar is on the right or left. This was needed for us to add additional padding between the main content area and the sidebar. It's also useful in child themes to be able to adjust additional things.
+* You may notice changes in theme to support a new "landing page" template that we may include in the theme or in paid version of the theme in the future.
 
 = 1.9 - Mar 26 2016 = 
 This is the "spring cleaning" edition. This version focuses on both cleaning up and updating the templates, functions, and CSS as well as allowing for more varied themes in the future. The child theme has been updated to include some of the common user requests as well. Jetpack Testimonials are now displayed better and Jetpack Portfolio items can  have a subtitle. All this has been done with the intent to cause little no disruption to existing child themes.

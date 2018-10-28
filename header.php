@@ -28,39 +28,51 @@
 
 		<?php
 		/**
-		  * CUSTOM HEADER IMAGE DISPLAYS HERE FOR THIS THEME, BUT CHILD THEMES MAY DISPLAY
-		  * IT BELOW THE NAV BAR (VIA CONTENT-HEADER.PHP)
+		  * DISPLAY TOP HEADER HERE IF CUSTOM HEADER LOCATION PARAMETER IS NOT
+		  * 'CONTENT-HEADER'. THIS THEME WILL DISPLAY A HEADER WITH SITE TITLE AND 
+		  * DESCRIPTION AS WELL AS A CUSTOM "HEADER" BELOW THE NAVBAR.
 		  */
 		global $xsbf_theme_options;
 		$custom_header_location = isset ( $xsbf_theme_options['custom_header_location'] ) ? $xsbf_theme_options['custom_header_location'] : 'content-header';
-		if ( $custom_header_location == 'header' ) :
+		if ( $custom_header_location != 'content-header' AND ! is_page_template( 'page-landing.php' ) ) :
 		?>
-			<div id="site-branding" class="site-branding">
+			<div id="site-branding" class="site-branding container">
 			
 			<?php
 			// Get custom header image and determine its size
-			if ( get_header_image() ) {
+			if ( $custom_header_location == 'header' AND get_header_image() ) {
 			?>
 				<div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); width: <?php echo get_custom_header()->width; ?>px; height: <?php echo get_custom_header()->height ?>px;">
-				<div class="container">
-                <?php //if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
+				<!-- <div class="container"> -->
+                <?php if ( function_exists( 'the_custom_logo' ) ) { 
+                	//echo '<div class="pull-left">'; 
+                	the_custom_logo(); 
+                	//echo '</div>';
+                } 
+                ?>
                 <div class="site-branding-text">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 				</div>
-				</div></div>
-			<?php
+				<!-- </div> -->
+				</div><!-- custom-header-image -->
 
+			<?php
 			// If no custom header, then just display the site title and tagline
 			} else {
 			?>
-				<div class="container">
-                <?php //if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
+				<!-- <div class="container"> -->
+                <?php if ( function_exists( 'the_custom_logo' ) ) { 
+                	//echo '<div class="pull-left">'; 
+                	the_custom_logo(); 
+                	//echo '</div>';
+                	} 
+                ?>
                 <div class="site-branding-text">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 				</div>
-				</div>
+				<!-- </div> -->
 			<?php
 			} //endif get_header_image()
 			?>
@@ -72,8 +84,10 @@
 
 		<?php
 		/**
-		  * ALWAYS DISPLAY THE NAV BAR
+		  * DISPLAY THE NAVBAR UNLESS THIS IS THE PARENT THEME AND ITS A LANDING PAGE
 		  */
+		global $xsbf_theme_options; 
+		if ( strpos( $xsbf_theme_options['navbar_classes'], 'navbar-fixed-top' ) !== false OR ! is_page_template( 'page-landing.php' ) ) :
  		?>	
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 
@@ -94,12 +108,11 @@
 
 		// Site title (Bootstrap "brand") in navbar. Hidden by default. Customizer will
 		// display it if user turns off the main site title and tagline.
-		$navbar .= '<a class="navbar-brand" href="'
-			.esc_url( home_url( '/' ) )
-			.'" rel="home">'
-			.get_bloginfo( 'name' )
-			.'</a>';
-		
+		$navbar .= '<a class="navbar-brand" href="' . esc_url( home_url( '/' ) ) . '" rel="home">';
+
+		$navbar .= get_bloginfo( 'name' );
+		$navbar .= '</a>';		
+
         $navbar .= '</div><!-- navbar-header -->';
 
 		// Display the desktop navbar
@@ -121,6 +134,8 @@
 		</div><!-- .navbar -->
 		</nav><!-- #site-navigation -->
 
+		<?php endif; //! is_page_template ?>
+		
 	</header><!-- #masthead -->
 
 	<?php // Set up the content area (but don't put it in a container) ?>	
