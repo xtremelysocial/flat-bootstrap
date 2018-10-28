@@ -72,7 +72,7 @@ blockquote,
 
 ul, 
 ol {
-	padding: 0;
+	/*padding: 0;*/
 	margin-bottom: 12px;
 }
 
@@ -434,7 +434,8 @@ header.content-header {
 
 /* For main sidebar, add some whitespace. 36px + 12px = 48px to match top. */
 #secondary {
-	padding: 36px 0 24px;
+	padding-top: 36px;
+	padding-bottom: 36px;
 }
 #secondary aside.widget {
 	margin-bottom: 12px;
@@ -457,6 +458,7 @@ header.content-header {
 #sidebar-home ul,
 footer#colophon.site-footer ul {
 	list-style: none;
+	padding: 0; /* Since removed from generic ul style above */
 }
 
 /* Space out the lists in sidebars and footers */
