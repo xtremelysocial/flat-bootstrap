@@ -4,5 +4,7 @@ zz_screenshots
 /flat-bootstrap-child/zz_unused
 /flat-bootstrap-child/zz_screenshots
 languages/xx_XX.pot
-
+*.iCloud
 *.SAV
+/plugins
+/pro
