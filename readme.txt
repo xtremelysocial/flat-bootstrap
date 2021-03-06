@@ -375,7 +375,7 @@ For more information on SemVer, please visit [http://semver.org/].
 
 == CHANGELOG ==
 
-= 2.0 - Apr 20 2016 = 
+= 2.0 - Mar 6 2021 = 
 This is the "front-end" or "user facing" edition. While v1.9 focused on the "back end", this version  focuses on enhancements that are visible to end users as well as some tweaks to support future futures that may be rolled into the theme or released in a separate plugin.
 
 FRONT-END UPDATES
