@@ -380,6 +380,7 @@ This is the "front-end" or "user facing" edition. While v1.9 focused on the "bac
 
 FRONT-END UPDATES
 
+* Fixed the drop-down menus when using WordPress 5.x+!
 * Slightly changed the colors of the various buttons to exactly match our color palette. In general, buttons should look better with various colored backgrounds. This does mean that you may need to use one of our "hollow" (btn-hollow) or "transparent" (btn-transparent) button in certain colored sections, but those look great so it shouldn't be an issue.
 * Added a new "inverse" button (btn-inverse) that is midnight blue and looks great. 
 * Also changed the colors of alerts ("info boxes"), panels, and progress bars to match our color palette. Things should be looking even more color-coordinated from now on.
@@ -402,6 +403,7 @@ FRONT-END UPDATES
 
 BACK-END UPDATES
 
+* Updated Bootstrap to the latest 3.x version, which is 3.4.1. This is what fixes the drop-down menus when using WordPress 5.x+!
 * Changed where certain CSS styles reside between theme-base.css and theme-flat.css have been further adjusted from Flat Bootstrap v1.9 just a bit. This is to allow more flexibility in child themes as far as choosing which stylesheet(s) to include.
 * Added a new option value for $xsbf_theme_options['custom_header_location']. If it set to anything but 'header' or 'content-header', it will display both a site header above the navbar as well as a custom header below the navbar. This was support our new way of handling custom headers in the theme as well as allow people to easily set it back to the "old way" like we did in the included Flat Bootstrap Child theme.
 * Added a new class to the sidebar (#secondary) to indicate whether the sidebar is on the right or left. This was needed for us to add additional padding between the main content area and the sidebar. It's also useful in child themes to be able to adjust additional things.
