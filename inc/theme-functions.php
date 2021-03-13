@@ -24,8 +24,7 @@ function xsbf_is_fullwidth() {
 		is_page_template( 'page-fullwidth-noheader.php' ) OR + 
 		is_page_template( 'page-fullwidth.php' ) OR +
 		is_page_template( 'page-fullwithposts.php' ) OR +
-		is_page_template( 'page-fullwithsubpages.php' ) OR +
-		is_page_template( 'page-landing.php' )
+		is_page_template( 'page-fullwithsubpages.php' )
 		)
 		) {
 			return true;
@@ -57,8 +56,8 @@ function xsbf_add_container( $content ) {
 
 		// If fullwidth page, then add a container.
 		if ( xsbf_is_fullwidth() ) {
-			$content .= '<div id="xsbf-after-content" class="after-content container">';
-				//.'<div class="container">';
+			$content .= '<div id="xsbf-after-content" class="after-content">'
+				.'<div class="container ">';
 
 		// Otherwise, don't include a container. 
 		} else {
@@ -85,14 +84,14 @@ function xsbf_end_container( $content ) {
 	if ( is_singular() ) {
 
 		// If fullwidth page, then end the after-content and container divs.
-		//if ( xsbf_is_fullwidth() ) {
-			$content .= '</div><!-- #xsbf-after-content -->';
-				//.'</div><!-- .container -->';
+		if ( xsbf_is_fullwidth() ) {
+			$content .= '</div><!-- #xsbf-after-content -->'
+				.'</div><!-- .container -->';
 
 		// Otherwise, just end the after-content div. 
-		//} else {
-			//$content .= '</div><!-- .after-content -->';
-		//}
+		} else {
+			$content .= '</div><!-- .after-content -->';
+		}
 	} //is_singular
 
 	return $content;
@@ -173,35 +172,24 @@ function xsbf_img_caption ( $null, $attr, $content ) {
 endif; // end ! function_exists
 
 /*
- * Remove stupid WordPress emppty <p></p> tags. Code first two lines of code from 
- * ninnypants plugin (http://ninnypants.com).
+ * Remove stupid WordPress <p></p> tags and comments. This just traps the easy ones.
+ * 
+ * TO-DO: Expand this to catch all possible scenarios. 
  */
 if ( ! function_exists( 'xsbf_filter_ptags' ) ) :
 add_filter('the_content', 'xsbf_filter_ptags');
 function xsbf_filter_ptags ( $content ) {
 
-	// Clean up p tags around block elements
-	$content = preg_replace( array(
-		'#<p>\s*<(div|aside|section|article|header|footer)#',
-		'#</(div|aside|section|article|header|footer)>\s*</p>#',
-		'#</(div|aside|section|article|header|footer)>\s*<br ?/?>#',
-		'#<(div|aside|section|article|header|footer)(.*?)>\s*</p>#',
-		'#<p>\s*</(div|aside|section|article|header|footer)#',
-	), array(
-		'<$1',
-		'</$1>',
-		'</$1>',
-		'<$1$2>',
-		'</$1',
-	), $content );
-
 	// Remove empty p tags
-	//$content = str_ireplace('<p></p>', '', $content);
-	$content = preg_replace('#<p>(\s|&nbsp;)*+(<br\s*/*>)*(\s|&nbsp;)*</p>#i', '', $content);
+	$content = str_ireplace( '<p></p>', '', $content );
+	$content = str_ireplace( '<p> </p>', '', $content );
+	//$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
+    //$content = preg_replace( array ( '/<p><\/p>/', '/<p><!--.*--><\/p>/', '/<p><!--.*-->/', '/<p><!--\/.*--><\/p>/' ), '', $content );
 
 	// Remove all comments
 	$content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
-
+	// Remove all <p></p> tags that are empty or only have whitespace between them
+	$content = preg_replace( '|<p>(\s)*</p>|', '', $content );
 	return $content;
 }
 endif; // end ! function_exists
@@ -351,9 +339,7 @@ function xsbf_footer_filter( $footer ) {
 	// processes them just fine, though.
 	$dom = new DOMDocument('1.0', 'utf-8');
 	libxml_use_internal_errors(true);
-	//$dom->loadHTML( $footer );
-	$dom->encoding = 'utf-8'; // fixes foreign language issues
-	$dom->loadHTML( utf8_decode( $footer) ); // important;  
+	$dom->loadHTML( $footer );
 	libxml_clear_errors();
 
 	$asides = $dom->getElementsByTagName('aside');
@@ -379,73 +365,12 @@ function xsbf_footer_filter( $footer ) {
 		} //endif
 	} //endforeach
 
-	// Save what we just changed, stip extra tags added, and return the HTML
+	// Save what we just changed and return the value
 	$footer = $dom->saveHTML();
-	$footer = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $footer));
-
     return $footer;
 }
 endif; // end ! function_exists
 
-/*
- * Custom callback for background color/image so we can color the "page" even when an
- * image is loaded. This let's the user set the page color while still showing the back-
- * ground on really wide screens.
- */
-function xsbf_custom_background_cb() {
-	// $background is the saved custom image, or the default image.
-	$background = set_url_scheme( get_background_image() );
-
-	// $color is the saved custom color.
-	// A default has to be specified in style.css. It will not be printed here.
-	$color = get_background_color();
-
-	if ( $color === get_theme_support( 'custom-background', 'default-color' ) ) {
-	//if ( $color === get_theme_support( 'custom-background', 'default-color' ) AND ! $background ) {
-		$color = false;
-	}
-
-	if ( ! $background && ! $color )
-		return;
-
-	$style = $color ? "background-color: #$color;" : '';
-
-	if ( $background ) {
-		$image = " background-image: url('$background');";
-
-		$repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
-		if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
-			$repeat = 'repeat';
-		$repeat = " background-repeat: $repeat;";
-
-		$position = get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) );
-		if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
-			$position = 'left';
-		$position = " background-position: top $position;";
-
-		$attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
-		if ( ! in_array( $attachment, array( 'fixed', 'scroll' ) ) )
-			$attachment = 'scroll';
-		$attachment = " background-attachment: $attachment;";
-
-		$style .= $image . $repeat . $position . $attachment;
-	}
-?>
-<style type="text/css" id="custom-background-css">
-body.custom-background { <?php echo trim( $style ); ?> }
-#page { background-color: #<?php echo get_background_color(); ?> }
-</style>
-<?php
-} //endfunction
-
-/*
- * A nifty little function for debugging. It let's you display a variable and formats it
- * based on the type. Eg. arrays display within <pre> tags.
- */
-function xsbf_debug ( $variable) {
-	echo '<pre>'; vardump($variable); echo '</pre>';
-} //endfunction
-	
 /*
  * Add some "quicktag" buttons to the WordPress HTML editor. Note these don't appear in 
  * the visual editor, only when in "text" (HTML) mode.

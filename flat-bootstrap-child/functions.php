@@ -47,8 +47,7 @@
  * 
  * custom_header_location - If 'header', displays the custom header above the navbar. If
  * 		'content-header', displays it below the navbar in place of the colored content-
- *		header section. If 'both' (or anything else), it will display the header text but
- *		also display the custom header below the navbar.
+ *		header section.
  * 
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
@@ -73,9 +72,9 @@ $xsbf_theme_options = array(
 	//'fontawesome' 			=> true,
 	//'bootstrap_gradients' 	=> false,
 	//'navbar_classes'			=> 'navbar-default navbar-static-top',
-	'custom_header_location' 	=> 'header', // 'both', //'content-header',
+	//'custom_header_location' 	=> 'header',
 	//'image_keyboard_nav' 		=> true,
-	'sample_widgets' 			=> false, // turn them off
+	//'sample_widgets' 			=> true, // for possible future use
 	//'sample_footer_menu'		=> true,
 	//'testimonials'			=> true
 );
@@ -95,32 +94,15 @@ function xsbf_child_enqueue_styles() {
 		get_stylesheet_directory_uri() . '/style.css', 
 		array('flat-bootstrap') 
 	);
-} //endfunction
-
-/* 
- * Override the parent theme's custom header default size since this child theme now
- * places it behind the header site name and description like Flat Bootstrap v1.9 and
- * prior.
- */
-add_filter( 'xsbf_custom_header_args', 'xsbf_child_custom_header_args' );
-function xsbf_child_custom_header_args ( $header_args ) {
-	$header_overrides = array ( 
-		'default-image'	=> '',
-		'width' 		=> 1600,
-		'height' 		=> 180
-	);
-	$header_args = wp_parse_args( $header_overrides, $header_args );
-	return $header_args;
-} //endfunction
+}
 
 /*
- * Uncomment this to override the site credits to get rid of the "Theme by XtremelySocial"
- * and just leave the copyright your site name.
+ * OVERRIDE THE SITE CREDITS TO GET RID OF THE "THEME BY XTREMELYSOCIAL" AND JUST LEAVE
+ * COPYRIGHT YOUR SITE NAME
  * 
  * You can hard-code whatever you want in here, but its better to have this function pull
  * the current year and site name and URL as shown below.
  */
-/*
 add_filter('xsbf_credits', 'xsbf_child_credits'); 
 function xsbf_child_credits ( $site_credits ) {
 		
@@ -130,5 +112,4 @@ function xsbf_child_credits ( $site_credits ) {
 		'<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name' ) . '</a>'
 	);
 	return $site_credits;
-} //endfunction
-*/
+}

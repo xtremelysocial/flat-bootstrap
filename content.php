@@ -29,20 +29,13 @@
 		<?php endif; ?>
 
 		<div class="entry-summary">
-		<?php // Display excerpts for regular post formats, full content for video, etc.
-		//echo 'post_format=' . get_post_format() . '<br />'; //TEST
-		if ( ! get_post_format() ) {
-			the_excerpt();
-		} else {
-			the_content();
-		} //endif
-		?>
+		<?php the_excerpt(); ?>
 		<hr>
 		</div><!-- .entry-summary -->
 
 	<?php 
 	/* 
-	 * For single posts / pages, display the full content
+	 * For non-index pages (single posts and pages), display the full content
 	 */ 
 	?>
 	<?php else : ?>

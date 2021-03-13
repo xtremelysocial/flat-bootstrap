@@ -38,8 +38,7 @@
  * 
  * custom_header_location - If 'header', displays the custom header above the navbar. If
  * 		'content-header', displays it below the navbar in place of the colored content-
- *		header section. If 'both' (or anything else), it will display the header text but
- *		also display the custom header below the navbar.
+ *		header section.
  * 
  * image_keyboard_nav - Whether to load javascript for using the keyboard to navigate
  		image attachment pages
@@ -50,8 +49,7 @@
  * sample_footer_menu - Whether to display sample footer menu with Top and Home links
  * 
  * testimonials - Whether to activate testimonials custom post type (Jetpack plugin must 
- * be active for this to do anything. NOTE: Jetpack now allows users to turn this on, so
- * this option is deprecated as of Flat Bootstrap v2.0.
+ * be active for this to do anything.
  */
 $defaults = array(
 	'background_color' 			=> 'f2f2f2',
@@ -59,17 +57,18 @@ $defaults = array(
 	'embed_video_width' 		=> 1170, // full-width videos on full-width pages
 	'embed_video_height' 		=> null, // i.e. calculate it automatically
 	'post_formats' 				=> null,
-	//'post_formats'			=> array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ),
+	//'post_formats'				=> array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ),
 	'touch_support' 			=> true,
 	'fontawesome' 				=> true,
 	'bootstrap_gradients' 		=> false,
 	'navbar_classes'			=> 'navbar-default navbar-static-top',
-	'custom_header_location' 	=> 'both', //'header', //'both', //'content-header',
+	'custom_header_location' 	=> 'header',
+	//'custom_header_location' 	=> 'content-header',
 	'site_logo'					=> false,
 	'image_keyboard_nav' 		=> true,
 	'sample_widgets' 			=> true,
 	'sample_footer_menu'		=> true,
-	//'testimonials'			=> true // requires Jetpack plugin
+	'testimonials'				=> true // requires Jetpack plugin
 );
 
 /**
@@ -101,15 +100,6 @@ function xsbf_setup() {
 	global $xsbf_theme_options;
 	//global $content_width; // Note: set from $xsbf_theme_options also
 
-	// Add theme support for custom site logo. As of WordPress v4.5.
-	add_theme_support( 'custom-logo', array(
-		'height'      => 200,
-		'width'       => 200,
-		'flex-height' => true,
-		'flex-width'  => true,
-		//'header-text' => array( 'site-title', 'site-description' ),
-	) );
-
 	// Add support for WordPress core to add <title> tag to the header. As of WordPress 
 	// v4.1. Its just done for consistency across all WordPress themes.
 	add_theme_support( 'title-tag' );
@@ -122,11 +112,8 @@ function xsbf_setup() {
 	add_theme_support( 'post-thumbnails' );
 	
 	// This is our standard thumbnail size for things like blog posts.
-	//set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // 16:9 crop left top
-	//set_post_thumbnail_size( 750, 375, array( 'left', 'top' ) ); // 12:6 crop left top
-	set_post_thumbnail_size( 750, 422, array( 'left', 'top' ) ); // 16:9 max width w/sidebar
-	//set_post_thumbnail_size( 732, 412, array( 'left', 'top' ) ); // 16:9 crop left top
-	//set_post_thumbnail_size( 750, 468, array( 'left', 'top' ) ); // 16:10 crop left top
+	//set_post_thumbnail_size( 750, 422, array( 'left', 'top' ) ); // crop left top
+	set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop left top
 	
 	// This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
 	register_nav_menus( array(
@@ -141,15 +128,15 @@ function xsbf_setup() {
 	
 	// Add editor CSS to style the WordPress visual post / page editor. Ours mainly
 	// pulls in all of our front-end CSS.
+	add_theme_support( 'editor-styles' );
 	add_editor_style( 'css/editor-style.css' );
 
 	// Setup the WordPress core custom background feature. As of WordPress v3.4. This 
 	// theme is full-width up to 1600px, so background will only show when user's
 	// screen is wider than that.
 	add_theme_support( 'custom-background', apply_filters( 'xsbf_custom_background_args', array(
-			'default-color' 	=> $xsbf_theme_options['background_color'],
-			'default-image' 	=> '',
-			'wp-head-callback'	=> 'xsbf_custom_background_cb',
+			'default-color' => $xsbf_theme_options['background_color'],
+			'default-image' => '',
 		) ) );
 
 	// Enable support for Post Formats. Note we haven't included any special styling or
@@ -266,7 +253,7 @@ function xsbf_load_fonts() {
 
 	// Add font-awesome support	
 	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
-		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.7.0' );
+		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.5.0', 'all' );
 		wp_enqueue_style( 'font-awesome');
 	}
 
@@ -283,28 +270,27 @@ function xsbf_load_css() {
 	global $xsbf_theme_options;
 
 	// Load our custom version of Bootsrap CSS. Can easily override in a child theme.
-	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.3.6' );
+	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.3.6', 'all' );
 	wp_enqueue_style( 'bootstrap');
 
 	// If desired, load up the bootstrap-theme CSS for a full gradient look. Note you'll
 	// need to style other theme elements to match.
 	if ( $xsbf_theme_options['bootstrap_gradients'] ) {
-		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array( 'bootstrap' ), '3.3.6' );
+		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array( 'bootstrap' ), '3.3.6', 'all' );
 		wp_enqueue_style( 'bootstrap-theme');
 	}
 	
 	// Our base WordPress CSS that handles default margins, paddings, etc.
-	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', array( 'bootstrap' ), '20160323' );
+	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', array( 'bootstrap' ), '20160323', 'all' );
 	wp_enqueue_style( 'theme-base');
 
 	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20160323' );
+	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20160323', 'all' );
 	wp_enqueue_style( 'theme-flat');
 
 	// This theme's stylesheet, which contains the theme-specific CSS for coloring
 	// content header, footer, etc.
-	//wp_enqueue_style( 'flat-bootstrap', get_stylesheet_uri() );
-	wp_enqueue_style( 'flat-bootstrap', get_stylesheet_uri(), array('bootstrap', 'theme-base', 'theme-flat'), '20160401' );
+	wp_enqueue_style( 'flat-bootstrap', get_stylesheet_uri() );
 
 } // end function xsbf_load_css
 endif; // end ! function_exists
@@ -370,8 +356,7 @@ $includes = array (
 	'/inc/custom-header.php',
 	'/inc/customizer.php',
 	'/inc/extras.php',
-	'/inc/xsbf-plugin-recommendations.php',
-	/*'/plugins/flat-bootstrap-widgets/flat-bootstrap-widgets.php'*/
+	'/inc/xsbf-plugin-recommendations.php'
 	);
 
 /* Add Jetpack support if that plugin is active */
@@ -379,12 +364,9 @@ if ( class_exists( 'Jetpack' ) ) {
 	$includes[] = '/inc/jetpack.php';
 }
 
-/* Load each of the includes. Note that this pulls from this parent theme's directory
- * NOT from a child theme. That's why you need to rewrite this whole function instead.
- */
+/* Load each of the includes */
 foreach ( $includes as $include ) {
 	include_once get_template_directory() . $include;
-	//include_once get_stylesheet_directory() . $include;
 } //end foreach
 
 } // end function

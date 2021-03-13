@@ -27,27 +27,31 @@ Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, 
  * things that users have requested, such as changing colors and the look of buttons, etc.
 */
 
-/* Uncomment to change the content (page) header to dark blue. */
-/*.content-header {
+/* Change the content (page) header to dark blue. */
+.content-header {
 	background-color: #2980b9;
-}*/
+}
 
-/* Uncomment to change the main link color to dark blue. Note that the hover color is set
- * using a neat trick with the opacity tag. This simply lightens whatever the link color
- * is. That way we don't need to try to figure out a hover color that looks good. 
+/* Change the main link color to dark blue. Note that the hover color is set using a 
+ * neat trick with the opacity tag. This simply lightens whatever the link color is. That
+ * way we don't need to try to figure out a hover color that looks good. 
  */
-/*a {
+a {
 	color: #2980b9;
 }
 a:hover,
 a:focus {
 	color: #2980b9;
 	opacity: .75;
-}*/
+}
 
-/* Uncomment to make the buttons square, if you'd like. */
-/*.btn {
+/* Make the buttons square, if you'd like. */
+.btn {
 	-webkit-border-radius: 0 !important;
 	-moz-border-radius: 0 !important;
 	border-radius: 0 !important;
-}*/
+}
+
+/* PUT ANY NEW STYLES TO USE IN YOUR CONTENT AREAS HERE SO YOU CAN EASILY PASTE THIS
+ * SECTION IF YOU CHANGE THEMES
+ */
