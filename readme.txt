@@ -1,9 +1,10 @@
 === Flat Bootstrap by XtremelySocial ===
 
 Contributors: timnicholson
-Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
+Tags: one-column, right-sidebar, left-sidebar, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
 Requires at least: 4.2
+Requires PHP: 7.0
 Tested up to: 5.7
 Stable tag: 1.10
 License: GPLv3
