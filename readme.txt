@@ -59,10 +59,7 @@ Font Awesome - http://fontawesome.io
 License: Distributed under the terms of the SIL OFL License 1.1 (fonts), MIT License (code), and CC BY 3.0 License (documentation)
 Copyright: Font Awesome, http://fontawesome.io
 
-Images - http://unsplash.com
-Images included in the download, such as the one depicted in the screenshot are from unsplash.com
-License: Distributed under the terms of the Creative Commons Zero / GPL License
-Copyright: unsplash, http://unsplash.com
+Images included in the download, such as the one depicted in the screenshot were from unsplash.com when their licensing was Creative Commons Zero, which is compatible with WordPress' GPL License.
 
 
 == TRANSLATIONS ==
@@ -519,7 +516,7 @@ For more information see [http://v4-alpha.getbootstrap.com/components/utilities/
 * Fixed a bug where category and tag archives were displaying the page title without formatting
 
 = 1.4.1 =
-* Updated screenshots to use a GPL image from unsplash.com
+* Updated screenshots to use a GPL image
 * Updated licensing information to reflect screenshot image is GPL
 * Bumped version number
 
