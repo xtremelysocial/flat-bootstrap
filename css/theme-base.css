@@ -81,6 +81,14 @@ ol ol {
 	margin-left: 24px;
 }
 
+/* Remove those stupid empty p tags! */
+p:empty:before,
+p:empty:after,
+p:empty {
+	content: none !important;
+	display: none;
+}
+
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -551,9 +559,9 @@ footer#colophon.site-footer ul {
 	padding-bottom: 36px;
 }
 
-.page .entry-content {
+/*.page .entry-content {
 	padding-top: 0;
-}
+}*/
 
 .entry-summary {
 	margin-bottom: 24px;
@@ -564,7 +572,7 @@ article.post {
 }
 
 /* Remove top-margin on hx tags for archives and the FIRST one on a page */
-.entry-title,
+/*.entry-title,
 #xsbf-entry-content > h1:first-child,
 #xsbf-entry-content > h2:first-child,
 #xsbf-entry-content > h3:first-child,
@@ -572,7 +580,7 @@ article.post {
 #xsbf-entry-content > h5:first-child,
 #xsbf-entry-content > h6:first-child {
 	margin-top: 0;
-}
+}*/
 
 /* When full-width pages are changed back to have a sidebar, fix the layout */
 .content-area .entry-content .container {
@@ -614,6 +622,7 @@ div.entry-meta,
 .edit-link {
 	font-size: 16px;
 }
+
 .edit-link a {
 	color: #7f8c8d;
 }

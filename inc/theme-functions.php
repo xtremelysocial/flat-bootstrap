@@ -51,22 +51,17 @@ endif; // end ! function_exists
 if ( ! function_exists('xsbf_add_container') ) :
 add_filter( 'the_content', 'xsbf_add_container', 5, 1 ); 
 function xsbf_add_container( $content ) {
-
 	// Only do this for single posts, pages, and custom post types
 	if ( is_singular() ) {
-
 		// If fullwidth page, then add a container.
 		if ( xsbf_is_fullwidth() ) {
 			$content .= '<div id="xsbf-after-content" class="after-content container">';
 				//.'<div class="container">';
-
 		// Otherwise, don't include a container. 
 		} else {
 			$content .= '<div id="xsbf-after-content" class="after-content">';
 		}
-
 	} //is_singular
-
 	return $content;
 }
 endif; // end ! function_exists
@@ -96,24 +91,6 @@ function xsbf_end_container( $content ) {
 	} //is_singular
 
 	return $content;
-}
-endif; // end ! function_exists
-
-/**
- * Filter the single post template and change to full-width if custom field
- * 'fullwidth' is true.
- */
-if ( ! function_exists( 'xsbf_single_template' ) ) :
-add_filter( 'single_template', 'xsbf_single_template' );
-function xsbf_single_template( $single_template ) {
-
-	// If this post is full-width then use that template. Note locate_template
-	// first looks for it in a child theme, then in the parent directory.
-	$fullwidth = get_post_meta( get_the_ID(), '_fullwidth', $single = true );
-	if ( $fullwidth ) {
-    	$single_template = locate_template( array ( 'single-fullwidth.php' ) );
-    }
-    return $single_template;
 }
 endif; // end ! function_exists
 
@@ -177,7 +154,8 @@ endif; // end ! function_exists
  * ninnypants plugin (http://ninnypants.com).
  */
 if ( ! function_exists( 'xsbf_filter_ptags' ) ) :
-add_filter('the_content', 'xsbf_filter_ptags');
+//add_filter('the_content', 'xsbf_filter_ptags');
+add_filter('the_content', 'xsbf_filter_ptags', 999);
 function xsbf_filter_ptags ( $content ) {
 
 	// Clean up p tags around block elements
@@ -207,8 +185,40 @@ function xsbf_filter_ptags ( $content ) {
 endif; // end ! function_exists
 
 /**
+ * DEPRECATED. WORDPRESS NOW ALLOWS POST TEMPLATES, SO WE UPDATED THOSE TEMPLATES
+ * AND THE USER ASSIGNS THEM JUST LIKE PAGE TEMPLATES.
+ * 
+ * Filter the single post template and change to full-width if custom field
+ * 'fullwidth' is true.
+ */
+/*
+if ( ! function_exists( 'xsbf_single_template' ) ) :
+add_filter( 'single_template', 'xsbf_single_template' );
+function xsbf_single_template( $single_template ) {
+
+	// If this post is full-width then use that template. Note locate_template
+	// first looks for it in a child theme, then in the parent directory.
+	$fullwidth = get_post_meta( get_the_ID(), '_fullwidth', $single = true );
+	if ( $fullwidth ) {
+		// TO-DO: Check and only do this if Gutenberg editor is active
+		//if !true {
+    		$single_template = locate_template( array ( 'single-fullwidth.php' ) );
+		//} else {
+    		//$single_template = locate_template( array ( 'single-nosidebar.php' ) );
+		//}
+    }
+    return $single_template;
+}
+endif; // end ! function_exists
+*/
+
+/**
+ * DEPRECATED. WORDPRESS NOW ALLOWS POST TEMPLATES, SO WE UPDATED THOSE TEMPLATES
+ * AND THE USER ASSIGNS THEM JUST LIKE PAGE TEMPLATES.
+ * 
  * Add custom section to WordPress post/page editor
  */
+/*
 if ( ! function_exists( 'xsbf_add_custom_box' ) ) :
 add_action( 'add_meta_boxes', 'xsbf_add_custom_box' );
 function xsbf_add_custom_box() {
@@ -225,12 +235,17 @@ function xsbf_add_custom_box() {
     }
 }
 endif; // end ! function_exists
+*/
 
 /**
+ * DEPRECATED. WORDPRESS NOW ALLOWS POST TEMPLATES, SO WE UPDATED THOSE TEMPLATES
+ * AND THE USER ASSIGNS THEM JUST LIKE PAGE TEMPLATES.
+ * 
  * Prints the box content.
  * 
  * @param WP_Post $post The object for the current post/page.
  */
+/*
 if ( ! function_exists( 'xsbf_inner_custom_box' ) ) :
 function xsbf_inner_custom_box( $post ) {
 
@@ -259,22 +274,27 @@ function xsbf_inner_custom_box( $post ) {
 	} //endif 'post'
 }
 endif; // end ! function_exists
+*/
 
 /**
+ * DEPRECATED. WORDPRESS NOW ALLOWS POST TEMPLATES, SO WE UPDATED THOSE TEMPLATES
+ * AND THE USER ASSIGNS THEM JUST LIKE PAGE TEMPLATES.
+ * 
  * When the post is saved, saves our custom data.
  *
  * @param int $post_id The ID of the post being saved.
  */
+/*
 if ( ! function_exists( 'xsbf_save_postdata' ) ) :
 add_action( 'save_post', 'xsbf_save_postdata' );
-function xsbf_save_postdata( $post_id ) {
+function xsbf_save_postdata( $post_id ) { */
 
 	/*
 	* We need to verify this came from the our screen and with proper authorization,
 	* because save_post can be triggered at other times.
 	*/
 
-	// Check if our nonce is set.
+	/* // Check if our nonce is set.
 	if ( ! isset( $_POST['xsbf_inner_custom_box_nonce'] ) )
 	return $post_id;
 
@@ -298,10 +318,10 @@ function xsbf_save_postdata( $post_id ) {
 
 	if ( ! current_user_can( 'edit_post', $post_id ) )
 		return $post_id;
-	}
+	}*/
 
 	/* OK, its safe for us to save the data now. */
-	$post_subtitle = sanitize_text_field( $_POST['xsbf_post_subtitle'] );
+	/*$post_subtitle = sanitize_text_field( $_POST['xsbf_post_subtitle'] );
 	update_post_meta( $post_id, '_subtitle', $post_subtitle );
 
 	if ( 'post' == $_POST['post_type'] ) {
@@ -310,6 +330,7 @@ function xsbf_save_postdata( $post_id ) {
 	}
 }
 endif; // end ! function_exists
+*/
 
 /**
  * Add Bootstrap class for thumbnails to user profile pics (avatars)

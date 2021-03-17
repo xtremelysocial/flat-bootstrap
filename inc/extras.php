@@ -23,6 +23,9 @@ function xsbf_page_menu_args( $args ) {
 /**
  * Adds custom classes to the array of body classes.
  */
+/* TO-DO: ADD PAGE-FULLWIDTH AND POSSIBLY PAGE-NOSIDEBAR CLASSES. THIS WAY CSS WON'T
+ * NEED TO WORRY ABOUT MULTIPLE FULLWIDTH PAGE/POST STYLES
+*/
 if ( ! function_exists( 'xsbf_body_classes' ) ) :
 add_filter( 'body_class', 'xsbf_body_classes' );
 function xsbf_body_classes( $classes ) {

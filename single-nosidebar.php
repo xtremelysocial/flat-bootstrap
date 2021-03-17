@@ -2,15 +2,15 @@
 /**
  * Theme: Flat Bootstrap
  * 
- * Template Name: Post - Full Width
+ * Template Name: Post - No Sidebar
  * Template Post Type: post
+ * 
+ * Full-width POST (article) with no sidebar.
  *
- * Full-width post (article) with no sidebar or container.
- *
- * This is the template for full width posts with no sidebar and no container. This 
- * post truly stretches the full width of the browser window. You should set a 
- * <div class="container"> before your content to keep it in line with the rest of 
- * the site content.
+ * This is the template for full width POSTS with no sidebar. This is used for the new
+ * WordPress Editor ("Project Gutenberg"). It DOES have a container so that regular
+ * content displays properly. The new Editor "alignfull" on images will break out of 
+ * the container as it should.
  *
  * @package flat-bootstrap
  */
@@ -19,7 +19,10 @@ get_header(); ?>
 
 <?php get_template_part( 'content', 'header' ); ?>
 
-	<div id="primary" class="content-area-wide">
+<div class="container">
+<div id="main-grid" class="row">
+
+	<div id="primary" class="content-area-wide col-md-12">
 		<main id="main" class="site-main" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -45,5 +48,8 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 	<?php //get_sidebar(); ?>
+
+</div><!-- .row -->
+</div><!-- .container -->
 
 <?php get_footer(); ?>

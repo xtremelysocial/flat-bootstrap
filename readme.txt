@@ -375,7 +375,15 @@ For more information on SemVer, please visit [http://semver.org/].
 
 == CHANGELOG ==
 
-= 2.0 - Apr 20 2016 = 
+= 3.0 - XXX XX, 2021 =
+This version adds in basic support for the new WordPress 5.x+ Block Editor (a.k.a. "Gutenberg" Editor). This will allow you to lay out pages with colored backgrounds, multiple columns, etc. While this theme has always used Bootstrap for that, it now also supports using the Block Editor too.
+
+The Block Editor support includes normal, wide, and full-width layouts. Our color palette is made available to it as well. Several new "No Sidebar" page templates have been added to mirror the "Full Width" page templates for those pages you are using the Block Editor instead of Bootstrap code.
+
+Here are more specific details on all the changes:
+* <<< FILL IN HERE BY LOOKING AT GITHUB CHANGE LOGS >>>
+
+= 2.0 - Mar 6 2021 = 
 This is the "front-end" or "user facing" edition. While v1.9 focused on the "back end", this version  focuses on enhancements that are visible to end users as well as some tweaks to support future futures that may be rolled into the theme or released in a separate plugin.
 
 FRONT-END UPDATES

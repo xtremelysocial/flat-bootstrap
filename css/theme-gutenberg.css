@@ -1,0 +1,954 @@
+/**
+ * Theme:	Flat Bootstrap
+ * File:	theme-gutenberg.css
+ * 
+ * Our styling for Gutenberg editor and it's blocks
+ *
+ * @package flat-bootstrap
+ */
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# General Structure
+  ## Content
+  ## Groups
+# Typography
+# Blocks
+  ## Buttons
+  ## Code
+  ## Columns
+  ## Cover
+  ## Embeds
+  ## Gallery
+  ## Image
+  ## Latest Posts
+  ## List
+  ## Media & Text
+  ## More
+  ## Pullquote
+  ## Quote
+  ## Separator
+  ## Table
+  ## Video
+# Colors
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# General Structure
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Content
+--------------------------------------------------------------*/
+/*
+ * Default narrow width on these components. User can choose alignwide in the block
+ * editor to make it wider, but this is good default width for readability.
+ */
+.comments-wrap,
+.page-template-page-nosidebar .entry-content > *,
+.page-template-page-nosidebar-noheader .entry-content > * {
+	max-width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+ * Handle full-width blocks / images
+ */
+.entry-content .alignfull {
+	margin-left: calc( -100vw / 2 + 100% /2 );
+	margin-right: calc( -100vw / 2 + 100% /2 );
+	max-width: 100vw;
+}
+
+/* 
+ * Handle wide witdth blocks / images
+ */
+.entry-content .alignwide {
+	max-width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+ * Ensure full-width images fill the available space
+ */
+.wp-block-cover.alignfull, 
+.wp-block-cover-image.alignfull {
+	width: 100vw;
+}
+
+/*--------------------------------------------------------------
+## Groups
+--------------------------------------------------------------*/
+
+.wp-block-group.is-style-thin-bottom-border {
+	border-bottom: #bdc3c7 solid 1px;
+}
+
+.wp-block-group.is-style-thick-bottom-border {
+	border-bottom: #bdc3c7 solid 5px;
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+.has-small-font-size {
+    font-size: 14px !important;
+}
+
+.has-normal-font-size, .has-regular-font-size {
+    font-size: 18px !important;
+}
+
+.has-medium-font-size {
+    font-size: 22px !important;
+}
+
+.has-large-font-size {
+    font-size: 28px !important;
+}
+
+.has-larger-font-size {
+    font-size: 34px !important;
+}
+
+.has-huge-font-size {
+    font-size: 41px !important;
+}
+
+/*--------------------------------------------------------------
+# Blocks
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Buttons
+--------------------------------------------------------------*/
+/*
+ * Bolder typeface on button text
+ */
+.wp-block-button__link {
+	font-weight: 500;
+}
+
+/* 
+ * Darken button link hover color
+ */
+.wp-block-button__link:hover,
+.wp-block-button__link:focus {
+	filter: brightness(90%);
+	/*background-color: filter: brightness(90%);*/
+}
+
+/*--------------------------------------------------------------
+## Code
+--------------------------------------------------------------*/
+/*
+ * Fix double border when code is in a pre
+ */
+.wp-block-code > code {
+	border: none;
+}
+
+/*--------------------------------------------------------------
+## Columns
+--------------------------------------------------------------*/
+/*
+ * Override the block editor keeping columns when there isn't enough space 
+ */
+/*@media (min-width: 600px) and(max-width: 781px) {
+    /*.wp-block-column:not(:only-child) {
+        flex-basis: calc(50% - 1em) !important;
+        flex-grow:0
+    }*/
+
+    /*.wp-block-column:nth-child(2n) {
+        margin-left:2em
+    }*/
+    /*.wp-block-column:not(:only-child) {
+	    flex-basis: 0 !important;
+    	flex-grow: 1;
+    }
+}*/
+
+/*
+ * THIS IS THE DEFAULT BLOCK EDITOR CSS FOR COLUMNS
+ */
+/*
+.wp-block-columns {
+    display: flex;
+    margin-bottom: 1.75em;
+    flex-wrap:wrap
+}
+
+@media (min-width: 782px) {
+    .wp-block-columns {
+        flex-wrap:nowrap
+    }
+}
+
+.wp-block-columns.has-background {
+    padding:1.25em 2.375em
+}
+
+.wp-block-columns.are-vertically-aligned-top {
+    align-items:flex-start
+}
+
+.wp-block-columns.are-vertically-aligned-center {
+    align-items:center
+}
+
+.wp-block-columns.are-vertically-aligned-bottom {
+    align-items:flex-end
+}
+
+.wp-block-column {
+    flex-grow: 1;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap:break-word
+}
+
+/* With 15px margin x 2, this collapses at 600px screen width
+ * Bootstrap collapses at 768px small, 992px medium, 1200px large
+ */
+/*
+@media (max-width: 599px) {
+    .wp-block-column {
+        flex-basis:100% !important
+    }
+}
+
+@media (min-width: 600px) and(max-width: 781px) {
+    .wp-block-column:not(:only-child) {
+        flex-basis: calc(50% - 1em) !important;
+        flex-grow:0
+    }
+
+    .wp-block-column:nth-child(2n) {
+        margin-left:2em
+    }
+}
+
+@media (min-width: 782px) {
+    .wp-block-column {
+        flex-basis: 0;
+        flex-grow:1
+    }
+
+    .wp-block-column[style * =flex-basis] {
+        flex-grow:0
+    }
+
+    .wp-block-column:not(:first-child) {
+        margin-left:2em
+    }
+}
+
+.wp-block-column.is-vertically-aligned-top {
+    align-self:flex-start
+}
+
+.wp-block-column.is-vertically-aligned-center {
+    -ms-grid-row-align: center;
+    align-self:center
+}
+
+.wp-block-column.is-vertically-aligned-bottom {
+    align-self:flex-end
+}
+
+.wp-block-column.is-vertically-aligned-bottom, .wp-block-column.is-vertically-aligned-center, .wp-block-column.is-vertically-aligned-top {
+    width:100%
+}
+*/
+
+/* For some reason, these blocks don't have bottom margin like everything else does */
+/*.wp-block-pullquote,
+.wp-block-media-text,*/
+/**.wp-block-columns {
+	margin-bottom: 27px;
+}**/
+
+/*--------------------------------------------------------------
+## Cover
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Embeds
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Gallery
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Image
+--------------------------------------------------------------*/
+
+/*
+ * TO-DO: NONE OF THE SYTLES IN HERE SEEM TO ACTUALLY WORK TO OVERRIDE THE 
+ * CSS THAT WORDPRESS GENERATES FOR BLOCKS UNLESS WE USE !IMPORTANT WHICH SUCKS
+ */
+
+.wp-block-image.is-style-bordered-image img,
+.wp-block-image.is-style-bordered-image:not(.is-style-rounded) img {
+	padding: 4px;
+  	background-color: #f2f2f2;
+  	border: 1px solid #dddddd;
+	border-radius: 4px;
+}
+
+.wp-block-image figcaption {
+    /*color: #555;*/
+    font-size: 16px;
+    /*text-align:center*/
+}
+
+/*--------------------------------------------------------------
+## Latest Posts
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# List
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Media & Text
+--------------------------------------------------------------*/
+/* For some reason, these blocks don't have bottom margin like everything else does */
+/*.wp-block-pullquote,*/
+/**.wp-block-media-text /*,
+.wp-block-columns*/ {
+	/**margin-bottom: 27px;
+}**/
+
+/*--------------------------------------------------------------
+## More
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Edit link for Admins
+--------------------------------------------------------------*/
+/*
+ * Center edit page/post link since its not aligned wide
+ * TO-DO: MOVE THIS SOMEWHERE ELSE AS IT HAS NOTHING TO DO WITH GUTENBERG
+ * OTHER THAN GUTENBERG DEFAULTS TO NARROW WIDTH
+ */
+.edit-link {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Pullquote
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Quote
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Separator
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Table
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Video
+--------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------
+# Colors
+----------------------------------------------------------------------------------------*/
+
+/* TO-DO: CONSIDER MOVING THIS TO A PLUGIN SO THAT THESE COLORS ARE ALWAYS AVAILABLE FOR
+ * THE USERS CONTENT EVEN IF THEY SWITCH THEMES.
+ */
+
+/* 
+ * Our color palette based off of designmodo's "flat-ui", but with normal color names
+ * assigned instead and some additional ones added for lighter and darker colors.
+ * 
+ * NOTE: bg-white, etc. are for backward compatibility with Flat Bootstrap colors only.
+ * The has-white-background-color, etc. is all that is needed for Gutenberg.
+ */
+
+/*.bg-white, */
+.has-white-background-color {
+	background-color: #fff !important;
+}
+/*.color-white, */
+has-white-color {
+	color: #fff !important;
+}
+
+/*.bg-offwhite, */
+.has-offwhite-background-color {
+	background-color: #f2f2f2 !important;
+}
+/*.color-offwhite, */
+.has-offwhite-color {
+	color: #f2f2f2 !important;
+}
+
+/*.bg-lightgray, */
+.has-lightgray-background-color {
+	background-color: #ebebeb !important;
+}
+/*.color-lightgray, */
+.has-lightgray-color {
+	color: #ebebeb !important;
+}
+
+/*.bg-gray, */
+.has-gray-background-color {
+	background-color: #e7e7e7 !important;
+}
+/*.color-gray, */
+.has-gray-color {
+	color: #e7e7e7 !important;
+}
+
+/*.bg-darkgray, */
+.has-darkgray-background-color {
+	background-color: #e0e0e0 !important;
+}
+/*.color-darkgray, */
+.has-darkgray-color {
+	color: #e0e0e0 !important;
+}
+
+/*.bg-lightgreen, */
+.has-lightgreen-background-color {
+    background-color: #1abc9c !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-lightgreen, */
+.has-lightgreen-color {
+    color: #1abc9c !important;
+}
+/*.bg-lightgreen h1, 
+.bg-lightgreen h2, 
+.bg-lightgreen h3, 
+.bg-lightgreen h4,
+.bg-lightgreen h5, 
+.bg-lightgreen h6,
+.has-lightgreen-background-color h1, 
+.has-lightgreen-background-color h2, 
+.has-lightgreen-background-color h3, 
+.has-lightgreen-background-color h4,
+.has-lightgreen-background-color h5, 
+.has-lightgreen-background-color h6 {
+	color: #fff;*/
+}
+
+/*.bg-darkgreen, */
+.has-darkgreen-background-color {
+    background-color: #16a085 !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-darkgreen, */
+.has-darkgreen-color {
+    color: #16a085 !important;
+}
+
+/*.bg-darkgreen h1, 
+.bg-darkgreen h2, 
+.bg-darkgreen h3, 
+.bg-darkgreen h4, 
+.bg-darkgreen h5, 
+.bg-darkgreen h6,
+.has-darkgreen-background-color h1, 
+.has-darkgreen-background-color h2, 
+.has-darkgreen-background-color h3, 
+.has-darkgreen-background-color h4, 
+.has-darkgreen-background-color h5, 
+.has-darkgreen-background-color h6 {
+	color: #fff;
+}*/
+
+/*.bg-brightgreen, */
+.has-brightgreen-background-color {
+	background-color: #2ecc71 !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-brightgreen, */
+.has-brightgreen-color {
+    color: #2ecc71 !important;
+}
+
+/* TO-DO: ALL THESE NEED THE HAS-XXX-BACKGROUND-COLOR ADDED TO THEM (UNLESS WE DONT WANT TO DEFAULT THESE TO WHITE)*/
+/*.bg-brightgreen h1, 
+.bg-brightgreen h2, 
+.bg-brightgreen h3, 
+.bg-brightgreen h4, 
+.bg-brightgreen h5, 
+.bg-brightgreen h6 {
+	color: #fff;
+}*/
+
+/*.bg-darkbrightgreen, */
+.has-darkbrightgreen-background-color {
+	background-color: #27AE60 !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-darkbrightgreen, */
+.has-darkbrightgreen-color {
+    color: #27ae60 !important;
+}
+
+/*.bg-darkbrightgreen h1, 
+.bg-darkbrightgreen h2, 
+.bg-darkbrightgreen h3, 
+.bg-darkbrightgreen h4, 
+.bg-darkbrightgreen h5, 
+.bg-darkbrightgreen h6 {
+	color: #fff;
+}*/
+
+/*.bg-yellow, */
+.has-yellow-background-color {
+    background: #f1c40f !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+
+/*.color-yellow, */
+.has-yellow-color {
+	color: #f1c40f !important;
+}
+
+/*.bg-yellow h1, 
+.bg-yellow h2, 
+.bg-yellow h3, 
+.bg-yellow h4, 
+.bg-yellow h5, 
+.bg-yellow h6 {
+	color: #fff;
+}*/
+
+/*.bg-lightorange, */
+.has-lightorange-background-color {
+    background-color: #f39c12 !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-lightorange, */
+.has-lightorange-color {
+	color: #F39C12 !important;
+}
+
+/*.bg-lightorange h1, 
+.bg-lightorange h2, 
+.bg-lightorange h3, 
+.bg-lightorange h4, 
+.bg-lightorange h5, 
+.bg-lightorange h6 {
+	color: #fff;
+}*/
+
+/*.bg-orange, */
+.has-orange-background-color {
+    background-color: #e67e22 !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-orange, */
+.has-organge-color {
+	color: #E67E22 !important;
+}
+
+/*.bg-orange h1, 
+.bg-orange h2, 
+.bg-orange h3, 
+.bg-orange h4, 
+.bg-orange h5, 
+.bg-orange h6 {
+	color: #fff;
+}*/
+
+/*.bg-darkorange, */
+.has-darkorange-background-color {
+    background-color: #d35400 !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-darkorange, */
+.has-darkorange-color {
+	color: #d35400 !important;
+}
+
+/*.bg-darkorange h1, 
+.bg-darkorange h2, 
+.bg-darkorange h3, 
+.bg-darkorange h4, 
+.bg-darkorange h5, 
+.bg-darkorange h6 {
+	color: #fff;
+}*/
+
+/*.bg-blue, */
+.has-blue-background-color {
+	background-color: #3498db !important;
+	/*color: #fff;*/
+}
+/*.color-blue, */
+.has-blue-color {
+	color: #3498db !important;
+}
+
+/*.bg-blue h1, 
+.bg-blue h2, 
+.bg-blue h3, 
+.bg-blue h4, 
+.bg-blue h5, 
+.bg-blue h6 {
+	color: #fff;
+}*/
+
+/*.bg-darkblue, */
+.has-darkblue-background-color {
+	background-color: #2980b9 !important;
+	/*color: #fff;*/
+}
+/*.color-darkblue, */
+.has-darkblue-color {
+	color: #2980b9 !important;
+}
+
+/*.bg-darkblue h1, 
+.bg-darkblue h2, 
+.bg-darkblue h3, 
+.bg-darkblue h4, 
+.bg-darkblue h5, 
+.bg-darkblue h6 {
+	color: #fff;
+}*/
+
+/*.bg-midnightblue, */
+.has-midnightblue-background-color {
+	background-color: #34495e !important;
+	/*color: #fff;*/
+}
+/*.color-midnightblue, */
+.has-midnightblue-color {
+	color: #34495e !important;
+}
+
+/*.bg-midnightblue h1, 
+.bg-midnightblue h2, 
+.bg-midnightblue h3, 
+.bg-midnightblue h4, 
+.bg-midnightblue h5, 
+.bg-midnightblue h6 {
+	color: #fff;
+}*/
+
+/*.bg-darkmidnightblue, */
+.has-darkmidnightblue-background-color {
+	background-color: #2c3e50 !important;
+	/*color: #fff;*/
+}
+/*.color-darkmidnightblue, */
+.has-darkmidnightblue-color {
+	color: #2c3e50 !important;
+}
+
+/*.bg-darkmidnightblue h1, 
+.bg-darkmidnightblue h2, 
+.bg-darkmidnightblue h3, 
+.bg-darkmidnightblue h4, 
+.bg-darkmidnightblue h5, 
+.bg-darkmidnightblue h6 {
+	color: #fff;
+}*/
+
+/*.bg-purple, */
+.has-purple-background-color {
+	background-color: #9b59b6 !important;
+	/*color: #fff;
+    font-weight: normal;*/
+}
+/*.color-purple, */
+.has-purple-color {
+	color: #9b59b6 !important;
+}
+
+/*.bg-purple h1, 
+.bg-purple h2, 
+.bg-purple h3, 
+.bg-purple h4, 
+.bg-purple h5, 
+.bg-purple h6 {
+	color: #fff;
+}*/
+
+/*.bg-darkpurple, */
+.has-darkpurple-background-color {
+	background-color: #8e44ad !important;
+	/*color: #fff;
+    font-weight: normal;*/
+}
+/*.color-darkpurple, */
+.has-darkpurple-color {
+	color: #8e44ad !important;
+}
+
+/*.bg-darkpurple h1, 
+.bg-darkpurple h2, 
+.bg-darkpurple h3, 
+.bg-darkpurple h4, 
+.bg-darkpurple h5, 
+.bg-darkpurple h6 {
+	color: #fff;
+}*/
+
+/*.bg-red, */
+.has-red-background-color {
+	background-color: #ff7878 !important;
+	/*color: #f2f2f2;*/
+    /*font-weight: normal;*/
+}
+/*.color-red, */
+.has-red-color {
+	color: #ff7878c !important;
+}
+
+/*.bg-red h1, 
+.bg-red h2, 
+.bg-red h3, 
+.bg-red h4, 
+.bg-red h5, 
+.bg-red h6 {
+	color: #fff;
+}*/
+
+/*.bg-brightred, */
+.has-brightred-background-color {
+	background-color: #e74c3c !important;
+	/*color: #f2f2f2;*/
+    /*font-weight: normal;*/
+}
+/*.color-brightred, */
+.has-brightred-color {
+	color: #e74c3c !important;
+}
+
+/*.bg-brightred h1, 
+.bg-brightred h2, 
+.bg-brightred h3, 
+.bg-brightred h4, 
+.bg-brightred h5, 
+.bg-brightred h6 {
+	color: #fff;
+}*/
+
+/*.bg-darkred, */
+.has-darkred-background-color {
+	background-color: #c0392b !important;
+	/*color: #f2f2f2;
+    font-weight: normal;*/
+}
+/*.color-darkred, */
+.has-darkred-color {
+	color: #c0392b !important;
+}
+
+/*.bg-darkred h1, 
+.bg-darkred h2, 
+.bg-darkred h3, 
+.bg-darkred h4, 
+.bg-darkred h5, 
+.bg-darkred h6 {
+	color: #fff;
+}*/
+
+
+/*.bg-darkred h1, 
+.bg-darkred h2, 
+.bg-darkred h3, 
+.bg-darkred h4, 
+.bg-darkred h5, 
+.bg-darkred h6 {
+	color: #fff;
+}*/
+
+/*.bg-almostblack, */
+.has-almostblack-background-color {
+	background-color: #2f2f2f !important;
+	/*color: #fff;*/
+}
+/*.color-almostblack, */
+.has-almostblack-color {
+	color: #2f2f2f !important;
+}
+
+/*.bg-almostblack h1, 
+.bg-almostblack h2, 
+.bg-almostblack h3, 
+.bg-almostblack h4, 
+.bg-almostblack h5, 
+.bg-almostblack h6 {
+	color: #fff;
+}*/
+
+/*.bg-notquiteblack, */
+.has-notquiteblack-background-color {
+	background-color: #222 !important;
+	/*color: #fff;*/
+}
+/*.color-notquiteblack, */
+.has-notquiteblack-color {
+	color: #222 !important;
+}
+
+/*.bg-notquiteblack h1, 
+.bg-notquiteblack h2, 
+.bg-notquiteblack h3, 
+.bg-notquiteblack h4, 
+.bg-notquiteblack h5, 
+.bg-notquiteblack h6 {
+	color: #fff;
+}*/
+
+/*.bg-black, */
+.has-black-background-color {
+	background-color: #000 !important;
+	/*color: #fff;*/
+}
+/*.color-black, */
+.has-black-color {
+	color: #000 !important;
+}
+
+/*.bg-black h1, 
+.bg-black h2, 
+.bg-black h3, 
+.bg-black h4, 
+.bg-black h5, 
+.bg-black h6 {
+	color: #fff;
+}*/
+
+/* Increase contrast on certain colored backgrounds. We increase the font weight, but
+ * then tone the font color down a bit (offwhite). 
+ */
+/*.bg-yellow,
+.bg-lightorange,
+.bg-orange,
+.bg-darkorange,
+.bg-lightgreen,
+.bg-darkgreen,
+.bg-brightgreen,
+.bg-darkbrightgreen {
+	color: #f2f2f2;
+    font-weight: normal;
+}*/
+
+/* Set the icons to white for all dark-colored sections */
+/*.bg-lightgreen i, 
+.bg-darkgreen i, 
+.bg-brightgreen i, 
+.bg-darkbrightgreen i, 
+.bg-yellow i,
+.bg-lightorange i,
+.bg-orange i,
+.bg-darkorange i,
+.bg-blue i, 
+.bg-darkblue i, 
+.bg-midnightblue i, 
+.bg-darkmidnightblue i, 
+.bg-purple i, 
+.bg-darkpurple i, 
+.bg-red i, 
+.bg-brightred i, 
+.bg-darkred i, 
+.bg-notquitetblack i, 
+.bg-almostblack i, 
+.bg-black i {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+}
+
+.bg-lightgreen a i:hover, 
+.bg-darkgreen a i:hover, 
+.bg-brightgreen a i:hover, 
+.bg-darkbrightgreen a i:hover, 
+.bg-yellow a i:hover,
+.bg-lightorange a i:hover,
+.bg-orange a i:hover,
+.bg-darkorange a i:hover,
+.bg-blue a i:hover, 
+.bg-darkblue a i:hover, 
+.bg-midnightblue a i:hover, 
+.bg-darkmidnightblue a i:hover, 
+.bg-purple a i:hover, 
+.bg-darkpurple a i:hover, 
+.bg-red a i:hover, 
+.bg-brightred a i:hover, 
+.bg-darkred a i:hover, 
+.bg-notquitetblack a i:hover, 
+.bg-almostblack a i:hover, 
+.bg-black a i:hover {
+	color: #e7e7e7;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+}*/
+
+/* Set the link and hover colors for dark sections */
+/*.bg-lightgreen a:not(.btn),
+.bg-darkgreen a:not(.btn), 
+.bg-brightgreen a:not(.btn), 
+.bg-darkbrightgreen a:not(.btn), 
+.bg-yellow a:not(.btn),
+.bg-lightorange a:not(.btn),
+.bg-orange a:not(.btn), 
+.bg-darkorange a:not(.btn), 
+.bg-blue a:not(.btn), 
+.bg-darkblue a:not(.btn), 
+.bg-midnightblue a:not(.btn), 
+.bg-darkmidnightblue a:not(.btn), 
+.bg-purple a:not(.btn), 
+.bg-darkpurple a:not(.btn), 
+.bg-red a:not(.btn),
+.bg-brightred a:not(.btn),
+.bg-darkred a:not(.btn) {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+}
+
+.bg-lightgreen a:hover:not(.btn),
+.bg-darkgreen a:hover:not(.btn), 
+.bg-brightgreen a:hover:not(.btn), 
+.bg-darkbrightgreen a:hover:not(.btn), 
+.bg-yellow a:hover:not(.btn), 
+.bg-lightorange a:hover:not(.btn),
+.bg-orange a:hover:not(.btn),
+.bg-darkorange a:hover:not(.btn), 
+.bg-blue a:hover:not(.btn), 
+.bg-darkblue a:hover:not(.btn), 
+.bg-midnightblue a:hover:not(.btn), 
+.bg-darkmidnightblue a:hover:not(.btn), 
+.bg-purple a:hover:not(.btn), 
+.bg-darkpurple a:hover:not(.btn), 
+.bg-red a:hover:not(.btn),
+.bg-brightred a:hover:not(.btn),
+.bg-darkred a:hover:not(.btn) {
+	color: #e7e7e7;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+}*/

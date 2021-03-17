@@ -139,9 +139,29 @@ function xsbf_setup() {
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
 	//add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 	
-	// Add editor CSS to style the WordPress visual post / page editor. Ours mainly
-	// pulls in all of our front-end CSS.
-	add_editor_style( 'css/editor-style.css' );
+	// Add editor CSS to style the WordPress visual post / page editor. Also load all
+	// our front-end CSS so that the editor looks like the page will.
+	/*add_editor_style( 'bootstrap/css/bootstrap.min.css' );
+	add_editor_style( 'fontawesome/css/fontawesome.min.css' );
+    add_editor_style( '//fonts.googleapis.com/css?family=Lato:300%2C400%2C700' ); //must replace commmas with %2C
+    add_editor_style( '//fonts.googleapis.com/css?family=Raleway:400%2C300%2C700' ); //must replace commmas with %2C
+    add_editor_style( 'css/theme-base.css' );
+	add_editor_style( 'css/theme-flat.css' );
+	add_editor_style( 'style.css' );*/
+	//add_editor_style( 'css/editor-style.css' );
+	//add_editor_style( 'editor-style.css' );
+	//add_editor_style();
+	
+	/*add_editor_style(
+			array(
+				get_stylesheet_uri() . '/bootstrap/css/bootstrap.min.css',
+				get_stylesheet_uri() . '/css/theme-base.css',
+				get_stylesheet_uri() . '/css/theme-flat.css',
+				get_stylesheet_uri() . '/css/theme-gutenberg.css',
+				get_stylesheet_uri() . '/css/editor-style.css',
+				get_stylesheet_uri() . 'style.css',
+			)
+		);*/
 
 	// Setup the WordPress core custom background feature. As of WordPress v3.4. This 
 	// theme is full-width up to 1600px, so background will only show when user's
@@ -274,7 +294,7 @@ function xsbf_load_fonts() {
 endif; // end ! function_exists
 
 /**
- * LOAD CSS STYLESHEETS 
+ * LOAD CSS STYLESHEETS ON THE FRONT-END
  */
 if ( ! function_exists('xsbf_load_css') ) :
 add_action( 'wp_enqueue_scripts', 'xsbf_load_css' );
@@ -307,6 +327,28 @@ function xsbf_load_css() {
 	wp_enqueue_style( 'flat-bootstrap', get_stylesheet_uri(), array('bootstrap', 'theme-base', 'theme-flat'), '20160401' );
 
 } // end function xsbf_load_css
+endif; // end ! function_exists
+
+/**
+ * LOAD CSS STYLESHEETS ON THE BACK-END
+ */
+if ( ! function_exists('xsbf_load_editor_css') ) :
+add_action( 'admin_init', 'xsbf_load_editor_css' );
+function xsbf_load_editor_css() {
+	/*add_editor_style(
+			array(
+				'//fonts.googleapis.com/css?family=Lato:300%2C400%2C700', //must replace commmas with %2C
+				'//fonts.googleapis.com/css?family=Raleway:400%2C300%2C700', //must replace commmas with %2C
+				get_stylesheet_uri() . '/bootstrap/css/bootstrap.min.css',
+				get_stylesheet_uri() . '/css/theme-base.css',
+				get_stylesheet_uri() . '/css/theme-flat.css',
+				get_stylesheet_uri() . '/css/theme-gutenberg.css',
+				get_stylesheet_uri() . '/css/editor-style.css',
+				get_stylesheet_uri() . 'style.css',
+			)
+		);*/
+	add_editor_style( '/css/editor-style.css');
+} //end function xsbf_load_editor_css
 endif; // end ! function_exists
 
 /* 
@@ -363,6 +405,7 @@ if ( ! function_exists('xsbf_load_includes') ) :
 function xsbf_load_includes() {
 
 /* Build array of include files */
+/* TO-DO: Only load Gutenberg if its available (plugin or WordPress 5+). Look at Jetpack below */
 $includes = array (
 	'/inc/template-tags.php',
 	'/inc/theme-functions.php',
@@ -370,6 +413,7 @@ $includes = array (
 	'/inc/custom-header.php',
 	'/inc/customizer.php',
 	'/inc/extras.php',
+	'/inc/gutenberg.php',
 	'/inc/xsbf-plugin-recommendations.php',
 	/*'/plugins/flat-bootstrap-widgets/flat-bootstrap-widgets.php'*/
 	);
@@ -384,6 +428,7 @@ if ( class_exists( 'Jetpack' ) ) {
  */
 foreach ( $includes as $include ) {
 	include_once get_template_directory() . $include;
+	//require_once get_template_directory() . $include;
 	//include_once get_stylesheet_directory() . $include;
 } //end foreach
 

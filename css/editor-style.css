@@ -12,17 +12,130 @@
 /**
  * PULL IN OUR THEME STYLESHEETS SO VISUAL EDITOR AND PREVIEWS LOOK RIGHT
  */
-@import url( '../bootstrap/css/bootstrap.min.css' );
+@import url( '../wp-content/themes/flat-bootstrap/bootstrap/css/bootstrap.min.css' );
 @import url( '//fonts.googleapis.com/css?family=Lato:300,400,700');
 @import url( '//fonts.googleapis.com/css?family=Raleway:400,300,700');
-@import url( '../font-awesome/css/font-awesome.min.css');
+@import url( '../wp-content/themes/flat-bootstrap/font-awesome/css/font-awesome.min.css');
+@import url( '../wp-content/themes/flat-bootstrap/css/theme-base.css' );
+@import url( '../wp-content/themes/flat-bootstrap/css/theme-flat.css' );
+@import url( '../wp-content/themes/flat-bootstrap/css/theme-gutenberg.css' );
+@import url( '../wp-content/themes/flat-bootstrap/style.css' );
+
+/*@import url( './bootstrap/css/bootstrap.min.css' );
+@import url( '//fonts.googleapis.com/css?family=Lato:300,400,700');
+@import url( '//fonts.googleapis.com/css?family=Raleway:400,300,700');
+@import url( './font-awesome/css/font-awesome.min.css');
 @import url( 'theme-base.css' );
 @import url( 'theme-flat.css' );
-@import url( '../style.css' );
+@import url( 'theme-gutenberg.css' );
+@import url( './style.css' );*/
 
-/*.gallery-settings select.columns {
-	color: red;
-	max-width: 75%;
+/**
+ * NOTE THAT WITH GUTENBERG, ALL STYLES IN HERE SHOULD BE PREPENDED WITH:
+ * .edit-post-visual-editor
+ */
+
+
+/*.edit-post-visual-editor {*/
+/*.editor-styles-wrapper {
+	background-color: black;
 }*/
 
+/**
+ * SET THE WIDTHS FOR THE NEW WORDPRESS EDITOR ("PROJECT GUTENBERG")
+ * 
+ * Note: These are based on the Bootstrap widths that drive this theme.
+ * If a child theme overrides the widths then they should also be updated
+ * here or the editor won't match the page when viewed by a user.
+ *
+ */
 
+/*
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left:auto
+}
+
+@media (min-width: 768px) {
+    .container {
+        width:750px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width:970px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width:1170px
+    }
+}
+*/
+
+/**
+ * Set the editor block widths to match our front-end breakpoints.
+ * Note that the widths aren't adjusted for pages with sidebars. They always show full
+ * width.
+ */
+@media (min-width: 768px) {
+    .wp-block {
+        max-width:750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .wp-block {
+        max-width:970px
+    }
+}
+
+@media (min-width: 1200px) {
+    .wp-block {
+        max-width:1170px
+    }
+}
+
+/**
+ * Set the width of "container" divs within blocks to fit in the available editor space
+ */
+.container {
+	width: 100%;
+}
+
+/*
+ * Since "full-width" in our theme still maxes out at 1600px, set that. Also center it.
+ */
+/*.edit-post-visual-editor .editor-styles-wrapper {
+	max-width: 1600px
+	margin-left: auto;
+	margin-right: auto;
+}*/
+
+/* Main column width. Add 30px because the editor has padding. */
+/*.edit-post-visual-editor .wp-block {*/
+/**.wp-block {**/
+    /*max-width: 780px;*/
+    /**max-width: 1170px;
+}**/
+
+/* "Wide" block width. Add 86px because the editor has padding. */
+/*.edit-post-visual-editor .wp-block[data-align="wide"] {*/
+/**.wp-block[data-align="wide"] {
+    max-width: 1170px;
+}**/
+
+/* Width of "full-wide" blocks */
+/*.edit-post-visual-editor .wp-block[data-align="full"] {*/
+/**.wp-block[data-align="full"] {**/
+    /*max-width: none;*/
+    /**max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+}**/
