@@ -22,7 +22,7 @@ add_action( 'after_setup_theme', 'xsbf_custom_header_setup' );
 function xsbf_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'xsbf_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '555555',
+		'default-text-color'     => '16a085', //'555555',
 		'width'                  => 1600,
 		'height'                 => 200,
 		'flex-width'             => true,
@@ -53,8 +53,11 @@ function xsbf_header_style() {
 	// any hex color value. HEADER_TEXTCOLOR is always the default color.
 	$header_text_color = get_header_textcolor();
 
+	$default_text_color = get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_colo;
+
 	// If no custom options for text are set, let's bail
-	if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() ) {
+	//if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() ) {
+	if ( $default_text_color === $header_text_color ) {
 		return;
 	}
 
@@ -63,7 +66,8 @@ function xsbf_header_style() {
 	<style type="text/css">
 	<?php
 		// Has the text been hidden?
-		if ( 'blank' == $header_text_color ) :
+		//if ( 'blank' == $header_text_color ) :
+		if ( ! display_header_text() ) :
 	?>
 		/*.site-title,
 		.site-description {*/
@@ -77,7 +81,8 @@ function xsbf_header_style() {
 		}
 	<?php
 		// If the user has set a custom color for the text use that
-		elseif ( HEADER_TEXTCOLOR != $header_text_color ) :
+		//elseif ( HEADER_TEXTCOLOR != $header_text_color ) :
+		elseif ( $default_text_color != $header_text_color ) :
 	?>
 		.site-title a,
 		.site-description {

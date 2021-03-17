@@ -20,22 +20,22 @@
 @import url( '../wp-content/themes/flat-bootstrap/css/theme-flat.css' );
 @import url( '../wp-content/themes/flat-bootstrap/style.css' );
 
-/* Main column width */
-.wp-block {
-    max-width: 1170px;
-}
- 
-/* Width of "wide" blocks */
-/*.wp-block[data-align="wide"] {
-    max-width: 1170px;
-}*/
- 
-/* Width of "full-wide" blocks */
-/*.wp-block[data-align="full"] {
-    max-width: none;
+/* First default to narrow width */
+/*.wp-block {
+    max-width: 750px
 }*/
 
-/* Adjust the container to flexible width */
+/* Then expand for alignwide blocks */
+/*.wp-block[data-align=wide] {
+    max-width: 1170px
+}*/
+
+/* Then expand for alignfull blocks */
+/*.wp-block[data-align=full] {
+    max-width: 1600px
+}*/
+
+/* Adjust the Bootstrap container to flexible width */
 .container {
 	max-width: 100%;
 }

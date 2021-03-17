@@ -6,6 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.2
 Requires PHP: 7.0
 Tested up to: 5.7
+Requires PHP: 5.2
 Stable tag: 1.10
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
@@ -60,10 +61,7 @@ Font Awesome - http://fontawesome.io
 License: Distributed under the terms of the SIL OFL License 1.1 (fonts), MIT License (code), and CC BY 3.0 License (documentation)
 Copyright: Font Awesome, http://fontawesome.io
 
-Images - http://unsplash.com
-Images included in the download, such as the one depicted in the screenshot are from unsplash.com
-License: Distributed under the terms of the Creative Commons Zero / GPL License
-Copyright: unsplash, http://unsplash.com
+Images included in the download, such as the one depicted in the screenshot are licensed under Creative Commons Zero, which is compatible with WordPress' GPL License.
 
 
 == TRANSLATIONS ==
@@ -379,6 +377,7 @@ FIXES & ENHANCEMENTS
 * Update Bootstrap to the latest 3.x version (3.4.1) to fix a nasty bug with WordPress v5.x+ where the navigation menu drop-downs didn't work. This was due to WordPress updating to a newer version of jquery.
 * Update the CSS for the WordPress post/page editor (editor-style.css) to load our front-end CSS it looks like the front-end website.
 * Set the page/post editor width to 1170px to mach our full-width page/post layouts.
+* Updated the theme option for custom header text color to adhere to WordPress 5.x guidelines
 
 = 1.9 - Mar 26 2016 = 
 This is the "spring cleaning" edition. This version focuses on both cleaning up and updating the templates, functions, and CSS as well as allowing for more varied themes in the future. The child theme has been updated to include some of the common user requests as well. Jetpack Testimonials are now displayed better and Jetpack Portfolio items can  have a subtitle. All this has been done with the intent to cause little no disruption to existing child themes.
@@ -520,7 +519,7 @@ For more information see [http://v4-alpha.getbootstrap.com/components/utilities/
 * Fixed a bug where category and tag archives were displaying the page title without formatting
 
 = 1.4.1 =
-* Updated screenshots to use a GPL image from unsplash.com
+* Updated screenshots to use a GPL image
 * Updated licensing information to reflect screenshot image is GPL
 * Bumped version number
 
