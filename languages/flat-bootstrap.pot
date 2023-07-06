@@ -607,11 +607,11 @@ msgid "Flat Bootstrap"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://xtremelysocial.com/wordpress/flat/"
+msgid "https://xtremelysocial.com/wordpress/flat/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Flat Bootstrap by XtremelySocial is a modern, fully responsive, \"flat\" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones. It is based on the WordPress standard starter theme (_S) and the Twitter Bootstrap CSS framework. Features include a mobile navigation bar, multiple columns (grid), buttons, icons, labels, badges, tabbed content areas, collapsible content areas, progress bars, alert boxes, carousels (sliders) and much, much more. This is a theme for both users and theme developers with lots of features but without the bloat. For a live demo go to http://xtremelysocial.com/wordpress/flat/."
+msgid "Flat Bootstrap by XtremelySocial is a modern, fully responsive, \"flat\" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones. It is based on the WordPress standard starter theme (_S) and the Twitter Bootstrap CSS framework. Features include a mobile navigation bar, multiple columns (grid), buttons, icons, labels, badges, tabbed content areas, collapsible content areas, progress bars, alert boxes, carousels (sliders) and much, much more. This is a theme for both users and theme developers with lots of features but without the bloat. For a live demo go to https://flat-bootstrap.xtremelysocial.com/."
 msgstr ""
 
 #. Author of the plugin/theme
@@ -619,7 +619,7 @@ msgid "XtremelySocial"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://xtremelysocial.com"
+msgid "https://xtremelysocial.com"
 msgstr ""
 
 #. Template Name of the plugin/theme

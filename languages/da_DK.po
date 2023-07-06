@@ -664,7 +664,7 @@ msgid "Flat Bootstrap"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://xtremelysocial.com/wordpress/flat/"
+msgid "https://xtremelysocial.com/wordpress/flat/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -686,7 +686,7 @@ msgid "XtremelySocial"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://xtremelysocial.com"
+msgid "https://xtremelysocial.com"
 msgstr ""
 
 #. Template Name of the plugin/theme

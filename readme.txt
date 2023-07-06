@@ -7,7 +7,7 @@ Requires at least: 4.2
 Requires PHP: 7.0
 Tested up to: 5.7
 Requires PHP: 5.2
-Stable tag: 1.10
+Stable tag: 1.10.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -369,6 +369,9 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.10.1 - Jul 6, 2023 =
+* Update XtremelySocial URL's to use SSL URL's (https://) in readme.txt, style.css, and language translation files.
 
 = 1.10 - Mar 13, 2021 =
 This version updates Bootstrap to the latest 3.x version (3.4.1) to fix issues and enhances how the WordPress page/post editor looks compared to the front-end website.
