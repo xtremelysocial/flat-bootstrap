@@ -16,7 +16,7 @@ Flat Bootstrap Child by XtremelySocial is a child theme for Flat Bootstrap. It i
 
 This Flat Bootstrap Child theme is included in the Flat Bootstrap parent theme download and allows easy customization of the theme.
 
-For more information go to [https://xtremelysocial.com/wordpress/child/].
+For more information go to [https://xtremelysocial.com/wordpress/flat/].
 
 
 == LICENSE ==
