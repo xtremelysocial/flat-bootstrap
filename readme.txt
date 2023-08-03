@@ -3,11 +3,9 @@
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, translation-ready, rtl-language-support, custom-background
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JGJUJVK99KHRE
-Requires at least: 4.2
-Requires PHP: 7.0
-Tested up to: 5.7
+Version: 1.10.2
+Tested up to: 6.2
 Requires PHP: 5.2
-Stable tag: 1.10.1
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
@@ -369,6 +367,9 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.10.2 - Aug 3, 2023 =
+* Update smoothscroll javascript to factor in if the WordPress Admin Bar is showing or not. 
 
 = 1.10.1 - Jul 6, 2023 =
 * Update XtremelySocial URL's to use SSL URL's (https://) in readme.txt, style.css, and language translation files.

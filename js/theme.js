@@ -25,8 +25,13 @@
 	$(document).ready(function() {
 		$('.smoothscroll').click(function() {
 		  var target = $(this.hash);
-		  var offset = $('body').css('padding-top');
-		  if (offset) offset = offset.replace('px','');
+
+  		  var offset = 0;
+		  const siteTopMargin = parseInt( $('body').css('padding-top') );
+		  if (siteTopMargin) offset += siteTopMargin;
+		  const adminbarHeight = parseInt( $( '#wpadminbar' ).outerHeight() );
+		  if (adminbarHeight) offset += adminbarHeight;
+
 		  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 		  if (target.length) {
 			$('html,body').animate({
