@@ -23,7 +23,7 @@ This theme includes a child theme to be able to easily customize the theme. The 
 
 VERSION SUMMARY: Version 1.10 fixes the issue with navbar drop-downs not working in WordPress v5.x+! It also sets the WordPress page/post editor styles to match the front-end website!
 
-For more information on the Flat Bootstrap theme go to [http://xtremelysocial.com/wordpress/flat/].
+For more information on the Flat Bootstrap theme go to [https://xtremelysocial.com/wordpress/flat-bootstrap/].
 
 
 == LICENSE ==
@@ -78,7 +78,7 @@ The theme is translation ready and has already been translated to Danish, French
 
 == SCREENSHOTS ==
 
-For now, WordPress doesn't allow themes to have more than one screenshot, but you can go to [http://xtremelysocial.com/wordpress/flat/] to see more of them.
+For now, WordPress doesn't allow themes to have more than one screenshot, but you can go to [https://xtremelysocial.com/wordpress/flat-bootstrap/] to see more of them.
 
 
 == HOW TO USE THE THEME ==
@@ -213,7 +213,7 @@ This theme is based on Bootstrap. It is an open-source CSS framework from Twitte
 
 One thing you don't want from Bootstap, though, is their default settings. Your website will scream "Bootstrap". So we've tweaked all the settings for you already to give you a nice color palette, great looking fonts, and a "flat" look.
 
-You can check out our "Shortcodes" page on our website to see many of the Bootstrap features in action. Just go to [http://xtremelysocial.com/wordpress/shortcodes/]
+You can check out our "Shortcodes" page on our website to see many of the Bootstrap features in action. Just go to [https://xtremelysocial.com/wordpress/shortcodes/]
 
 For the full documentation, please see the Bootstrap website at  [http://getbootstrap.com/components/ and http://getbootstrap.com/css/]. Be sure to check out the components section and javascript sections there as well. All of that works perfectly in this theme.
 
@@ -367,6 +367,9 @@ For more information on SemVer, please visit [http://semver.org/].
 
 
 == CHANGELOG ==
+
+= 1.10.3 - Sep 6, 2023 =
+* Update readme.txt XtremelySocial URL's to use SSL URL's (https://) and to refer to the new URL for the Flat Bootstrap theme [https://xtremelysocial.com/wordpress/flat-bootstrap]
 
 = 1.10.2 - Aug 3, 2023 =
 * Update smoothscroll javascript to factor in if the WordPress Admin Bar is showing or not. 
