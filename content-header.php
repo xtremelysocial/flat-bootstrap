@@ -35,7 +35,7 @@
 		if ( $home_page ) $post = get_post( $home_page );
 		if ( $post ) {
 			$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full');
-			$image_width = $featured_image[1];
+			$image_width = $featured_image ? $featured_image[1] : null;
 		}
 	}
 

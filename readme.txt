@@ -368,6 +368,11 @@ For more information on SemVer, please visit [http://semver.org/].
 
 == CHANGELOG ==
 
+= 1.10.4 - Mar 21, 2025 =
+
+* Fix for custom header text color. 
+* Remove debug warning when page has no featured image. 
+
 = 1.10.3 - Sep 6, 2023 =
 * Update readme.txt XtremelySocial URL's to use SSL URL's (https://) and to refer to the new URL for the Flat Bootstrap theme [https://xtremelysocial.com/wordpress/flat-bootstrap]
 
