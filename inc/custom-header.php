@@ -53,7 +53,7 @@ function xsbf_header_style() {
 	// any hex color value. HEADER_TEXTCOLOR is always the default color.
 	$header_text_color = get_header_textcolor();
 
-	$default_text_color = get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_colo;
+	$default_text_color = get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color;
 
 	// If no custom options for text are set, let's bail
 	//if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() ) {
